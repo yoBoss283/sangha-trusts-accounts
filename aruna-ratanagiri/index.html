@@ -114,6 +114,7 @@ h3.then { font-size: 14px; font-weight: 600; color: var(--ink-2); margin: 4px 0 
 .hb-t i { display: block; height: 100%; border-radius: 4px; }
 .hb-v { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5em; text-align: right; }
 .hb-p { color: var(--muted); font-size: 12px; }
+.hb-s { display: block; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 @media (max-width: 520px) { .hb { grid-template-columns: 1fr auto; } .hb-t { grid-column: 1 / -1; grid-row: 2; } }
 .sources { font-size: 14px; }
 .prices { margin: -6px 0 16px; }
@@ -222,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year to keep the monastery going, without new buildings and infrastructure (counted as something the Trust owns) and without wear on buildings (depreciation, not money paid out). Residents: the monks, novices and anagārikas living at Aruna Ratanagiri, on average; guests at Kusala House are not counted. Inflation: the UK consumer prices index. All amounts as paid at the time, unless the page says "in today's money".</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:55 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:59 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -628,9 +629,9 @@ const HEAT = r => r.heat;
     `In ${BLAB(r0.b)} it was about ${r10(r0.paid)} a day, or ${r10(r0.now)} in today's money.`;
   const max = Math.max(...rows.map(r => r.now));
   const host = document.getElementById('c-day'); host.className = 'hbars';
-  host.innerHTML = rows.map((r, i) => `<div class="hb"><span class="hb-n">${BLAB(r.b)}</span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${i === rows.length - 1 ? '--s2' : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
+  host.innerHTML = rows.map((r, i) => `<div class="hb"><span class="hb-n">${BLAB(r.b)}<span class="hb-s">${pplRound(r.p)} residents</span></span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${i === rows.length - 1 ? '--s2' : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
   document.getElementById('day-under').textContent =
-    `A day, in ${LY} money (inflation taken out), averaged over five years. Residents: ${rows.map(r => `${BLAB(r.b)} ${pplRound(r.p)}`).join(' · ')}.`;
+    `A day, in ${LY} money (inflation taken out), averaged over five years. The number under each period is its average number of residents.`;
 })();
 
 // ---------------------------------------------------------------- the two main charts
