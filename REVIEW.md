@@ -180,3 +180,11 @@ The owner answered in the landing session: A yes, B yes, C keep as it is. Built:
 - 11, 12 done in the previous commit.
 
 Phone (375 px): no sideways scroll; cards 521 / 566 / 545 px tall. Not pushed; publishing waits for the owner's yes here.
+
+## Round 3 (landing session)
+
+Reviewer's round 3: no sideways scroll, 12 px smallest text, A, B, C, 11, 12 read correctly, numbers match; reviewer stops.
+Two nits fixed: (1) the tail "with welfare and food" stays on the Amaravati and Chithurst line only (it contrasts with the
+"without welfare" sentence above it); Ratanagiri and Hartridge now say "all running costs". (2) the percentage and the "(+£159,000 a year)"
+amount no longer break across lines on a phone (no-wrap). Committed locally; not pushed. Publishing waits for the owner's
+yes in the landing session.
