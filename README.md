@@ -5,7 +5,7 @@ those costs have risen faster than prices in general.
 
 - **The site:** https://yoboss283.github.io/sangha-trusts-accounts/ (the landing page; one card for each place, each
   linking to its full report).
-- **Made by** Narindo, November 2026.
+- **Dates:** started 16 November 2026; the four reports were merged into this one repository on 17 November 2026.
 - **This repository** is the only copy of the code and data. It is public so that anyone can check the figures.
 
 ## What is in it
