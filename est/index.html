@@ -224,7 +224,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:48 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:55 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -717,9 +717,9 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
     `So even after inflation, it now costs more a day to run the two places: ${upPct(rN.now / rb.now)} since ${span(rb.ys)} and ${upPct(rN.now / r0.now)} since ${span(r0.ys)}; the number of residents rose ${upPct(rN.ppl / rb.ppl).slice(1)} and ${upPct(rN.ppl / r0.ppl).slice(1)}.`;
   const max = Math.max(...rows.map(r => r.now));
   const host = document.getElementById('c-day'); host.className = 'hbars';
-  host.innerHTML = rows.map(r => `<div class="hb"><span class="hb-n">${span(r.ys)}</span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${r.ys === N3 ? RED : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
+  host.innerHTML = rows.map(r => `<div class="hb"><span class="hb-n">${span(r.ys)}<span class="hb-s">${Math.round(r.ppl)} residents</span></span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${r.ys === N3 ? RED : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
   document.getElementById('day-under').textContent =
-    `A day, in ${LY} money (inflation taken out), averaged over three years; welfare and food included, building work left out. Residents: ${rows.map(r => `${span(r.ys)} ${Math.round(r.ppl)}`).join(' · ')}.`;
+    `A day, in ${LY} money (inflation taken out), averaged over three years; welfare and food included, building work left out. The number under each period is its average number of residents.`;
 })();
 
 (function bridgeChart() {

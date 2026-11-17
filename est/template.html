@@ -709,9 +709,9 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
     `So even after inflation, it now costs more a day to run the two places: ${upPct(rN.now / rb.now)} since ${span(rb.ys)} and ${upPct(rN.now / r0.now)} since ${span(r0.ys)}; the number of residents rose ${upPct(rN.ppl / rb.ppl).slice(1)} and ${upPct(rN.ppl / r0.ppl).slice(1)}.`;
   const max = Math.max(...rows.map(r => r.now));
   const host = document.getElementById('c-day'); host.className = 'hbars';
-  host.innerHTML = rows.map(r => `<div class="hb"><span class="hb-n">${span(r.ys)}</span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${r.ys === N3 ? RED : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
+  host.innerHTML = rows.map(r => `<div class="hb"><span class="hb-n">${span(r.ys)}<span class="hb-s">${Math.round(r.ppl)} residents</span></span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${r.ys === N3 ? RED : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
   document.getElementById('day-under').textContent =
-    `A day, in ${LY} money (inflation taken out), averaged over three years; welfare and food included, building work left out. Residents: ${rows.map(r => `${span(r.ys)} ${Math.round(r.ppl)}`).join(' · ')}.`;
+    `A day, in ${LY} money (inflation taken out), averaged over three years; welfare and food included, building work left out. The number under each period is its average number of residents.`;
 })();
 
 (function bridgeChart() {
