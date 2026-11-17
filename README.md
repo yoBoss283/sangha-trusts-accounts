@@ -11,6 +11,7 @@ charitable trusts' own published annual accounts (Companies House and the Charit
 Each page works on its own (open it in any browser, also offline). Only yearly totals are used: the amounts from the
 accounts and the yearly count of residents from the community lists. No names.
 
-The English Sangha Trust report is built from https://github.com/yoBoss283/sangha-accounts-statistics. `build.py` here
+The reports are built from three source repos: https://github.com/yoBoss283/sangha-accounts-statistics (English Sangha Trust),
+https://github.com/yoBoss283/sangha-aruna-ratanagiri-accounts and https://github.com/yoBoss283/sangha-hartridge-accounts. `build.py` here
 rebuilds the landing page and copies the three finished reports into `pages/`; it expects the three source folders next
 to this one, so it is for whoever keeps the reports, not needed to read them.
