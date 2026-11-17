@@ -77,7 +77,7 @@ CARDS = [
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
   f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
-  f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled ({facts["hart_p"][0]} in 2013–15, {facts["hart_p"][1]} in 2021–25). Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
+  f'After inflation, and leaving out the rent paid until 2018, running costs in 2021–25 were {facts["sum_pct_norent"]}% higher than in 2013–15; counting that rent, {abs(facts["sum_pct"])}% {"lower" if facts["sum_pct"] < 0 else "higher"}. The community more than doubled ({facts["sum_p"][0]} to {facts["sum_p"][1]}). The source is the community\'s own report, not filed accounts.'),
  ('sumedharama', 'Sumedharama', 'Budismo Theravada da Floresta · Portugal · amounts in euros', '--s4',
   f'After inflation, running costs in 2021–25 were {abs(facts["sum_pct"])}% {"lower" if facts["sum_pct"] < 0 else "higher"} than in 2013–15, but 2013–15 included rent, which stopped after 2018: without it they are {facts["sum_pct_norent"]}% higher. The community more than doubled ({facts["sum_p"][0]} to {facts["sum_p"][1]}). The source is the community\'s own report, not filed accounts.'),
 ]
@@ -97,7 +97,7 @@ for k, name, where, col, says in CARDS:
   <p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
-  <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], CUR.get(k, "£"))} a year)</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
+  <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], CUR.get(k, "£")) + " a year" if SINCE[k][1] else "about the same each year"})</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 body = f'''
