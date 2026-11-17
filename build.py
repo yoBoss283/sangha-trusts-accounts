@@ -73,7 +73,7 @@ r1000 = lambda n, k='': f'{CUR.get(k, "£")}{round(n / 1000) * 1000:,}'
 r5 = lambda n, k='': f'{CUR.get(k, "£")}{round(n / 5) * 5:,}'
 CARDS = [
  ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1',
-  f'Since 2016–18, running costs (without welfare) have risen by £{facts["est_rise"]:,} a year, {facts["est_pct"]}% more, after inflation.'),
+  f'Without welfare and food, running costs went from about £{round(b, -4):,.0f} to about £{round(n, -4):,.0f} a year in 2026 money (+£{facts["est_rise"]:,}, {facts["est_pct"]}% more).'),
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
   f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',

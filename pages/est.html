@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 07:47 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:23 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -688,7 +688,7 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const pplX = ppl3(nw) / ppl3(b);
   document.getElementById('hero').innerHTML =
     `Between ${yb} and ${yn} the Trust spent about <b>${words(Math.round(builtSince / 1e5) * 1e5)}</b> on new buildings and infrastructure. ` +
-    `Over the same years, after inflation, running costs rose <b>${short(k0(runD))} a year</b> (${upPct(run)}); only maintenance fell.`;
+    `Over the same years, running costs without welfare and food went from about <b>${short(Math.round(L.avgT(b, RUNW) / 1e4) * 1e4)}</b> to about <b>${short(Math.round(L.avgT(nw, RUNW) / 1e4) * 1e4)} a year</b> in ${LY} money (+${short(k0(runD))}, ${upPct(run).slice(1)} more); only maintenance fell.`;
   const tiles = [
     [words(Math.round(builtSince / 1e5) * 1e5).replace(' million', 'm'), 'New buildings and infrastructure', `${BUILD_START}–${LY}`],
     ['+' + short(k0(runD)), 'Running costs a year', `${upPct(run)}, without welfare`],

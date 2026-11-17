@@ -680,7 +680,7 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const pplX = ppl3(nw) / ppl3(b);
   document.getElementById('hero').innerHTML =
     `Between ${yb} and ${yn} the Trust spent about <b>${words(Math.round(builtSince / 1e5) * 1e5)}</b> on new buildings and infrastructure. ` +
-    `Over the same years, after inflation, running costs rose <b>${short(k0(runD))} a year</b> (${upPct(run)}); only maintenance fell.`;
+    `Over the same years, running costs without welfare and food went from about <b>${short(Math.round(L.avgT(b, RUNW) / 1e4) * 1e4)}</b> to about <b>${short(Math.round(L.avgT(nw, RUNW) / 1e4) * 1e4)} a year</b> in ${LY} money (+${short(k0(runD))}, ${upPct(run).slice(1)} more); only maintenance fell.`;
   const tiles = [
     [words(Math.round(builtSince / 1e5) * 1e5).replace(' million', 'm'), 'New buildings and infrastructure', `${BUILD_START}–${LY}`],
     ['+' + short(k0(runD)), 'Running costs a year', `${upPct(run)}, without welfare`],
