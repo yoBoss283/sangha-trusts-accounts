@@ -11,7 +11,7 @@ for y in years:
     r = dict(raw[str(y)])
     r['people'] = ppl[str(y)]['people']
     data[str(y)] = r
-d = {'years': years, 'data': data, 'cpi': json.load(open(here / 'cpi.json')), 'energy': json.load(open(here / 'energy.json'))}
+d = {'years': years, 'notes': json.load(open(here / 'footnotes.json')), 'data': data, 'cpi': json.load(open(here / 'cpi.json')), 'energy': json.load(open(here / 'energy.json'))}
 t = (here / 'template.html').read_text(encoding='utf-8')
 for k, v in {'__FIRSTY__': str(years[0]), '__LASTY__': str(years[-1]),
              '__UPDATED__': datetime.datetime.now(datetime.timezone.utc).strftime('%-d %B %Y, %H:%M GMT')}.items():

@@ -16,3 +16,11 @@ Running costs = the report's total, without depreciation and write-offs, buildin
 architects, engineers, project legal costs, shelters, clearing land, project tools, tax on buying land) and interest received.
 The notes in the page list each rule. Open questions for the owner: the three small gaps above, and whether the report's
 2015 total includes €6,360 of something not listed.
+
+
+## Source (updated 17 Nov 2026)
+
+2012-2024 come from the community's accounts spreadsheet (read once by `read_spreadsheet.py` into `spreadsheet.json`; the spreadsheet itself is not kept here);
+2025 comes from the two-page report (`report.pdf`). `make_data.py` merges them, and writes `footnotes.json`: a lettered footnote for every
+place where the page uses a different number from the one posted (the page prints them under the all-figures table). Check list sent back to the
+community: `Sumedharama accounts - checks for Ajahn Vajiro.xlsx`.

@@ -43,7 +43,7 @@
   "spending": 122606.05,
   "depr": 8152.07,
   "writeoff": 0,
-  "project": 73097.63,
+  "project": 79457.63,
   "interest": 0,
   "util": 4009.92,
   "upkeep": 11738.59,
@@ -171,8 +171,8 @@
   "rent": 0,
   "travel": 4181.36,
   "welfare": 1367.6,
-  "buildings": 2523052.89,
-  "capex": 16328.82,
+  "buildings": 2527052.89,
+  "capex": 20328.82,
   "equity": 2732893.02,
   "result": 21848.02,
   "cash": 213191.35,
@@ -180,7 +180,7 @@
   "income": 74152.3
  },
  "2022": {
-  "spending": 44371.91,
+  "spending": 44445.17,
   "depr": 8033.8,
   "writeoff": 0,
   "project": 2287.52,
@@ -192,15 +192,15 @@
   "travel": 3556.68,
   "welfare": 1125.29,
   "buildings": 2565988.23,
-  "capex": 50969.14,
+  "capex": 46969.14,
   "equity": 2780681.12,
   "result": 47788.1,
   "cash": 220639.11,
   "deposits": 0,
-  "income": 92160.01
+  "income": 92233.27
  },
  "2023": {
-  "spending": 144040.36,
+  "spending": 144112.04,
   "depr": 105136.14,
   "writeoff": 500.0,
   "project": 3392.0,
@@ -217,7 +217,7 @@
   "result": -57778.56,
   "cash": 256521.27,
   "deposits": 0,
-  "income": 86261.8
+  "income": 86333.48
  },
  "2024": {
   "spending": 161988.2,
