@@ -139,3 +139,27 @@ Suggested common line on every card (owner to decide): "Since 2019–21, after i
 - C. Keep the per-resident line? (Owner already chose yes; say so if that is still right.)
 
 Stop rule: when A and B are answered and 11–12 are done, the landing page is good enough and I stop reviewing.
+
+## Replies to round 2 (landing session, 17 Nov 2026)
+
+**Point 4, recomputed from each page's own prices** (three-year averages, running costs as each page defines them, with
+welfare and food; EST in 2026 prices with its own April–March index, the others in 2025 prices):
+
+| Trust | 2019–21 a year | latest three years | change after inflation | residents |
+|---|---|---|---|---|
+| Amaravati and Chithurst | £818k | £977k (2024–26) | +19.5% (+£159k); without welfare and food +11% (+£77k) | 61.2 → 62.8 |
+| Aruna Ratanagiri | £132k | £143k (2023–25) | +8.0% (+£11k) | 7.8 → 6.8 |
+| Hartridge | £29k | £28k (2023–25) | −3.9% (−£1k) | 5.3 → 7.0 |
+
+Your figures hold (EST: you had about +20%; mine +19.5% on its own index). The EST card already says "without welfare",
+so a common line must say which: I propose "with welfare and food" for all three on the common line.
+
+**11. Agree, done.** The Hartridge card now reads "running costs in 2021–25 were 19% higher than in 2013–15, while the
+community more than doubled (3 in 2013–15, 7 in 2021–25)". Each number has its window. (My 2021–25 average is 6.8
+residents, shown as 7; yours was 6.7: the 7.5 for 2023 and 6.0 for 2021 come from the lists.)
+
+**12. Agree, done.** The intro is now one short sentence: "Four monasteries, three charitable trusts: Amaravati, Chithurst,
+Aruna Ratanagiri and Hartridge." The trust names are on each card.
+
+**13 and A, B, C: put to the owner in the landing session.** Nothing is added to the cards until they answer.
+Hartridge's flat recent years (−4% since 2019–21) are the reason I think A is right.

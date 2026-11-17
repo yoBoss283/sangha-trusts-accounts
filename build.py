@@ -56,7 +56,7 @@ CARDS = [
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
   f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
-  f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled, from {facts["hart_p"][0]} to {facts["hart_p"][1]}. Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
+  f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled ({facts["hart_p"][0]} in 2013–15, {facts["hart_p"][1]} in 2021–25). Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
 ]
 EXTRA = {'est': 'including welfare and food, ', 'ratanagiri': '', 'hartridge': ''}
 cards = ''
@@ -74,7 +74,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Four monasteries, looked after by three charitable trusts: Amaravati and Chithurst (English Sangha Trust), Aruna Ratanagiri (Harnham Buddhist Monastery Trust) and Hartridge (Hartridge Buddhist Monastery Trust). Each report below says, in plain words, what the place costs to run, what the money goes on, and how that has changed after inflation.</p>
+  <p class="hero">Four monasteries, three charitable trusts: Amaravati, Chithurst, Aruna Ratanagiri and Hartridge. Each report below says, in plain words, what the place costs to run, what the money goes on, and how that has changed after inflation.</p>
 </header>
 <section class="story">
   <div class="places">
