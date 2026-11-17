@@ -109,6 +109,7 @@ h3.then { font-size: 14px; font-weight: 600; color: var(--ink-2); margin: 4px 0 
 .hb-t i { display: block; height: 100%; border-radius: 4px; }
 .hb-v { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5em; text-align: right; }
 .hb-p { color: var(--muted); font-size: 12px; }
+.hb-s { display: block; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
 @media (max-width: 520px) { .hb { grid-template-columns: 1fr auto; } .hb-t { grid-column: 1 / -1; grid-row: 2; } }
 .sources { font-size: 14px; }
 .prices { margin: -6px 0 16px; }
@@ -215,7 +216,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:42 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:48 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -564,7 +565,7 @@ function bridge(id, rows, opt = {}) {
   host.className = 'hbars bridge'; host.setAttribute('role', 'img'); host.setAttribute('aria-label', opt.aria || '');
   host.innerHTML = rows.map(r => {
     const w = 100 * Math.abs(r.value) / span, left = r.value >= 0 ? z : z - w;
-    return `${r.gap ? '<hr>' : ''}<div class="hb${r.bold ? ' b' : ''}"><span class="hb-n">${esc(r.name)}</span>` +
+    return `${r.gap ? '<hr>' : ''}<div class="hb${r.bold ? ' b' : ''}"><span class="hb-n">${esc(r.name)}${r.sub ? `<span class="hb-s">${esc(r.sub)}</span>` : ''}</span>` +
       `<span class="hb-t"><i style="left:${left}%;width:${Math.max(w, 0.5)}%;background:var(${r.color});opacity:${r.light ? 0.55 : 1}"></i><b style="left:${z}%"></b></span>` +
       `<span class="hb-v">${r.value >= 0 ? '+' : ''}${short(r.value)}</span></div>`;
   }).join('');
@@ -715,19 +716,21 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
 
 (function bridgeChart() {
   const L = LIKE, yb = span(L.base), yn = span(L.now);
-  document.getElementById('bridge-sub').textContent = `Change in each cost a year, ${yb} against ${yn}, after inflation.`;
+  // what each cost was a year before and now (same prices), so a small-looking change can be read against its size
+  const fromTo = f => `${short(L.avgT(L.base, f))} → ${short(L.avgT(L.now, f))} a year`;
+  document.getElementById('bridge-sub').textContent = `Change in each cost a year, ${yb} against ${yn}, after inflation. Under each name: what it was, then what it is now.`;
   const kinds = [
     { name: 'Staff, office, books, fees and the rest', f: OTHER },
     { name: 'Heat, light, water and council tax', f: r => r.sp_heat },
     { name: 'Insurance', f: r => r.sp_ins },
     { name: 'Travel', f: r => r.sp_travel },
     { name: 'Maintenance', f: r => r.sp_maint },
-  ].map(k => ({ name: k.name, value: LIKEd(k.f), color: LIKEd(k.f) >= 0 ? RED : '--s1' })).sort((a, b) => b.value - a.value);
+  ].map(k => ({ name: k.name, value: LIKEd(k.f), sub: fromTo(k.f), color: LIKEd(k.f) >= 0 ? RED : '--s1' })).sort((a, b) => b.value - a.value);
   const tot = LIKEd(RUNW);
   bridge('c-bridge', [
     ...kinds,
-    { name: 'Running costs without welfare', value: tot, color: '--ink', bold: true, gap: true },
-    { name: 'Welfare and food (shown apart)', value: LIKEd(r => r.sp_food), color: '--s3', gap: true },
+    { name: 'Running costs without welfare', value: tot, sub: fromTo(RUNW), color: '--ink', bold: true, gap: true },
+    { name: 'Welfare and food (shown apart)', value: LIKEd(r => r.sp_food), sub: fromTo(r => r.sp_food), color: '--s3', gap: true },
   ], { aria: `Change in each cost a year between ${yb} and ${yn}, after inflation` });
   const mt = kinds.find(k => k.name === 'Maintenance');
   document.getElementById('cap-bridge').textContent =
