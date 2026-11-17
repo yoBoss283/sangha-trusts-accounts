@@ -25,7 +25,7 @@ r1000 = lambda n: f'£{round(n / 1000) * 1000:,}'
 r5 = lambda n: f'£{round(n / 5) * 5:,}'
 CARDS = [
  ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1',
-  'Since 2016–18, after inflation, running costs without welfare rose £141,000 a year (22%), while £20.5 million went into new buildings and infrastructure. Heating followed energy prices.'),
+  'Since 2016–18, running costs (without welfare) have risen by £141,000 a year, 22% more, after inflation. In the same years the trust also spent £20.5 million on new buildings, which is not counted in running costs.'),
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
   'After inflation, running costs were level from 2011–15 to 2016–20, then rose 11% in 2021–25. Heat and light followed energy prices; about 45% of the costs come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
@@ -37,7 +37,7 @@ for k, name, where, col, says in CARDS:
     cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
   <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {f["years"]} average</p>
-  <dl><dt>A day</dt><dd>{r5(f["day"])}</dd><dt>Residents</dt><dd>{round(f["people"])}</dd></dl>
+  <dl><dt>A day</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident ({round(f["people"])} residents)</dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
@@ -52,7 +52,7 @@ body = f'''
   <div class="places">
 {cards}  </div>
   <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
-    <p class="note">The places are not the same size, and Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. So the cards show what each trust spends, not a ranking. The cost is not divided by the number of people, because the costs also serve guests, retreatants and visitors.</p>
+    <p class="note">The places are not the same size, and Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. So the cards show what each trust spends, not a ranking. A day for each resident is the cost of a day divided by the number of residents (the monks, nuns, novices and anagārikas living there). It is a simple guide: guests, retreatants and visitors use the place too, so it is not what one person costs.</p>
     <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. Amounts are as paid at the time, averaged over each trust's last three years. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
     <p class="note"><b>Years.</b> The English Sangha Trust's year runs from April to March (2024–26 is the years to March 2024, 2025 and 2026). The other two run January to December. <b>Residents</b> are the monks, nuns, novices and anagārikas on the community lists, averaged over the same years.</p>
   </div>
