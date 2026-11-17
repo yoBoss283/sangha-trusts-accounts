@@ -210,12 +210,13 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card"><h3>Running costs outpaced inflation</h3><div id="c-total"></div><p class="caption" id="cap-total"></p><details class="how"><summary>How to read this</summary><div id="how-total"></div></details></div>
     <div class="card"><h3>Heating followed energy prices</h3><blockquote class="quote" id="q-heat"></blockquote><div id="c-heat"></div><p class="caption" id="cap-heat"></p><details class="how"><summary>How to read this</summary><div id="how-heat"></div></details></div>
   </div>
+  <div class="card"><h3>Welfare and food has more than doubled since 2023</h3><p class="sub">What the accounts call "Welfare &amp; food", a year, in today's money. It includes the care of ageing monks and nuns, not only food.</p><div id="c-welfare"></div><p class="under" id="welfare-under"></p><p class="caption" id="cap-welfare"></p></div>
   <div class="meaning">
     <h3>What this means</h3>
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 02:58 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:51 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -257,13 +258,17 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 <section id="money">
   <h2>3. Income, funds and reserves</h2>
   <p class="lede" id="money-lede"></p>
+  <p class="lede" id="money-key"></p>
   <div class="more">
     <div class="card"><h3>Everyday income and running costs</h3><p class="sub">The bars are money given for a set purpose, mostly building, which can only be spent on it. The lines compare everyday income with running costs. The biggest building years run off the top.</p><div id="c-money"></div></div>
-    <div class="card"><h3>The everyday account</h3><p class="sub">The general fund: money free for any use, which pays the running costs. What is left over each year is mostly passed on to building work.</p><div id="c-run"></div></div>
     <div class="card"><h3>Interest helps pay the running costs, for now</h3><p class="sub">Money into the everyday account, split into interest and the rest (gifts, legacies, other income), against what was paid out of it.</p><div id="c-int"></div><p class="note" id="int-note"></p></div>
     <div class="card"><h3>Funds at 31 March</h3><p class="sub">Restricted funds include the expendable endowment of 2010–2016.</p><div id="c-funds"></div></div>
     <div class="card"><h3>General reserve and the trustees' aim</h3><p class="sub">The free reserve (general funds) against what the trustees said should be kept: three months of spending or two years of essential costs until 2008, six months from 2009, plus a margin for building overruns from 2015.</p><div id="c-res"></div></div>
     <div class="card"><h3>Cash and buildings at 31 March</h3><div id="c-own"></div></div>
+    <div class="card"><h3>How many years of running costs the general reserve covers</h3><p class="sub">The general reserve at 31 March divided by that year's running costs, against the trustees' aim measured the same way.</p><div id="c-cover"></div><p class="note" id="cover-note"></p></div>
+    <div class="card"><h3>Everyday income against everyday spending</h3><p class="sub">What was left in the everyday account each year after paying out of it, with and without the interest on cash. Transfers to other funds are not counted.</p><div id="c-surplus"></div><p class="note" id="surplus-note"></p></div>
+    <div class="card"><h3>Income with and without the largest single gift</h3><p class="sub">Total income each year, split into the largest single donor named in the trustees' report and everything else. Shown for the years the report names one.</p><div id="c-oneoff"></div><p class="note" id="oneoff-note"></p></div>
+    <div class="card"><h3>The same in shares</h3><p class="sub">Three-year averages, so one odd year does not swing them.</p><div class="scroll-x"><table id="t-ratios"></table></div><p class="note" id="ratio-note"></p></div>
   </div>
 </section>
 
@@ -780,6 +785,20 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
     `Welfare and food, shown apart, rose ${pc(r => r.sp_food)}; it includes the care of ageing monks and nuns, which has nothing to do with the buildings.`;
 })();
 
+// ---------------------------------------------------------------- welfare and food, year by year since 2020
+(function welfareCard() {
+  const WY = Ys.filter(y => +y >= 2020), rl = y => v(D.data[y], 'sp_food') * CPI[LY] / CPI[y];
+  const share = y => v(D.data[y], 'sp_food') / RUNK(D.data[y]), pctS = x => Math.round(100 * x) + '%';
+  grouped('c-welfare', WY, [{ name: `Welfare and food, in ${LY} money`, color: '--s3', values: WY.map(rl) }],
+    { W: 1000, h: 260, bw: 40, values: true, name: nm, aria: 'Welfare and food each year, in today\'s money' });
+  document.getElementById('welfare-under').textContent = 'Share of running costs: ' + WY.map(y => `${y} ${pctS(share(y))}`).join(' · ') + '.';
+  const early = WY.slice(0, -3), late = WY.slice(-3), eAvg = avgOf(early, rl), L = WY[WY.length - 1];
+  document.getElementById('cap-welfare').textContent =
+    `From ${early[0]} to ${early[early.length - 1]} it stayed at about ${short(k0(eAvg))} a year; then it rose to ${late.map(y => short(k0(rl(y)))).join(', ')} in ${late.join(', ')}. ` +
+    `In ${L} it is ${pctS(share(L))} of running costs, against ${pctS(share(WY[0]))} in ${WY[0]}. The accounts give one line, so they do not say how much is food and how much is care. ` +
+    `The trustees' reports name funds for the purpose: the Amaravati Monks' Welfare fund (${short(49924)} spent in ${L}), the Samana Care Fund and, new in ${L}, the Ageing Samanas Fund.`;
+})();
+
 // contents (the detail sections) and a "back to top" link under each section
 (function () {
   const toc = document.getElementById('toc');
@@ -953,12 +972,15 @@ function smallMultiples(id, div, top) {
     `Almost all income is gifts. Very large gifts for building came in ${big.join(', ').replace(/, ([^,]*)$/, ' and $1')}; they can only be spent on building. ` +
     `The everyday account, which pays the running costs, took in ${words(DR[n].gen_in)} in ${LY} and paid out ${words(RO[n])}` +
     (short_.length ? `; in ${short_.join(' and ')} gifts alone did not cover the running costs, and interest and legacies made up the difference.` : '.');
+  {
+    const lr = D.data[LY], yrs = x => (Math.round(x * 10) / 10).toFixed(1), bare = lr.gen_in - lr.interest_u - lr.gen_out;
+    document.getElementById('money-key').textContent =
+      `The free reserve covers ${yrs(lr.general / RUNK(lr))} years of running costs. Without interest on the building cash the everyday account is still about ${words(Math.round(bare / 1e3) * 1e3)} ahead, but that margin depends on interest that will fall as the building cash is spent.`;
+  }
   stacked('c-money', Ys, [{ name: 'Given for a set purpose (mostly building)', color: '--s7', values: Ys.map(y => v(D.data[y], 'restricted_in')) }],
     { W: 1000, cap: 1.6e6, noTotal: true, name: nm, aria: 'Everyday income against running costs, with gifts for a set purpose as bars',
       lines: [{ name: 'Everyday income', color: '--s1', values: Ys.map(y => D.data[y].income - v(D.data[y], 'restricted_in')) }],
       line: { name: 'Running costs', color: RED, values: Ys.map(y => RUNK(D.data[y])) } });
-  stacked('c-run', DYs, [{ name: 'Money into the everyday account', color: '--s1', values: DR.map(r => r.gen_in) }],
-    { W: 1000, noTotal: true, name: nm, line: { name: 'Paid out of it', color: RED, values: RO }, aria: 'Everyday account: money in and money out each year' });
   {
     const IR = SYs.map(y => D.data[y]);
     stacked('c-int', SYs, [
@@ -981,6 +1003,60 @@ function smallMultiples(id, div, top) {
     { name: 'General reserve', color: '--s3', values: rY.map(y => D.data[y].general) },
     { name: "Trustees' aim", color: '--s9', values: rY.map(y => D.data[y].target) },
   ], { W: 1000, bw: 14, name: y => '31 March ' + y, aria: 'General reserve against the trustees aim' });
+  {
+    const CY = rY, CV = y => D.data[y].general / RUNK(D.data[y]), CT = y => D.data[y].target / RUNK(D.data[y]);
+    const yrs = n => (Math.round(n * 10) / 10).toFixed(1);
+    lines('c-cover', CY, [
+      { name: 'General reserve, in years of running costs', color: '--s3', values: CY.map(CV) },
+      { name: "Trustees' aim, in years", color: '--s9', dash: true, values: CY.map(CT) },
+    ], { W: 1000, name: y => '31 March ' + y, fmt: yrs, aria: 'Years of running costs the general reserve covers' });
+    const lr = D.data[LY], a = '2019';
+    document.getElementById('cover-note').textContent =
+      `At 31 March ${LY} the general reserve of ${words(lr.general)} covered ${yrs(CV(LY))} years of running costs (${words(RUNK(lr))} a year); the trustees' aim was ${yrs(CT(LY))}. ` +
+      `It was ${yrs(CV(a))} in ${a}, ${yrs(CV('2022'))} in 2022 and ${yrs(CV('2024'))} in 2024. ` +
+      `The ${words(lr.cash)} of cash is not a runway: ${words(v(lr, 'restricted'))} of it is restricted to building, and the ${words(lr.designated)} the trustees have set aside is mostly the buildings themselves, not money in the bank.`;
+  }
+  {
+    const SR = SYs.map(y => D.data[y]);
+    grouped('c-surplus', SYs, [
+      { name: 'Left over, with interest', color: '--s1', values: SR.map(r => r.gen_in - r.gen_out) },
+      { name: 'Left over, without interest', color: '--s5', values: SR.map(r => r.gen_in - r.interest_u - r.gen_out) },
+    ], { W: 1000, bw: 18, name: y => 'Year to March ' + y, aria: 'Everyday account: what was left each year, with and without interest' });
+    const lr = D.data[LY], sur = lr.gen_in - lr.gen_out, bare = sur - lr.interest_u;
+    const gap = SYs.filter(y => D.data[y].gen_in - D.data[y].interest_u < D.data[y].gen_out);
+    document.getElementById('surplus-note').textContent =
+      `In the year to March ${LY} the everyday account took in ${words(lr.gen_in)} and paid out ${words(lr.gen_out)}, leaving about ${words(Math.round(sur / 1e3) * 1e3)}. ` +
+      `Of that, ${words(lr.interest_u)} was interest, so without interest the surplus was about ${words(Math.round(bare / 1e3) * 1e3)}. ` +
+      (gap.length ? `In ${gap.join(' and ')} everyday income without interest did not cover the spending. ` : `Without interest the account still covered its spending in every year shown. `) +
+      `This counts everything paid into the everyday account (gifts, legacies and other income); the introduction above sets gifts alone against running costs, which is a stricter test. Interest is only shown from ${SYs[0]}, when the accounts began to split it out.`;
+  }
+  {
+    const OY = Ys.filter(y => D.data[y].one_donor != null), OR = OY.map(y => D.data[y]);
+    stacked('c-oneoff', OY, [
+      { name: 'Everything else', color: '--s1', values: OR.map(r => r.income - r.one_donor) },
+      { name: 'Largest single donor', color: '--s7', values: OR.map(r => r.one_donor) },
+    ], { W: 1000, cap: 3.5e6, totals: true, name: y => 'Year to March ' + y, aria: 'Income with and without the largest single gift' });
+    const big = OY.filter(y => D.data[y].one_donor > 5e6), usual = OY.filter(y => D.data[y].one_donor <= 5e6);
+    const ex = y => D.data[y].income - D.data[y].one_donor;
+    document.getElementById('oneoff-note').textContent =
+      `In ${big.join(' and ')} one donor gave ${big.map(y => words(D.data[y].one_donor)).join(' and ')}, so headline income was ${big.map(y => words(D.data[y].income)).join(' and ')}. ` +
+      `Without that gift income was ${big.map(y => words(ex(y))).join(' and ')}, within the range of the other years (${words(Math.min(...usual.map(ex)))}–${words(Math.max(...usual.map(ex)))}). ` +
+      `The trustees' report names a single donor only from ${OY[0]}, so earlier years are not shown. The big gifts were given for building and can only be spent on it.`;
+  }
+  {
+    const A = avgOf, share = (ys, f, g) => A(ys, y => f(D.data[y])) / A(ys, y => g(D.data[y])), P = x => Math.round(100 * x) + '%';
+    const staff = r => v(r, 'sp_staff'), food = r => v(r, 'sp_food');
+    const rows = [
+      ['Staff cost, as a share of running costs', LIKE.base.every(y => D.data[y].sp_staff != null) ? P(share(LIKE.base, staff, RUNK)) : 'not split out then', P(share(N3, staff, RUNK))],
+      ['Welfare and food, as a share of running costs', P(share(LIKE.base, food, RUNK)), P(share(N3, food, RUNK))],
+    ];
+    const IY = N3.filter(y => D.data[y].interest_u != null);
+    if (IY.length === N3.length) rows.push(['Interest, as a share of what the everyday account pays out', 'not split out then', P(share(N3, r => r.interest_u, r => r.gen_out)) + ` (${P(D.data[LY].interest_u / D.data[LY].gen_out)} in ${LY} alone)`]);
+    document.getElementById('t-ratios').innerHTML = `<thead><tr><th></th><th>${BLAB(LIKE.base)}</th><th>${BLAB(N3)}</th></tr></thead><tbody>` +
+      rows.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join('') + '</tbody>';
+    document.getElementById('ratio-note').textContent =
+      `Staff cost is a separate line in the accounts only from 2020; before that it sits in other costs. It is the cost counted as running costs; about £23k–51k a year more is counted as building work (see the notes). Nothing here is per person, because the costs also serve guests and retreatants.`;
+  }
   lines('c-own', Ys, [
     { name: 'Buildings and land', color: '--s9', values: Ys.map(y => D.data[y].buildings) },
     { name: 'Cash', color: '--s1', values: Ys.map(y => D.data[y].cash) },

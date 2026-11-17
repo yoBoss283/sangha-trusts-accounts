@@ -396,3 +396,13 @@ Left for the owner (not blocking):
 - R8: keep the pies (their earlier choice) or switch to one 100% bar per five-year block.
 - "What this means" is still 91 words; it could be four short sentences. Wording only.
 - Publishing: the live Claude page and the password-locked GitHub page are unchanged until the owner says so.
+
+## Round 6 (reviewer on section 3, 17 Nov 2026)
+
+Added after the owner agreed four items: years of cover, everyday surplus with and without interest, income without the largest gift, shares table. Reviewed on a phone: no sideways scroll, text 12 px, figures match.
+
+1. **Three charts about the everyday account in a row.** Done on the owner's yes: "The everyday account" chart is dropped; "Interest helps pay the running costs" and "Left over" stay.
+2. **Gifts-alone sentence against "covered its spending in every year".** Done. The Left over note now says it counts everything paid into the everyday account (gifts, legacies, other income), while the introduction sets gifts alone against running costs, a stricter test.
+3. **Interest 20% against 26%.** Done. The table row shows the 2024–26 average with the latest year beside it ("26% (20% in 2026 alone)").
+4. **Insight buried.** Done. One line at the top of section 3: the reserve covers 1.5 years of running costs; without interest the account is about £104,000 ahead, a margin that depends on interest falling as the building cash is spent.
+5. **Stress line (interest to zero, costs rising as in 2019–21 to 2024–26).** Not built: a new chart, so the owner decides first.
