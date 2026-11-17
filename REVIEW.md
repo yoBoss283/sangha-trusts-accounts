@@ -163,3 +163,20 @@ Aruna Ratanagiri and Hartridge." The trust names are on each card.
 
 **13 and A, B, C: put to the owner in the landing session.** Nothing is added to the cards until they answer.
 Hartridge's flat recent years (−4% since 2019–21) are the reason I think A is right.
+
+## Round 2 decisions and build (landing session)
+
+The owner answered in the landing session: A yes, B yes, C keep as it is. Built:
+
+- **A.** Each card: "Since 2019–21, after inflation: +19% (+£159,000 a year), with welfare and food" (Amaravati and Chithurst,
+  2026 prices, its own April–March index); "+8% (+£11,000 a year)" (Ratanagiri, 2025 prices); "−4% (−£1,000 a year)" (Hartridge).
+  Computed in `build.py` from each repo's data, cpi and the pages' own definitions of running costs. (EST is +19%, not +20%:
+  +19.5% rounds down at 19.48.)
+- **B.** Each card: "New buildings, <own window>: £X, not counted in running costs". I used each trust's whole period, not
+  its peak years, so the three are not cherry-picked: Amaravati and Chithurst £20.5 million (2019–26, as its page), Aruna
+  Ratanagiri £973,000 (2011–25), Hartridge £578,000 (2013–25, added to the buildings; £53,000 of Dhamma Hall planning counted
+  as spending in 2013–14 is not in this figure). The windows differ because the data do; each is named on the card.
+- **C.** Per-resident line unchanged.
+- 11, 12 done in the previous commit.
+
+Phone (375 px): no sideways scroll; cards 521 / 566 / 545 px tall. Not pushed; publishing waits for the owner's yes here.

@@ -47,17 +47,34 @@ facts['hart_fixed'] = round(100 * sum(g(D[str(y)], 'utilities') + g(D[str(y)], '
 p1 = sum(P[str(y)]['people'] for y in range(2013, 2016)) / 3; p3 = sum(P[str(y)]['people'] for y in range(2021, 2026)) / 5
 assert p3 >= 2 * p1, 'Hartridge community has no longer doubled'
 facts['hart_p'] = (round(p1), round(p3))
+def since(k, base, now, py, run):                    # 2019-21 against the latest three years, after inflation, with welfare and food
+    D, C = data(k); D = D['data'] if k == 'est' else D
+    f = lambda ys: real(D, C, run, ys, py)
+    a, b = f(base), f(now)
+    return round(100 * (b / a - 1)), round((b - a) / 1000) * 1000
+facts['est_since'] = since('est', [2019, 2020, 2021], [2024, 2025, 2026], 2026, RUN['est'])
+facts['rat_since'] = since('ratanagiri', [2019, 2020, 2021], [2023, 2024, 2025], 2025, RUN['ratanagiri'])
+facts['hart_since'] = since('hartridge', [2019, 2020, 2021], [2023, 2024, 2025], 2025, RUN['hartridge'])
+facts['rat_build'] = sum(g(json.load(open(A['ratanagiri'] / 'data.json'))[str(y)], 'capex') for y in range(2011, 2026))
+facts['hart_build'] = sum(g(json.load(open(A['hartridge'] / 'data.json'))[str(y)], 'capex') for y in range(2013, 2026))
 print(facts)
 r1000 = lambda n: f'£{round(n / 1000) * 1000:,}'
 r5 = lambda n: f'£{round(n / 5) * 5:,}'
 CARDS = [
  ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1',
-  f'Since 2016–18, running costs (without welfare) have risen by £{facts["est_rise"]:,} a year, {facts["est_pct"]}% more, after inflation. In the same years the trust also spent £{facts["est_build"] / 1e6:.1f} million on new buildings, which is not counted in running costs.'),
+  f'Since 2016–18, running costs (without welfare) have risen by £{facts["est_rise"]:,} a year, {facts["est_pct"]}% more, after inflation.'),
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
   f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
   f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled ({facts["hart_p"][0]} in 2013–15, {facts["hart_p"][1]} in 2021–25). Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
 ]
+def signed(n, unit=''):
+    return ('+' if n >= 0 else '−') + unit + f'{abs(n):,}'
+SINCE = {k: facts[k + '_since'] for k in ('est', 'rat', 'hart')}
+SINCE = {'est': SINCE['est'], 'ratanagiri': SINCE['rat'], 'hartridge': SINCE['hart']}
+BUILD = {'est': ('2019–26', f'£{facts["est_build"] / 1e6:.1f} million'),
+         'ratanagiri': ('2011–25', f'£{round(facts["rat_build"], -3):,}'),
+         'hartridge': ('2013–25', f'£{round(facts["hart_build"], -3):,}')}
 EXTRA = {'est': 'including welfare and food, ', 'ratanagiri': '', 'hartridge': ''}
 cards = ''
 for k, name, where, col, says in CARDS:
@@ -67,6 +84,8 @@ for k, name, where, col, says in CARDS:
   <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {EXTRA[k]}as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident ({round(f["people"])} residents on average; {f["last"][0]}: {f["last"][1]:g})</dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
+  <p class="since"><b>Since 2019–21, after inflation:</b> {signed(SINCE[k][0])}% ({signed(SINCE[k][1], "£")} a year), with welfare and food</p>
+  <p class="since"><b>New buildings, {BUILD[k][0]}:</b> {BUILD[k][1]}, not counted in running costs</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 body = f'''
