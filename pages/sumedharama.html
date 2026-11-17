@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything spent in a year to keep the monastery going, without new buildings and infrastructure (counted as something the community owns), without wear on buildings (depreciation, not money paid out) and without building-project costs the report counts as spending (see the notes). Residents: the monks, novices and anagārikas living at Sumedharama, on average; lay guests are not counted. Inflation: Portugal's consumer prices index (Eurostat). All amounts in euros, as in the report, as paid at the time.</p>
-  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:50 GMT</span></p>
+  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:53 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -252,8 +252,17 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
   </div>
 </section>
 
+<section id="money">
+  <h2>4. Cash and money received</h2>
+  <p class="lede" id="money-lede"></p>
+  <div class="more">
+    <div class="card"><h3>Cash and deposits at the end of each year</h3><p class="sub">Cash and deposits on the balance sheet, 31 December.</p><div id="c-cash"></div><p class="note" id="cash-note"></p></div>
+    <div class="card"><h3>Money received each year, and running costs</h3><p class="sub">The report has no income line: this is worked out as each year's result plus its expenses. Tall bars are cut short (their figures are listed below the chart); the 2018 bar shows its real figure.</p><div id="c-given"></div><ul class="note" id="given-notes"></ul></div>
+  </div>
+</section>
+
 <section id="notes" class="method">
-  <h2>4. Notes and all figures</h2>
+  <h2>5. Notes and all figures</h2>
   <div class="more">
     <ul>
       <li><b>Where the figures come from.</b> One two-page report, "Report to Abbots 2012–2026", shared by Ajahn Vajiro on 17 November 2026: a table of every line of expense for each year and a balance sheet (in euros, years to 31 December). It is not a set of filed annual accounts and has no income statement. Every number was read from the report by its place on the page. In 2012 there are no resident counts on the community lists, so the page starts in 2013.</li>
@@ -401,7 +410,7 @@ function stacked(id, labels, series, opt = {}) {
       const yb = m.t + 18;
       el('path', { d: `M${x - 3},${yb} l${(bw + 6) / 4},-5 l${(bw + 6) / 4},10 l${(bw + 6) / 4},-10 l${(bw + 6) / 4},5`, fill: 'none', stroke: 'var(--surface)', 'stroke-width': 5 }, svg);
     }
-    if ((opt.totals || over) && (n <= 16 || over)) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
+    if ((opt.totals || (over && totals[i] >= (opt.overLabelMin || 0))) && (n <= 16 || over)) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
     const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
     hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.slice().reverse().map(s => s.values[i] ? row(s.name, s.color, pounds(s.values[i])) : '').join('') + (opt.noTotal ? '' : `<div class="row" style="margin-top:3px"><span>Total</span><span>${pounds(totals[i])}</span></div>`) + [...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => row(L.name, L.color, (L.fmtR || pounds)(L.values[i]))).join('')));
     hit.addEventListener('mouseleave', hideTip);
@@ -444,7 +453,7 @@ function grouped(id, labels, series, opt = {}) {
   });
 }
 /* lines with a crosshair; a null value leaves a gap */
-const showLabel = (labels, i) => labels.length <= 16 || +labels[i] % 5 === 0;
+const showLabel = (labels, i) => MOB && labels.length > 9 ? (labels.length - 1 - i) % 2 === 0 : labels.length <= 16 || +labels[i] % 5 === 0;
 function lines(id, labels, series, opt = {}) {
   const host = document.getElementById(id); host.innerHTML = '';
   if (series.length > 1) legend(host, series, true);
@@ -576,14 +585,15 @@ const first = Ys[0];
 (function headline() {
   const year = avgOf(N3, y => RUN(D.data[y])), day = year / 365;
   const x = realX(B0, BN, RUN);
+  const nr = r => RUN(r) - v(r, 'rent'), xr = realX(B0, BN, nr);
   document.getElementById('hero').innerHTML =
     `Running Sumedharama costs about <b>${thou(year)} a year</b>: about <b>${r10(day)} a day</b>. ` +
-    `After inflation, that is <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}, while the number of residents ${ppl(BN) / ppl(B0) >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}. ${BLAB(B0)} included rent; without it running costs are <b>${pcW(realX(B0, BN, r => RUN(r) - v(r, 'rent')))} ${realX(B0, BN, r => RUN(r) - v(r, 'rent')) >= 1 ? 'more' : 'less'}</b>.`;
+    `After inflation, and leaving out the rent that was paid until 2018, that is <b>${pcW(xr)} ${xr >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}; counting that rent, <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b>. The number of residents ${ppl(BN) / ppl(B0) >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}.`;
   const tiles = [
     [thou(year).replace(',000', 'k'), 'A year to run the monastery', `${BLAB(N3)} average`],
     [r10(day), 'A day', 'all running costs'],
     [String(pplRound(ppl(BN))), 'Residents', `monks, novices, anagārikas, ${BLAB(BN)}`],
-    [upPct(x), 'After inflation', `running costs, against ${BLAB(B0)}`],
+    [upPct(xr), 'After inflation', `running costs without rent, against ${BLAB(B0)}`],
   ];
   document.getElementById('headline').innerHTML = tiles.map(([v, l, c]) =>
     `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div>${c ? `<div class="c">${c}</div>` : ''}</div>`).join('');
@@ -635,13 +645,13 @@ const first = Ys[0];
 
 // ---------------------------------------------------------------- what this means
 (function meaning() {
-  const x = realX(B0, BN, RUN), p = ppl(BN) / ppl(B0);
-  const noRent = r => RUN(r) - v(r, 'rent'), xr = realX(B0, BN, noRent);
+  const x = realX(B0, BN, RUN), p = ppl(BN) / ppl(B0), xr = realX(B0, BN, r => RUN(r) - v(r, 'rent'));
   const utN = bAvg(BN, r => v(r, 'util')) / bAvg(B0, r => v(r, 'util')), ut = realX(B0, BN, r => v(r, 'util')), en = avgOf(BN, y => EN[y]) / avgOf(B0, y => EN[y]), cpiX = avgOf(BN, y => CPI[y]) / avgOf(B0, y => CPI[y]);
+  const S0 = Ys.filter(y => y >= '2019' && y <= '2021'), xs = realX(S0, N3, RUN), ps = ppl(N3) / ppl(S0);
   document.getElementById('meaning').textContent =
     `Sumedharama costs about ${r10(avgOf(N3, y => RUN(D.data[y])) / 365)} a day to run. ` +
-    `After inflation, running costs are ${pcW(x)} ${x >= 1 ? 'higher' : 'lower'} than in ${BLAB(B0)}, and the community ${p >= 2 ? 'has more than doubled' : p >= 1 ? 'is ' + pcW(p) + ' larger' : 'is ' + pcW(p) + ' smaller'} (${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}). ` +
-    `Without the rent that was paid until 2018, they are ${pcW(xr)} ${xr >= 1 ? 'higher' : 'lower'}. ` +
+    `After inflation, and without the rent that was paid until 2018, running costs are ${pcW(xr)} ${xr >= 1 ? 'higher' : 'lower'} than in ${BLAB(B0)}; counting that rent they are ${pcW(x)} ${x >= 1 ? 'higher' : 'lower'}. In the same years the community ${p >= 2 ? 'more than doubled' : p >= 1 ? 'grew by ' + pcW(p) : 'shrank by ' + pcW(p)} (${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}). ` +
+    `Since ${BLAB(S0)}, running costs are ${upPct(xs)} after inflation, while the same costs now carry ${pcW(ps)} ${ps >= 1 ? 'more' : 'fewer'} residents (${ppl(S0).toFixed(1)} to ${ppl(N3).toFixed(1)}). ` +
     `Heat, light and water cost ${pcW(utN)} ${utN >= 1 ? 'more' : 'less'} as paid (${upPct(ut)} after inflation) while the community more than doubled; over the same years household energy prices in Portugal rose ${pcW(en)} and prices in general ${pcW(cpiX)}.`;
 })();
 
@@ -746,7 +756,29 @@ const first = Ys[0];
   ].map(t => `<li>${esc(t)}</li>`).join('');
 })();
 
-// ---------------------------------------------------------------- 4. all figures
+// ---------------------------------------------------------------- 4. cash and money received
+(function money() {
+  const cashY = y => v(D.data[y], 'cash') + v(D.data[y], 'deposits'), run3 = avgOf(N3, y => RUN(D.data[y]));
+  const cov = cashY(LY) / run3, inc = y => v(D.data[y], 'income'), RY = Ys.map(y => RUN(D.data[y]));
+  const low = Ys.map(y => ({ y, c: cashY(y) / RUN(D.data[y]) })).sort((a, b) => a.c - b.c)[0];
+  const i3 = avgOf(N3, y => inc(y)), tot = Ys.reduce((a, y) => a + inc(y), 0), totRun = RY.reduce((a, b) => a + b, 0);
+  document.getElementById('money-lede').textContent =
+    `At the end of ${LY} the community held ${thou(cashY(LY))} in cash and deposits: about ${cov.toFixed(1)} years of running costs, at the ${BLAB(N3)} rate of ${thou(run3)} a year. In ${LY} about ${thou(inc(LY))} was received.`;
+  grouped('c-cash', Ys, [{ name: 'Cash and deposits', color: '--s2', values: Ys.map(cashY) }], { W: 1000, h: 260, bw: 40, name: nm, aria: 'Cash and deposits at the end of each year' });
+  document.getElementById('cash-note').textContent =
+    `Years of cover is the cash divided by that period's running costs. The lowest year-end was ${low.y} (${thou(cashY(low.y))}, about ${low.c.toFixed(1)} years). The report does not say which part of the cash is set aside for a purpose (restricted) or already promised, so not all of it is free to spend on running costs.`;
+  const cap = 300000, big = Ys.filter(y => inc(y) > cap);
+  stacked('c-given', Ys, [{ name: 'Money received', color: '--s2', values: Ys.map(inc) }], { cap, overLabelMin: 800000, W: 1000, h: 280, name: nm, noTotal: true,
+    lines: [{ name: 'Running costs', color: '--s1', values: RY }], aria: 'Money received each year against running costs' });
+  document.getElementById('given-notes').innerHTML = [
+    `In ${BLAB(N3)} about ${thou(i3)} a year was received against ${thou(run3)} a year of running costs. Over ${Ys[0]}–${LY} about ${thou(tot)} was received in all and about ${thou(totRun)} went on running costs (${Math.round(100 * totRun / tot)}%).`,
+    `${big.map(y => `${y}: ${thou(inc(y))}`).join('; ')}. 2018 is a one-off: the same year the balance sheet shows ${thou(v(D.data['2018'], 'capex'))} added to land and buildings. Without 2018, the average is ${thou((tot - inc('2018')) / (Ys.length - 1))} a year.`,
+    `Much of the money is given for the land and building work, not for running costs, and the report does not say how much. So the money received is not all available to pay for running costs.`,
+    `The figure is worked out, so it also includes any other change in what the community owns, such as interest or a change in value.`,
+  ].map(t => `<li>${esc(t)}</li>`).join('');
+})();
+
+// ---------------------------------------------------------------- 5. all figures
 yearTable('t-all', Ys, [
   { group: 'Running costs' },
   ...KINDS.map(k => ({ name: k.name, values: R.map(k.f) })),
