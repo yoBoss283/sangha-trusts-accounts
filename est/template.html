@@ -261,7 +261,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
   <div class="more">
     <div class="card"><h3>Everyday income and running costs</h3><p class="sub">The bars are money given for a set purpose, mostly building, which can only be spent on it. The lines compare everyday income with running costs. The biggest building years run off the top.</p><div id="c-money"></div></div>
     <div class="card"><h3>Interest helps pay the running costs, for now</h3><p class="sub">Money into the everyday account, split into interest and the rest (gifts, legacies, other income), against what was paid out of it.</p><div id="c-int"></div><p class="note" id="int-note"></p></div>
-    <div class="card"><h3>Funds at 31 March</h3><p class="sub">Restricted funds include the expendable endowment of 2010–2016.</p><div id="c-funds"></div></div>
+    <div class="card"><h3>Funds at 31 March</h3><p class="sub">The three kinds of fund side by side. Set aside by trustees is mostly the buildings; restricted is money given for one purpose, mostly building; only the general fund is free to use. Restricted funds include the expendable endowment of 2010–2016.</p><div id="c-funds"></div></div>
     <div class="card"><h3>General reserve and the trustees' aim</h3><p class="sub">The free reserve (general funds) against what the trustees said should be kept: three months of spending or two years of essential costs until 2008, six months from 2009, plus a margin for building overruns from 2015.</p><div id="c-res"></div></div>
     <div class="card"><h3>Cash and buildings at 31 March</h3><div id="c-own"></div></div>
     <div class="card"><h3>How many years of running costs the general reserve covers</h3><p class="sub">The general reserve at 31 March divided by that year's running costs, against the trustees' aim measured the same way.</p><div id="c-cover"></div><p class="note" id="cover-note"></p></div>
@@ -991,11 +991,11 @@ function smallMultiples(id, div, top) {
       `Most of it comes from the cash held for building (${words(Math.round(v(lr, 'restricted') / 1e5) * 1e5)} at 31 March ${LY}). As that money is spent on the buildings, the interest will fall, and gifts will have to cover more of the running costs.`;
   }
   const FYs = Ys.filter(y => ['designated', 'restricted', 'general'].every(k => D.data[y][k] != null)), FR = FYs.map(y => D.data[y]);
-  stacked('c-funds', FYs, [
+  grouped('c-funds', FYs, [
     { name: 'Set aside by trustees (mostly buildings)', color: '--s9', values: FR.map(r => r.designated) },
     { name: 'Restricted (given for one purpose)', color: '--s7', values: FR.map(r => r.restricted) },
-    { name: 'General', color: '--s3', values: FR.map(r => r.general) },
-  ], { W: 1000, name: y => '31 March ' + y, aria: 'Funds at the end of each year' });
+    { name: 'General (free to use)', color: '--s3', values: FR.map(r => r.general) },
+  ], { W: 1000, bw: 14, name: y => '31 March ' + y, aria: 'Funds at the end of each year, side by side' });
   const rY = Ys.filter(y => D.data[y].target != null && D.data[y].general != null);
   grouped('c-res', rY, [
     { name: 'General reserve', color: '--s3', values: rY.map(y => D.data[y].general) },
