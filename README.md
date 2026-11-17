@@ -17,5 +17,4 @@ from the community lists. No names.
   `template.html` and the built page. `sh build.sh` in a folder rebuilds it from the documents.
 - `sh build_all.sh` rebuilds every report page from its saved data, then the landing page.
 
-Older separate repos (kept online, no longer updated): sangha-accounts-statistics, sangha-aruna-ratanagiri-accounts,
-sangha-hartridge-accounts, sangha-sumedharama-accounts.
+This is the only repo and the only site. The four earlier separate repos and the old Claude page were retired on 17 Nov 2026.

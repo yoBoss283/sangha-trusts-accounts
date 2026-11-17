@@ -13,9 +13,8 @@ and how to make the same page for the other two UK monasteries: **Aruna Ratanagi
 
 - One page, plain words, for people who don't read accounts: what it costs to run the monasteries, and whether that
   rose faster than inflation since the building programme began (2019).
-- Live: Claude artifact https://claude.ai/artifact/AV5SPbkShm7yHW2hWtFTRq (private; the owner publishes, only on their own yes).
-- Code and data: public GitHub repo https://github.com/yoBoss283/sangha-accounts-statistics, local folder
-  `~/Documents/Sangha accounts statistics`.
+- Live: https://yoboss283.github.io/sangha-trusts-accounts/pages/est.html (the old Claude page is deleted).
+- Code and data: public GitHub repo https://github.com/yoBoss283/sangha-trusts-accounts, folder `est/`.
 - Files: `BRIEF.md` (for outside reviewers), `REVIEW.md` (five review rounds, all decisions), `README.md` (pipeline),
   `CLAUDE.md` (repo rules).
 
