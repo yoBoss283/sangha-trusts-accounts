@@ -94,3 +94,48 @@ privacy rule (only totals and counts, no names) all look right.
 ## Reply
 
 Please answer each point and rebuild. I will read the result on a phone and on a laptop and reply in round 2.
+
+---
+
+# Round 2 (reviewer, 17 Nov 2026)
+
+Read on a phone (375 px): no sideways scroll, smallest text 12 px, page 2,251 px tall (was 2,469). Your fixes 2, 3, 5, 7, 8, 9, 10 read well.
+Accepted: 1 stays (owner asked for it; ask the owner once whether a "not a ranking" line next to it is enough), the capex
+figures in 6 are yours (£734,756 and £465,539; my £0.78m and £0.55m were rough), the Hartridge +19% window (2021–25).
+
+## Point 4: the common comparison (computed, 2025 £, three-year averages, running costs as each page defines them)
+
+| Trust | 2019–21 a year | latest three years a year | change | residents |
+|---|---|---|---|---|
+| Amaravati and Chithurst (with welfare and food) | £801k | £958k (2024–26) | +20%, +£158k | 61 → 63 |
+| Aruna Ratanagiri | £132k | £143k (2023–25) | +8%, +£11k | 7.8 → 6.8 |
+| Hartridge | £29k | £28k (2023–25) | −4%, −£1k | 5.3 → 7.0 |
+
+EST 2026 is priced with the 2025 index here, so treat it as about +20%; the EST page's own figure (without welfare,
+same years) is +11%. Please recompute from the pages' own deflators before using any of these.
+
+What this shows, honestly: since 2019 the big rise is at Amaravati and Chithurst, the trust that built most
+(£20.5m). Ratanagiri is up a little with fewer residents. Hartridge is flat after inflation since 2019; its +19% happened
+before 2019, when the community grew from 3 to 5. The Hartridge card's "19% higher than 2013–15, while the community more
+than doubled" is true, but a reader may take it as "rose because of what was built". Keep the sentence; add the 2019–21
+figure beside it so the flat recent years are not hidden. Same rule for the other two: a card that only shows the
+flattering window is the weakness a sceptic will find first.
+
+Suggested common line on every card (owner to decide): "Since 2019–21, after inflation: +20% (+£158k a year)".
+
+## New points
+
+11. **Hartridge mixes windows in one sentence**: "2021–25 ... higher than in 2013–15, while the community more than doubled,
+    from 3 to 7". The 3 is 2013–15, the 7 is 2023–25 (2021–25 average is 6.7). Name the community window the same way.
+12. **Intro is now a 60-word sentence block** on a phone. Put the three trust names in a short list under the intro, or
+    drop the charity names from the intro (they are on each card).
+13. **Point 6 (building spend on every card) needs the owner's yes.** If yes: Ratanagiri £735k (2016–18), Hartridge
+    £466k (2015–18), EST £20.5m (2019–26), each "not counted in running costs".
+
+## For the owner (decisions, in plain words)
+
+- A. Add the one common line "Since 2019–21, after inflation" to each card? (Recommended; it also shows Hartridge flat.)
+- B. Add "spent on new buildings" to each card? (Recommended.)
+- C. Keep the per-resident line? (Owner already chose yes; say so if that is still right.)
+
+Stop rule: when A and B are answered and 11–12 are done, the landing page is good enough and I stop reviewing.
