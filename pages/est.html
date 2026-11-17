@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 07:10 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 07:47 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -878,13 +878,9 @@ function smallMultiples(id, div, top) {
       tw.innerHTML = `<table><thead><tr><th>Year to March</th><th class="n">As paid</th><th class="n">In ${LY} money</th><th class="n">Share of running costs</th></tr></thead><tbody>` +
         WY.map(y => `<tr><td>${y}</td><td class="n">${pounds(v(D.data[y], 'sp_food'))}</td><td class="n">${pounds(Math.round(rl(y)))}</td><td class="n">${Math.round(100 * sh(y))}%</td></tr>`).join('') + '</tbody></table>';
       d.appendChild(tw);
-      const e3 = WY.slice(0, -3), l3 = WY.slice(-3), sn = y => D.data[y].seniors, funds = [['2024', 14705], ['2025', 27956], ['2026', 49924]];
+      const funds = [['2024', 14705], ['2025', 27956], ['2026', 49924]];
       const why = document.createElement('p'); why.className = 'note';
-      why.textContent = `The rise comes in the last three years: about ${short(k0(avgOf(e3, rl)))} a year in ${LY} money from ${WY[0]} to ${e3[e3.length - 1]}, then ${l3.map(y => short(k0(rl(y)))).join(', ')} in ${l3.join(', ')}. ` +
-        `The accounts give this as one line and do not say why it rose or how much is food and how much is care. What they do show: ` +
-        (sn(e3[e3.length - 1]) != null && sn(LY) != null ? `the monks and nuns with 20 or more years in robes went from ${Math.round(sn(e3[e3.length - 1]))} to ${Math.round(sn(LY))} (${e3[e3.length - 1]} to ${LY}); ` : '') +
-        `the Amaravati Monks' Welfare fund, for the medical and other welfare needs of Luang Por Sumedho (and, in the last two years, the sabbatical of Ajahn Amaro), spent ${funds.map(([y, a]) => `${pounds(a)} in ${y}`).join(', ')}; and a new Ageing Samanas Fund was started in ${LY} (${pounds(444444)} given, mainly for buildings). ` +
-        `The accounts do not say whether the fund spending is inside this line, so these are possible reasons, not a measured split.`;
+      why.textContent = `What the trustees' reports say about the last three years: the Amaravati Monks' Welfare fund spent ${funds.map(([y, a]) => `${pounds(a)} in ${y}`).join(', ')}, and a new Ageing Samanas Fund was started in ${LY} (${pounds(444444)} given, mainly for buildings). The accounts do not say whether this spending is inside the welfare and food line.`;
       d.appendChild(why);
     }
   });
