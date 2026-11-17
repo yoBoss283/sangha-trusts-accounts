@@ -51,5 +51,5 @@ for y in map(str, range(2013, 2026)):
 json.dump(out, open(here / 'data.json', 'w'), indent=1)
 print('differences between the sum of the lines and the report total:', issues)
 for y, r in out.items():
-    run = r['spending'] - r['depr'] - r['writeoff'] - r['project'] - r['interest']
+    run = r['spending'] - r['depr'] - r['writeoff'] - r['project'] + r['interest']
     print(y, 'run', round(run), 'util', round(r['util']), 'upkeep', round(r['upkeep']), 'ins', round(r['insurance']), 'rent', round(r['rent']), 'trav', round(r['travel']), 'welf', round(r['welfare']), '| proj', round(r['project']), 'capex', round(r['capex']), 'income', round(r['income']), 'cash', round(r['cash'] + r['deposits']))

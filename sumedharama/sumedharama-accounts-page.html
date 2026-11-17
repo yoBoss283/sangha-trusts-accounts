@@ -215,7 +215,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything spent in a year to keep the monastery going, without new buildings and infrastructure (counted as something the community owns), without wear on buildings (depreciation, not money paid out) and without building-project costs the report counts as spending (see the notes). Residents: the monks, novices and anagārikas living at Sumedharama, on average; lay guests are not counted. Inflation: Portugal's consumer prices index (Eurostat). All amounts in euros, as in the report, as paid at the time.</p>
-  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:48 GMT</span></p>
+  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:50 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -250,7 +250,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <ul>
       <li><b>Where the figures come from.</b> One two-page report, "Report to Abbots 2012–2026", shared by Ajahn Vajiro on 17 November 2026: a table of every line of expense for each year and a balance sheet (in euros, years to 31 December). It is not a set of filed annual accounts and has no income statement. Every number was read from the report by its place on the page. In 2012 there are no resident counts on the community lists, so the page starts in 2013.</li>
       <li><b>The report's totals.</b> In 10 of the 13 years the lines add up exactly to the report's own total. Three differ: 2015 (the total is €6,360 more than its lines), 2017 (€3.80 more) and 2025 (€120.93 more). The report's total is used and the difference falls in "Office, fees and the rest". The balance sheet also has some slips (for example 2022 total assets shown as €278,766.90 instead of €2,787,766.90); only lines that agree with the next year's figures are used.</li>
-      <li><b>Running costs</b> are the report's total, without three things: wear written off (depreciation, and two write-offs of fixed assets, €4,551 in 2018 and €500 in 2023); building-project costs the report lists as expenses (surveying, architects, engineers, legal costs of the project, shelters, clearing land, tools for the project and the tax on buying land: about €73,000 in 2015 and €1,000 to €7,000 in other years); and interest received (€1,454 in 2025, which the report enters as a negative cost).</li>
+      <li><b>Running costs</b> are the report's total, without three things: wear written off (depreciation, and two write-offs of fixed assets, €4,551 in 2018 and €500 in 2023); building-project costs the report lists as expenses (surveying, architects, engineers, legal costs of the project, shelters, clearing land, tools for the project and the tax on buying land: about €73,000 in 2015 and €1,000 to €7,000 in other years); and interest received (€1,454 in 2025, which the report enters as a negative cost inside its total, so it is added back).</li>
       <li><b>Rent.</b> The community paid rent until 2018 (€14,500 to €15,000 in 2012–13, about €6,000 a year in 2014–17, €3,500 in 2018). It is in the running costs, so the first period includes it.</li>
       <li><b>Kinds of cost.</b> "Heat, light and water": electricity, water, gas and wood. "Repairs and upkeep": repairs and maintenance of the house. "Insurance and safety": insurance and fire extinguishers (€5,123 in 2016). "Car and travel": the car (fuel, tax, inspection, repairs), travel and stays. "Health, clothes and food": health costs, clothes, food and vet costs. "Office, fees and the rest": financial services, legal fees, bank charges, tools and utensils, office material, publicity, cleaning, communication and anything else.</li>
       <li><b>Wear on buildings.</b> From 2023 the report writes off about €105,000 a year for wear on the buildings that came into use (before, €4,000 to €9,000 a year). It is not money paid out, so it is not in the running costs, but it is why total spending in the report jumps in 2023.</li>
@@ -537,7 +537,7 @@ function yearTable(id, years, rows, opt = {}) {
 // ---------------------------------------------------------------- shared pieces
 const CPI = D.cpi, EN = D.energy, RED = '--critical', QUIET = '--muted';
 // running costs: the report's total without wear written off, building-project costs the report lists as expenses, and interest received
-const RUN = r => r.spending - v(r, 'depr') - v(r, 'writeoff') - v(r, 'project') - v(r, 'interest');
+const RUN = r => r.spending - v(r, 'depr') - v(r, 'writeoff') - v(r, 'project') + v(r, 'interest');
 const avgOf = (ys, f) => ys.reduce((a, y) => a + f(y), 0) / ys.length;
 const today = y => CPI[LY] / CPI[y];
 const BLOCKS = [Ys.filter(y => y <= '2015'), Ys.filter(y => y >= '2016' && y <= '2020'), Ys.filter(y => y >= '2021')];
@@ -747,7 +747,7 @@ yearTable('t-all', Ys, [
   { name: 'Total expenses in the report', values: R.map(r => r.spending) },
   { name: 'less wear written off (depreciation, write-offs)', values: R.map(r => -(v(r, 'depr') + v(r, 'writeoff'))), indent: true },
   { name: 'less building-project costs listed as expenses', values: R.map(r => v(r, 'project') ? -r.project : null), indent: true },
-  { name: 'less interest received', values: R.map(r => v(r, 'interest') ? -r.interest : null), indent: true },
+  { name: 'add back interest received (the report counts it as a negative cost)', values: R.map(r => v(r, 'interest') ? r.interest : null), indent: true },
   { name: '= running costs', values: R.map(RUN), cls: 'tot' },
   { group: 'Building, money and funds (balance sheet)' },
   { name: 'New buildings and infrastructure', values: R.map(r => r.capex ?? null) },
