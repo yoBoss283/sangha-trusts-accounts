@@ -1,0 +1,62 @@
+# Figures set by hand: year, item, value. Use only where a report is a poor scan and no clean copy exists.
+# Each line says where the right figure comes from.
+
+# 2020 balance sheet: only in the 2021 report, whose balance sheet page is a poor scan (7 read for 1, L for 1).
+2020 buildings 9,826,285     # note 11 net book value at 31 March 2020 (the scan reads 9,826,295)
+2020 cash 1,525,820          # cash flow statement (the scan reads 7,525,820)
+2020 debtors 129,377         # the scan reads 729,377; 129,377 makes the balance sheet add up to 11,308,250
+2020 creditors (173,232)     # the scan's line can't be read as a whole
+2020 net_assets 11,308,250   # total charity funds at 31 March 2020, statement of financial activities
+2020 restricted 851,336      # note 14 funds, restricted funds brought forward (the scan reads 857,336)
+2020 general 530,664         # note 14 funds, general funds brought forward (the scan reads 530,6&)
+
+# 2026: only the Companies House scan exists so far. These lines were misread by text recognition; each figure
+# was read by eye from the scan and checked against its own totals.
+2026 donations 10,832,086    # statement of financial activities; note 2 total
+2026 gifts 10,823,327        # note 2
+2026 legacies 8,759          # note 2
+2026 gifts_u 1,274,633       # note 2, unrestricted
+2026 interest 263,252        # 10,832,086 + 263,252 + 10,618 = 11,105,956 total income
+2026 interest_u 182,003      # note 3, unrestricted
+2026 other 10,618
+2026 creditors (152,537)     # balance sheet
+2026 investments 323,391
+2026 debtors 680,639
+2026 net_assets 35,499,314
+2026 general 1,489,708
+2026 sp_staff 108,332        # note 5 lines; they add up to 1,574,591
+2026 sp_food 266,403
+2026 sp_maint 221,534
+2026 sp_depr 562,190
+2026 sp_heat 154,929
+2026 sp_ins 74,090
+2026 sp_travel 54,368
+2026 sp_pubs 35,568
+2026 sp_print 5,753
+2026 sp_legal 11,635
+2026 sp_comms 12,497
+2026 sp_don 1,065
+2026 sp_bank 1,919
+2026 sp_equip 45,242
+2026 sp_admin 3,614
+2026 sp_gov 15,452
+2026 salaries 134,150        # note 10
+2026 nic 6,194
+2026 pension 30,908
+2026 staff_no 4
+2026 capex 659,535           # note 11, additions
+2026 gen_in 1,196,914        # note 15, general funds row
+2026 gen_out 910,840
+2026 gen_moved (175,968)
+2026 target 1,215,119        # trustees' report, reserves
+2026 one_donor 9,500,000     # trustees' report: "donations totalling £9,500,000 ... from one donor"
+
+# restricted_in from 2020: the restricted column total of each year's statement of financial activities
+# (income given or earned for a set purpose, mostly building). Read from the reports; not split out by the reader.
+2020 restricted_in 579,829     # 2020 report (scan): 820,203 unrestricted + 579,829 = 1,400,032
+2021 restricted_in 11,139,031
+2022 restricted_in 733,028
+2023 restricted_in 793,928
+2024 restricted_in 796,855
+2025 restricted_in 660,040
+2026 restricted_in 9,730,697

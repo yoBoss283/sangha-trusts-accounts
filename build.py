@@ -1,10 +1,11 @@
-# Build the landing page index.html for the three trusts' accounts pages, and copy the three detail pages into pages/
+# Build the landing page index.html for the accounts pages in the folders next to it (est/, aruna-ratanagiri/, hartridge/, sumedharama/),
+# and copy the detail pages into pages/
 # with a "back to all three" link on top. The figures come from each page's own data (last three years, as paid), so the
 # cards agree with the detail pages. Run: python3 build.py   (after rebuilding the three detail pages with their build.py)
 import json, pathlib, datetime, re
 here = pathlib.Path(__file__).parent
 docs = here.parent
-A = {'est': docs / 'Sangha accounts statistics', 'ratanagiri': docs / 'Aruna Ratanagiri accounts statistics', 'hartridge': docs / 'Hartridge accounts statistics', 'sumedharama': docs / 'Sumedharama accounts statistics'}
+A = {'est': here / 'est', 'ratanagiri': here / 'aruna-ratanagiri', 'hartridge': here / 'hartridge', 'sumedharama': here / 'sumedharama'}
 FILES = {'est': 'est-accounts.html', 'ratanagiri': 'ratanagiri-accounts.html', 'hartridge': 'hartridge-accounts.html', 'sumedharama': 'sumedharama-accounts.html'}
 
 def load(k):
@@ -129,7 +130,9 @@ back = '<p class="back"><a href="../index.html">← All the monasteries</a></p>'
 for k, f in FILES.items():
     h = (A[k] / f).read_text(encoding='utf-8')
     assert '<main id="top">' in h, k
-    (here / 'pages' / f'{k}.html').write_text(h.replace('<main id="top">', '<main id="top">\n' + back, 1), encoding='utf-8')
+    page = h.replace('<main id="top">', '<main id="top">\n' + back, 1)
+    (here / 'pages' / f'{k}.html').write_text(page, encoding='utf-8')      # the address people already have
+    (A[k] / 'index.html').write_text(page, encoding='utf-8')                # the same page at /<folder>/
 for k in fig:
     print(k, fig[k]['years'], r1000(fig[k]['year']), r5(fig[k]['day']), round(fig[k]['people']))
 print('wrote index.html and pages/')

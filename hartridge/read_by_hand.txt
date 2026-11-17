@@ -1,0 +1,98 @@
+# Figures for Hartridge Buddhist Monastery Trust, read by eye from the Companies House scans (txt/<year>.txt by extract.py,
+# page images made with ./page <pdf> <page> out.png), 17 Nov 2026. Format: year item value. Calendar years.
+#
+# spending  = total resources expended, from the statement of financial activities (2013-19) or the detailed statement (2020-25);
+#             each year agrees with the next report's "last year" column.
+# capfund   = spending from the restricted capital fund that the accounts count as spending (the Dhamma Hall project, 2013-14,
+#             note 5 "net movement in funds"). From 2015 the Dhamma Hall is added to the buildings instead (capex).
+# capex     = additions to property improvements (fixed assets note); the years add up to the 2025 book value of 578,297.
+#             2016: the note also shows 9,542 of an investment, which is not building work. 2022 additions 35,828 = "spending on the
+#             kutis" in the trustees' report. 2020: none (the 2021 report's opening figure). 2013-14: none.
+# Cost lines (2019-25, the detailed statement; 2019 is the "last year" column of the 2020 report): the 2012-18 copies at
+# Companies House stop before that page. Equipment and sundry are one item. Each year's lines are within 1 of spending.
+
+2013 spending 36,297
+2013 capfund 19,912
+2013 capex 0
+2014 spending 50,895
+2014 capfund 32,880
+2014 capex 0
+2015 spending 16,169
+2015 capex 219,574
+2016 spending 17,553
+2016 capex 60,932
+2017 spending 20,105
+2017 capex 12,278
+2018 spending 20,539
+2018 capex 172,755
+2019 spending 22,158
+2019 capex 26,787
+2020 spending 22,428
+2020 capex 0
+2021 spending 23,663
+2021 capex 4,090
+2022 spending 23,379
+2022 capex 35,828
+2023 spending 29,539
+2023 capex 23,351
+2024 spending 23,456
+2024 capex 10,988
+2025 spending 27,417
+2025 capex 11,714
+
+2019 admin 95
+2019 utilities 7,454
+2019 motor 3,355
+2019 welfare 2,939
+2019 phone 621
+2019 estate 5,516
+2019 equipsundry 1,351
+2019 accountancy 828
+2020 admin 221
+2020 utilities 6,639
+2020 motor 1,104
+2020 welfare 3,023
+2020 phone 512
+2020 estate 6,704
+2020 equipsundry 3,397     # equipment 3,317 + sundry 80
+2020 accountancy 828
+2021 admin 185
+2021 utilities 6,593
+2021 motor 1,198
+2021 welfare 1,945
+2021 phone 706
+2021 estate 9,016
+2021 equipsundry 3,192
+2021 accountancy 828
+2022 admin 62
+2022 utilities 8,193
+2022 motor 5,551
+2022 welfare 1,209
+2022 phone 422
+2022 estate 7,029
+2022 equipsundry 80
+2022 accountancy 834
+2023 admin 111
+2023 utilities 8,802
+2023 motor 9,709          # includes 7,099 for a monk's visit to New Zealand, paid by a donor
+2023 welfare 1,175
+2023 phone 474
+2023 estate 8,196
+2023 equipsundry 148
+2023 accountancy 924
+2024 admin 351
+2024 utilities 10,948
+2024 motor 2,149
+2024 welfare 4,156
+2024 phone 461
+2024 estate 4,088
+2024 equipsundry 380
+2024 accountancy 924
+2025 admin 40
+2025 utilities 9,251
+2025 motor 4,478
+2025 welfare 5,597
+2025 phone 363
+2025 estate 6,010
+2025 equipsundry 699
+2025 accountancy 978

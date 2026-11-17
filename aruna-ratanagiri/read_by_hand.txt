@@ -1,0 +1,395 @@
+# Cost lines read by eye from the page images of the Companies House scans (./page <pdf> <page> out.png), 17 Nov 2026.
+# Format: year item value. These win over the automatic reader; figures.py still compares them with it.
+# Each year is that year's own report (its "this year" column), except where said; every year's lines add up to the
+# total expenditure printed in the accounts (figures.py checks this).
+# Before 2015 the notes split costs into "Activities undertaken directly", "Support costs" and "Governance costs";
+# depreciation is in the "Total resources expended" note. Lines with the same item are added up (e.g. repairs appear
+# as both a support cost and a direct cost, or as unrestricted and restricted).
+# Renamed lines: "Postage" (to 2015) is called "Office admin" from 2016 (the 2016 report shows 2015's 987 as office
+# admin); "Lockdown expenses" (2020-2022) is called "Kitchen expenses" from 2023 (the 2023 report shows 2022's 2,137
+# as kitchen): both kept under one item here.
+
+# 2010: 2011 report, notes 6-8 (page 12-13), and 2010 report note 6-7
+2010 staff 4,388
+2010 rent 3,054
+2010 ins 1,083
+2010 heat 21,301
+2010 repairs 9,534
+2010 office 4,166         # postage
+2010 phone 2,174
+2010 motor 5,062
+2010 travel 3,576
+2010 legal 2,321
+2010 sundry 1,946
+2010 bank 253
+2010 household 11,595
+2010 events 711
+2010 depr 6,230
+2010 gov 1,536
+
+# 2011: 2011 report pages 12-13
+2011 staff 4,608
+2011 rent 3,296
+2011 ins 2,438
+2011 heat 17,990
+2011 repairs 14,096
+2011 office 2,153         # postage
+2011 phone 2,289
+2011 motor 5,709
+2011 travel 2,033
+2011 legal 1,231
+2011 sundry 182
+2011 bank 153
+2011 household 7,469
+2011 events 590
+2011 welfare 1,000
+2011 breakfast 2,102
+2011 depr 12,114
+2011 gov 1,947
+
+# 2012: 2013 report pages 12-13, "2012" column (same as the 2012 report's own)
+2012 staff 5,669
+2012 rent 3,366
+2012 ins 2,840
+2012 heat 18,150
+2012 repairs 23,936       # support 15,678 + direct 8,258
+2012 office 2,541         # postage
+2012 phone 2,264
+2012 motor 6,552
+2012 travel 2,285
+2012 legal 4,386
+2012 sundry 68
+2012 bank 216
+2012 household 7,259
+2012 events 358
+2012 welfare 2,761
+2012 breakfast 2,892
+2012 dana 467
+2012 pubs 1,589
+2012 depr 13,879          # 37,463 direct total - 23,584 other direct costs
+2012 gov 1,898
+
+# 2013: 2013 report pages 12-13
+2013 staff 9,597
+2013 rent 3,476
+2013 ins 2,864
+2013 heat 13,834
+2013 repairs 36,592       # support 24,694 + direct 11,898
+2013 office 1,426         # postage
+2013 phone 1,781
+2013 motor 6,278
+2013 travel 2,678
+2013 legal 3,142
+2013 sundry 1,269
+2013 bank 272
+2013 household 10,216
+2013 events 511
+2013 welfare 4,243
+2013 breakfast 3,461
+2013 dana 1,081
+2013 pubs 1,664
+2013 depr 15,514
+2013 gov 2,426
+
+# 2014: 2014 report pages 11-12
+2014 staff 9,871
+2014 rent 3,243
+2014 ins 2,941
+2014 heat 12,753
+2014 repairs 39,766       # support 32,181 + direct 7,585
+2014 office 1,162         # postage
+2014 phone 1,879
+2014 motor 8,608
+2014 travel 1,709
+2014 legal 840
+2014 sundry 100
+2014 bank 174
+2014 household 7,491
+2014 events 372
+2014 welfare 5,097
+2014 breakfast 3,756
+2014 dana 1,431
+2014 pubs 3,285
+2014 depr 15,920
+2014 gov 2,280
+
+# 2015: 2015 report page 13 (total 80,679; the 2016 report restates 2015 at 80,637: sundry 625, governance 2,968)
+2015 staff 9,984
+2015 rent 3,731
+2015 heat 14,196
+2015 ins 3,053
+2015 repairs 13,450       # 10,884 + restricted 2,566
+2015 office 987           # postage
+2015 phone 2,107
+2015 motor 6,091
+2015 travel 690
+2015 legal 384
+2015 sundry 667
+2015 bank 110
+2015 household 4,355
+2015 depr 4,575           # low against the years around it (2014 15,920; 2016 16,028); as printed
+2015 events 572
+2015 gov 2,969
+2015 welfare 3,029
+2015 breakfast 4,135
+2015 dana 1,659
+2015 pubs 3,935
+
+# 2016: 2016 report page 13 (note total 97,111; statement of financial activities 97,113)
+2016 staff 9,391
+2016 rent 4,377
+2016 heat 9,216
+2016 ins 3,844
+2016 repairs 11,648       # 1,689 + restricted 9,959
+2016 office 3,963
+2016 phone 2,561
+2016 motor 6,404
+2016 travel 1,644
+2016 legal 204
+2016 sundry 709
+2016 bank 372
+2016 household 12,523
+2016 depr 16,028
+2016 events 422
+2016 gov 3,255
+2016 welfare 3,698
+2016 breakfast 3,737
+2016 dana 1,794
+2016 pubs 1,321
+
+# 2017: 2017 report page 13
+2017 staff 11,660
+2017 rent 6,607
+2017 heat 14,222
+2017 ins 4,569
+2017 repairs 22,542       # 15,262 + restricted 7,280
+2017 office 900
+2017 phone 2,384
+2017 motor 8,482
+2017 travel 606
+2017 legal 204
+2017 sundry 845
+2017 bank 220
+2017 household 9,867
+2017 depr 14,268
+2017 events 1,310
+2017 gov 2,696
+2017 welfare 5,315
+2017 breakfast 6,411
+2017 dana 2,310
+2017 pubs 7,364
+
+# 2018: 2019 report page 14, "2018" column (the 2018 report's own page agrees where it can be read; its motor
+# line has lost its name in the text)
+2018 staff 10,575
+2018 rent 6,018
+2018 heat 18,761
+2018 ins 4,514
+2018 repairs 17,216       # 14,558 + restricted 2,658
+2018 office 2,503
+2018 phone 2,340
+2018 motor 6,889
+2018 travel 1,092
+2018 legal 948
+2018 sundry 5,978
+2018 bank 174
+2018 household 9,661
+2018 depr 18,210
+2018 events 1,131
+2018 gov 3,001
+2018 pubs 11,958          # 986 + restricted 10,972
+2018 welfare 2,617
+2018 breakfast 4,760
+2018 dana 2,780
+
+# 2019: 2019 report page 14
+2019 staff 11,788
+2019 rent 7,179
+2019 heat 18,605
+2019 ins 4,834
+2019 repairs 14,725       # 10,941 + restricted 3,784
+2019 office 2,110
+2019 phone 2,931
+2019 motor 7,405
+2019 travel 1,696
+2019 legal 566
+2019 sundry 1,074
+2019 bank 202
+2019 household 12,630
+2019 depr 19,414
+2019 events 1,049
+2019 gov 3,030
+2019 pubs 1,018          # (986) taken back + restricted 2,004
+2019 welfare 1,986
+2019 breakfast 5,704
+2019 dana 2,167
+
+# 2021: 2022 report page 15, "2021" column
+2021 staff 10,850
+2021 rent 7,193
+2021 heat 21,702
+2021 ins 5,510
+2021 repairs 6,289
+2021 office 10,242
+2021 phone 4,840
+2021 motor 9,033
+2021 travel 237
+2021 legal 222
+2021 sundry 1,204
+2021 bank 333
+2021 household 15,241
+2021 depr 21,482
+2021 events 1,166
+2021 gov 3,102
+2021 welfare 5,639
+2021 breakfast 4,579
+2021 misc 8,722
+2021 dana 5,554
+2021 pubs 6,729
+2021 kitchen 159           # "Lockdown expenses"
+
+# 2022: 2022 report page 15 (note total 131,930; statement of financial activities 131,931)
+2022 staff 12,644
+2022 rent 7,565
+2022 heat 23,084
+2022 ins 5,922
+2022 repairs 15,157
+2022 office 8,812
+2022 phone 2,409
+2022 motor 7,045
+2022 travel 360
+2022 legal 431
+2022 sundry 40
+2022 bank 383
+2022 household 5,170
+2022 depr 22,995
+2022 events 444
+2022 gov 3,876
+2022 welfare 2,797
+2022 breakfast 3,656
+2022 misc 4,191
+2022 dana 1,344
+2022 pubs 1,468
+2022 kitchen 2,137         # "Lockdown expenses"; called kitchen expenses in the 2023 report
+
+# Spending on buildings and equipment: "Additions" in the tangible fixed assets note (all columns), read from the text
+# and checked against the note's columns. 2018: 244,885 buildings + 5,088 equipment (the total's last digit is
+# smudged in the text). From 2021 the fixed asset investments note also has an "Additions" line; that is not this.
+# 2010 does not count the buildings handed over by the Magga Bhavaka Trust (714,391), which were not bought.
+2010 capex 19,354
+2011 capex 22,639
+2012 capex 89,860
+2013 capex 51,253
+2014 capex 2,329
+2015 capex 5,493
+2016 capex 478,600
+2017 capex 6,183
+2018 capex 249,973
+2019 capex 25,510
+2020 capex 1,552
+2021 capex 13,096
+2022 capex 11,142
+2023 capex 9,311
+2024 capex 4,020
+2025 capex 2,483
+
+# 2020: 2020 report page 14
+2020 staff 10,020
+2020 rent 6,822
+2020 heat 19,443
+2020 ins 5,063
+2020 repairs 4,362
+2020 office 1,736
+2020 phone 2,392
+2020 motor 6,561
+2020 travel 450
+2020 legal 325
+2020 sundry 70
+2020 bank 200
+2020 household 8,987
+2020 depr 19,194
+2020 events 1,160
+2020 gov 3,870
+2020 welfare 2,509
+2020 breakfast 4,477
+2020 misc 354
+2020 dana 3,637
+2020 pubs 1,375
+2020 kitchen 1,299          # "Lockdown expenses"
+
+# 2023: 2023 report page 17 (note total 174,008; statement 174,009). The 2024 report regroups 2023: 456 of office
+# admin under publication expenses and 796 of miscellaneous under "study & travel"; the 2023 report is used.
+2023 staff 12,600
+2023 rent 7,868
+2023 heat 32,413
+2023 ins 6,468
+2023 repairs 22,215
+2023 office 4,570
+2023 phone 2,428
+2023 motor 8,073
+2023 travel 1,133
+2023 legal 444
+2023 sundry 1,970
+2023 bank 327
+2023 household 8,393
+2023 depr 22,957
+2023 events 3,076
+2023 gov 4,140
+2023 religious 2,256
+2023 disposal 280
+2023 welfare 7,753
+2023 breakfast 5,381
+2023 misc 11,491
+2023 dana 994
+2023 pubs 2,217
+2023 kitchen 4,561
+
+# 2024: 2024 report page 17
+2024 staff 13,150          # "Staff costs & expenses"
+2024 rent 8,430
+2024 heat 32,316
+2024 ins 7,257
+2024 repairs 18,623
+2024 office 1,772
+2024 phone 2,895
+2024 motor 10,712
+2024 travel 2,613          # travel 1,797 + restricted "study & travel" 816
+2024 legal 683
+2024 sundry 6,707
+2024 bank 1,043
+2024 household 6,952
+2024 depr 22,302
+2024 events 1,035
+2024 gov 4,436
+2024 religious 1,066
+2024 disposal 892
+2024 pubs 4,595            # 4,109 + restricted 486
+2024 welfare 7,928
+2024 breakfast 3,131
+2024 misc 1,955
+2024 dana 938
+2024 kitchen 640
+
+# 2025: 2025 report (amended, 27 Oct 2026) page 17; the text of this page reads cleanly
+2025 staff 14,114
+2025 rent 8,716
+2025 heat 29,882
+2025 ins 7,675
+2025 repairs 20,846
+2025 office 3,018
+2025 phone 2,864
+2025 motor 9,431
+2025 travel 905
+2025 legal 783
+2025 sundry 1,345
+2025 bank 526
+2025 household 4,741
+2025 depr 22,922
+2025 events 1,653
+2025 gov 5,025
+2025 pubs 3,915            # 939 + restricted 2,976
+2025 welfare 150
+2025 breakfast 3,696
+2025 misc 4,471
+2025 dana 872
+2025 kitchen 726

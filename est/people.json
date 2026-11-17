@@ -1,0 +1,300 @@
+{
+ "1997": {
+  "people": 46.0,
+  "lists": [
+   "V1996",
+   "W1996"
+  ],
+  "amaravati": 27.5,
+  "cittaviveka": 18.5,
+  "seniors": 4.0
+ },
+ "1998": {
+  "people": 41.5,
+  "lists": [
+   "V1997",
+   "W1997"
+  ],
+  "amaravati": 24.5,
+  "cittaviveka": 17.0,
+  "seniors": 4.0
+ },
+ "1999": {
+  "people": 45.0,
+  "lists": [
+   "V1998"
+  ],
+  "amaravati": 27.0,
+  "cittaviveka": 18.0,
+  "seniors": 3.0
+ },
+ "2000": {
+  "people": 46.0,
+  "lists": [
+   "V1999",
+   "W1999"
+  ],
+  "amaravati": 29.5,
+  "cittaviveka": 16.5,
+  "seniors": 3.5
+ },
+ "2002": {
+  "people": 53.5,
+  "lists": [
+   "V2001",
+   "W2001"
+  ],
+  "amaravati": 36.0,
+  "cittaviveka": 17.5,
+  "seniors": 3.0
+ },
+ "2003": {
+  "people": 55.5,
+  "lists": [
+   "V2002",
+   "W2002"
+  ],
+  "amaravati": 35.0,
+  "cittaviveka": 20.5,
+  "seniors": 2.5
+ },
+ "2004": {
+  "people": 47.5,
+  "lists": [
+   "V2003",
+   "W2003"
+  ],
+  "amaravati": 29.5,
+  "cittaviveka": 18.0,
+  "seniors": 4.5
+ },
+ "2005": {
+  "people": 48.5,
+  "lists": [
+   "V2004",
+   "W2004"
+  ],
+  "amaravati": 33.5,
+  "cittaviveka": 15.0,
+  "seniors": 5.5
+ },
+ "2006": {
+  "people": 52.5,
+  "lists": [
+   "V2005",
+   "W2005"
+  ],
+  "amaravati": 29.5,
+  "cittaviveka": 23.0,
+  "seniors": 4.5
+ },
+ "2007": {
+  "people": 58.5,
+  "lists": [
+   "V2006",
+   "W2006"
+  ],
+  "amaravati": 35.5,
+  "cittaviveka": 23.0,
+  "seniors": 5.0
+ },
+ "2008": {
+  "people": 58.0,
+  "lists": [
+   "V2007",
+   "W2007"
+  ],
+  "amaravati": 34.5,
+  "cittaviveka": 23.5,
+  "seniors": 7.0
+ },
+ "2009": {
+  "people": 54.5,
+  "lists": [
+   "V2008",
+   "W2008"
+  ],
+  "amaravati": 32.5,
+  "cittaviveka": 22.0,
+  "seniors": 8.0
+ },
+ "2010": {
+  "people": 60.0,
+  "lists": [
+   "V2009",
+   "W2009"
+  ],
+  "amaravati": 34.0,
+  "cittaviveka": 26.0,
+  "seniors": 8.5
+ },
+ "2011": {
+  "people": 52.0,
+  "lists": [
+   "V2010",
+   "W2010"
+  ],
+  "amaravati": 36.0,
+  "cittaviveka": 16.0,
+  "seniors": 10.0
+ },
+ "2012": {
+  "people": 49.0,
+  "lists": [
+   "V2011",
+   "W2011"
+  ],
+  "amaravati": 31.5,
+  "cittaviveka": 17.5,
+  "seniors": 10.0
+ },
+ "2013": {
+  "people": 45.5,
+  "lists": [
+   "V2012",
+   "W2012"
+  ],
+  "amaravati": 29.0,
+  "cittaviveka": 16.5,
+  "seniors": 8.0
+ },
+ "2014": {
+  "people": 49.0,
+  "lists": [
+   "V2013",
+   "W2013"
+  ],
+  "amaravati": 30.0,
+  "cittaviveka": 19.0,
+  "seniors": 8.0
+ },
+ "2015": {
+  "people": 52.5,
+  "lists": [
+   "V2014",
+   "W2014"
+  ],
+  "amaravati": 34.5,
+  "cittaviveka": 18.0,
+  "seniors": 7.0
+ },
+ "2016": {
+  "people": 46.5,
+  "lists": [
+   "V2015",
+   "W2015"
+  ],
+  "amaravati": 31.0,
+  "cittaviveka": 15.5,
+  "seniors": 6.5
+ },
+ "2017": {
+  "people": 50.5,
+  "lists": [
+   "V2016",
+   "W2016"
+  ],
+  "amaravati": 34.5,
+  "cittaviveka": 16.0,
+  "seniors": 8.5
+ },
+ "2018": {
+  "people": 55.5,
+  "lists": [
+   "V2017",
+   "W2017"
+  ],
+  "amaravati": 37.5,
+  "cittaviveka": 18.0,
+  "seniors": 8.5
+ },
+ "2019": {
+  "people": 62.0,
+  "lists": [
+   "V2018",
+   "W2018"
+  ],
+  "amaravati": 42.5,
+  "cittaviveka": 19.5,
+  "seniors": 10.5
+ },
+ "2020": {
+  "people": 58.0,
+  "lists": [
+   "V2019",
+   "W2019"
+  ],
+  "amaravati": 39.0,
+  "cittaviveka": 19.0,
+  "seniors": 9.5
+ },
+ "2021": {
+  "people": 63.5,
+  "lists": [
+   "V2020",
+   "W2020"
+  ],
+  "amaravati": 44.5,
+  "cittaviveka": 19.0,
+  "seniors": 13.0
+ },
+ "2022": {
+  "people": 65.0,
+  "lists": [
+   "V2021",
+   "W2021"
+  ],
+  "amaravati": 44.0,
+  "cittaviveka": 21.0,
+  "seniors": 13.0
+ },
+ "2023": {
+  "people": 61.5,
+  "lists": [
+   "V2022",
+   "W2022"
+  ],
+  "amaravati": 39.5,
+  "cittaviveka": 22.0,
+  "seniors": 11.5
+ },
+ "2024": {
+  "people": 63.5,
+  "lists": [
+   "V2023",
+   "W2023"
+  ],
+  "amaravati": 43.5,
+  "cittaviveka": 20.0,
+  "seniors": 12.0
+ },
+ "2025": {
+  "people": 65.5,
+  "lists": [
+   "V2024",
+   "W2024"
+  ],
+  "amaravati": 46.0,
+  "cittaviveka": 19.5,
+  "seniors": 12.5
+ },
+ "2026": {
+  "people": 59.5,
+  "lists": [
+   "V2025",
+   "W2025"
+  ],
+  "amaravati": 39.5,
+  "cittaviveka": 20.0,
+  "seniors": 14.0
+ },
+ "2027": {
+  "people": 54.0,
+  "lists": [
+   "V2026"
+  ],
+  "amaravati": 32.0,
+  "cittaviveka": 22.0,
+  "seniors": 12.0
+ }
+}

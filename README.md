@@ -1,17 +1,21 @@
 # What it costs to run the monasteries
 
-A landing page and three plain-language reports on what it costs to run four UK monasteries, written from the three
-charitable trusts' own published annual accounts (Companies House and the Charity Commission register).
+One repository, one public page: https://yoboss283.github.io/sangha-trusts-accounts/ . Plain-language reports on what it costs to
+run five monasteries, from their own published accounts (Companies House and the Charity Commission register) and, for
+Sumedharama in Portugal, the community's own report (in euros). Only yearly totals are used; the yearly count of residents comes
+from the community lists. No names.
 
-- `index.html`: the landing page, one card for each trust.
-- `pages/est.html`: Amaravati and Chithurst (English Sangha Trust).
-- `pages/ratanagiri.html`: Aruna Ratanagiri (Harnham Buddhist Monastery Trust).
-- `pages/hartridge.html`: Hartridge (Hartridge Buddhist Monastery Trust).
+| Folder | Monastery | Source | Report |
+|---|---|---|---|
+| `est/` | Amaravati and Chithurst (English Sangha Trust) | annual accounts 1995–2026 | `/est/` |
+| `aruna-ratanagiri/` | Aruna Ratanagiri (Harnham Buddhist Monastery Trust) | annual accounts | `/aruna-ratanagiri/` |
+| `hartridge/` | Hartridge (Hartridge Buddhist Monastery Trust) | annual accounts | `/hartridge/` |
+| `sumedharama/` | Sumedharama, Portugal | the community's report to the abbots, in euros | `/sumedharama/` |
 
-Each page works on its own (open it in any browser, also offline). Only yearly totals are used: the amounts from the
-accounts and the yearly count of residents from the community lists. No names.
+- `index.html`: the landing page, one card for each place. `pages/*.html`: the same reports at the addresses first shared.
+- Each folder has its own `README.md`: the source documents, the scripts that read them, `data.json` (every figure by year),
+  `template.html` and the built page. `sh build.sh` in a folder rebuilds it from the documents.
+- `sh build_all.sh` rebuilds every report page from its saved data, then the landing page.
 
-The reports are built from three source repos: https://github.com/yoBoss283/sangha-accounts-statistics (English Sangha Trust),
-https://github.com/yoBoss283/sangha-aruna-ratanagiri-accounts and https://github.com/yoBoss283/sangha-hartridge-accounts. `build.py` here
-rebuilds the landing page and copies the three finished reports into `pages/`; it expects the three source folders next
-to this one, so it is for whoever keeps the reports, not needed to read them.
+Older separate repos (kept online, no longer updated): sangha-accounts-statistics, sangha-aruna-ratanagiri-accounts,
+sangha-hartridge-accounts, sangha-sumedharama-accounts.

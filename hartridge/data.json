@@ -1,0 +1,112 @@
+{
+ "2013": {
+  "spending": 36297,
+  "capfund": 19912,
+  "capex": 0
+ },
+ "2014": {
+  "spending": 50895,
+  "capfund": 32880,
+  "capex": 0
+ },
+ "2015": {
+  "spending": 16169,
+  "capex": 219574
+ },
+ "2016": {
+  "spending": 17553,
+  "capex": 60932
+ },
+ "2017": {
+  "spending": 20105,
+  "capex": 12278
+ },
+ "2018": {
+  "spending": 20539,
+  "capex": 172755
+ },
+ "2019": {
+  "spending": 22158,
+  "capex": 26787,
+  "admin": 95,
+  "utilities": 7454,
+  "motor": 3355,
+  "welfare": 2939,
+  "phone": 621,
+  "estate": 5516,
+  "equipsundry": 1351,
+  "accountancy": 828
+ },
+ "2020": {
+  "spending": 22428,
+  "capex": 0,
+  "admin": 221,
+  "utilities": 6639,
+  "motor": 1104,
+  "welfare": 3023,
+  "phone": 512,
+  "estate": 6704,
+  "equipsundry": 3397,
+  "accountancy": 828
+ },
+ "2021": {
+  "spending": 23663,
+  "capex": 4090,
+  "admin": 185,
+  "utilities": 6593,
+  "motor": 1198,
+  "welfare": 1945,
+  "phone": 706,
+  "estate": 9016,
+  "equipsundry": 3192,
+  "accountancy": 828
+ },
+ "2022": {
+  "spending": 23379,
+  "capex": 35828,
+  "admin": 62,
+  "utilities": 8193,
+  "motor": 5551,
+  "welfare": 1209,
+  "phone": 422,
+  "estate": 7029,
+  "equipsundry": 80,
+  "accountancy": 834
+ },
+ "2023": {
+  "spending": 29539,
+  "capex": 23351,
+  "admin": 111,
+  "utilities": 8802,
+  "motor": 9709,
+  "welfare": 1175,
+  "phone": 474,
+  "estate": 8196,
+  "equipsundry": 148,
+  "accountancy": 924
+ },
+ "2024": {
+  "spending": 23456,
+  "capex": 10988,
+  "admin": 351,
+  "utilities": 10948,
+  "motor": 2149,
+  "welfare": 4156,
+  "phone": 461,
+  "estate": 4088,
+  "equipsundry": 380,
+  "accountancy": 924
+ },
+ "2025": {
+  "spending": 27417,
+  "capex": 11714,
+  "admin": 40,
+  "utilities": 9251,
+  "motor": 4478,
+  "welfare": 5597,
+  "phone": 363,
+  "estate": 6010,
+  "equipsundry": 699,
+  "accountancy": 978
+ }
+}

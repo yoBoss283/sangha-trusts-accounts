@@ -1,0 +1,1102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>English Sangha Trust Accounts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* Same look as the Sangha community list statistics: one column of cards, charts drawn as plain SVG. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948; --s9: #7d7a70;
+  --critical: #d03b3b; --good: #006300; --on-slice: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --s9: #9a978d;
+    --critical: #e66767; --good: #0ca30c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --s9: #9a978d;
+  --critical: #e66767; --good: #0ca30c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1060px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 0 0 6px; color: var(--ink-2); max-width: 760px; }
+.tag { display: inline-block; font-size: 12px; color: var(--ink-2); border: 1px solid var(--ring); border-radius: 999px; padding: 2px 10px; margin-top: 6px; }
+.toc { margin: 16px 0 4px; }
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 0 0 4px; }
+.toc a, .backtop a, a { color: var(--s1); text-decoration: none; }
+.toc a:hover, .backtop a:hover, a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+.backtop { margin: 10px 0 0; text-align: right; font-size: 13px; }
+section { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--ring); scroll-margin-top: 12px; }
+section > h2 { font-size: 22px; margin: 0 0 6px; text-wrap: balance; }
+section > p.lede { margin: 0 0 16px; color: var(--ink-2); max-width: 760px; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 18px 18px 14px; margin-bottom: 16px; overflow-x: auto; min-width: 0; }
+.card h3 { font-size: 15px; margin: 0 0 2px; }
+.card .sub { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.grid2 > .card { margin-bottom: 0; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 22px; }
+.tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 14px 16px; }
+.tile .v { font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.tile .c { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.quote { margin: 4px 0 12px; padding: 8px 12px; border-left: 3px solid var(--s2); color: var(--ink-2); font-size: 13.5px; font-style: italic; }
+.quote cite { display: block; font-style: normal; font-size: 12px; color: var(--muted); margin-top: 4px; }
+.under { font-size: 13px; color: var(--ink-2); margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+.bridge .hb { font-size: 14px; }
+.bridge .hb.b { font-weight: 600; }
+.bridge .hb-t { position: relative; background: transparent; overflow: visible; height: 16px; }
+.bridge .hb-t i { position: absolute; top: 0; }
+.bridge .hb-t b { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 1.5px solid var(--ink-2); }
+.bridge .hb-v { min-width: 4.5em; }
+.bridge hr { border: 0; border-top: 1px solid var(--grid); margin: 2px 0; width: 100%; }
+.latest { margin: 18px 0 0; max-width: 760px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.legend i.line { height: 2px; width: 14px; border-radius: 1px; }
+.legend i.line.dash { height: 0; width: 18px; background: none; border-top: 2px dashed; border-radius: 0; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
+svg .lbl { fill: var(--ink-2); font-size: 12.5px; }
+svg .lbl.in { fill: var(--on-slice); font-weight: 600; }
+svg .gl { stroke: var(--grid); stroke-width: 1; }
+svg .base { stroke: var(--axis); stroke-width: 1; }
+.note { font-size: 13px; color: var(--ink-2); margin: 10px 0 0; max-width: 760px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 12px; border-bottom: 1px solid var(--axis); padding: 6px 8px; }
+td { border-bottom: 1px solid var(--grid); padding: 6px 8px; vertical-align: top; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.tot td { font-weight: 600; border-top: 1px solid var(--axis); }
+tr.grp td { color: var(--ink-2); font-size: 12px; font-weight: 600; padding-top: 14px; }
+td.sub1 { padding-left: 20px; }
+.good { color: var(--good); } .bad { color: var(--critical); }
+details { margin-top: 10px; overflow: hidden; }
+summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; }
+.kinds.one { grid-template-columns: 1fr; gap: 28px; }
+.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px 22px; }
+.kind h4 { font-size: 13.5px; margin: 0; }
+.kind .ch { font-size: 12.5px; color: var(--ink-2); margin: 0 0 4px; font-variant-numeric: tabular-nums; }
+.toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
+.toggle-note { font-size: 12.5px; color: var(--ink-2); }
+button.pill { font: inherit; font-size: 13px; color: var(--ink); cursor: pointer; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--ring); background: var(--page); }
+button.pill:hover { border-color: var(--ink-2); }
+button.pill[aria-pressed="true"] { border-color: var(--s1); background: var(--surface); font-weight: 600; }
+button.pill:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+h3.then { font-size: 14px; font-weight: 600; color: var(--ink-2); margin: 4px 0 0; }
+.tiles-small { margin: 10px 0 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.tiles-small .tile.up .v { color: var(--critical); }
+.scroll-x { overflow-x: auto; }
+#t-all th:first-child, #t-all td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; box-shadow: 1px 0 0 var(--ring); }
+.swipe { display: none; font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+@media (max-width: 760px) { .swipe { display: block; } }
+.hbars { display: grid; gap: 8px; }
+.hb { display: grid; grid-template-columns: minmax(120px, 15em) 1fr auto; gap: 10px; align-items: center; font-size: 13.5px; }
+.hb-t { background: var(--grid); border-radius: 4px; height: 14px; overflow: hidden; }
+.hb-t i { display: block; height: 100%; border-radius: 4px; }
+.hb-v { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5em; text-align: right; }
+.hb-p { color: var(--muted); font-size: 12px; }
+@media (max-width: 520px) { .hb { grid-template-columns: 1fr auto; } .hb-t { grid-column: 1 / -1; grid-row: 2; } }
+.sources { font-size: 14px; }
+.prices { margin: -6px 0 16px; }
+.then-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.picker { font-size: 13.5px; color: var(--ink-2); display: inline-flex; gap: 8px; align-items: center; }
+.picker select { font: inherit; font-size: 13.5px; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); }
+.picker select:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+.tile.ref { background: transparent; border-style: dashed; }
+.tiles-small .tile .l { font-weight: 600; color: var(--ink); margin: 0 0 4px; }
+.row2 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.row2 .k { font-size: 12.5px; color: var(--ink-2); }
+.row2 .v2 { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.row2 .v2.bad { color: var(--critical); }
+.row2.pp { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--ring); }
+.compare { margin: 8px 0 10px; }
+.explain { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--ring); max-width: 760px; }
+.explain h4 { font-size: 14px; margin: 0 0 4px; }
+.explain p { font-size: 13.5px; color: var(--ink-2); margin: 6px 0; }
+table.rates { width: auto; font-size: 13.5px; margin: 6px 0; }
+table.rates td { padding: 4px 12px 4px 0; border-bottom: 1px solid var(--grid); }
+.pp-top { margin: 0 0 12px; font-size: 14px; }
+.card.feature { border-color: var(--axis); }
+.card .big { font-size: 17px; margin: 4px 0 10px; }
+.card .big .bad { color: var(--critical); }
+.kind .ch .bad { font-weight: 600; }
+.kicker { font-size: 13px; color: var(--ink-2); margin: 0 0 6px; letter-spacing: .02em; }
+header h1 { font-size: 30px; }
+.hero { font-size: 19px; line-height: 1.45; color: var(--ink); max-width: 760px; margin: 10px 0 0; }
+.hero b { font-weight: 650; }
+.tiles.headline { margin-top: 18px; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 760px) { .tiles.headline { grid-template-columns: 1fr 1fr; gap: 10px; } .tiles.headline .tile { padding: 12px; } }
+.tiles.headline .v { font-size: 30px; }
+.tiles.headline .v.bad { color: var(--critical); }
+.foot { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+section.story { margin-top: 28px; padding-top: 0; border-top: 0; }
+.caption { font-size: 14.5px; color: var(--ink); margin: 10px 0 0; max-width: 60ch; }
+details.how { margin-top: 8px; font-size: 13.5px; color: var(--ink-2); max-width: 65ch; }
+details.how summary { cursor: pointer; color: var(--s1); font-size: 13.5px; }
+details.how p { margin: 6px 0; }
+.meaning { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 4px 0 16px; max-width: 820px; }
+.meaning h3 { font-size: 16px; margin: 0 0 6px; }
+.meaning p { margin: 0; font-size: 15.5px; }
+.defs { font-size: 13px; color: var(--ink-2); max-width: 820px; }
+.toc-h { font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
+details.more { margin-top: 6px; }
+details.more > summary { display: inline-block; list-style: none; cursor: pointer; font-size: 14px; color: var(--s1); border: 1px solid var(--ring); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px; background: var(--surface); }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more[open] > summary { color: var(--ink-2); }
+details.more[open] > summary::after { content: ' (hide)'; }
+table.fut { width: auto; margin-top: 12px; }
+.explain ul { padding-left: 18px; margin: 6px 0; font-size: 13.5px; color: var(--ink-2); max-width: 760px; }
+.tbl-h { font-size: 15px; margin: 18px 0 8px; }
+@media (max-width: 520px) { header h1 { font-size: 24px; } .hero { font-size: 17px; } .tiles.headline .v { font-size: 24px; } }
+.pies { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 24px; }
+.pie h4 { font-size: 15px; margin: 0 0 6px; text-align: center; }
+.pie-svg { max-width: 380px; margin: 0 auto; }
+@media (max-width: 520px) { .pie-svg { max-width: 300px; } }
+.grp-tbl { margin-top: 12px; }
+.grp-tbl td { vertical-align: top; }
+.grp-tbl td:first-child { white-space: nowrap; padding-right: 14px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+svg text.pie-in { fill: var(--on-slice); font-size: 12.5px; font-weight: 600; }
+svg text.pie-in.amt { font-size: 12.5px; font-weight: 500; }
+svg text.pie-out.amt { fill: var(--ink); font-weight: 600; }
+svg text.pie-out { fill: var(--ink-2); font-size: 12px; }
+svg text.sub-l { fill: var(--ink-2); font-size: 12px; }
+svg text.band-l { fill: var(--ink-2); font-size: 12px; }
+.pie-tot { text-align: center; margin: 6px 0 8px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.pie-tot b { font-size: 20px; }
+.pie-tot span { color: var(--ink-2); font-size: 12.5px; }
+.pie ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+.pie li { display: grid; grid-template-columns: 12px 1fr auto 3.2em; gap: 6px; align-items: center; padding: 2px 0; border-bottom: 1px solid var(--grid); }
+.pie li i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.pie li b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.pie li em { font-style: normal; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.method p, .method li { max-width: 760px; color: var(--ink-2); font-size: 14px; }
+.method ul { padding-left: 20px; }
+#tip { position: fixed; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 7px 10px; font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,.12); z-index: 10; max-width: 280px; }
+#tip b { display: block; margin-bottom: 2px; }
+#tip .row { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+#tip .row i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 6px; }
+@media (max-width: 520px) { td, th { padding: 6px 4px; } .tile .v { font-size: 22px; } }
+</style>
+</head>
+<body>
+
+<div id="tip" hidden></div>
+<main id="top">
+<p class="back"><a href="../index.html">← All the monasteries</a></p>
+<header>
+  <p class="kicker">English Sangha Trust · Amaravati and Cittaviveka (Chithurst) · 2002–2026</p>
+  <h1>What it costs to run Amaravati and Chithurst</h1>
+  <p class="hero" id="hero"></p>
+  <div class="tiles headline" id="headline"></div>
+  <p class="foot" id="headline-foot"></p>
+</header>
+
+<section id="story" class="story">
+  <div class="card"><h3>What it takes to run Amaravati and Chithurst</h3><p class="big" id="run-text"></p><div id="c-day"></div><p class="under" id="day-under"></p></div>
+  <div class="card"><h3>One cost fell; the rest rose</h3><p class="sub" id="bridge-sub"></p><div id="c-bridge"></div><p class="caption" id="cap-bridge"></p><details class="how"><summary>How to read this</summary><div id="how-bridge"></div></details></div>
+  <div class="grid2 main">
+    <div class="card"><h3>Running costs outpaced inflation</h3><div id="c-total"></div><p class="caption" id="cap-total"></p><details class="how"><summary>How to read this</summary><div id="how-total"></div></details></div>
+    <div class="card"><h3>Heating followed energy prices</h3><blockquote class="quote" id="q-heat"></blockquote><div id="c-heat"></div><p class="caption" id="cap-heat"></p><details class="how"><summary>How to read this</summary><div id="how-heat"></div></details></div>
+  </div>
+  <div class="meaning">
+    <h3>What this means</h3>
+    <p id="meaning"></p>
+  </div>
+  <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 02:58 GMT</span></p>
+  <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
+</section>
+
+<section id="totals">
+  <h2>1. The costs in detail</h2>
+  <p class="lede" id="totals-lede"></p>
+  <div class="more">
+    <div class="card"><h3>Fixed and variable costs</h3>
+      <p class="sub">Average a year in each five years. Fixed costs come with having the places: heating and power, insurance and maintenance have to be paid however many people live there or visit. Variable costs follow the people and what they do: welfare and food, and travel. The rest (staff, office, books, fees) is shown apart. The dashed line is the number of residents (right-hand scale).</p>
+      <p class="big" id="fv-text"></p>
+      <div id="c-fv"></div></div>
+    <div class="card"><h3>Fixed costs: heating and power, insurance, maintenance</h3><p class="sub">Heat, light, water and council tax; maintenance; insurance; average a year in each five years. The dark line is their total; the dashed line is that total rising with inflation only.</p><div id="c-bcost"></div></div>
+    <div class="card"><h3>Each kind of cost against inflation</h3><p class="sub">Average a year in each five years; the dashed marks are where inflation alone would have taken the first five years. Red where it grew faster than inflation. Each small chart has its own scale.</p><div id="c-lines" class="kinds one"></div></div>
+    <div class="card"><h3>Wear on buildings (depreciation), a year</h3><p class="sub">Each bar is the yearly amount, averaged over the five years. It is the accounts' own figure: every year the Trust's accountants write off part of what the buildings, fittings, equipment and vehicles cost. It is not money paid out, so it is not in the running costs, but it is roughly what would have to be put aside each year to replace them in time.</p><div id="c-wear"></div>
+      <div class="explain">
+        <h4>How the accounts work it out</h4>
+        <p>Each thing the Trust owns has its cost spread evenly over the years it is expected to last:</p>
+        <table class="rates"><tbody>
+          <tr><td>Buildings</td><td class="n">1–2% a year</td><td>lasting 50 to 100 years</td></tr>
+          <tr><td>Site improvements (paths, drains, car parks)</td><td class="n">10% a year</td><td>10 years</td></tr>
+          <tr><td>Fixtures and fittings</td><td class="n">20% a year</td><td>5 years</td></tr>
+          <tr><td>Plant and equipment (boilers, heat pumps, solar, machinery)</td><td class="n">20% a year</td><td>5 years</td></tr>
+          <tr><td>Vehicles</td><td class="n">20% a year</td><td>5 years</td></tr>
+        </tbody></table>
+        <p>For example, a building that cost £1 million and is expected to last 50 years is written down by £20,000 a year. Land is never written down. In the year to March 2026 the wear came to £562k: £264k on the buildings themselves and £298k on fittings, site works, plant, equipment and vehicles, which last only 5 to 10 years and will need replacing long before the buildings do.</p>
+      </div></div></div>
+  </div>
+</section>
+
+<section id="perperson">
+  <h2>2. What the money goes on, and who lives there</h2>
+  <p class="lede" id="pp-lede"></p>
+  <div class="more">
+    <div class="card"><h3>What the running costs went on, then and now</h3><p class="sub">The running costs a year by kind, on average in each five years. Amounts as paid at the time; the figure in today's prices allows for inflation.</p><div id="c-pies" class="pies"></div><p class="note" id="pies-note"></p></div>
+    <div class="card"><h3>People living there</h3><p class="sub">Monks, nuns, novices and anagārikas at Amaravati and Cittaviveka on the community lists: the average of the Vassa (July) and Winter (January) lists in each year. Lay residents and guests are not counted.</p><div id="c-people"></div></div>
+  </div>
+</section>
+
+<section id="money">
+  <h2>3. Income, funds and reserves</h2>
+  <p class="lede" id="money-lede"></p>
+  <div class="more">
+    <div class="card"><h3>Everyday income and running costs</h3><p class="sub">The bars are money given for a set purpose, mostly building, which can only be spent on it. The lines compare everyday income with running costs. The biggest building years run off the top.</p><div id="c-money"></div></div>
+    <div class="card"><h3>The everyday account</h3><p class="sub">The general fund: money free for any use, which pays the running costs. What is left over each year is mostly passed on to building work.</p><div id="c-run"></div></div>
+    <div class="card"><h3>Interest helps pay the running costs, for now</h3><p class="sub">Money into the everyday account, split into interest and the rest (gifts, legacies, other income), against what was paid out of it.</p><div id="c-int"></div><p class="note" id="int-note"></p></div>
+    <div class="card"><h3>Funds at 31 March</h3><p class="sub">Restricted funds include the expendable endowment of 2010–2016.</p><div id="c-funds"></div></div>
+    <div class="card"><h3>General reserve and the trustees' aim</h3><p class="sub">The free reserve (general funds) against what the trustees said should be kept: three months of spending or two years of essential costs until 2008, six months from 2009, plus a margin for building overruns from 2015.</p><div id="c-res"></div></div>
+    <div class="card"><h3>Cash and buildings at 31 March</h3><div id="c-own"></div></div>
+  </div>
+</section>
+
+<section id="future">
+  <h2>4. The next five years</h2>
+  <p class="lede" id="future-lede"></p>
+  <div class="card"><h3>Running costs a year: the past and an estimate for the next five years</h3><p class="sub">The shaded band is an estimate, not a forecast the Trust has made. How it is worked out is below the chart.</p><div id="c-future"></div>
+    <table class="fut" id="t-future"></table>
+    <div class="explain"><h4>How the estimate is worked out</h4><ul id="future-how"></ul></div></div>
+</section>
+
+<section id="notes" class="method">
+  <h2>5. Notes and limitations</h2>
+  <div class="more">
+    <ul>
+      <li><b>Where the figures come from.</b> Every figure is read from the Trust's annual accounts. The 2021–2025 reports are the Trust's own copies; all others are the scans filed at Companies House, read by eye and checked: each year's parts add up to its totals, and each year's funds follow from the year before. Ten doubtful figures were checked by hand against the scans.</li>
+      <li><b>Years.</b> The Trust's year runs from 1 April to 31 March and is named by the year it ends in: "2026" is April 2025 to March 2026. The page starts in 2002, the first year with complete resident counts; the accounts go back to 1994.</li>
+      <li><b>Residents</b> are the monks, nuns, novices and anagārikas on the community lists (the Vassa list in July and the Winter list in January). Guests, retreatants and lay residents are not counted.</li>
+      <li><b>Inflation.</b> The UK consumer prices index (ONS, CPI), averaged over each April-to-March year. Each dashed inflation line starts at the actual cost in 2002 and rises with the index. The headline figures compare three-year averages (2002–04 against the last three years), so one unusual year can't swing them.</li>
+      <li><b>Building costs taken out of running costs.</b> In some years the accounts count building costs as ordinary spending. The page takes them out, so running costs are lower than the accounts' total expenditure by these amounts (the year-by-year table below shows the steps from one to the other):
+        <ul>
+          <li>Planning fees for the Amaravati Long Term Plan: £53,909 (2013), £192,938 (2014), £14,704 (2015), £3,586 (2016). From 2018 the Trust counted such fees as building work.</li>
+          <li>Interest on the loan for building the Rocana Vihara at Cittaviveka: £11,526 (2006), £38,772 (2007), £33,440 (2008), £20,901 (2009), £1,846 (2010), £669 (2011), £2,337 (2012).</li>
+          <li>Replacing the underfloor heating in the Amaravati Temple, a serious one-off counted inside maintenance: about £175,000 in all, about £7,800 (2007), £157,200 (2008) and £10,000 (2009), as the trustees' reports give it. Maintenance in 2008 was £311,103 in the accounts; the page shows maintenance without the heating work.</li>
+        </ul></li>
+      <li><b>Welfare and food</b> is one line in the accounts ("Welfare & food"). It includes welfare: the care of ageing monks and nuns, not only food. Since 2023 a fund set aside by the trustees has also paid for the medical and welfare needs of a senior monk at Amaravati and an abbot's one-year sabbatical (£21k in 2023, £15k in 2024, £28k in 2025, £50k in 2026). Without that, welfare and food still rose from £121k in 2024 to £216k in 2026.</li>
+      <li><b>The steepest rise</b> in running costs came between 2002 and 2011, before the big building programme that began in 2019. Since 2019, after inflation, insurance and welfare and food rose most; maintenance fell slightly.</li>
+      <li><b>Heat in 2002</b> was lowered by a council tax refund of £9,761, so rises measured from 2002 alone look larger for that line.</li>
+      <li><b>Not in the accounts:</b> running costs for each monastery separately, and electricity on its own (it is part of "heat, light, water and council tax").</li>
+      <li><b>Wear on buildings.</b> Buildings are written down at 1–2% a year (50–100 years); site works at 10%; fittings, plant, equipment and vehicles at 20% (5 years). Land is never written down, and until 1999 buildings were not written down at all.</li>
+    </ul>
+    <h3 class="tbl-h">The result with other starting years</h3>
+    <p class="sub">Running costs without welfare and food, each three-year average against <span class="nowyrs"></span>, after inflation. The page compares with 2016–18, the three years just before the building programme.</p>
+    <div class="card scroll-x"><table id="t-starts"></table></div>
+    <h3 class="tbl-h">All figures, year by year, as paid</h3>
+    <p class="swipe">Swipe sideways to see more years.</p>
+    <div class="card scroll-x"><table id="t-all"></table></div>
+  </div>
+</section>
+</main>
+
+<script>
+const D0 = {"years": [2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026], "data": {"2002": {"income": 511809, "restricted_in": 139019, "donations": 499837, "interest": 11972, "spending": 282905, "net": 228904, "funds": 3442434, "buildings": 3008007, "cash": 408926, "sp_food": 43652, "sp_maint": 76042, "sp_heat": 27277, "sp_ins": 10793, "sp_travel": 28439, "sp_depr": 32484, "target": 75000, "restricted": 1883417, "gains": 0, "other": 0, "people": 53.5, "seniors": 3.0}, "2003": {"income": 456951, "restricted_in": 45817, "donations": 444347, "interest": 12604, "spending": 353269, "gains": -25423, "net": 78259, "funds": 3520693, "buildings": 3148733, "cash": 347412, "sp_food": 58067, "sp_maint": 94430, "sp_heat": 37260, "sp_ins": 13551, "sp_travel": 33586, "sp_depr": 42055, "target": 75000, "restricted": 1960557, "other": 0, "people": 55.5, "seniors": 2.5}, "2004": {"income": 464054, "restricted_in": 32947, "donations": 451620, "interest": 12434, "spending": 346406, "gains": 8864, "net": 126512, "funds": 3647205, "buildings": 3174561, "cash": 433661, "sp_food": 62494, "sp_maint": 98791, "sp_heat": 33368, "sp_ins": 19257, "sp_travel": 31317, "sp_depr": 42665, "target": 77250, "restricted": 1978022, "other": 0, "people": 47.5, "seniors": 4.5}, "2005": {"income": 967580, "restricted_in": 258928, "donations": 945880, "interest": 17839, "other": 3861, "spending": 424271, "gains": 5643, "net": 548952, "funds": 4196157, "buildings": 3792082, "cash": 402484, "sp_food": 82233, "sp_maint": 108498, "sp_heat": 48303, "sp_ins": 19320, "sp_travel": 36798, "sp_depr": 58886, "target": 105000, "restricted": 2259854, "general": 251482, "designated": 1684809, "gen_moved": -1567194, "gen_gain": 5643, "gen_in": 669694, "gen_out": 348231, "people": 48.5, "seniors": 5.5}, "2006": {"income": 522349, "restricted_in": 7433, "donations": 505770, "interest": 16479, "other": 100, "spending": 512854, "gains": 1479, "net": 10974, "funds": 4207131, "buildings": 4507506, "cash": 405934, "sp_food": 77829, "sp_maint": 162812, "sp_heat": 56250, "sp_ins": 21858, "sp_travel": 36381, "sp_depr": 86223, "x_loan": 11526, "target": 150000, "restricted": 2240219, "general": 179173, "designated": 1787727, "gen_in": 514916, "gen_out": 373174, "gen_moved": -215530, "gen_gain": 1479, "people": 52.5, "seniors": 4.5}, "2007": {"income": 870422, "restricted_in": 358348, "donations": 847821, "interest": 22601, "spending": 491832, "net": 378590, "funds": 4585721, "buildings": 4439886, "cash": 661582, "sp_food": 88240, "sp_maint": 104110, "sp_heat": 52360, "sp_ins": 23541, "sp_travel": 35802, "sp_depr": 79455, "x_loan": 38772, "x_temple": 7800, "target": 150000, "restricted": 2341818, "general": 200517, "designated": 2043374, "gen_in": 512074, "gen_out": 306705, "gen_moved": -184025, "gains": 0, "other": 0, "people": 58.5, "seniors": 5.0}, "2008": {"income": 606969, "restricted_in": 70545, "donations": 573600, "interest": 33369, "spending": 741391, "gains": 170945, "net": 36523, "funds": 4622244, "buildings": 4200436, "cash": 977569, "sp_food": 83583, "sp_maint": 311103, "sp_heat": 61233, "sp_ins": 24408, "sp_travel": 44745, "sp_depr": 77077, "x_loan": 33440, "x_temple": 157200, "target": 150000, "restricted": 2464923, "general": 173914, "designated": 1983395, "gen_in": 536424, "gen_out": 405964, "gen_moved": -158974, "gen_gain": 1911, "other": 0, "people": 58.0, "seniors": 7.0}, "2009": {"income": 896415, "restricted_in": 94122, "donations": 859028, "interest": 34720, "other": 2667, "spending": 615227, "net": 281188, "funds": 4903432, "buildings": 4185893, "cash": 869883, "sp_food": 104019, "sp_maint": 173442, "sp_heat": 75074, "sp_ins": 24056, "sp_travel": 36577, "sp_depr": 79446, "x_loan": 20901, "x_temple": 10000, "target": 250000, "restricted": 2448276, "general": 294968, "designated": 2160176, "gen_in": 802293, "gen_out": 459105, "gen_moved": -222134, "gains": 0, "people": 54.5, "seniors": 8.0}, "2010": {"income": 1124976, "restricted_in": 567094, "donations": 1119734, "interest": 4943, "other": 299, "spending": 626047, "net": 498929, "funds": 5402361, "buildings": 4205058, "cash": 1315438, "sp_food": 92235, "sp_maint": 175074, "sp_heat": 76181, "sp_ins": 25768, "sp_travel": 48759, "sp_depr": 87952, "x_loan": 1846, "target": 250000, "restricted": 2931715, "general": 287424, "designated": 2183210, "gen_start": 294944, "gen_in": 557882, "gen_out": 484244, "gen_moved": -81158, "gains": 0, "people": 60.0, "seniors": 8.5}, "2011": {"income": 631967, "restricted_in": 86123, "donations": 626310, "interest": 5657, "spending": 642457, "net": -10490, "funds": 5391871, "buildings": 4268195, "cash": 1145534, "sp_food": 95737, "sp_maint": 224780, "sp_heat": 81221, "sp_ins": 27022, "sp_travel": 47974, "sp_depr": 72247, "x_loan": 669, "target": 300000, "restricted": 2963603, "general": 298342, "designated": 2129914, "gen_in": 545844, "gen_out": 505104, "gen_moved": -29822, "gains": 0, "other": 0, "people": 52.0, "seniors": 10.0}, "2012": {"income": 519971, "restricted_in": 22905, "donations": 513571, "interest": 6400, "spending": 708256, "net": -188285, "funds": 5203586, "buildings": 4287741, "cash": 953018, "sp_food": 88481, "sp_maint": 276529, "sp_heat": 78335, "sp_ins": 27572, "sp_travel": 43148, "sp_depr": 83668, "x_loan": 2337, "target": 300000, "restricted": 2789160, "general": 336436, "designated": 2077978, "gen_in": 497066, "gen_out": 619568, "gen_moved": 160596, "gains": 0, "other": 0, "people": 49.0, "seniors": 10.0}, "2013": {"income": 942681, "restricted_in": 64958, "donations": 936136, "interest": 6545, "spending": 633208, "net": 309473, "funds": 5513059, "buildings": 4261124, "cash": 1248827, "sp_food": 66616, "sp_maint": 176548, "sp_heat": 92302, "sp_ins": 28663, "sp_travel": 37748, "sp_depr": 83000, "x_plan": 53909, "target": 300000, "restricted": 2804762, "general": 463013, "designated": 2245272, "gen_start": 300683, "gen_in": 877723, "gen_out": 532606, "gen_moved": -182787, "gains": 0, "other": 0, "people": 45.5, "seniors": 8.0}, "2014": {"income": 845632, "restricted_in": 39773, "donations": 832192, "interest": 3889, "other": 9551, "spending": 839865, "net": 5767, "funds": 5518826, "buildings": 4345763, "cash": 1392240, "sp_food": 87377, "sp_maint": 189435, "sp_heat": 86680, "sp_ins": 28431, "sp_travel": 48357, "sp_depr": 86755, "x_plan": 192938, "target": 350000, "restricted": 2811927, "general": 446047, "designated": 2260840, "gen_start": 463013, "gen_in": 805859, "gen_out": 526701, "gen_moved": -296124, "gains": 0, "people": 49.0, "seniors": 8.0}, "2015": {"income": 1339350, "restricted_in": 687633, "donations": 1321384, "interest": 6617, "other": 11349, "spending": 669891, "net": 669459, "funds": 6188285, "buildings": 4403593, "cash": 1771583, "sp_food": 94155, "sp_maint": 187869, "sp_heat": 91049, "sp_ins": 29062, "sp_travel": 41924, "sp_depr": 91063, "x_plan": 14704, "target": 350000, "restricted": 3446031, "general": 493757, "designated": 2248485, "gen_in": 651717, "gen_out": 559920, "gen_moved": -44087, "gains": 0, "people": 52.5, "seniors": 7.0}, "2016": {"income": 686109, "restricted_in": 59692, "donations": 659984, "interest": 11799, "other": 14326, "spending": 603564, "net": 82545, "funds": 6270830, "buildings": 4709824, "cash": 1634960, "sp_food": 77945, "sp_maint": 161066, "sp_heat": 70948, "sp_ins": 28551, "sp_travel": 28956, "sp_depr": 119389, "x_plan": 3586, "target": 350000, "restricted": 3461320, "general": 548369, "designated": 2261129, "gen_in": 626417, "gen_out": 499303, "gen_moved": -72502, "gains": 0, "people": 46.5, "seniors": 6.5}, "2017": {"income": 1413617, "restricted_in": 62968, "donations": 1396721, "interest": 5983, "other": 10913, "spending": 647777, "net": 765840, "funds": 7036670, "buildings": 5545906, "cash": 1114554, "sp_food": 90597, "sp_maint": 207015, "sp_heat": 84102, "sp_ins": 30342, "sp_travel": 37314, "sp_depr": 88352, "target": 380000, "restricted": 3156607, "general": 393560, "designated": 3486491, "gen_in": 1350649, "gen_out": 557638, "gen_moved": -947820, "gains": 0, "people": 50.5, "seniors": 8.5}, "2018": {"income": 976291, "restricted_in": 35312, "donations": 958931, "interest": 3888, "other": 13472, "spending": 765598, "gains": -35, "net": 210658, "funds": 7247328, "buildings": 5582088, "cash": 1453241, "sp_food": 112547, "sp_maint": 184856, "sp_heat": 95432, "sp_ins": 31687, "sp_travel": 70389, "sp_depr": 137618, "target": 360000, "restricted": 3139558, "general": 537693, "designated": 3570065, "gen_in": 950600, "gen_out": 610447, "gen_moved": -196020, "people": 55.5, "seniors": 8.5}, "2019": {"income": 4426609, "restricted_in": 3553312, "donations": 4402172, "interest": 8953, "other": 15484, "spending": 832984, "net": 3593625, "funds": 10840953, "buildings": 8389057, "cash": 2397986, "sp_food": 87649, "sp_maint": 195757, "sp_heat": 104806, "sp_ins": 33867, "sp_travel": 38887, "sp_depr": 193385, "target": 435000, "restricted": 3888679, "general": 491725, "designated": 6460537, "gen_in": 819471, "gen_out": 592302, "gen_moved": -273137, "gains": 0, "people": 62.0, "seniors": 10.5}, "2020": {"donations": 1372162, "interest": 9634, "other": 18236, "income": 1400032, "spending": 932735, "net": 467297, "funds": 11308250, "gifts": 1326888, "legacies": 45274, "gifts_u": 753206, "interest_u": 3487, "buildings": 9826285, "debtors": 129377, "cash": 1525820, "creditors": -173232, "net_assets": 11308250, "restricted": 851336, "designated": 9926239, "general": 530664, "staff_no": 3, "salaries": 64034, "nic": 2227, "pension": 4564, "capex": 1684942, "sp_staff": 63422, "sp_food": 97352, "sp_maint": 226138, "sp_depr": 247714, "sp_heat": 117315, "sp_ins": 36660, "sp_travel": 56189, "sp_pubs": 26522, "sp_print": 6455, "sp_legal": 8532, "sp_comms": 14740, "sp_don": 2030, "sp_bank": 1233, "sp_equip": 18046, "sp_admin": 2198, "sp_gov": 8189, "target": 458000, "gen_in": 820203, "gen_out": 646984, "gen_moved": -134280, "restricted_in": 579829, "gains": 0, "investments": 0, "people": 58.0, "seniors": 9.5}, "2021": {"donations": 11840678, "interest": 25049, "other": 23866, "income": 11889593, "spending": 804331, "net": 11085262, "funds": 22393512, "gifts": 11725807, "legacies": 114871, "gifts_u": 588388, "interest_u": 23437, "buildings": 10730724, "debtors": 102319, "cash": 11832637, "creditors": -272168, "net_assets": 22393512, "restricted": 11199761, "designated": 10607096, "general": 586644, "staff_no": 4, "salaries": 88297, "nic": 4186, "pension": 14471, "capex": 1136489, "sp_staff": 72091, "sp_food": 97360, "sp_maint": 163627, "sp_depr": 232051, "sp_heat": 120713, "sp_ins": 39268, "sp_travel": 14947, "sp_pubs": 20155, "sp_print": 5515, "sp_legal": 2345, "sp_comms": 19759, "sp_don": 30, "sp_bank": 936, "sp_equip": 5877, "sp_admin": 1107, "sp_gov": 8550, "target": 557000, "one_donor": 10750000, "gen_in": 734126, "gen_out": 513187, "gen_moved": -164959, "restricted_in": 11139031, "gains": 0, "investments": 0, "people": 63.5, "seniors": 13.0}, "2022": {"donations": 1590225, "interest": 36633, "other": 41436, "income": 1668294, "spending": 1040815, "net": 627479, "funds": 23020991, "gifts": 1575225, "legacies": 15000, "gifts_u": 842674, "interest_u": 36156, "buildings": 12510005, "debtors": 314883, "cash": 10389478, "creditors": -193375, "net_assets": 23020991, "restricted": 9731113, "designated": 12496086, "general": 793780, "staff_no": 3, "salaries": 91753, "nic": 5030, "pension": 17582, "capex": 2148263, "sp_staff": 47694, "sp_food": 100305, "sp_maint": 193485, "sp_depr": 368684, "sp_heat": 123196, "sp_ins": 43554, "sp_travel": 31656, "sp_pubs": 40955, "sp_print": 8403, "sp_legal": 1942, "sp_comms": 14382, "sp_don": 1200, "sp_bank": 1429, "sp_equip": 48859, "sp_admin": 5281, "sp_gov": 9790, "target": 636000, "one_donor": 625000, "gen_in": 878422, "gen_out": 585214, "gen_moved": -86072, "restricted_in": 733028, "gains": 0, "investments": 0, "people": 65.0, "seniors": 13.0}, "2023": {"donations": 1576820, "interest": 146195, "other": 18976, "income": 1741991, "spending": 1055531, "gains": 0, "net": 686460, "funds": 23707451, "gifts": 1510666, "legacies": 66154, "gifts_u": 722020, "interest_u": 140913, "buildings": 14767648, "investments": 0, "debtors": 249704, "cash": 9275111, "creditors": -585012, "net_assets": 23707451, "restricted": 7871267, "designated": 15105039, "general": 731133, "staff_no": 3, "salaries": 101703, "nic": 5786, "pension": 22955, "capex": 2536847, "sp_staff": 53648, "sp_food": 98919, "sp_maint": 226296, "sp_depr": 279204, "sp_heat": 117900, "sp_ins": 51168, "sp_travel": 72922, "sp_pubs": 46695, "sp_print": 9541, "sp_legal": 10242, "sp_comms": 13756, "sp_don": 1050, "sp_bank": 1703, "sp_equip": 53649, "sp_admin": 3646, "sp_gov": 15192, "target": 725603, "one_donor": 625000, "gen_in": 836073, "gen_out": 686008, "gen_moved": -212712, "restricted_in": 793928, "people": 61.5, "seniors": 11.5}, "2024": {"donations": 2555419, "interest": 328037, "other": 16174, "income": 2899630, "spending": 1152686, "gains": 3800, "net": 1750744, "funds": 25458195, "gifts": 2504597, "legacies": 50822, "gifts_u": 1719938, "interest_u": 315841, "buildings": 19157938, "investments": 254524, "debtors": 380947, "cash": 6419440, "creditors": -754654, "net_assets": 25458195, "restricted": 3792687, "designated": 20624582, "general": 1040914, "staff_no": 3, "salaries": 111117, "nic": 6583, "pension": 24942, "capex": 4733143, "sp_staff": 57333, "sp_food": 135866, "sp_maint": 217503, "sp_depr": 342853, "sp_heat": 154324, "sp_ins": 59871, "sp_travel": 68616, "sp_pubs": 41364, "sp_print": 6436, "sp_legal": 4221, "sp_comms": 13887, "sp_don": 1075, "sp_bank": 2124, "sp_equip": 30563, "sp_admin": 4760, "sp_gov": 11890, "target": 1093305, "one_donor": 625000, "gen_in": 1853045, "gen_out": 748021, "gen_moved": -795243, "restricted_in": 796855, "people": 63.5, "seniors": 12.0}, "2025": {"donations": 1892184, "interest": 192388, "other": 23263, "income": 2107835, "spending": 1591536, "gains": -21343, "net": 494956, "funds": 25953151, "gifts": 1665281, "legacies": 226903, "gifts_u": 1016377, "interest_u": 181252, "buildings": 23174862, "investments": 285593, "debtors": 407530, "cash": 2549604, "creditors": -464438, "net_assets": 25953151, "restricted": 854808, "designated": 23718729, "general": 1379602, "staff_no": 4, "salaries": 151450, "nic": 10701, "pension": 30492, "capex": 4582861, "sp_staff": 105927, "sp_food": 194493, "sp_maint": 219098, "sp_depr": 565937, "sp_heat": 168498, "sp_ins": 69980, "sp_travel": 102408, "sp_pubs": 63421, "sp_print": 7540, "sp_legal": 4030, "sp_comms": 15762, "sp_don": 1050, "sp_bank": 1655, "sp_equip": 53068, "sp_admin": 4703, "sp_gov": 13966, "target": 1326000, "one_donor": 312500, "gen_in": 1280807, "gen_out": 912934, "gen_moved": -29185, "restricted_in": 660040, "people": 65.5, "seniors": 12.5}, "2026": {"donations": 10832086, "interest": 263252, "other": 10618, "income": 11105956, "spending": 1574591, "gains": 14798, "net": 9546163, "funds": 35499314, "gifts": 10823327, "legacies": 8759, "gifts_u": 1274633, "interest_u": 182003, "buildings": 23272207, "investments": 323391, "debtors": 680639, "cash": 11375614, "creditors": -152537, "net_assets": 35499314, "restricted": 10044452, "designated": 23965142, "general": 1489708, "staff_no": 4, "salaries": 134150, "nic": 6194, "pension": 30908, "capex": 659535, "sp_staff": 108332, "sp_food": 266403, "sp_maint": 221534, "sp_depr": 562190, "sp_heat": 154929, "sp_ins": 74090, "sp_travel": 54368, "sp_pubs": 35568, "sp_print": 5753, "sp_legal": 11635, "sp_comms": 12497, "sp_don": 1065, "sp_bank": 1919, "sp_equip": 45242, "sp_admin": 3614, "sp_gov": 15452, "target": 1215119, "one_donor": 9500000, "gen_in": 1196914, "gen_out": 910840, "gen_moved": -175968, "restricted_in": 9730697, "people": 59.5, "seniors": 14.0}}, "source": {"1994": {"income": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "1995": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "1996": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "1997": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "1998": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "1999": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2000": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2001": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2002": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2003": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2004": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2005": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gen_gain": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt"}, "2006": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gen_gain": "read_by_hand.txt"}, "2007": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "x_temple": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2008": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "x_temple": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gen_gain": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2009": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "x_temple": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2010": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_start": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2011": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2012": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_loan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2013": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_plan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_start": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt", "other": "read_by_hand.txt"}, "2014": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_plan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_start": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2015": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_plan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2016": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "x_plan": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2017": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2018": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "gains": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt"}, "2019": {"income": "read_by_hand.txt", "restricted_in": "read_by_hand.txt", "donations": "read_by_hand.txt", "interest": "read_by_hand.txt", "other": "read_by_hand.txt", "spending": "read_by_hand.txt", "net": "read_by_hand.txt", "funds": "read_by_hand.txt", "buildings": "read_by_hand.txt", "cash": "read_by_hand.txt", "sp_food": "read_by_hand.txt", "sp_maint": "read_by_hand.txt", "sp_heat": "read_by_hand.txt", "sp_ins": "read_by_hand.txt", "sp_travel": "read_by_hand.txt", "sp_depr": "read_by_hand.txt", "target": "read_by_hand.txt", "restricted": "read_by_hand.txt", "general": "read_by_hand.txt", "designated": "read_by_hand.txt", "gen_in": "read_by_hand.txt", "gen_out": "read_by_hand.txt", "gen_moved": "read_by_hand.txt", "gains": "read_by_hand.txt"}, "2020": {"donations": "2021 report", "interest": "2021 report", "other": "2021 report", "income": "2021 report", "spending": "2021 report", "net": "2021 report", "funds": "2021 report", "gifts": "2021 report", "legacies": "2021 report", "gifts_u": "2021 report", "interest_u": "2021 report", "buildings": "corrections.txt", "debtors": "corrections.txt", "cash": "corrections.txt", "creditors": "corrections.txt", "net_assets": "corrections.txt", "restricted": "corrections.txt", "designated": "2021 report", "general": "corrections.txt", "staff_no": "2021 report", "salaries": "2021 report", "nic": "2021 report", "pension": "2021 report", "capex": "2020 report", "sp_staff": "2021 report", "sp_food": "2021 report", "sp_maint": "2021 report", "sp_depr": "2021 report", "sp_heat": "2021 report", "sp_ins": "2021 report", "sp_travel": "2021 report", "sp_pubs": "2021 report", "sp_print": "2021 report", "sp_legal": "2021 report", "sp_comms": "2021 report", "sp_don": "2021 report", "sp_bank": "2021 report", "sp_equip": "2021 report", "sp_admin": "2021 report", "sp_gov": "2021 report", "target": "2020 report", "gen_in": "2021 report", "gen_out": "2021 report", "gen_moved": "2021 report", "restricted_in": "corrections.txt"}, "2021": {"donations": "2021 report", "interest": "2021 report", "other": "2021 report", "income": "2021 report", "spending": "2021 report", "net": "2021 report", "funds": "2021 report", "gifts": "2021 report", "legacies": "2021 report", "gifts_u": "2021 report", "interest_u": "2021 report", "buildings": "2021 report", "debtors": "2021 report", "cash": "2021 report", "creditors": "2022 report", "net_assets": "2022 report", "restricted": "2021 report", "designated": "2021 report", "general": "2021 report", "staff_no": "2021 report", "salaries": "2021 report", "nic": "2021 report", "pension": "2021 report", "capex": "2021 report", "sp_staff": "2021 report", "sp_food": "2021 report", "sp_maint": "2021 report", "sp_depr": "2021 report", "sp_heat": "2021 report", "sp_ins": "2021 report", "sp_travel": "2021 report", "sp_pubs": "2021 report", "sp_print": "2021 report", "sp_legal": "2021 report", "sp_comms": "2021 report", "sp_don": "2021 report", "sp_bank": "2021 report", "sp_equip": "2021 report", "sp_admin": "2021 report", "sp_gov": "2021 report", "target": "2021 report", "one_donor": "2021 report", "gen_in": "2021 report", "gen_out": "2021 report", "gen_moved": "2021 report", "restricted_in": "corrections.txt"}, "2022": {"donations": "2022 report", "interest": "2022 report", "other": "2022 report", "income": "2022 report", "spending": "2022 report", "net": "2022 report", "funds": "2022 report", "gifts": "2022 report", "legacies": "2022 report", "gifts_u": "2022 report", "interest_u": "2022 report", "buildings": "2022 report", "debtors": "2022 report", "cash": "2022 report", "creditors": "2022 report", "net_assets": "2022 report", "restricted": "2022 report", "designated": "2022 report", "general": "2022 report", "staff_no": "2022 report", "salaries": "2022 report", "nic": "2022 report", "pension": "2022 report", "capex": "2022 report", "sp_staff": "2022 report", "sp_food": "2022 report", "sp_maint": "2022 report", "sp_depr": "2022 report", "sp_heat": "2022 report", "sp_ins": "2022 report", "sp_travel": "2022 report", "sp_pubs": "2022 report", "sp_print": "2022 report", "sp_legal": "2022 report", "sp_comms": "2022 report", "sp_don": "2022 report", "sp_bank": "2022 report", "sp_equip": "2022 report", "sp_admin": "2022 report", "sp_gov": "2022 report", "target": "2022 report", "one_donor": "2022 report", "gen_in": "2022 report", "gen_out": "2022 report", "gen_moved": "2022 report", "restricted_in": "corrections.txt"}, "2023": {"donations": "2024 report", "interest": "2024 report", "other": "2024 report", "income": "2024 report", "spending": "2024 report", "gains": "2024 report", "net": "2024 report", "funds": "2024 report", "gifts": "2024 report", "legacies": "2024 report", "gifts_u": "2024 report", "interest_u": "2024 report", "buildings": "2024 report", "investments": "2024 report", "debtors": "2024 report", "cash": "2024 report", "creditors": "2024 report", "net_assets": "2024 report", "restricted": "2024 report", "designated": "2024 report", "general": "2024 report", "staff_no": "2024 report", "salaries": "2024 report", "nic": "2024 report", "pension": "2024 report", "capex": "2023 report", "sp_staff": "2024 report", "sp_food": "2024 report", "sp_maint": "2024 report", "sp_depr": "2024 report", "sp_heat": "2024 report", "sp_ins": "2024 report", "sp_travel": "2024 report", "sp_pubs": "2024 report", "sp_print": "2024 report", "sp_legal": "2024 report", "sp_comms": "2024 report", "sp_don": "2024 report", "sp_bank": "2024 report", "sp_equip": "2024 report", "sp_admin": "2024 report", "sp_gov": "2024 report", "target": "2023 report", "one_donor": "2024 report", "gen_in": "2024 report", "gen_out": "2024 report", "gen_moved": "2024 report", "restricted_in": "corrections.txt"}, "2024": {"donations": "2024 report", "interest": "2024 report", "other": "2024 report", "income": "2024 report", "spending": "2024 report", "gains": "2024 report", "net": "2024 report", "funds": "2024 report", "gifts": "2024 report", "legacies": "2024 report", "gifts_u": "2024 report", "interest_u": "2024 report", "buildings": "2024 report", "investments": "2024 report", "debtors": "2024 report", "cash": "2024 report", "creditors": "2024 report", "net_assets": "2024 report", "restricted": "2024 report", "designated": "2024 report", "general": "2024 report", "staff_no": "2024 report", "salaries": "2024 report", "nic": "2024 report", "pension": "2024 report", "capex": "2024 report", "sp_staff": "2024 report", "sp_food": "2024 report", "sp_maint": "2024 report", "sp_depr": "2024 report", "sp_heat": "2024 report", "sp_ins": "2024 report", "sp_travel": "2024 report", "sp_pubs": "2024 report", "sp_print": "2024 report", "sp_legal": "2024 report", "sp_comms": "2024 report", "sp_don": "2024 report", "sp_bank": "2024 report", "sp_equip": "2024 report", "sp_admin": "2024 report", "sp_gov": "2024 report", "target": "2024 report", "one_donor": "2024 report", "gen_in": "2024 report", "gen_out": "2024 report", "gen_moved": "2024 report", "restricted_in": "corrections.txt"}, "2025": {"donations": "2025 report", "interest": "2025 report", "other": "2025 report", "income": "2025 report", "spending": "2025 report", "gains": "2025 report", "net": "2025 report", "funds": "2025 report", "gifts": "2025 report", "legacies": "2025 report", "gifts_u": "2025 report", "interest_u": "2025 report", "buildings": "2025 report", "investments": "2025 report", "debtors": "2025 report", "cash": "2025 report", "creditors": "2025 report", "net_assets": "2025 report", "restricted": "2025 report", "designated": "2025 report", "general": "2025 report", "staff_no": "2025 report", "salaries": "2025 report", "nic": "2025 report", "pension": "2025 report", "capex": "2025 report", "sp_staff": "2025 report", "sp_food": "2025 report", "sp_maint": "2025 report", "sp_depr": "2025 report", "sp_heat": "2025 report", "sp_ins": "2025 report", "sp_travel": "2025 report", "sp_pubs": "2025 report", "sp_print": "2025 report", "sp_legal": "2025 report", "sp_comms": "2025 report", "sp_don": "2025 report", "sp_bank": "2025 report", "sp_equip": "2025 report", "sp_admin": "2025 report", "sp_gov": "2025 report", "target": "2025 report", "one_donor": "2025 report", "gen_in": "2025 report", "gen_out": "2025 report", "gen_moved": "2025 report", "restricted_in": "corrections.txt"}, "2026": {"donations": "corrections.txt", "interest": "corrections.txt", "other": "corrections.txt", "income": "2026 report", "spending": "2026 report", "gains": "2026 report", "net": "2026 report", "funds": "2026 report", "gifts": "corrections.txt", "legacies": "corrections.txt", "gifts_u": "corrections.txt", "interest_u": "corrections.txt", "buildings": "2026 report", "investments": "corrections.txt", "debtors": "corrections.txt", "cash": "2026 report", "creditors": "corrections.txt", "net_assets": "corrections.txt", "restricted": "2026 report", "designated": "2026 report", "general": "corrections.txt", "staff_no": "corrections.txt", "salaries": "corrections.txt", "nic": "corrections.txt", "pension": "corrections.txt", "capex": "corrections.txt", "sp_staff": "corrections.txt", "sp_food": "corrections.txt", "sp_maint": "corrections.txt", "sp_depr": "corrections.txt", "sp_heat": "corrections.txt", "sp_ins": "corrections.txt", "sp_travel": "corrections.txt", "sp_pubs": "corrections.txt", "sp_print": "corrections.txt", "sp_legal": "corrections.txt", "sp_comms": "corrections.txt", "sp_don": "corrections.txt", "sp_bank": "corrections.txt", "sp_equip": "corrections.txt", "sp_admin": "corrections.txt", "sp_gov": "corrections.txt", "target": "corrections.txt", "one_donor": "corrections.txt", "gen_in": "corrections.txt", "gen_out": "corrections.txt", "gen_moved": "corrections.txt", "restricted_in": "corrections.txt"}}, "cpi": {"1989": 50.22, "1990": 52.95, "1991": 56.78, "1992": 61.07, "1993": 62.98, "1994": 64.59, "1995": 65.87, "1996": 67.62, "1997": 69.13, "1998": 70.35, "1999": 71.43, "2000": 72.25, "2001": 72.85, "2002": 73.87, "2003": 74.78, "2004": 75.77, "2005": 76.86, "2006": 78.48, "2007": 80.5, "2008": 82.27, "2009": 85.35, "2010": 87.27, "2011": 90.33, "2012": 94.23, "2013": 96.7, "2014": 98.94, "2015": 99.98, "2016": 100.09, "2017": 101.19, "2018": 104.05, "2019": 106.4, "2020": 108.24, "2021": 108.92, "2022": 113.25, "2023": 124.61, "2024": 131.67, "2025": 134.78, "2026": 139.42}, "energy": {"1989": 30.68, "1990": 32.33, "1991": 35.32, "1992": 37.73, "1993": 38.05, "1994": 37.41, "1995": 39.9, "1996": 40.1, "1997": 40.09, "1998": 38.48, "1999": 37.32, "2000": 37.47, "2001": 37.26, "2002": 37.83, "2003": 38.62, "2004": 39.43, "2005": 43.16, "2006": 48.88, "2007": 62.54, "2008": 63.25, "2009": 79.17, "2010": 79.02, "2011": 78.6, "2012": 88.46, "2013": 93.91, "2014": 100.54, "2015": 102.77, "2016": 99.04, "2017": 97.02, "2018": 102.23, "2019": 107.93, "2020": 112.77, "2021": 104.29, "2022": 117.43, "2023": 211.14, "2024": 201.26, "2025": 167.42, "2026": 176.23}};
+function render() {
+const D = JSON.parse(JSON.stringify(D0));   // a fresh copy: render() runs again when the width changes
+const Y = D.years, Ys = Y.map(String), R = Ys.map(y => D.data[y]);
+const LAST = R[R.length - 1], PREV = R[R.length - 2], LY = Y[Y.length - 1];
+const v = (r, k) => (r && r[k]) || 0;
+
+// ---------------------------------------------------------------- formatting
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pounds = n => (n < 0 ? '−' : '') + '£' + Math.abs(Math.round(n)).toLocaleString('en-GB');
+function short(n) {                       // £1.59m, £194k, £950
+  const a = Math.abs(n), s = n < 0 ? '−' : '';
+  if (a >= 1e6) return s + '£' + (a / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'm';
+  if (a >= 1e3) return s + '£' + (a < 1e4 ? String(+(a / 1e3).toFixed(2)) : Math.round(a / 1e3)) + 'k';
+  return s + '£' + Math.round(a);
+}
+const words = n => { const a = Math.abs(n); return a >= 1e6 ? '£' + (a / 1e6).toFixed(2).replace(/\.?0+$/, '') + ' million' : pounds(a); };
+const yearName = y => 'Year to March ' + y;
+
+// ---------------------------------------------------------------- tooltip
+const tip = document.getElementById('tip');
+function showTip(e, html) { tip.innerHTML = html; tip.hidden = false; moveTip(e); }
+function moveTip(e) {
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+  if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip() { tip.hidden = true; }
+document.addEventListener('scroll', hideTip, { passive: true });
+const row = (name, color, val) => `<div class="row"><span><i style="background:var(${color})"></i>${esc(name)}</span><span>${val}</span></div>`;
+
+// ---------------------------------------------------------------- charts (plain SVG)
+const NS = 'http://www.w3.org/2000/svg';
+// on a phone the charts are drawn at most 600 wide (so they shrink less) with a wider left margin for the larger text
+const MOB = typeof innerWidth === 'number' && innerWidth > 0 && innerWidth < 600;
+const fitW = (W, host) => { const cw = host && host.clientWidth; return cw && cw < W ? Math.max(240, Math.floor(cw)) : W; };
+const fitL = l => l;
+function el(tag, attrs, parent) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+function legend(host, items, line) {
+  const d = document.createElement('div'); d.className = 'legend';
+  // a box for bars, a short line for lines, a dashed line for dashed lines
+  d.innerHTML = items.map(it => {
+    const sw = it.dash ? `<i class="line dash" style="border-top-color:var(${it.color})"></i>`
+      : (line || it.isLine) ? `<i class="line" style="background:var(${it.color})"></i>`
+      : `<i style="background:var(${it.color})"></i>`;
+    return `<span>${sw}${esc(it.name)}</span>`;
+  }).join('');
+  host.appendChild(d);
+}
+function scale(max) {                     // the smallest round top for the axis that fits, with 3 to 5 steps
+  let best = null;
+  for (const p of [10, 100, 1e3, 1e4, 1e5, 1e6, 1e7]) for (const b of [1, 2, 2.5, 5]) for (const k of [3, 4, 5]) {
+    const top = b * p * k;
+    if (top >= max && (!best || top < best.max || (top === best.max && k > best.n))) best = { max: top, n: k };
+  }
+  return best || { max, n: 4 };
+}
+function smallScale(max) {                // plain counts: steps of 5, 10 or 20
+  for (const st of [1, 2, 5, 10, 20, 25, 50]) for (const k of [3, 4, 5, 6]) if (st * k >= max) return { max: st * k, n: k };
+  return { max, n: 4 };
+}
+// an x-axis label; a five-year label such as "2002–06" goes on two lines ("2002" / "–2006") when space is short
+function xLabel(svg, x, y, lab, narrow) {
+  const t = el('text', { x, y, 'text-anchor': 'middle' }, svg), m = narrow && /^\d{4}–\d{2}$/.test(lab) ? lab.split('–') : null;
+  if (!m) { t.textContent = lab; return; }
+  el('tspan', { x, dy: 0 }, t).textContent = m[0];
+  el('tspan', { x, dy: 14 }, t).textContent = '–' + m[0].slice(0, 2) + m[1];
+}
+function barPath(x, y, w, h, r) { r = Math.min(r, w / 2, h); return `M${x},${y + h}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h}Z`; }
+function axis(svg, m, W, ph, sc, fmt = short) {
+  for (let k = 0; k <= sc.n; k++) {
+    const val = sc.max * k / sc.n, y = m.t + ph - ph * k / sc.n;
+    el('line', { x1: m.l, x2: W - m.r, y1: y, y2: y, class: k ? 'gl' : 'base' }, svg);
+    el('text', { x: m.l - 6, y: y + 4, 'text-anchor': 'end' }, svg).textContent = fmt(val);
+  }
+}
+/* stacked columns; values in £. opt.cap draws taller bars to the cap with a break and their real total on top */
+function stacked(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  legend(host, [...series, ...[...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => ({ ...L, isLine: true }))], false);
+  const W = fitW(opt.W || 1000, host), two = (W - 60) / labels.length < 64 && labels.every(l => /^\d{4}–\d{2}$/.test(l));
+  const H = (opt.h || 280) + (two ? 14 : 0), m = { l: fitL(52), r: opt.right ? 64 : 8, t: 22, b: 28 + (two ? 14 : 0) };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const totals = labels.map((_, i) => series.reduce((a, s) => a + (s.values[i] || 0), 0));
+  const top = Math.max(...totals, ...(opt.line ? opt.line.values : []), ...(opt.lines || []).flatMap(L => L.values));
+  let sc = scale((opt.cap ? Math.min(opt.cap, top) : top) * (opt.headroom || 1));
+  if (opt.steps) {                    // fixed steps on both scales, e.g. £150k on the left = £5m on the right
+    const n = Math.max(3, Math.ceil(Math.max(top, ...(opt.right ? opt.right.values.map(v => v / opt.steps.right * opt.steps.left) : [])) / opt.steps.left));
+    sc = { max: opt.steps.left * n, n };
+  }
+  axis(svg, m, W, ph, sc);
+  // a second scale on the right, on the same gridlines, for a line measured in something else
+  let rsc = null;
+  if (opt.right) {
+    const R = opt.right, last = R.values[R.values.length - 1];
+    const floor = Math.max(...R.values) * (R.headroom || 1) / sc.n;          // every point must fit
+    // with "above", end the right-hand line that share above the other line's last point: the nearest round step
+    const want = R.above && opt.line ? last / Math.min(opt.line.values[opt.line.values.length - 1] / sc.max * R.above, 0.97) / sc.n : floor;
+    let step = opt.steps ? opt.steps.right : null;
+    if (!opt.steps) for (const p of [1, 10, 100, 1e3, 1e4, 1e5, 1e6, 1e7]) for (const b of [1, 1.2, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 7.5, 8, 9]) {
+      const c = b * p;
+      if (c >= floor * 0.999 && (!step || Math.abs(c - want) < Math.abs(step - want) || (step < want && c >= want && c - want < want - step))) step = c;
+    }
+    rsc = { max: step * sc.n };
+    for (let k = 0; k <= sc.n; k++) el('text', { x: W - m.r + 6, y: m.t + ph - ph * k / sc.n + 4, 'text-anchor': 'start', style: `fill:var(${opt.right.color})` }, svg).textContent = (opt.right.fmtR || short)(step * k);
+  }
+  const band = pw / n, bw = Math.min(56, band * 0.6);
+  labels.forEach((lab, i) => {
+    const x = m.l + band * i + (band - bw) / 2, over = totals[i] > sc.max;
+    const k = over ? sc.max / totals[i] : 1;      // squeeze an over-tall bar so its parts still show in proportion
+    let acc = 0;
+    const segs = series.map(s => ({ s, v: s.values[i] || 0 })).filter(o => o.v > 0);
+    segs.forEach((o, j) => {
+      const h = ph * o.v * k / sc.max, y = m.t + ph - ph * (acc + o.v * k) / sc.max, gap = j ? 2 : 0;
+      if (h - gap > 0.5) {
+        if (j === segs.length - 1 && !over) el('path', { d: barPath(x, y, bw, h - gap, 4), fill: `var(${o.s.color})` }, svg);
+        else el('rect', { x, y, width: bw, height: h - gap, fill: `var(${o.s.color})` }, svg);
+      }
+      acc += o.v * k;
+    });
+    if (over) {                                   // a zigzag break near the top
+      const yb = m.t + 18;
+      el('path', { d: `M${x - 3},${yb} l${(bw + 6) / 4},-5 l${(bw + 6) / 4},10 l${(bw + 6) / 4},-10 l${(bw + 6) / 4},5`, fill: 'none', stroke: 'var(--surface)', 'stroke-width': 5 }, svg);
+    }
+    if ((opt.totals || over) && (n <= 16 || over)) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.slice().reverse().map(s => s.values[i] ? row(s.name, s.color, pounds(s.values[i])) : '').join('') + (opt.noTotal ? '' : `<div class="row" style="margin-top:3px"><span>Total</span><span>${pounds(totals[i])}</span></div>`) + [...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => row(L.name, L.color, (L.fmtR || pounds)(L.values[i]))).join('')));
+    hit.addEventListener('mouseleave', hideTip);
+    if (showLabel(labels, i)) xLabel(svg, m.l + band * i + band / 2, H - 8 - (two ? 14 : 0), lab, two);
+  });
+  for (const L of (opt.lines || [])) drawOver(L);
+  if (opt.line) drawOver(opt.line);
+  if (opt.right) drawOver(opt.right, rsc);
+  function drawOver(L, S = sc) {
+    const X = i => m.l + band * i + band / 2, Yp = val => m.t + ph - ph * Math.min(val, S.max) / S.max;
+    el('path', { d: L.values.map((val, i) => (i ? 'L' : 'M') + X(i) + ',' + Yp(val)).join(''), fill: 'none', stroke: `var(${L.color})`, 'stroke-width': L.dash ? 2 : 2.5, 'stroke-dasharray': L.dash ? '6 5' : 'none', 'stroke-linejoin': 'round', 'pointer-events': 'none' }, svg);
+    if (L.ends) [0, n - 1].forEach(i => {
+      el('circle', { cx: X(i), cy: Yp(L.values[i]), r: 4.5, fill: `var(${L.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5, 'pointer-events': 'none' }, svg);
+      el('text', { x: X(i), y: Yp(L.values[i]) - 9, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (L.fmtR || short)(L.values[i]);
+    });
+    if (n <= 16) L.values.forEach((val, i) => el('circle', { cx: X(i), cy: Yp(val), r: 4, fill: `var(${L.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5, 'pointer-events': 'none' }, svg));
+  }
+}
+/* side-by-side columns */
+function grouped(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  if (series.length > 1) legend(host, series);
+  const W = fitW(opt.W || 600, host), H = opt.h || 280, m = { l: fitL(52), r: 6, t: 20, b: 28 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const sc = opt.fmt ? smallScale(Math.max(...series.flatMap(s => s.values.filter(x => x != null)))) : scale(Math.max(...series.flatMap(s => s.values.filter(x => x != null))));
+  axis(svg, m, W, ph, sc, opt.fmt || short);
+  const band = pw / n, bw = Math.min(opt.bw || 30, (band - 10) / series.length);
+  labels.forEach((lab, i) => {
+    series.forEach((s, j) => {
+      const val = s.values[i]; if (val == null || val <= 0) return;
+      const h = ph * val / sc.max, x = m.l + band * i + band / 2 - (bw * series.length + 3 * (series.length - 1)) / 2 + j * (bw + 3);
+      el('path', { d: barPath(x, m.t + ph - h, bw, h, 3), fill: `var(${s.color})` }, svg);
+      if (opt.values) el('text', { x: x + bw / 2, y: m.t + ph - h - 5, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (opt.fmt || short)(val);
+    });
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.map(s => s.values[i] == null ? '' : row(s.name, s.color, (opt.fmt || pounds)(s.values[i]))).join('')));
+    hit.addEventListener('mouseleave', hideTip);
+    if (showLabel(labels, i)) el('text', { x: m.l + band * i + band / 2, y: H - 8, 'text-anchor': 'middle' }, svg).textContent = lab;
+  });
+}
+/* lines with a crosshair; a null value leaves a gap */
+const showLabel = (labels, i) => labels.length <= 16 || +labels[i] % 5 === 0;
+function lines(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  if (series.length > 1) legend(host, series, true);
+  const W = fitW(opt.W || 600, host), H = opt.h || 280, m = { l: fitL(52), r: MOB ? 76 : 60, t: 14, b: 28 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const top = Math.max(...series.flatMap(s => s.values.filter(x => x != null))), fmt = opt.fmt || short;
+  const sc = opt.fmt ? smallScale(top) : scale(top);
+  axis(svg, m, W, ph, sc, fmt);
+  const X = i => m.l + pw * i / (n - 1), Yp = val => m.t + ph - ph * val / sc.max;
+  labels.forEach((lab, i) => { if (showLabel(labels, i)) el('text', { x: X(i), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = lab; });
+  if (opt.band && labels.includes(opt.band.from) && labels.includes(opt.band.to)) {
+    const x0 = X(labels.indexOf(opt.band.from)) - pw / (n - 1) / 2, x1 = X(labels.indexOf(opt.band.to)) + pw / (n - 1) / 2;
+    const bandEl = el('rect', { x: x0, y: m.t, width: x1 - x0, height: ph, fill: 'var(--grid)', opacity: 0.7 }, svg);
+    svg.insertBefore(bandEl, svg.firstChild);
+    el('text', { x: (x0 + x1) / 2, y: m.t + ph - 8, 'text-anchor': 'middle', class: 'lbl band-l' }, svg).textContent = opt.band.label;
+  }
+  if (opt.mark && labels.includes(opt.mark.at)) {
+    const xm = X(labels.indexOf(opt.mark.at));
+    el('line', { x1: xm, x2: xm, y1: m.t, y2: m.t + ph, stroke: 'var(--axis)', 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, svg);
+    el('text', { x: xm - 6, y: m.t + 12, 'text-anchor': 'end', class: 'lbl' }, svg).textContent = opt.mark.label;
+  }
+  const ends = [];
+  series.forEach(s => {
+    let d = '', pen = false, last = -1;
+    s.values.forEach((val, i) => { if (val == null) { pen = false; return; } d += (pen ? 'L' : 'M') + X(i).toFixed(1) + ',' + Yp(val).toFixed(1); pen = true; last = i; });
+    el('path', { d, fill: 'none', stroke: `var(${s.color})`, 'stroke-width': s.dash ? 2 : 2.5, 'stroke-dasharray': s.dash ? '6 5' : 'none', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+    if (n <= 16) s.values.forEach((val, i) => { if (val != null) el('circle', { cx: X(i), cy: Yp(val), r: 3, fill: `var(${s.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5 }, svg); });
+    if (last >= 0) { el('circle', { cx: X(last), cy: Yp(s.values[last]), r: 4.5, fill: `var(${s.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5 }, svg); ends.push({ y: Yp(s.values[last]) + 4, t: fmt(s.values[last]), x: X(last) + 8 }); }
+  });
+  ends.sort((a, b) => a.y - b.y).forEach((e, i, arr) => { if (i && e.y - arr[i - 1].y < 13) e.y = arr[i - 1].y + 13; el('text', { x: e.x, y: e.y, class: 'lbl' }, svg).textContent = e.t; });
+  const cross = el('line', { y1: m.t, y2: m.t + ph, stroke: 'var(--axis)', 'stroke-width': 1, visibility: 'hidden' }, svg);
+  const hit = el('rect', { x: m.l - 10, y: m.t, width: pw + 20, height: ph, fill: 'transparent' }, svg);
+  hit.addEventListener('mousemove', e => {
+    const r = svg.getBoundingClientRect(), vx = (e.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(n - 1, Math.round((vx - m.l) / pw * (n - 1))));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible');
+    showTip(e, `<b>${esc(opt.name ? opt.name(labels[i]) : labels[i])}</b>` + series.map(s => s.values[i] == null ? '' : row(s.name, s.color, (opt.fmt || pounds)(s.values[i]))).join(''));
+  });
+  hit.addEventListener('mouseleave', () => { hideTip(); cross.setAttribute('visibility', 'hidden'); });
+}
+/* five-year blocks: one bar each (average a year, as paid), with a dashed marker for inflation from the first block */
+function blockBars(id, blocks, f, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  const lab = b => `${b[0]}–${String(b[b.length - 1]).slice(2)}`;
+  const vals = blocks.map(b => avgOf(b, f)), cpi = blocks.map(b => avgOf(b, y => CPI[y]));
+  const infl = cpi.map(c => vals[0] * c / cpi[0]);
+  const X2 = opt.extra, ix2 = X2 ? blocks.map(b => avgOf(b, y => X2.index[y])) : null, ex = X2 ? ix2.map(c => vals[0] * c / ix2[0]) : [];
+  if (!opt.noLegend) legend(host, [{ name: opt.name || 'Average a year', color: opt.color || RED }, ...(opt.noInfl ? [] : [{ name: `Inflation from ${lab(blocks[0])}`, color: QUIET, dash: true }]), ...(X2 ? [{ name: `${X2.name} only, from ${lab(blocks[0])}`, color: X2.color, dash: true }] : [])]);
+  const W = fitW(600, host), two = (W - 60) / blocks.length < 64;
+  const H = (opt.h || 280) + (two ? 14 : 0), m = { l: fitL(52), r: 8, t: 26, b: 30 + (two ? 14 : 0) };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = blocks.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const sc = scale(Math.max(...vals, ...(opt.noInfl ? [] : infl), ...ex) * 1.08);
+  axis(svg, m, W, ph, sc);
+  const band = pw / n, bw = Math.min(64, band * 0.55), Yp = v => m.t + ph - ph * v / sc.max;
+  blocks.forEach((b, i) => {
+    const x = m.l + band * i + (band - bw) / 2, h = ph * vals[i] / sc.max;
+    el('path', { d: barPath(x, m.t + ph - h, bw, h, 4), fill: `var(${opt.color || RED})`, opacity: i === n - 1 ? 1 : 0.78 }, svg);
+    el('text', { x: x + bw / 2, y: opt.labelsIn ? Yp(vals[i]) + 17 : Yp(vals[i]) - 7, 'text-anchor': 'middle', class: opt.labelsIn ? 'lbl in' : 'lbl' }, svg).textContent = (opt.fmt || short)(vals[i]);
+    if (i > 0 && !opt.noInfl) el('line', { x1: x - 6, x2: x + bw + 6, y1: Yp(infl[i]), y2: Yp(infl[i]), stroke: `var(${QUIET})`, 'stroke-width': 2.5, 'stroke-dasharray': '5 4' }, svg);
+    if (i > 0 && X2) el('line', { x1: x - 8, x2: x + bw + 8, y1: Yp(ex[i]), y2: Yp(ex[i]), stroke: `var(${X2.color})`, 'stroke-width': X2.strong ? 3.5 : 2.5, 'stroke-dasharray': X2.strong ? '7 3' : '2 3' }, svg);
+    xLabel(svg, x + bw / 2, m.t + ph + 18, lab(b), two);
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${b[0]}–${b[b.length - 1]}, average a year</b>` + row(opt.name || 'Average', opt.color || RED, pounds(vals[i])) + (i && !opt.noInfl ? row('Inflation only', QUIET, pounds(infl[i])) : '') + (i && X2 ? row(X2.name + ' only', X2.color, pounds(ex[i])) : '')));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+  if (opt.sub) {                                   // a row of plain text under the chart (easier to read than text in it)
+    const p = document.createElement('p'); p.className = 'under';
+    p.textContent = `${opt.subName}: ${blocks.map(b => opt.sub(b)).join(' · ')}`;
+    host.appendChild(p);
+  }
+  return { vals, infl, ex, lab };
+}
+/* what went up and what went down: one bar per row from a zero line, as page text so it reads at any width;
+   rows = [{name, value, color, bold, gap, light}] */
+function bridge(id, rows, opt = {}) {
+  const host = document.getElementById(id);
+  const lo = Math.min(0, ...rows.map(r => r.value)), hi = Math.max(0, ...rows.map(r => r.value)), span = hi - lo;
+  const z = 100 * -lo / span;
+  host.className = 'hbars bridge'; host.setAttribute('role', 'img'); host.setAttribute('aria-label', opt.aria || '');
+  host.innerHTML = rows.map(r => {
+    const w = 100 * Math.abs(r.value) / span, left = r.value >= 0 ? z : z - w;
+    return `${r.gap ? '<hr>' : ''}<div class="hb${r.bold ? ' b' : ''}"><span class="hb-n">${esc(r.name)}</span>` +
+      `<span class="hb-t"><i style="left:${left}%;width:${Math.max(w, 0.5)}%;background:var(${r.color});opacity:${r.light ? 0.55 : 1}"></i><b style="left:${z}%"></b></span>` +
+      `<span class="hb-v">${r.value >= 0 ? '+' : ''}${short(r.value)}</span></div>`;
+  }).join('');
+}
+/* a table of years across; rows = [{name, values, cls, fmt}] */
+function yearTable(id, years, rows, opt = {}) {
+  const t = document.getElementById(id);
+  t.innerHTML = `<thead><tr><th>${esc(opt.first || '')}</th>` + years.map(y => `<th class="n">${y}</th>`).join('') + '</tr></thead><tbody>' +
+    rows.map(r => r.group ? `<tr class="grp"><td colspan="${years.length + 1}">${esc(r.group)}</td></tr>` :
+      `<tr class="${r.cls || ''}"><td class="${r.indent ? 'sub1' : ''}">${esc(r.name)}</td>` + r.values.map(x => `<td class="n">${x == null ? '–' : (r.fmt || pounds)(x)}</td>`).join('') + '</tr>').join('') + '</tbody>';
+}
+
+// ---------------------------------------------------------------- amounts are as paid; the price index is only for comparison
+const CPI = D.cpi;
+// residents: the community lists are complete from Vassa 2001, so the per-resident figures start with the year to
+// March 2002 (lists for 1995-96 and for 2000 are missing, which would leave gaps)
+const PSTART = '2002';
+Ys.forEach(y => { if (y < PSTART) delete D.data[y].people; });
+// The count changes from list to list, so the per-resident figures divide by the average number of residents over three
+// periods instead of each year's own count: up to 2010, from 2011 until the count settled near 60, and since then.
+// people_count keeps each year's own count (for the residents chart); people becomes the period average.
+const PPL = (() => {
+  const ys = Ys.filter(y => D.data[y].people != null), pv = y => D.data[y].people;
+  const settled = ys.find(y => pv(y) >= 58 && ys.filter(z => z >= y).every(z => pv(z) >= 55));
+  const periods = [ys.filter(y => y < '2011'), ys.filter(y => y >= '2011' && y < settled), ys.filter(y => y >= settled)].filter(p => p.length);
+  const mean = p => p.reduce((a, y) => a + pv(y), 0) / p.length;
+  const out = { settled, periods: periods.map(p => ({ years: p, avg: mean(p) })) };
+  for (const P of out.periods) for (const y of P.years) { D.data[y].people_count = D.data[y].people; D.data[y].people = P.avg; }
+  return out;
+})();
+const periodText = PPL.periods.map(P => `${P.years[0]}–${P.years[P.years.length - 1]}`).join(', ');
+document.querySelectorAll('.periods').forEach(e => e.textContent = periodText);
+document.querySelectorAll('.pp-how').forEach(e => e.textContent = `Per resident means divided by the average number of residents in each period (${PPL.periods.map(P => `${P.years[0]}–${P.years[P.years.length - 1]}: ${Math.round(P.avg)}`).join(', ')}), so the line doesn't jump with each year's list.`);
+const sum = (r, ks) => ks.reduce((a, k) => a + v(r, k), 0);
+const pct = (a, b) => Math.round(100 * (b - a) / a);
+const signed = n => `<span class="${n < 0 ? 'bad' : ''}">${pounds(n)}</span>`;
+// years with the full detail (the everyday account and the full list of costs)
+const DYs = Ys.filter(y => D.data[y].gen_in != null), DR = DYs.map(y => D.data[y]);
+document.querySelectorAll('.ly').forEach(e => e.textContent = 'the year to March ' + LY);
+document.querySelectorAll('.dy').forEach(e => e.textContent = DYs[0] + '–' + LY);
+
+// ---------------------------------------------------------------- shared pieces
+// Building costs that the accounts count as spending (planning fees for new buildings, interest on a building loan,
+// the one-off replacement of the Temple heating) are taken out of running costs. The Temple heating sits inside
+// "maintenance", so maintenance is shown without it; sp_maint_acc keeps the accounts' own figure.
+const XB = r => v(r, 'x_plan') + v(r, 'x_loan') + v(r, 'x_temple');
+Ys.forEach(y => { const r = D.data[y]; r.sp_maint_acc = r.sp_maint; r.sp_maint = r.sp_maint - v(r, 'x_temple'); });
+const RUNK = r => r.spending - v(r, 'sp_depr') - XB(r);        // running costs: without building work and wear
+const RUNW = r => RUNK(r) - v(r, 'sp_food');                    // the same without welfare and food, shown apart
+const PER = (y, f) => f(D.data[y]) / D.data[y].people;           // a cost per resident (period-average residents)
+const avgOf = (ys, f) => ys.reduce((a, y) => a + f(y), 0) / ys.length;
+const B3 = Ys.slice(0, 3), N3 = Ys.slice(-3);                    // headline comparisons: first three years against last three
+const infl3 = avgOf(N3, y => CPI[y]) / avgOf(B3, y => CPI[y]);    // inflation between those two periods
+const upPct = x => (x >= 1 ? '+' : '−') + Math.abs(Math.round(100 * (x - 1))) + '%';
+const yrs3 = ys => ys[0] + '–' + String(ys[2]).slice(2);
+const Y0 = Ys[0];
+// the building programme: the trustees' report for the year to March 2019 records £3.0m of capital spending (Heartwood
+// House and land bought, the nuns' buildings and the Cittaviveka Bhikkhu Vihara designed); big building every year since
+const BUILD_START = '2019';
+const BLAB = b => `${b[0]}–${String(b[b.length - 1]).slice(2)}`;
+const BLOCKS = (() => { const out = []; for (let e = Ys.length; e - 5 >= 0; e -= 5) out.unshift(Ys.slice(e - 5, e)); return out; })();
+const inflLine = (ys, f) => { const a = f(ys[0]), c = CPI[ys[0]]; return ys.map(y => a * CPI[y] / c); };   // starts at the first year's cost
+const BCOST = [
+  { name: 'Heat, light, water and council tax', short: 'Heat, light and rates', color: '--s2', k: 'sp_heat' },
+  { name: 'Maintenance', short: 'Maintenance', color: '--s1', k: 'sp_maint' },
+  { name: 'Insurance', short: 'Insurance', color: '--s7', k: 'sp_ins' },
+];
+const KINDS = [
+  { name: 'Welfare and food', color: '--s3', f: r => r.sp_food },
+  { name: 'Heat, light, water and council tax', color: '--s2', f: r => r.sp_heat },
+  { name: 'Insurance', color: '--s7', f: r => r.sp_ins },
+  { name: 'Maintenance', color: '--s1', f: r => r.sp_maint },
+  { name: 'Travel', color: '--s5', f: r => r.sp_travel },
+  { name: 'Everything else (staff, office, books, fees…)', color: '--s9', f: r => RUNK(r) - r.sp_heat - r.sp_maint - r.sp_ins - r.sp_food - r.sp_travel },
+];
+
+// ---------------------------------------------------------------- before and after: the three years just before the
+// building programme against the last three, both in today's prices
+const LIKE = (() => {
+  const base = Ys.filter(y => y < BUILD_START).slice(-3), now = N3, today = y => x => x * CPI[LY] / CPI[y];
+  const avgT = (ys, f) => avgOf(ys, y => today(y)(f(D.data[y])));
+  const ch = f => avgT(now, f) / avgT(base, f);
+  return { base, now, avgT, ch };
+})();
+
+// ---------------------------------------------------------------- the headline
+const runX = avgOf(N3, y => RUNK(D.data[y])) / avgOf(B3, y => RUNK(D.data[y]));
+const ppX = avgOf(N3, y => PER(y, RUNK)) / avgOf(B3, y => PER(y, RUNK));
+const pplX = avgOf(N3, y => D.data[y].people) / avgOf(B3, y => D.data[y].people);
+const ppNow = PER(LY, RUNK);
+// building work since the programme began: the accounts give it from 2020 ("capex"); the trustees' report for 2019
+// records £3.0m of capital spending that year
+const CAPEX_2019 = 3.0e6;
+const builtSince = Ys.filter(y => y >= BUILD_START).reduce((a, y) => a + (y === BUILD_START && D.data[y].capex == null ? CAPEX_2019 : v(D.data[y], 'capex')), 0);
+const ENERGY = D.energy;
+const RED = '--critical', QUIET = '--muted';
+const nm = yearName;
+const span = ys => `${ys[0]}–${String(ys[ys.length - 1]).slice(2)}`;
+// a change between the two periods in pounds a year, in today's prices
+const LIKEd = f => LIKE.avgT(LIKE.now, f) - LIKE.avgT(LIKE.base, f);
+const k0 = n => Math.round(n / 1e3) * 1e3;
+const OTHER = r => RUNK(r) - r.sp_heat - r.sp_maint - r.sp_ins - r.sp_food - r.sp_travel;
+// the same number of residents: the first three years after the count settled near 60
+const S3 = Ys.filter(y => y >= PPL.settled).slice(0, 3);
+const ppl3 = ys => avgOf(ys, y => D.data[y].people_count);
+const realCh = (from, to, f) => (avgOf(to, y => f(D.data[y])) / avgOf(from, y => f(D.data[y]))) / (avgOf(to, y => CPI[y]) / avgOf(from, y => CPI[y]));
+const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(from, y => D.data[y].sp_heat)) / (avgOf(to, y => ENERGY[y]) / avgOf(from, y => ENERGY[y]));
+
+(function headline() {
+  const L = LIKE, b = L.base, nw = L.now, yb = span(b), yn = span(nw);
+  const run = L.ch(RUNW), runD = LIKEd(RUNW), wearD = LIKEd(r => r.sp_depr), mtD = LIKEd(r => r.sp_maint), ins = L.ch(r => r.sp_ins);
+  const bld = avgOf(nw, y => D.data[y].buildings) / avgOf(b, y => D.data[y].buildings);
+  const pplX = ppl3(nw) / ppl3(b);
+  document.getElementById('hero').innerHTML =
+    `Between ${yb} and ${yn} the Trust spent about <b>${words(Math.round(builtSince / 1e5) * 1e5)}</b> on new buildings and infrastructure. ` +
+    `Over the same years, after inflation, running costs rose <b>${short(k0(runD))} a year</b> (${upPct(run)}); only maintenance fell.`;
+  const tiles = [
+    [words(Math.round(builtSince / 1e5) * 1e5).replace(' million', 'm'), 'New buildings and infrastructure', `${BUILD_START}–${LY}`],
+    ['+' + short(k0(runD)), 'Running costs a year', `${upPct(run)}, without welfare`],
+    [upPct(ins), 'Insurance', 'after inflation'],
+    [upPct(pplX), 'Residents', `${Math.round(ppl3(b))} → ${Math.round(ppl3(nw))}`],
+  ];
+  document.getElementById('headline').innerHTML = tiles.map(([v, l, c]) =>
+    `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div>${c ? `<div class="c">${c}</div>` : ''}</div>`).join('');
+  const same = realCh(S3, nw, RUNW);
+  document.getElementById('headline-foot').textContent =
+    `${yb} against ${yn}, in ${LY} prices. With the same number of residents (${span(S3)} against ${yn}): ${upPct(same)}. The Sala (finished December 2024) is not fully in these figures yet.`;
+})();
+
+// ---------------------------------------------------------------- what went up and what went down
+(function runBox() {
+  const day = r => RUNK(r) / 365, today = y => CPI[LY] / CPI[y];
+  const L = D.data[LY], lastDay = day(L), month = RUNK(L) / 12;
+  const per = [B3, Ys.filter(y => y >= '2009').slice(0, 3), LIKE.base, N3];
+  const rows = per.map(ys => ({ ys, paid: avgOf(ys, y => day(D.data[y])), now: avgOf(ys, y => day(D.data[y]) * today(y)), ppl: ppl3(ys) }));
+  const r0 = rows[0], rb = rows[2], rN = rows[3];
+  const r10 = n => '£' + (Math.round(n / 10) * 10).toLocaleString('en-GB');
+  document.getElementById('run-text').textContent =
+    `Running Amaravati and Chithurst now takes about ${words(Math.round(RUNK(L) / 1e5) * 1e5)} a year: about ${r10(lastDay)} a day, or ${short(Math.round(month / 1e3) * 1e3).replace('k', ',000').replace('£', '£')} a month. ` +
+    `In ${span(r0.ys)} it was about ${r10(r0.paid)} a day (${r10(r0.now)} in today's money). ` +
+    `So even after inflation, it now costs more a day to run the two places: ${upPct(rN.now / rb.now)} since ${span(rb.ys)} and ${upPct(rN.now / r0.now)} since ${span(r0.ys)}; the number of residents rose ${upPct(rN.ppl / rb.ppl).slice(1)} and ${upPct(rN.ppl / r0.ppl).slice(1)}.`;
+  const max = Math.max(...rows.map(r => r.now));
+  const host = document.getElementById('c-day'); host.className = 'hbars';
+  host.innerHTML = rows.map(r => `<div class="hb"><span class="hb-n">${span(r.ys)}</span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${r.ys === N3 ? RED : '--s9'})"></i></span><span class="hb-v">${r10(r.now)} a day</span></div>`).join('');
+  document.getElementById('day-under').textContent =
+    `A day, in ${LY} money (inflation taken out), averaged over three years; welfare and food included, building work left out. Residents: ${rows.map(r => `${span(r.ys)} ${Math.round(r.ppl)}`).join(' · ')}.`;
+})();
+
+(function bridgeChart() {
+  const L = LIKE, yb = span(L.base), yn = span(L.now);
+  document.getElementById('bridge-sub').textContent = `Change in each cost a year, ${yb} against ${yn}, after inflation.`;
+  const kinds = [
+    { name: 'Staff, office, books, fees and the rest', f: OTHER },
+    { name: 'Heat, light, water and council tax', f: r => r.sp_heat },
+    { name: 'Insurance', f: r => r.sp_ins },
+    { name: 'Travel', f: r => r.sp_travel },
+    { name: 'Maintenance', f: r => r.sp_maint },
+  ].map(k => ({ name: k.name, value: LIKEd(k.f), color: LIKEd(k.f) >= 0 ? RED : '--s1' })).sort((a, b) => b.value - a.value);
+  const tot = LIKEd(RUNW);
+  bridge('c-bridge', [
+    ...kinds,
+    { name: 'Running costs without welfare', value: tot, color: '--ink', bold: true, gap: true },
+    { name: 'Welfare and food (shown apart)', value: LIKEd(r => r.sp_food), color: '--s3', gap: true },
+  ], { aria: `Change in each cost a year between ${yb} and ${yn}, after inflation` });
+  const mt = kinds.find(k => k.name === 'Maintenance');
+  document.getElementById('cap-bridge').textContent =
+    `Running costs without welfare rose ${short(k0(tot))} a year; only maintenance fell, by ${short(k0(-mt.value))}.`;
+  document.getElementById('how-bridge').innerHTML = [
+    `Each line compares the average a year in ${yb}, the three years just before the building programme, with ${yn}, both in ${LY} prices, so inflation is already taken out. Right of the line: more a year; left: less.`,
+    `The biggest rise is in staff, office and the rest: staff went from three to four in ${LY - 1} (the reports don't say for what post).`,
+    `Heat, light, water and council tax rose with energy prices (see the heating chart).`,
+    `Not yet in running costs: about £23k–51k a year of staff cost is counted as building work while the programme runs (note 10 of the accounts). When it ends, that cost moves into running costs unless the posts end.`,
+  ].map(t => `<p>${esc(t)}</p>`).join('');
+})();
+
+// ---------------------------------------------------------------- the two main charts
+(function mainCharts() {
+  const BL = BLOCKS.map(BLAB), bAvg = f => BLOCKS.map(b => avgOf(b, y => f(D.data[y])));
+  const run = bAvg(RUNW), tot = run;
+  const cp = BLOCKS.map(b => avgOf(b, y => CPI[y])), infl = cp.map(c => tot[0] * c / cp[0]);
+  const T = blockBars('c-total', BLOCKS, y => RUNW(D.data[y]), { name: 'Running costs without welfare, average a year', aria: 'Running costs in five-year blocks against inflation' });
+  const n = BLOCKS.length - 1;
+  document.getElementById('cap-total').textContent =
+    `In ${BL[n]} running costs without welfare came to ${words(Math.round(tot[n] / 1e4) * 1e4)} a year. Had they kept up with inflation since ${BL[0]}, they would be about ${words(Math.round(infl[n] / 1e4) * 1e4)}.`;
+  document.getElementById('how-total').innerHTML = [
+    `Each bar is the average a year in five years, as paid: everything spent on running the two places, without building work, without wear on buildings (depreciation, an accounting figure) and without welfare and food (shown apart). The dashed marks show where the bars would be had costs risen with inflation only, from ${BL[0]}.`,
+    `Residents in each five years: ${BLOCKS.map(b => Math.round(avgOf(b, y => D.data[y].people_count ?? D.data[y].people))).join(' · ')}.`,
+  ].map(t => `<p>${esc(t)}</p>`).join('');
+  // heating and power, against inflation and against energy prices
+  const heat = y => D.data[y].sp_heat;
+  document.getElementById('q-heat').innerHTML = `“New buildings are being constructed in accordance with very progressive Passivhaus standards of energy efficiency, including high levels of insulation, solar collectors where possible, heat pumps and all-electric kitchens.”<cite>The Trust's annual reports, ${LY - 1} and ${LY}</cite>`;
+  blockBars('c-heat', BLOCKS, heat, { name: 'Heating and power, average a year', color: '--s2', sub: b => Math.round(avgOf(b, y => D.data[y].people_count ?? D.data[y].people)), subName: 'Residents in each five years', noInfl: true, labelsIn: true,
+    extra: { name: 'Energy prices', color: '--ink', index: ENERGY, strong: true }, aria: 'Heat, light, water and council tax in five-year blocks against inflation and energy prices' });
+  const L = LIKE, paid = (from, to) => avgOf(to, heat) / avgOf(from, heat), eng = (from, to) => avgOf(to, y => ENERGY[y]) / avgOf(from, y => ENERGY[y]);
+  const pc = x => Math.round(100 * (x - 1)) + '%';
+  const bldS = avgOf(N3, y => D.data[y].buildings) / avgOf(S3, y => D.data[y].buildings);
+  const k1 = n => Math.round(n / 1e3) + 'k';
+  document.getElementById('cap-heat').textContent =
+    `The new buildings have not brought the energy bill down: it rose from £${k1(avgOf(S3, heat))} a year in ${span(S3)} to £${k1(avgOf(N3, heat))} in ${span(N3)}. ` +
+    `That rise (${pc(paid(S3, N3))}) is less than energy prices (${pc(eng(S3, N3))}), which may be the efficient buildings or fixed-price contracts; the accounts don't say which.`;
+  document.getElementById('how-heat').innerHTML = [
+    `Each bar is the bill a year, averaged over five years, as paid. The dark dashed marks show where the bill would be had it moved with UK household energy prices only (ONS consumer prices index for electricity, gas and other fuels), from ${BLAB(BLOCKS[0])}.`,
+    `From ${span(L.base)} to ${span(N3)} the bill rose ${pc(paid(L.base, N3))} and energy prices ${pc(eng(L.base, N3))}. Since ${span(S3)}, with new buildings added, the bill rose less than energy prices.`,
+    `Fixed-price contracts can delay a price rise: in the year to March 2023 energy prices nearly doubled, but the bill did not move; it rose in the next two years.`,
+    `A rough check: the accounts give heat, light, water and council tax as one line, and show what was paid, not how much energy was used.`,
+  ].map(t => `<p>${esc(t)}</p>`).join('');
+})();
+
+// ---------------------------------------------------------------- what this means
+(function meaning() {
+  const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
+  const lastInt = v(D.data[LY], 'interest_u');
+  document.getElementById('meaning').textContent =
+    `The new buildings have not made Amaravati and Chithurst cheaper to run: running costs rose ${short(k0(LIKEd(RUNW)))} a year after inflation; only maintenance fell. ` +
+    `Heating is the exception: it followed energy prices, as the Trust's energy-efficient building would lead one to expect. ` +
+    `Interest on the money held for building (${short(k0(lastInt))} in ${LY}) helps pay the running costs now, and will fall as that money is spent. ` +
+    `Welfare and food, shown apart, rose ${pc(r => r.sp_food)}; it includes the care of ageing monks and nuns, which has nothing to do with the buildings.`;
+})();
+
+// contents (the detail sections) and a "back to top" link under each section
+(function () {
+  const toc = document.getElementById('toc');
+  toc.innerHTML = [...document.querySelectorAll('main > section[id]:not(#story)')].map(s => `<li><a href="#${s.id}">${esc(s.querySelector('h2').textContent)}</a></li>`).join('');
+  toc.onclick = (e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a) return;
+    e.preventDefault(); document.getElementById(a.getAttribute('href').slice(1)).scrollIntoView({ block: 'start' });
+  });
+  document.querySelectorAll('main > section[id]:not(#story)').forEach(s => {
+    if (s.querySelector(':scope > .backtop')) return;
+    const p = document.createElement('p'); p.className = 'backtop'; p.innerHTML = '<a href="#top">↑ Back to top</a>';
+    p.firstChild.addEventListener('click', e => { e.preventDefault(); window.scrollTo(0, 0); });
+    s.appendChild(p);
+  });
+})();
+document.querySelectorAll('.periods').forEach(e => e.textContent = PPL.periods.map(P => `${P.years[0]}–${P.years[P.years.length - 1]}: ${Math.round(P.avg)}`).join('; '));
+
+// ---------------------------------------------------------------- 1. the costs in detail
+(function totals() {
+  const B0 = BLOCKS[0], BN = BLOCKS[BLOCKS.length - 1], infB = avgOf(BN, y => CPI[y]) / avgOf(B0, y => CPI[y]);
+  const chB = f => avgOf(BN, y => f(D.data[y])) / avgOf(B0, y => f(D.data[y])) / infB;
+  const ups = KINDS.map(k => ({ k, x: chB(k.f) })).sort((a, b) => b.x - a.x);
+  const fast = ups.filter(u => u.x > 1.05).map(u => `${u.k.name.replace(/ \(.*$/, '').toLowerCase()} (${upPct(u.x)})`);
+  document.getElementById('totals-lede').textContent =
+    `Running costs rose ${Math.round(100 * (chB(RUNK) - 1))}% more than inflation between ${BLAB(B0)} and ${BLAB(BN)} (five-year averages). ` +
+    (fast.length ? `Faster than inflation: ${fast.join(', ')}.` : '');
+  // fixed costs: heating and power, insurance, maintenance
+  const bt = y => BCOST.reduce((a, s) => a + D.data[y][s.k], 0);
+  const bInfl = f => { const v0 = avgOf(BLOCKS[0], f), c0 = avgOf(BLOCKS[0], y => CPI[y]); return BLOCKS.map(b => v0 * avgOf(b, y => CPI[y]) / c0); };
+  stacked('c-bcost', BLOCKS.map(BLAB), BCOST.slice().reverse().map(s => ({ name: s.name, color: s.color, values: BLOCKS.map(b => avgOf(b, y => D.data[y][s.k])) })),
+    { W: 600, totals: true, name: l => l + ', average a year', aria: 'Heat, maintenance and insurance in five-year blocks, with their total and inflation',
+      lines: [{ name: `Inflation from ${BLAB(BLOCKS[0])}`, color: QUIET, dash: true, values: bInfl(bt) }],
+      line: { name: 'Total of the three', color: '--ink', values: BLOCKS.map(b => avgOf(b, bt)) } });
+  // fixed and variable costs, all years, with the number of residents
+  const FIX = r => r.sp_heat + r.sp_ins + r.sp_maint, VAR = r => r.sp_food + r.sp_travel, OTH = r => RUNK(r) - FIX(r) - VAR(r);
+  const FYs = Ys.filter(y => D.data[y].people_count != null || D.data[y].people != null);
+  const BL = BLOCKS.map(b => `${b[0]}–${String(b[b.length - 1]).slice(2)}`), bAvg = f => BLOCKS.map(b => avgOf(b, y => f(D.data[y])));
+  stacked('c-fv', BL, [
+    { name: 'Fixed: heating and power, insurance, maintenance', color: '--s2', values: bAvg(FIX) },
+    { name: 'Variable: welfare and food, travel', color: '--s3', values: bAvg(VAR) },
+    { name: 'Other: staff, office, books, fees', color: '--s9', values: bAvg(OTH) },
+  ], { W: 600, totals: true, name: l => l + ', average a year', aria: 'Fixed, variable and other running costs in five-year blocks, with the number of residents',
+       right: { name: 'Residents (right-hand scale)', color: '--ink-2', dash: true, fmtR: n => String(Math.round(n)), values: bAvg(r => r.people_count ?? r.people ?? 0) } });
+  {
+    const L = LIKE, b = L.base, yrs = `${b[0]}–${b[b.length - 1]}`;
+    const f = L.ch(FIX), v = L.ch(VAR), ppl = avgOf(L.now, y => D.data[y].people_count) / avgOf(b, y => D.data[y].people_count);
+    const pc = x => Math.abs(Math.round(100 * (x - 1))) + '%', up = x => x >= 1 ? 'rose' : 'fell';
+    const pace = (v - 1) / (ppl - 1);
+    document.getElementById('fv-text').textContent =
+      `Since ${span(b)}, after inflation, the costs that come with the buildings (heating, insurance and maintenance) ${up(f)} ${pc(f)}. ` +
+      `The costs that come with the people (welfare, food and travel) ${up(v)} ${pc(v)}` +
+      (ppl > 1 && v > 1 ? `, ${pace >= 1.8 && pace < 2.5 ? 'twice as fast as' : pace >= 1.15 ? 'faster than' : 'about as fast as'} the number of residents (${upPct(ppl)}).` : '.');
+  }
+  // each kind against inflation, small charts
+  smallMultiples('c-lines', y => 1);
+  grouped('c-wear', BLOCKS.map(BLAB), [{ name: 'Wear on buildings', color: '--s9', values: BLOCKS.map(b => avgOf(b, y => D.data[y].sp_depr)) }], { W: 600, h: 220, bw: 56, values: true, name: l => l + ', average a year', aria: 'Depreciation in five-year blocks' });
+})();
+// one small chart per kind of cost, solid red where it ended above its inflation line; div = 1 for totals, people for per resident
+function smallMultiples(id, div, top) {
+  // one small bar chart per kind of cost: five-year blocks, with inflation from the first block
+  const host = document.getElementById(id); host.innerHTML = '';
+  const first = BLOCKS[0], last = BLOCKS[BLOCKS.length - 1], inf = avgOf(last, y => CPI[y]) / avgOf(first, y => CPI[y]);
+  const rows = KINDS.map(k => {
+    const f = y => k.f(D.data[y]) / div(y);
+    const a = avgOf(first, f), b = avgOf(last, f);
+    return { k, f, a, b, x: b / a / inf };
+  }).sort((p, q) => q.x - p.x);
+  if (top) document.getElementById(top).innerHTML = 'Faster than inflation: ' + rows.filter(r => r.x > 1.05).map(r => `<b>${esc(r.k.name.replace(/ \(.*$/, ''))}</b> ${upPct(r.x)}`).join(', ') + ` (after inflation, ${BLAB(first)} against ${BLAB(last)}).`;
+  rows.forEach((r, j) => {
+    const d = document.createElement('div'); d.className = 'kind';
+    d.innerHTML = `<h4>${esc(r.k.name)}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
+    host.appendChild(d);
+    const welfare = r.k.f === KINDS[0].f;
+    blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: j > 0,
+      sub: welfare ? (b => Math.round(avgOf(b, y => D.data[y].seniors ?? 0))) : null, subName: 'Monks and nuns with 20 or more years in robes',
+      aria: r.k.name + ' in five-year blocks against inflation' });
+    if (welfare) {
+      const note = document.createElement('p'); note.className = 'note';
+      note.textContent = 'Includes welfare, not only food: the care of ageing monks and nuns. Under each bar: monks and nuns with 20 or more years in robes at the two monasteries, on average. ' +
+        'The trustees\' reports name a fund for the medical and welfare needs of a senior monk at Amaravati (£50k spent in 2026), the Samana Care Fund for the care of elderly or infirm monks and nuns (set up in 2022), and, in 2026, a new Ageing Samanas Fund.';
+      d.appendChild(note);
+    }
+  });
+}
+
+// ---------------------------------------------------------------- 2. per resident in detail
+(function people() {
+  const P = PPL.periods;
+  document.getElementById('pp-lede').textContent =
+    `What the running costs were spent on, then and now; and how many people lived at the two monasteries: about ${P.map(p => Math.round(p.avg)).join(', then ')} (${P.map(p => p.years[0] + '–' + p.years[p.years.length - 1]).join(', ')}).`;
+  const PYs = Ys.filter(y => D.data[y].people_count != null), pv = y => D.data[y].people_count;
+  const shades = ['--muted', '--ink-2', '--ink'];
+  lines('c-people', PYs, [
+    { name: 'People living there', color: '--s3', values: PYs.map(pv) },
+    ...P.map((p, i) => ({ name: `Average ${p.years[0]}–${p.years[p.years.length - 1]}`, color: shades[i + 3 - P.length], dash: true, values: PYs.map(y => p.years.includes(y) ? p.avg : null) })),
+  ], { W: 1000, name: nm, fmt: n => String(Math.round(n * 10) / 10), aria: 'People living at the two monasteries each year' });
+})();
+
+// ---------------------------------------------------------------- pies: one resident's place in three five-year periods
+(function pies() {
+  // one pie for each five-year block
+  const periods = BLOCKS;
+  const host = document.getElementById('c-pies'); host.innerHTML = '';
+  const sizes = [];
+  periods.forEach((ys, j) => {
+    const parts = KINDS.map(k => ({ ...k, val: avgOf(ys, y => k.f(D.data[y])) }));
+    const tot = parts.reduce((a, p) => a + p.val, 0), today = tot * CPI[LY] / avgOf(ys, y => CPI[y]);
+    sizes.push({ ys, tot, today });
+    const box = document.createElement('div'); box.className = 'pie';
+    const label = ys.length > 1 ? `${ys[0]}–${ys[ys.length - 1]} (average)` : `${ys[0]}`;
+    box.innerHTML = `<h4>${label}</h4><div class="pie-svg"></div>
+      <p class="pie-tot"><b>${words(Math.round(tot / 1e3) * 1e3)}</b> a year<br><span>${words(Math.round(today / 1e3) * 1e3)} in ${LY} prices</span></p>
+      <ul>${parts.map(p => `<li><i style="background:var(${p.color})"></i><span>${esc(p.name.replace(/ \(.*$/, ''))}</span><b>${short(p.val)}</b><em>${Math.round(100 * p.val / tot)}%</em></li>`).join('')}</ul>`;
+    host.appendChild(box);
+    // the pie: biggest slice first, clockwise from 12 o'clock; each kind keeps its colour in every pie
+    const SHORT = { 'Welfare and food': 'Welfare & food', 'Heat, light, water and council tax': 'Heat & power', 'Insurance': 'Insurance', 'Maintenance': 'Maintenance', 'Travel': 'Travel' };
+    // biggest first; "Other" (everything else) always last, ending at 12 o'clock
+    const isOther = p => p.name.startsWith('Everything else');
+    const slices = [...parts.filter(p => !isOther(p)).sort((p, q) => q.val - p.val), ...parts.filter(isOther)];
+    // on a narrow screen: a bigger pie with no labels beside it (the list under the pie gives every kind), drawn at about
+    // the size it is shown, so the text inside reads at its real size
+    const pw0 = box.querySelector('.pie-svg').clientWidth, narrow = pw0 > 0 && pw0 < 440;
+    const W = narrow ? Math.min(320, pw0) : 440, H = narrow ? W : 300, r = narrow ? W / 2 - 10 : 112, cx = W / 2, cy = H / 2;
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': `What the running costs went on in ${label}` }, box.querySelector('.pie-svg'));
+    let a0 = -Math.PI / 2;
+    const outs = [];
+    slices.forEach(p => {
+      const share = p.val / tot, a1 = a0 + 2 * Math.PI * share, large = a1 - a0 > Math.PI ? 1 : 0;
+      const d = `M${cx},${cy} L${cx + r * Math.cos(a0)},${cy + r * Math.sin(a0)} A${r},${r} 0 ${large} 1 ${cx + r * Math.cos(a1)},${cy + r * Math.sin(a1)} Z`;
+      const sl = el('path', { d, fill: `var(${p.color})`, stroke: 'var(--surface)', 'stroke-width': 2 }, svg);
+      sl.addEventListener('mousemove', e => showTip(e, `<b>${label}</b>` + row(p.name, p.color, `${pounds(p.val)} (${Math.round(100 * share)}%)`)));
+      sl.addEventListener('mouseleave', hideTip);
+      const mid = (a0 + a1) / 2, name = SHORT[p.name] || 'Other', amt = short(p.val);
+      if (share >= 0.17) {                      // wide enough: name and amount inside the slice
+        const lr = r * 0.6, x = cx + lr * Math.cos(mid), y = cy + lr * Math.sin(mid);
+        el('text', { x, y: y - 3, 'text-anchor': 'middle', class: 'pie-in' }, svg).textContent = name;
+        el('text', { x, y: y + 13, 'text-anchor': 'middle', class: 'pie-in amt' }, svg).textContent = amt;
+      } else outs.push({ mid, name, amt });
+      a0 = a1;
+    });
+    // narrow slices: label beside the pie, on the slice's side, spaced so labels never overlap
+    for (const side of narrow ? [] : [1, -1]) {
+      const L = outs.filter(o => (Math.cos(o.mid) >= 0 ? 1 : -1) === side)
+        .map(o => ({ ...o, y: cy + (r + 16) * Math.sin(o.mid) })).sort((p, q) => p.y - q.y);
+      for (let i = 1; i < L.length; i++) if (L[i].y - L[i - 1].y < 30) L[i].y = L[i - 1].y + 30;
+      L.forEach(o => {
+        const x1 = cx + (r + 2) * Math.cos(o.mid), y1 = cy + (r + 2) * Math.sin(o.mid), xe = cx + side * (r + 24);
+        el('polyline', { points: `${x1},${y1} ${xe - side * 8},${o.y} ${xe},${o.y}`, fill: 'none', stroke: 'var(--axis)', 'stroke-width': 1 }, svg);
+        const anchor = side > 0 ? 'start' : 'end', tx = xe + side * 4;
+        el('text', { x: tx, y: o.y - 2, 'text-anchor': anchor, class: 'pie-out' }, svg).textContent = o.name;
+        el('text', { x: tx, y: o.y + 13, 'text-anchor': anchor, class: 'pie-out amt' }, svg).textContent = o.amt;
+      });
+    }
+  });
+  const [a, b, z] = sizes;
+  const kd = sizes, f0 = kd[0], fN = kd[kd.length - 1];
+  document.getElementById('pies-note').textContent =
+    `In ${LY} prices, the running costs averaged ${kd.map(k => `${words(Math.round(k.today / 1e4) * 1e4)} a year in ${BLAB(k.ys)}`).join(', ')}. ` +
+    `The pies are drawn the same size so the shares can be compared; the amounts are averages a year, as paid at the time.`;
+})();
+
+// ---------------------------------------------------------------- 3. income, funds and reserves
+(function money() {
+  const big = Ys.filter(y => v(D.data[y], 'restricted_in') > 2e6);
+  // the everyday account (general fund) is in the accounts from 2006; the split into interest and legacies from 2020
+  const DYs = Ys.filter(y => D.data[y].gen_in != null), DR = DYs.map(y => D.data[y]);
+  const SYs = DYs.filter(y => D.data[y].interest_u != null);
+  const n = DYs.length - 1, RO = DR.map(r => r.gen_out);
+  const short_ = SYs.filter(y => { const r = D.data[y]; return r.gen_in - r.interest_u - r.legacies < r.gen_out; });
+  document.getElementById('money-lede').textContent =
+    `Almost all income is gifts. Very large gifts for building came in ${big.join(', ').replace(/, ([^,]*)$/, ' and $1')}; they can only be spent on building. ` +
+    `The everyday account, which pays the running costs, took in ${words(DR[n].gen_in)} in ${LY} and paid out ${words(RO[n])}` +
+    (short_.length ? `; in ${short_.join(' and ')} gifts alone did not cover the running costs, and interest and legacies made up the difference.` : '.');
+  stacked('c-money', Ys, [{ name: 'Given for a set purpose (mostly building)', color: '--s7', values: Ys.map(y => v(D.data[y], 'restricted_in')) }],
+    { W: 1000, cap: 1.6e6, noTotal: true, name: nm, aria: 'Everyday income against running costs, with gifts for a set purpose as bars',
+      lines: [{ name: 'Everyday income', color: '--s1', values: Ys.map(y => D.data[y].income - v(D.data[y], 'restricted_in')) }],
+      line: { name: 'Running costs', color: RED, values: Ys.map(y => RUNK(D.data[y])) } });
+  stacked('c-run', DYs, [{ name: 'Money into the everyday account', color: '--s1', values: DR.map(r => r.gen_in) }],
+    { W: 1000, noTotal: true, name: nm, line: { name: 'Paid out of it', color: RED, values: RO }, aria: 'Everyday account: money in and money out each year' });
+  {
+    const IR = SYs.map(y => D.data[y]);
+    stacked('c-int', SYs, [
+      { name: 'Gifts, legacies and other income', color: '--s1', values: IR.map(r => r.gen_in - r.interest_u) },
+      { name: 'Interest', color: '--s5', values: IR.map(r => r.interest_u) },
+    ], { W: 1000, totals: true, name: nm, line: { name: 'Paid out of the everyday account', color: RED, values: IR.map(r => r.gen_out) }, aria: 'Everyday income with and without interest' });
+    const lr = D.data[LY];
+    document.getElementById('int-note').textContent =
+      `In ${LY} interest brought in ${words(k0(lr.interest_u))}, ${Math.round(100 * lr.interest_u / lr.gen_out)}% of what the everyday account paid out. ` +
+      `Most of it comes from the cash held for building (${words(Math.round(v(lr, 'restricted') / 1e5) * 1e5)} at 31 March ${LY}). As that money is spent on the buildings, the interest will fall, and gifts will have to cover more of the running costs.`;
+  }
+  const FYs = Ys.filter(y => ['designated', 'restricted', 'general'].every(k => D.data[y][k] != null)), FR = FYs.map(y => D.data[y]);
+  stacked('c-funds', FYs, [
+    { name: 'Set aside by trustees (mostly buildings)', color: '--s9', values: FR.map(r => r.designated) },
+    { name: 'Restricted (given for one purpose)', color: '--s7', values: FR.map(r => r.restricted) },
+    { name: 'General', color: '--s3', values: FR.map(r => r.general) },
+  ], { W: 1000, name: y => '31 March ' + y, aria: 'Funds at the end of each year' });
+  const rY = Ys.filter(y => D.data[y].target != null && D.data[y].general != null);
+  grouped('c-res', rY, [
+    { name: 'General reserve', color: '--s3', values: rY.map(y => D.data[y].general) },
+    { name: "Trustees' aim", color: '--s9', values: rY.map(y => D.data[y].target) },
+  ], { W: 1000, bw: 14, name: y => '31 March ' + y, aria: 'General reserve against the trustees aim' });
+  lines('c-own', Ys, [
+    { name: 'Buildings and land', color: '--s9', values: Ys.map(y => D.data[y].buildings) },
+    { name: 'Cash', color: '--s1', values: Ys.map(y => D.data[y].cash) },
+  ], { W: 1000, name: y => '31 March ' + y, aria: 'Cash and buildings each year' });
+})();
+
+// ---------------------------------------------------------------- 4. the next five years (an estimate)
+(function future() {
+  const L = D.data[LY], run0 = RUNK(L), bld0 = L.buildings, toBuild = v(L, 'restricted');
+  const ppl = PPL.periods[PPL.periods.length - 1].avg;
+  // how much heat, maintenance and insurance the recent buildings added per £ of buildings (low) and today's average (high)
+  const s0 = BUILD_START, bc = y => BCOST.reduce((a, s) => a + D.data[y][s.k], 0);
+  const marginal = (bc(LY) - bc(s0)) / (D.data[LY].buildings - D.data[s0].buildings);
+  const average = bc(LY) / bld0;
+  // the real growth per resident a year since the building programme began, and over twenty years
+  const since = Ys.filter(y => y >= s0);
+  const realYear = (a, b) => Math.pow((RUNK(D.data[b]) / CPI[b]) / (RUNK(D.data[a]) / CPI[a]), 1 / (b - a)) - 1;
+  const g20 = realYear(Ys[0], LY);
+  const INFL = 0.025, BUILD_YEARS = 3;                         // assumed inflation; the £ to build with is spent over three years
+  const years = [1, 2, 3, 4, 5].map(i => String(+LY + i));
+  const added = i => toBuild * Math.min(i, BUILD_YEARS) / BUILD_YEARS;   // value of new buildings finished by year i
+  const low = years.map((y, j) => { const i = j + 1, p = Math.pow(1 + INFL, i); return run0 * p + added(i) * marginal * p; });
+  // staff cost counted as building work (note 10 of the accounts): it moves into running costs when the programme ends
+  const STAFF_CAP = { 2024: 50982, 2025: 50302, 2026: 22931 }, staffCap = Object.values(STAFF_CAP).reduce((a, x) => a + x, 0) / 3;
+  const high = years.map((y, j) => { const i = j + 1, p = Math.pow(1 + INFL, i); return run0 * p * Math.pow(1 + g20, i) + added(i) * average * p + (i > BUILD_YEARS ? staffCap * p : 0); });
+  const allY = [...Ys, ...years];
+  const actual = [...Ys.map(y => RUNK(D.data[y])), ...years.map(() => null)];
+  const lo = [...Ys.map((y, i) => i === Ys.length - 1 ? run0 : null), ...low];
+  const hi = [...Ys.map((y, i) => i === Ys.length - 1 ? run0 : null), ...high];
+  lines('c-future', allY, [
+    { name: 'Running costs (accounts)', color: RED, values: actual },
+    { name: 'Estimate, lower', color: '--ink-2', dash: true, values: lo },
+    { name: 'Estimate, higher', color: '--ink', dash: true, values: hi },
+  ], { W: 1000, h: 300, name: y => (y > LY ? 'Estimate for the year to March ' : 'Year to March ') + y, aria: 'Running costs and an estimate for the next five years' });
+  const svg = document.querySelector('#c-future svg');
+  if (svg) {                                                 // shade the band between the two estimates
+    const paths = [...svg.querySelectorAll('path[stroke-dasharray="6 5"]')];
+    if (paths.length === 2) {
+      const a = paths[0].getAttribute('d'), b = paths[1].getAttribute('d');
+      const pa = a.match(/[\d.]+,[\d.]+/g), pb = b.match(/[\d.]+,[\d.]+/g).reverse();
+      const band = el('path', { d: 'M' + pa.join('L') + 'L' + pb.join('L') + 'Z', fill: 'var(--grid)', opacity: 0.8 });
+      svg.insertBefore(band, svg.querySelector('path'));
+    }
+  }
+  const t = document.getElementById('t-future');
+  t.innerHTML = '<thead><tr><th>Year to March</th><th class="n">Running costs, lower</th><th class="n">higher</th></tr></thead><tbody>' +
+    `<tr class="grp"><td>${LY} (accounts)</td><td class="n">${pounds(run0)}</td><td class="n"></td></tr>` +
+    years.map((y, j) => `<tr><td>${y}</td><td class="n">${pounds(Math.round(low[j] / 1000) * 1000)}</td><td class="n">${pounds(Math.round(high[j] / 1000) * 1000)}</td></tr>`).join('') + '</tbody>';
+  const last = years.length - 1;
+  document.getElementById('future-lede').textContent =
+    `At 31 March ${LY} the Trust still held ${words(toBuild)} given for a set purpose, mostly for the next phases of building at Amaravati. Once that is built, the buildings will be worth about ${words(Math.round((bld0 + toBuild) / 1e6) * 1e6)} in the accounts, against ${words(Math.round(bld0 / 1e6) * 1e6)} now. ` +
+    `On the estimate below, running costs would reach ${words(Math.round(low[last] / 1e4) * 1e4)} to ${words(Math.round(high[last] / 1e4) * 1e4)} a year by ${years[last]}, if the number of residents stays at about ${Math.round(ppl)}.`;
+  const pc = x => (Math.round(x * 1000) / 10).toLocaleString('en-GB') + 'p';
+  document.getElementById('future-how').innerHTML = [
+    `Starting point: the running costs in the accounts for the year to March ${LY}, ${pounds(run0)}.`,
+    `Inflation: ${INFL * 100}% a year in both estimates (an assumption).`,
+    `New buildings: the ${words(toBuild)} held for a set purpose is assumed to be built over ${BUILD_YEARS} years (a little of it is for other things, such as the nuns' fund). Each new pound of buildings adds heat, maintenance and insurance: ${pc(marginal)} a year in the lower estimate (what the buildings finished since ${s0} actually added) and ${pc(average)} in the higher (today's average for all the buildings).`,
+    `Other costs: the lower estimate lets them rise with inflation only. The higher one keeps the trend of the last twenty years, running costs ${(Math.round(g20 * 1000) / 10).toLocaleString('en-GB')}% a year faster than inflation.`,
+    `Staff: in ${Object.keys(STAFF_CAP).join(', ').replace(/, ([^,]*)$/, ' and $1')} the Trust counted ${Object.values(STAFF_CAP).map(x => pounds(x)).join(', ').replace(/, ([^,]*)$/, ' and $1')} of staff cost as building work, not running costs. The higher estimate adds the average, about ${pounds(Math.round(staffCap / 1e3) * 1e3)} a year, once the building is done, in case those posts carry on; the lower one leaves it out.`,
+    `Residents: about ${Math.round(ppl)}, the average since ${s0}.`,
+    `This is an estimate to show the size of what is coming, not a budget. A new boiler, an energy price change or a change in the number of residents would move it.`,
+  ].map(s => `<li>${esc(s)}</li>`).join('');
+})();
+
+// ---------------------------------------------------------------- 5. other starting years
+(function starts() {
+  const starts = ['2002', '2006', '2011', '2016', '2019'].map(a => Ys.filter(y => y >= a).slice(0, 3));
+  document.querySelectorAll('.nowyrs').forEach(e => e.textContent = span(N3));
+  document.getElementById('t-starts').innerHTML = `<thead><tr><th>From</th><th class="n">Running costs without welfare</th><th class="n">Residents</th><th class="n">Heating against energy prices</th></tr></thead><tbody>` +
+    starts.map(st => `<tr${st[0] === LIKE.base[0] ? ' class="tot"' : ''}><td>${span(st)}</td><td class="n">${upPct(realCh(st, N3, RUNW))}</td><td class="n">${Math.round(ppl3(st))} → ${Math.round(ppl3(N3))}</td><td class="n">${upPct(heatVsEnergy(st, N3))}</td></tr>`).join('') + '</tbody>';
+})();
+
+// ---------------------------------------------------------------- 5. all figures
+yearTable('t-all', Ys, [
+  { group: 'Running costs' },
+  { name: 'Heat, light, water and council tax', values: R.map(r => r.sp_heat ?? null) },
+  { name: 'Maintenance', values: R.map(r => r.sp_maint ?? null) },
+  { name: 'Insurance', values: R.map(r => r.sp_ins ?? null) },
+  { name: 'Welfare and food', values: R.map(r => r.sp_food ?? null) },
+  { name: 'Travel', values: R.map(r => r.sp_travel ?? null) },
+  { name: 'Everything else', values: R.map(r => RUNK(r) - r.sp_heat - r.sp_maint - r.sp_ins - r.sp_food - r.sp_travel) },
+  { name: 'All running costs', values: R.map(RUNK), cls: 'tot' },
+  { group: 'From the accounts to running costs' },
+  { name: 'Total expenditure in the accounts', values: R.map(r => r.spending) },
+  { name: 'less wear on buildings (depreciation)', values: R.map(r => -(r.sp_depr ?? 0)), indent: true },
+  { name: 'less planning fees for new buildings', values: R.map(r => r.x_plan ? -r.x_plan : null), indent: true },
+  { name: 'less interest on a building loan', values: R.map(r => r.x_loan ? -r.x_loan : null), indent: true },
+  { name: 'less the Temple heating replacement', values: R.map(r => r.x_temple ? -r.x_temple : null), indent: true },
+  { name: '= running costs', values: R.map(RUNK), cls: 'tot' },
+  { group: 'People' },
+  { name: 'People living there (lists)', values: R.map(r => r.people_count ?? null), fmt: n => String(n) },
+  { name: 'Price index (CPI, year to March)', values: Ys.map(y => CPI[y]), fmt: n => n.toFixed(1) },
+  { group: 'Money in' },
+  { name: 'Gifts and legacies', values: R.map(r => r.donations) },
+  { name: 'of which given for a set purpose', values: R.map(r => r.restricted_in ?? null), indent: true },
+  { name: 'Interest and investments', values: R.map(r => r.interest) },
+  { name: 'Other income', values: R.map(r => r.other) },
+  { name: 'Total income', values: R.map(r => r.income), cls: 'tot' },
+  { group: 'At 31 March' },
+  { name: 'Buildings and land', values: R.map(r => r.buildings) },
+  { name: 'Cash (including deposits)', values: R.map(r => r.cash) },
+  { name: 'Total funds', values: R.map(r => r.funds), cls: 'tot' },
+], { first: 'Year to March' });
+}
+render();
+{ let lastW = innerWidth, t = null;
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 30) { lastW = innerWidth; render(); } }, 250); }); }
+</script>
+
+</body>
+</html>

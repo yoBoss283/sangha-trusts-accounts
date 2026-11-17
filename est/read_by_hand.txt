@@ -1,0 +1,591 @@
+# Figures for 1994-2018, read by eye from the Companies House scans (txt/<year>.txt, made by text recognition).
+# Format: year item value. Before 2019 the page uses only these, never the automatic reader (the old layouts and the
+# auditor's tick marks over digits confuse it). Each figure is the year's own report, checked against the next report's
+# "previous year" column; figures.py checks that the totals add up and that each year's funds follow from the last.
+#
+# Items: income = all incoming resources; donations = gifts, covenants and legacies; interest; other;
+# spending = total resources expended; gains = gains/losses not in income (revaluations, a gift of property);
+# net = net movement in funds; funds = net assets at 31 March; buildings = tangible fixed assets;
+# cash = cash at bank plus short-term deposits.
+# restricted_in = income given (or earned) for a set purpose: the restricted column of the statement of financial
+# activities (1995-2001 the "endowment funds" column, mostly building funds; 2010 includes a 500,000 endowment).
+# Cost lines from the notes ("Analysis of expenditure" / "Direct charitable expenditure"):
+# sp_heat = heat, light and rates (later: heat, light, water and council tax); sp_ins = insurance;
+# sp_maint = maintenance; sp_depr = depreciation (wear on buildings); sp_food = food and welfare; sp_travel = travel.
+# "checked" marks a figure the owner confirmed on the scan (16 Nov 2026). A figure still waiting for the owner's
+# check is left out until it is confirmed.
+
+1994 income 683,529
+1994 donations 665,320
+1994 interest 17,887
+1994 other 322
+1994 spending 235,257
+1994 net 448,272
+1994 funds 1,529,084
+1994 buildings 815,712
+1994 cash 699,571
+1994 sp_depr 12,334
+
+1995 income 623,484
+1995 restricted_in 279,761
+1995 donations 579,046
+1995 interest 44,438        # checked
+1995 spending 245,962
+1995 net 377,522
+1995 funds 1,906,606
+1995 buildings 894,713
+1995 cash 1,023,021
+1995 sp_food 28,719
+1995 sp_maint 74,087
+1995 sp_heat 26,694
+1995 sp_ins 16,382
+1995 sp_travel 26,615
+1995 sp_depr 15,429
+
+1996 income 559,335
+1996 restricted_in 264,429
+1996 donations 495,573
+1996 interest 63,762
+1996 spending 329,246
+1996 net 230,089
+1996 funds 2,136,695
+1996 buildings 1,490,218
+1996 cash 656,505
+1996 sp_food 32,710
+1996 sp_maint 131,296
+1996 sp_heat 33,500
+1996 sp_ins 17,981
+1996 sp_travel 41,060
+1996 sp_depr 16,736
+
+1997 income 622,797
+1997 restricted_in 264,995
+1997 donations 591,218
+1997 interest 31,579
+1997 spending 331,808
+1997 net 290,989
+1997 funds 2,427,684
+1997 buildings 2,049,271
+1997 cash 412,288
+1997 sp_food 29,826
+1997 sp_maint 136,185
+1997 sp_heat 35,273
+1997 sp_ins 19,044
+1997 sp_travel 24,340
+1997 sp_depr 14,763
+
+1998 income 509,099
+1998 restricted_in 140,305
+1998 donations 484,366
+1998 interest 24,733
+1998 spending 316,319
+1998 net 192,780
+1998 funds 2,620,464
+1998 buildings 2,124,001
+1998 cash 511,214
+1998 sp_food 34,865
+1998 sp_maint 135,159
+1998 sp_heat 35,192
+1998 sp_ins 20,662
+1998 sp_travel 33,545
+1998 sp_depr 11,478
+
+1999 income 497,534
+1999 restricted_in 50,350
+1999 donations 468,190
+1999 interest 29,344
+1999 spending 288,087
+1999 gains 30,000         # property given to the Trust, at valuation
+1999 net 239,447
+1999 funds 2,859,911
+1999 buildings 2,469,981
+1999 cash 400,287
+1999 sp_food 32,480
+1999 sp_maint 104,665
+1999 sp_heat 33,922
+1999 sp_ins 20,628
+1999 sp_travel 36,761
+1999 sp_depr 11,195
+
+2000 income 491,404
+2000 restricted_in 92,113
+2000 donations 472,758
+2000 interest 18,646
+2000 spending 378,092
+2000 net 113,312
+2000 funds 2,973,223
+2000 buildings 2,549,639
+2000 cash 438,999
+2000 sp_food 30,443         # checked
+2000 sp_maint 122,662
+2000 sp_heat 40,589
+2000 sp_ins 20,494
+2000 sp_travel 29,239
+2000 sp_depr 31,315
+
+2001 income 537,493
+2001 restricted_in 177,845
+2001 donations 511,637
+2001 interest 25,856
+2001 spending 297,186
+2001 net 240,307
+2001 funds 3,213,530
+2001 buildings 2,750,305
+2001 cash 475,010
+2001 sp_food 54,037         # checked
+2001 sp_maint 74,668
+2001 sp_heat 45,438
+2001 sp_ins 14,337
+2001 sp_travel 25,664
+2001 sp_depr 33,687
+
+2002 income 511,809
+2002 restricted_in 139,019
+2002 donations 499,837
+2002 interest 11,972
+2002 spending 282,905
+2002 net 228,904
+2002 funds 3,442,434
+2002 buildings 3,008,007
+2002 cash 408,926
+2002 sp_food 43,652
+2002 sp_maint 76,042
+2002 sp_heat 27,277         # after a council tax refund of 9,761
+2002 sp_ins 10,793
+2002 sp_travel 28,439       # checked
+2002 sp_depr 32,484
+
+2003 income 456,951
+2003 restricted_in 45,817
+2003 donations 444,347
+2003 interest 12,604
+2003 spending 353,269
+2003 gains -25,423        # loss on investments
+2003 net 78,259
+2003 funds 3,520,693
+2003 buildings 3,148,733
+2003 cash 347,412
+2003 sp_food 58,067
+2003 sp_maint 94,430
+2003 sp_heat 37,260         # checked
+2003 sp_ins 13,551
+2003 sp_travel 33,586
+2003 sp_depr 42,055
+
+2004 income 464,054
+2004 restricted_in 32,947
+2004 donations 451,620
+2004 interest 12,434
+2004 spending 346,406
+2004 gains 8,864
+2004 net 126,512
+2004 funds 3,647,205
+2004 buildings 3,174,561
+2004 cash 433,661
+2004 sp_food 62,494
+2004 sp_maint 98,791
+2004 sp_heat 33,368
+2004 sp_ins 19,257
+2004 sp_travel 31,317
+2004 sp_depr 42,665
+
+2005 income 967,580
+2005 restricted_in 258,928
+2005 donations 945,880
+2005 interest 17,839
+2005 other 3,861
+2005 spending 424,271
+2005 gains 5,643
+2005 net 548,952
+2005 funds 4,196,157
+2005 buildings 3,792,082
+2005 cash 402,484
+2005 sp_food 82,233
+2005 sp_maint 108,498
+2005 sp_heat 48,303
+2005 sp_ins 19,320
+2005 sp_travel 36,798
+2005 sp_depr 58,886
+
+2006 income 522,349
+2006 restricted_in 7,433
+2006 donations 505,770
+2006 interest 16,479
+2006 other 100
+2006 spending 512,854
+2006 gains 1,479
+2006 net 10,974
+2006 funds 4,207,131
+2006 buildings 4,507,506
+2006 cash 405,934
+2006 sp_food 77,829
+2006 sp_maint 162,812
+2006 sp_heat 56,250
+2006 sp_ins 21,858
+2006 sp_travel 36,381
+2006 sp_depr 86,223
+
+2007 income 870,422
+2007 restricted_in 358,348
+2007 donations 847,821
+2007 interest 22,601
+2007 spending 491,832
+2007 net 378,590
+2007 funds 4,585,721
+2007 buildings 4,439,886
+2007 cash 661,582
+2007 sp_food 88,240
+2007 sp_maint 104,110
+2007 sp_heat 52,360
+2007 sp_ins 23,541
+2007 sp_travel 35,802
+2007 sp_depr 79,455
+
+2008 income 606,969
+2008 restricted_in 70,545
+2008 donations 573,600
+2008 interest 33,369
+2008 spending 741,391
+2008 gains 170,945        # revaluation of property
+2008 net 36,523
+2008 funds 4,622,244
+2008 buildings 4,200,436
+2008 cash 977,569
+2008 sp_food 83,583
+2008 sp_maint 311,103
+2008 sp_heat 61,233
+2008 sp_ins 24,408
+2008 sp_travel 44,745
+2008 sp_depr 77,077
+
+2009 income 896,415
+2009 restricted_in 94,122
+2009 donations 859,028
+2009 interest 34,720
+2009 other 2,667
+2009 spending 615,227
+2009 net 281,188
+2009 funds 4,903,432
+2009 buildings 4,185,893
+2009 cash 869,883
+2009 sp_food 104,019
+2009 sp_maint 173,442
+2009 sp_heat 75,074
+2009 sp_ins 24,056
+2009 sp_travel 36,577
+2009 sp_depr 79,446
+
+2010 income 1,124,976
+2010 restricted_in 567,094
+2010 donations 1,119,734    # includes a 500,000 endowment
+2010 interest 4,943
+2010 other 299
+2010 spending 626,047
+2010 net 498,929
+2010 funds 5,402,361
+2010 buildings 4,205,058
+2010 cash 1,315,438
+2010 sp_food 92,235
+2010 sp_maint 175,074
+2010 sp_heat 76,181
+2010 sp_ins 25,768
+2010 sp_travel 48,759
+2010 sp_depr 87,952
+
+2011 income 631,967
+2011 restricted_in 86,123
+2011 donations 626,310      # checked
+2011 interest 5,657
+2011 spending 642,457
+2011 net -10,490
+2011 funds 5,391,871
+2011 buildings 4,268,195
+2011 cash 1,145,534
+2011 sp_food 95,737
+2011 sp_maint 224,780
+2011 sp_heat 81,221
+2011 sp_ins 27,022
+2011 sp_travel 47,974
+2011 sp_depr 72,247
+
+2012 income 519,971
+2012 restricted_in 22,905
+2012 donations 513,571
+2012 interest 6,400
+2012 spending 708,256
+2012 net -188,285
+2012 funds 5,203,586
+2012 buildings 4,287,741
+2012 cash 953,018
+2012 sp_food 88,481
+2012 sp_maint 276,529
+2012 sp_heat 78,335
+2012 sp_ins 27,572
+2012 sp_travel 43,148
+2012 sp_depr 83,668
+
+2013 income 942,681
+2013 restricted_in 64,958
+2013 donations 936,136
+2013 interest 6,545
+2013 spending 633,208       # checked
+2013 net 309,473
+2013 funds 5,513,059
+2013 buildings 4,261,124
+2013 cash 1,248,827
+2013 sp_food 66,616
+2013 sp_maint 176,548
+2013 sp_heat 92,302
+2013 sp_ins 28,663
+2013 sp_travel 37,748
+2013 sp_depr 83,000
+
+2014 income 845,632
+2014 restricted_in 39,773
+2014 donations 832,192
+2014 interest 3,889
+2014 other 9,551
+2014 spending 839,865        # includes 247,929 legal and professional fees, mostly for the Amaravati building plans
+2014 net 5,767
+2014 funds 5,518,826
+2014 buildings 4,345,763
+2014 cash 1,392,240
+2014 sp_food 87,377
+2014 sp_maint 189,435
+2014 sp_heat 86,680
+2014 sp_ins 28,431
+2014 sp_travel 48,357
+2014 sp_depr 86,755
+
+2015 income 1,339,350
+2015 restricted_in 687,633
+2015 donations 1,321,384
+2015 interest 6,617
+2015 other 11,349
+2015 spending 669,891
+2015 net 669,459
+2015 funds 6,188,285
+2015 buildings 4,403,593
+2015 cash 1,771,583
+2015 sp_food 94,155
+2015 sp_maint 187,869
+2015 sp_heat 91,049
+2015 sp_ins 29,062
+2015 sp_travel 41,924
+2015 sp_depr 91,063
+
+2016 income 686,109
+2016 restricted_in 59,692
+2016 donations 659,984
+2016 interest 11,799
+2016 other 14,326
+2016 spending 603,564
+2016 net 82,545
+2016 funds 6,270,830
+2016 buildings 4,709,824
+2016 cash 1,634,960
+2016 sp_food 77,945
+2016 sp_maint 161,066
+2016 sp_heat 70,948
+2016 sp_ins 28,551
+2016 sp_travel 28,956
+2016 sp_depr 119,389
+
+2017 income 1,413,617
+2017 restricted_in 62,968
+2017 donations 1,396,721
+2017 interest 5,983
+2017 other 10,913
+2017 spending 647,777
+2017 net 765,840
+2017 funds 7,036,670
+2017 buildings 5,545,906
+2017 cash 1,114,554
+2017 sp_food 90,597
+2017 sp_maint 207,015
+2017 sp_heat 84,102
+2017 sp_ins 30,342
+2017 sp_travel 37,314
+2017 sp_depr 88,352
+
+2018 income 976,291
+2018 restricted_in 35,312
+2018 donations 958,931
+2018 interest 3,888
+2018 other 13,472
+2018 spending 765,598
+2018 gains -35            # tax
+2018 net 210,658
+2018 funds 7,247,328
+2018 buildings 5,582,088
+2018 cash 1,453,241
+2018 sp_food 112,547
+2018 sp_maint 184,856
+2018 sp_heat 95,432
+2018 sp_ins 31,687
+2018 sp_travel 70,389
+2018 sp_depr 137,618
+
+2019 income 4,426,609
+2019 restricted_in 3,553,312
+2019 donations 4,402,172     # includes 3,550,513 of restricted gifts, mostly for the Amaravati Long Term Plan
+2019 interest 8,953
+2019 other 15,484
+2019 spending 832,984
+2019 net 3,593,625
+2019 funds 10,840,953
+2019 buildings 8,389,057
+2019 cash 2,397,986
+2019 sp_food 87,649
+2019 sp_maint 195,757
+2019 sp_heat 104,806        # checked
+2019 sp_ins 33,867
+2019 sp_travel 38,887
+2019 sp_depr 193,385
+
+# Building costs that the accounts count as spending (taken out of "running costs" on the page, which leaves out
+# all building work; total expenditure in the accounts = running costs + wear on buildings + these):
+# x_plan   = professional fees for developing the Amaravati Long Term Plan (from 2018 such fees count as building work)
+# x_loan   = interest on the loan for building the Rocana Vihara at Cittaviveka
+# x_temple = replacing the underfloor heating in the Amaravati Temple (inside "maintenance"; the trustees' report gives
+#            the cost as approximately £165,000 by March 2008, £7,800 of it in 2006-07, and £175,000 by March 2009)
+2006 x_loan 11,526           # note: Loan interest
+2007 x_loan 38,772           # note: Loan interest
+2007 x_temple 7,800          # trustees' report 2008: £7,800 incurred in 2006/07
+2008 x_loan 33,440           # note: Loan interest
+2008 x_temple 157,200        # trustees' report 2008: about £165,000 in all by March 2008, less £7,800 the year before
+2009 x_loan 20,901           # note: Loan interest
+2009 x_temple 10,000         # trustees' report 2009: about £175,000 in all by March 2009
+2010 x_loan 1,846            # note: Loan interest
+2011 x_loan 669              # 2012 note, previous-year column: Loan interest
+2012 x_loan 2,337            # note: Loan interest
+2013 x_plan 53,909           # 2014 note: professional fees for the Long Term Plan, 2013 £53,909
+2014 x_plan 192,938          # 2014 note: £192,938
+2015 x_plan 14,704           # note: Long Term Plan professional fees
+2016 x_plan 3,586            # note: Long Term Plan professional fees
+
+# Funds and reserves, read from the scans (balance sheet / statement of financial activities, the funds note's
+# "General Funds" row, and the trustees' report on reserves):
+# target     = what the trustees say should be "retained as unrestricted free reserves"
+# restricted = restricted funds, with the expendable endowment (2010-2016) counted here too
+# general    = general funds (free reserves) at 31 March; designated = unrestricted funds less general funds and the
+#              £12 share capital (funds set aside by the trustees, mostly the buildings)
+# gen_in / gen_out / gen_moved / gen_gain = the General Funds row: income, expenditure, transfers, gains
+# gen_start  = the row's own opening balance, where it differs from the year before (a restatement)
+2002 target 75,000
+2002 restricted 1,883,417
+2003 target 75,000
+2003 restricted 1,960,557
+2004 target 77,250
+2004 restricted 1,978,022
+2005 target 105,000
+2005 restricted 2,259,854
+2005 general 251,482
+2005 designated 1,684,809
+2005 gen_moved -1,567,194
+2005 gen_gain 5,643
+2005 gen_in 669,694             # read on the scan image (page 21)
+2005 gen_out 348,231
+2006 target 150,000
+2006 restricted 2,240,219
+2006 general 179,173
+2006 designated 1,787,727
+2006 gen_in 514,916
+2006 gen_out 373,174
+2006 gen_moved -215,530
+2006 gen_gain 1,479
+2007 target 150,000
+2007 restricted 2,341,818
+2007 general 200,517
+2007 designated 2,043,374
+2007 gen_in 512,074
+2007 gen_out 306,705
+2007 gen_moved -184,025
+2008 target 150,000
+2008 restricted 2,464,923
+2008 general 173,914
+2008 designated 1,983,395
+2008 gen_in 536,424
+2008 gen_out 405,964
+2008 gen_moved -158,974
+2008 gen_gain 1,911
+2009 target 250,000
+2009 restricted 2,448,276
+2009 general 294,968
+2009 designated 2,160,176
+2009 gen_in 802,293            # read on the scan image (page 21)
+2009 gen_out 459,105
+2009 gen_moved -222,134
+2010 target 250,000
+2010 restricted 2,931,715       # 2,431,715 restricted + 500,000 expendable endowment
+2010 general 287,424
+2010 designated 2,183,210
+2010 gen_start 294,944
+2010 gen_in 557,882
+2010 gen_out 484,244
+2010 gen_moved -81,158
+2011 target 300,000
+2011 restricted 2,963,603       # + 500,000 endowment
+2011 general 298,342
+2011 designated 2,129,914
+2011 gen_in 545,844
+2011 gen_out 505,104
+2011 gen_moved -29,822
+2012 target 300,000
+2012 restricted 2,789,160       # + 332,000 endowment
+2012 general 336,436            # funds note; the trustees' report gives free reserves of £300,695
+2012 designated 2,077,978
+2012 gen_in 497,066
+2012 gen_out 619,568
+2012 gen_moved 160,596          # worked out from the row (160,59? in the scan)
+2013 target 300,000
+2013 restricted 2,804,762       # + 332,000 endowment
+2013 general 463,013            # read on the scan image (page 21); the text reader had 483.012
+2013 designated 2,245,272
+2013 gen_start 300,683          # read on the scan image; restated from 336,436 the year before
+2013 gen_in 877,723
+2013 gen_out 532,606
+2013 gen_moved -182,787
+2014 target 350,000
+2014 restricted 2,811,927       # + 332,000 endowment
+2014 general 446,047
+2014 designated 2,260,840
+2014 gen_start 463,013
+2014 gen_in 805,859             # read on the scan image (page 23)
+2014 gen_out 526,701
+2014 gen_moved -296,124
+2015 target 350,000
+2015 restricted 3,446,031       # + 332,000 endowment
+2015 general 493,757
+2015 designated 2,248,485
+2015 gen_in 651,717
+2015 gen_out 559,920
+2015 gen_moved -44,087
+2016 target 350,000
+2016 restricted 3,461,320       # + 332,000 endowment
+2016 general 548,369
+2016 designated 2,261,129
+2016 gen_in 626,417
+2016 gen_out 499,303
+2016 gen_moved -72,502
+2017 target 380,000
+2017 restricted 3,156,607
+2017 general 393,560
+2017 designated 3,486,491
+2017 gen_in 1,350,649
+2017 gen_out 557,638
+2017 gen_moved -947,820
+2018 target 360,000
+2018 restricted 3,139,558
+2018 general 537,693
+2018 designated 3,570,065
+2018 gen_in 950,600
+2018 gen_out 610,447
+2018 gen_moved -196,020
+2019 target 435,000
+2019 restricted 3,888,679
+2019 general 491,725
+2019 designated 6,460,537
+2019 gen_in 819,471
+2019 gen_out 592,302
+2019 gen_moved -273,137

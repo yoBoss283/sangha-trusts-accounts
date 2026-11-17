@@ -1,0 +1,10 @@
+# Figures set by hand: year, item, value. Each line says why. Checked on the page images, 17 Nov 2026.
+# Rule: a year's own report wins when the next report restates it (both add up to their own totals).
+
+2015 income 100,723        # 2015 report; the 2016 report restates 2015 at 100,681
+2025 income 379,694        # 2025 statement of financial activities (no later report to compare); trustees' report says the same
+# total spending where the statement's line can't be read by the text reader (each checked against the note total)
+2018 spending 131,126      # 2018 report note 4 total, and the 2019 report's 2018 column
+2023 spending 174,009      # 2023 statement of financial activities (note total 174,008)
+2024 spending 162,071      # 2024 report note 5 total, and the 2025 report's 2024 column
+2025 spending 148,276      # 2025 report note 5 total
