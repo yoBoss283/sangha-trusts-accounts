@@ -188,3 +188,64 @@ Two nits fixed: (1) the tail "with welfare and food" stays on the Amaravati and 
 "without welfare" sentence above it); Ratanagiri and Hartridge now say "all running costs". (2) the percentage and the "(+£159,000 a year)"
 amount no longer break across lines on a phone (no-wrap). Committed locally; not pushed. Publishing waits for the owner's
 yes in the landing session.
+
+---
+
+# Sumedharama review (reviewer, 17 Nov 2026)
+
+Phone (375 px): no sideways scroll, smallest chart text 12 px. Page is long (10,650 px with everything open) but its
+top is clear: €43k a year, €120 a day, four tiles. I recomputed from `sumedharama/data.json`, `people.json`, `cpi.json`.
+
+## Likely error: the sign of interest received
+
+`make_data.py` stores `interest = -(report line)`, i.e. **+€1,453.74** in 2025. The report enters interest as a negative
+cost *inside* its total (the line is −1,453.74). To take interest out of running costs, add it back
+(`spending + 1,453.74`). `make_data.py:54` and `build.py:18` do `spending − interest`, which takes it out twice
+(€2,907 too low in 2025, about 6.5%). Please check against the report's own page.
+If I am right, the figures change as follows (2025 euros, my recomputation):
+
+| Item | Page says | Recomputed |
+|---|---|---|
+| 2023–25 average a year | €43,000 | €44,100 as paid |
+| A day | €120 | €121 |
+| 2021–25 against 2013–15 | −5% | −3.5% |
+| Same without rent | +26% | +27% |
+| Since 2019–21 (card) | −1% (−€1,000) | +1% (+€400): flat either way |
+| Cash left, in years (below) | n/a | 5.5 years of running costs |
+
+## Points
+
+1. **Fix the interest sign first** (above), then rebuild the page and the landing card.
+2. **The headline hides the real story, the rent.** "5% less than 2013–15" is true only because rent (€14,500 in 2013, €6,000
+   after) was paid then and not now. The honest sentence is the other one: without rent, costs are about 27% higher while
+   the community more than doubled. Lead with that, or give both numbers side by side. The chart title "Running costs
+   kept pace with inflation" and the headline "5% less" point the same way and are the flattering reading.
+3. **Residents are the other half of it.** 2019–21 → 2023–25 residents rose 7.5 → 9.8 (+31%) while running costs were flat after
+   inflation, so each resident costs less. The page says "costs went up while the community more than doubled", which is
+   true but gives no sense of how cheap that is: €120 a day for ten residents against £2,600 a day for sixty-three. Do not
+   put that side by side (not a ranking), but say it for Sumedharama alone: the same running costs now carry 31% more
+   people.
+4. **Reserve, same as we did for the English Sangha Trust.** The report has a balance sheet. Cash and short deposits at 31 December:
+   2019 €685k (€630k of it deposits), 2021 €213k, 2023 €257k, 2025 €245k. Cash divided by running costs is 5.5 years in
+   2025 (7.3 in 2023; it was 24 years in 2019 when deposits were held). Say plainly that the report does not say which cash
+   is restricted, so this is an upper limit on how long the money lasts.
+5. **Money given against running costs.** The report has no income line; "money given, worked out" is the change in funds
+   plus spending. It was €74k, €92k, €86k, €138k and €168k in 2021–25, always above running costs (€34–52k), but it
+   includes gifts for building. Show it with that caveat, and show 2018's €869k as the one-off it is.
+6. **Wear on buildings is €105k a year from 2023.** That is 2.4 times the running costs and it is not money paid out, so the page
+   keeps it out. Good, and the note explains it. Check it is not in a headline anywhere (it is not on the card).
+7. **Quality of the source.** It is a two-page community report, not filed accounts; it has three lines that do not add up
+   and a balance-sheet slip in 2022. The page says so, once at the top of the headline and in the notes. Keep it; the
+   landing card says it too.
+8. **Landing card.** Same fix as point 1 for the numbers. The sentence "−5%, but without rent 26% higher" is fine; after
+   the fix it should read "−3% ... 27% higher" (or whatever your recomputation gives). The card now has one comparison line
+   ("Since 2019–21") for all places: good.
+
+## Stop rule
+
+When 1 is checked and rebuilt, 2 and 3 are reworded, and the owner has answered on 4 and 5, I stop reviewing.
+
+## For the owner
+
+- 4. Add "years of cover" (cash against running costs) to the Sumedharama page? Recommended.
+- 5. Add "money given against running costs" with the building caveat? Recommended.
