@@ -15,7 +15,7 @@ g = lambda r, k: r.get(k) or 0
 RUN = {'est': lambda r: r['spending'] - g(r, 'sp_depr') - g(r, 'x_plan') - g(r, 'x_loan') - g(r, 'x_temple'),
        'ratanagiri': lambda r: r['spending'] - g(r, 'depr') - g(r, 'disposal'),
        'hartridge': lambda r: r['spending'] - g(r, 'capfund'),
-       'sumedharama': lambda r: r['spending'] - g(r, 'depr') - g(r, 'writeoff') - g(r, 'project') - g(r, 'interest')}
+       'sumedharama': lambda r: r['spending'] - g(r, 'depr') - g(r, 'writeoff') - g(r, 'project') + g(r, 'interest')}
 fig = {}
 for k in A:
     D, P = load(k)
