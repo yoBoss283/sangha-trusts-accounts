@@ -82,7 +82,7 @@ for k, name, where, col, says in CARDS:
     cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
   <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {EXTRA[k]}as paid, {f["years"]} average</p>
-  <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident ({round(f["people"])} residents)</dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
+  <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
   <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], "£")} a year)</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
   <p class="since"><b>New buildings, {BUILD[k][0]}:</b> {BUILD[k][1]}, not counted in running costs</p>
