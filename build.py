@@ -81,11 +81,10 @@ for k, name, where, col, says in CARDS:
     f = fig[k]
     cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
-  <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {EXTRA[k]}as paid, {f["years"]} average</p>
+  <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
   <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], "£")} a year)</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
-  <p class="since"><b>New buildings, {BUILD[k][0]}:</b> {BUILD[k][1]}, not counted in running costs</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 body = f'''
@@ -100,6 +99,7 @@ body = f'''
 {cards}  </div>
   <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
     <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each trust's last three years.</p>
+    <p class="note"><b>One measure the same for all three:</b> running costs after inflation, the three years 2019–21 against each trust's last three years. The English Sangha Trust {signed(SINCE["est"][0])}%, Aruna Ratanagiri {signed(SINCE["ratanagiri"][0])}%, Hartridge {signed(SINCE["hartridge"][0])}%. The places differ in size, in how many people live there and in building work, so this shows how each changed, not which is better run.</p>
     <details class="how"><summary>More about the figures</summary>
     <p class="note">Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. A day for each resident is the cost of a day divided by the number of residents (the monks, nuns, novices and anagārikas living there). It is a simple guide: guests, retreatants and visitors use the place too, so it is not what one person costs.</p>
     <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
