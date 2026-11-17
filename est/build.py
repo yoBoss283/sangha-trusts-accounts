@@ -1,6 +1,6 @@
 # Fill template.html with data.json and write the report in two forms:
 #   est-accounts.html       the full page, works on its own (open it in any browser, also offline)
-#   est-accounts-page.html  the same without the outer <html> skeleton, for publishing as a Claude artifact
+#   est-accounts-page.html  the same without the outer <html> skeleton
 # Words like __LASTY__ in the template follow the data, so a new year's accounts need no hand edits of years.
 import json, pathlib, datetime
 here = pathlib.Path(__file__).parent

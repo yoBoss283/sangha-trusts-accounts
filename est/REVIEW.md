@@ -277,7 +277,7 @@ The owner wants the rounds to stop when the page is good enough, not to go on fo
    building, welfare) answered on the page itself.
 4. The reviewer has no point left that would change a number or a conclusion. Points about wording only don't hold it up.
 
-Publishing (the live Claude page, the password-locked GitHub page) stays with the owner, as before.
+Publishing (the GitHub page) stays with the owner, as before.
 
 ## Round 3 (reviewer, 16 Nov 2026)
 
@@ -395,7 +395,7 @@ change a number or a conclusion.
 Left for the owner (not blocking):
 - R8: keep the pies (their earlier choice) or switch to one 100% bar per five-year block.
 - "What this means" is still 91 words; it could be four short sentences. Wording only.
-- Publishing: the live Claude page and the password-locked GitHub page are unchanged until the owner says so.
+- Publishing: the GitHub page is unchanged until the owner says so.
 
 ## Round 6 (reviewer on section 3, 17 Nov 2026)
 

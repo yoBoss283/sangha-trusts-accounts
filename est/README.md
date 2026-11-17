@@ -17,7 +17,7 @@ statements), in the same style as the Sangha community list statistics.
    the auditor's tick marks over digits defeat the automatic reader). The same checks run on them.
    `cpi.py` turns the ONS consumer prices index (`ons_cpi_d7bt.csv`) into April–March averages for "in today's money".
 4. `build.py` fills `template.html` and writes `est-accounts.html` (works on its own, offline) and
-   `est-accounts-page.html` (the same for publishing as a Claude artifact).
+   `est-accounts-page.html` (the same without the outer skeleton).
 
 `sh build.sh` runs all three steps and stops if a total does not add up.
 

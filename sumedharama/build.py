@@ -1,6 +1,6 @@
 # Fill template.html with data.json and write the report in two forms:
 #   sumedharama-accounts.html       the full page, works on its own (open it in any browser, also offline)
-#   sumedharama-accounts-page.html  the same without the outer <html> skeleton, for publishing as a Claude artifact
+#   sumedharama-accounts-page.html  the same without the outer <html> skeleton
 import json, pathlib, datetime
 here = pathlib.Path(__file__).parent
 raw = json.load(open(here / 'data.json', encoding='utf-8'))

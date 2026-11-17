@@ -17,4 +17,4 @@ from the community lists. No names.
   `template.html` and the built page. `sh build.sh` in a folder rebuilds it from the documents.
 - `sh build_all.sh` rebuilds every report page from its saved data, then the landing page.
 
-This is the only repo and the only site. The four earlier separate repos and the old Claude page were retired on 17 Nov 2026.
+This is the only repo and the only site. The four earlier separate repos were retired on 17 Nov 2026.

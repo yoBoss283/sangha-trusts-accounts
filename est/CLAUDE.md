@@ -7,7 +7,7 @@ Start with `README.md` (pipeline and how to add a year). Same working style as t
 - **Group figures only** (the Trust plus Amaravati Developments Ltd), never the company-only columns.
 - **Never type a figure in by hand** except in `corrections.txt`, with the reason; `sh build.sh` must say "all add up".
 - **Live page:** the combined site, https://yoboss283.github.io/sangha-trusts-accounts/pages/est.html . This folder is `est/` of the
-  repo `sangha-trusts-accounts`; rebuild with `sh build.sh`, then `sh ../build_all.sh`. The old Claude page is deleted.
+  repo `sangha-trusts-accounts`; rebuild with `sh build.sh`, then `sh ../build_all.sh`.
 - **Hand-read figures:** anything that can't be read for sure on a scan goes to the owner first (a check page with the
   scan line), never a guess. Confirmed ones are marked "checked" in `read_by_hand.txt`.
 - **GitHub:** public repo https://github.com/yoBoss283/sangha-trusts-accounts (the owner chose public on

@@ -13,7 +13,7 @@ and how to make the same page for the other two UK monasteries: **Aruna Ratanagi
 
 - One page, plain words, for people who don't read accounts: what it costs to run the monasteries, and whether that
   rose faster than inflation since the building programme began (2019).
-- Live: https://yoboss283.github.io/sangha-trusts-accounts/pages/est.html (the old Claude page is deleted).
+- Live: https://yoboss283.github.io/sangha-trusts-accounts/pages/est.html.
 - Code and data: public GitHub repo https://github.com/yoBoss283/sangha-trusts-accounts, folder `est/`.
 - Files: `BRIEF.md` (for outside reviewers), `REVIEW.md` (five review rounds, all decisions), `README.md` (pipeline),
   `CLAUDE.md` (repo rules).
@@ -103,4 +103,4 @@ and how to make the same page for the other two UK monasteries: **Aruna Ratanagi
 - Public repo: commit as `yoBoss283 <yoBoss283@users.noreply.github.com>`, never the owner's real name or e-mail. Run
   git pull/push in the Terminal panel (keychain login).
 - No Sangha data beyond yearly counts; never the "Doris 2007" data.
-- Publishing the Claude page only when the owner says so in their own chat (not relayed by another session).
+- Publishing the page only when the owner says so in their own chat (not relayed by another session).
