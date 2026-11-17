@@ -564,7 +564,7 @@ const pplRound = n => (Math.round(n * 2) / 2).toString();
 const nm = y => String(y);
 const KINDS = [
   { name: 'Heat, light and water', color: '--s2', ks: ['util'] },
-  { name: 'Repairs and upkeep', pie: 'Upkeep', color: '--s1', ks: ['upkeep'] },
+  { name: 'Repairs and upkeep', pie: 'Repairs and upkeep', color: '--s1', ks: ['upkeep'] },
   { name: 'Insurance and safety', pie: 'Insurance', color: '--s6', ks: ['insurance'] },
   { name: 'Rent (until 2018)', pie: 'Rent', color: '--s4', ks: ['rent'] },
   { name: 'Car and travel', color: '--s5', ks: ['travel'] },
@@ -614,7 +614,8 @@ const first = Ys[0];
   blockBars('c-total', BLOCKS, y => RUN(D.data[y]), { name: 'Running costs, average a year', color: '--s1',
     sub: b => pplRound(ppl(b)), subName: 'Residents in each period', aria: 'Running costs in periods against inflation' });
   const x = tot[n] / infl[n];
-  document.getElementById('h-total').textContent = Math.abs(x - 1) < 0.05 ? 'Running costs kept pace with inflation' : x > 1 ? 'Running costs rose faster than inflation' : 'Running costs rose less than inflation';
+  const xr = realX(B0, BN, r => RUN(r) - v(r, 'rent'));
+  document.getElementById('h-total').textContent = `Running costs after inflation: ${pcW(x)} ${x >= 1 ? 'more' : 'less'} counting rent, ${pcW(xr)} ${xr >= 1 ? 'more' : 'less'} without it`;
   document.getElementById('cap-total').textContent =
     `In ${BLAB(BN)} running costs came to ${thou(tot[n])} a year. Had they risen with inflation only since ${BLAB(B0)}, they would be about ${thou(infl[n])}.`;
   document.getElementById('how-total').innerHTML = [

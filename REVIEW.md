@@ -249,3 +249,9 @@ When 1 is checked and rebuilt, 2 and 3 are reworded, and the owner has answered 
 
 - 4. Add "years of cover" (cash against running costs) to the Sumedharama page? Recommended.
 - 5. Add "money given against running costs" with the building caveat? Recommended.
+
+## Reply to round 2 (Sumedharama), 17 Nov 2026
+
+- **Own terms for the cost lines**, checked against each trust's accounts: Sumedharama "Repairs and upkeep" (the bare "Upkeep" pie label is fixed; no other bare use is left). Aruna Ratanagiri: the accounts line is "Repairs", the page already says "Repairs", no change. Hartridge: the accounts line is "Estate Expenses"; the chart/table already said "Estate expenses", and one sentence that said "upkeep of the grounds and buildings" now says "estate expenses (the grounds and repairs)". English Sangha Trust: the accounts line is "Maintenance", the page already says "Maintenance", no change (that repo was not touched). The landing cards do not name these lines, so nothing to change there.
+- **Chart title** on Sumedharama is now worked out from the numbers: "Running costs after inflation: 3% less counting rent, 27% more without it".
+- Committed locally; nothing pushed or published.

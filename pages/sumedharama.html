@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything spent in a year to keep the monastery going, without new buildings and infrastructure (counted as something the community owns), without wear on buildings (depreciation, not money paid out) and without building-project costs the report counts as spending (see the notes). Residents: the monks, novices and anagārikas living at Sumedharama, on average; lay guests are not counted. Inflation: Portugal's consumer prices index (Eurostat). All amounts in euros, as in the report, as paid at the time.</p>
-  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:53 GMT</span></p>
+  <p class="sources"><b>Source:</b> the community's own two-page "Report to Abbots 2012–2026" (detailed expenses and balance sheet, years to 31 December), shared with us by Ajahn Vajiro on 17 November 2026; it is not a filed set of annual accounts. Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 06:54 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -572,7 +572,7 @@ const pplRound = n => (Math.round(n * 2) / 2).toString();
 const nm = y => String(y);
 const KINDS = [
   { name: 'Heat, light and water', color: '--s2', ks: ['util'] },
-  { name: 'Repairs and upkeep', pie: 'Upkeep', color: '--s1', ks: ['upkeep'] },
+  { name: 'Repairs and upkeep', pie: 'Repairs and upkeep', color: '--s1', ks: ['upkeep'] },
   { name: 'Insurance and safety', pie: 'Insurance', color: '--s6', ks: ['insurance'] },
   { name: 'Rent (until 2018)', pie: 'Rent', color: '--s4', ks: ['rent'] },
   { name: 'Car and travel', color: '--s5', ks: ['travel'] },
@@ -622,7 +622,8 @@ const first = Ys[0];
   blockBars('c-total', BLOCKS, y => RUN(D.data[y]), { name: 'Running costs, average a year', color: '--s1',
     sub: b => pplRound(ppl(b)), subName: 'Residents in each period', aria: 'Running costs in periods against inflation' });
   const x = tot[n] / infl[n];
-  document.getElementById('h-total').textContent = Math.abs(x - 1) < 0.05 ? 'Running costs kept pace with inflation' : x > 1 ? 'Running costs rose faster than inflation' : 'Running costs rose less than inflation';
+  const xr = realX(B0, BN, r => RUN(r) - v(r, 'rent'));
+  document.getElementById('h-total').textContent = `Running costs after inflation: ${pcW(x)} ${x >= 1 ? 'more' : 'less'} counting rent, ${pcW(xr)} ${xr >= 1 ? 'more' : 'less'} without it`;
   document.getElementById('cap-total').textContent =
     `In ${BLAB(BN)} running costs came to ${thou(tot[n])} a year. Had they risen with inflation only since ${BLAB(B0)}, they would be about ${thou(infl[n])}.`;
   document.getElementById('how-total').innerHTML = [
