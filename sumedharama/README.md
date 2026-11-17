@@ -1,7 +1,7 @@
 # Sumedharama (Budismo Theravada da Floresta, Portugal): accounts statistics
 
 A one-page, plain-language report of what it costs to run the monastery, from the community's own two-page
-"Report to Abbots 2012–2026" (`report.pdf`: detailed expenses and a balance sheet, years to 31 December). **All amounts are in
+"Report to Abbots 2012–2026", shared by Ajahn Vajiro on 17 November 2026 (`report.pdf`: detailed expenses and a balance sheet, years to 31 December). **All amounts are in
 euros, as in the report; nothing is converted.** It is not a set of filed annual accounts and has no income statement.
 Part of the landing page https://yoboss283.github.io/sangha-trusts-accounts/ (the overview folder builds the card).
 
