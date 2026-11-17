@@ -18,6 +18,7 @@ COSTS = [
     ('ins', r'Insurance'), ('repairs', r'Repairs'), ('office', r'(Postage|Office admin)'),
     ('phone', r'Telephone'), ('motor', r'Motor'), ('travel', r'(Travel|Traveiling|Study & travel)'),
     ('legal', r'Legal'), ('sundry', r'Sundry'), ('bank', r'Bank charges'), ('household', r'Household'),
+    ('mbt', r'(?!x)x'),   # spending by the earlier trust (Magga Bhavaka Trust), 2011-12: set by hand, see read_by_hand.txt
     ('depr', r'Depreciation'), ('events', r'Events'), ('gov', r'Governance'), ('pubs', r'(FS )?[Pp]ublication'),
     ('religious', r'Items of religious'), ('disposal', r'(Profit|Loss).{0,6}disposal'),
     ('welfare', r'Bhikkhu Welfare'), ('breakfast', r'Breakfast'), ('misc', r'Miscellaneous'), ('dana', r'Dana'),

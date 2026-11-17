@@ -22,7 +22,7 @@ KINDS = {'heat': 'heat', 'repairs': 'repairs', 'rent': 'rri', 'ins': 'rri',
          'welfare': 'whf', 'household': 'whf', 'breakfast': 'whf', 'kitchen': 'whf', 'motor': 'car', 'travel': 'car',
          'events': 'teach', 'pubs': 'teach', 'dana': 'teach', 'religious': 'teach',
          'staff': 'office', 'office': 'office', 'phone': 'office', 'legal': 'office', 'bank': 'office', 'gov': 'office',
-         'sundry': 'office', 'misc': 'office'}
+         'sundry': 'office', 'misc': 'office', 'mbt': 'office'}
 NOT_RUNNING = {'depr', 'disposal'}
 OTHER_KEYS = {'income', 'spending', 'gov_sofa', 'capex', 'people', 'seniors'}
 bad = []

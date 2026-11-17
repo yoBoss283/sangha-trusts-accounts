@@ -264,6 +264,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
       <li><b>Where the figures come from.</b> Every figure is read from the Trust's annual accounts as filed at Companies House. All of them are scans; every cost line was read by eye from the page and checked: each year's lines add up to the total spending printed in the accounts, and each year was compared with the next year's report, which repeats it.</li>
       <li><b>Years.</b> The Trust's year runs from January to December. The page starts in __FIRSTY__: the Harnham Buddhist Monastery Trust took over from the Magga Bhavaka Trust in 2010, which brought in the buildings and money of the old trust (£1.0 million) and is not a normal year.</li>
       <li><b>What the accounts cover.</b> The whole monastery on the hill at Harnham, including Kusala House (the guest house for lay visitors), Mangala House and the lake land below the monastery. Part of the monastery, No. 2 Harnham Hall Cottages (reception room and kitchen), is rented: the rent is in "rent, rates and insurance".</li>
+      <li><b>¹ The earlier trust.</b> The Harnham Buddhist Monastery Trust took over the monastery from the Magga Bhavaka Trust (charity 326695, registered 1984), which is the same community under an earlier name. For 2011 and 2012 the Magga Bhavaka Trust still filed small accounts of its own (spending £8,821 and £4,614, income £8,444 and £2,782; Charity Commission register). They are added to those two years, under "office, staff and other", so the total spending and income of 2011 and 2012 are the Harnham Trust's accounts plus these. The earlier trust's accounts for 2013 and 2014 were never filed, and its older ones are not online.</li>
       <li><b>Running costs</b> are total spending in the accounts without depreciation (wear on buildings) and without small accounting losses on things sold or thrown away (£280 in 2023, £892 in 2024). New buildings and infrastructure are never in total spending: the accounts count them as things the Trust owns.</li>
       <li><b>Repairs</b> include work paid from gifts for a set purpose (restricted funds). They were high in 2013 and 2014 (about £37,000 and £40,000): the reports of those years describe re-roofing the Byre, repainting Kusala House and refurbishing the abbot's kuti bathroom. They are counted as running costs, as the accounts do.</li>
       <li><b>Heat and light</b> is the accounts' "light and heat"; the trustees' own summary calls it "utilities and firewood". It shows money paid, not energy used.</li>
@@ -798,7 +799,8 @@ yearTable('t-all', Ys, [
   ...KINDS.map(k => ({ name: k.name, values: R.map(k.f) })),
   { name: 'All running costs', values: R.map(RUN), cls: 'tot' },
   { group: 'From the accounts to running costs' },
-  { name: 'Total spending in the accounts', values: R.map(r => r.spending) },
+  { name: 'Total spending in the accounts ¹', values: R.map(r => r.spending) },
+  { name: 'of which the earlier trust (Magga Bhavaka Trust) ¹', values: R.map(r => r.mbt ?? null), indent: true },
   { name: 'less wear on buildings (depreciation)', values: R.map(r => -(r.depr ?? 0)), indent: true },
   { name: 'less loss on things sold or thrown away', values: R.map(r => r.disposal ? -r.disposal : null), indent: true },
   { name: '= running costs', values: R.map(RUN), cls: 'tot' },
@@ -809,7 +811,7 @@ yearTable('t-all', Ys, [
   { name: 'Price index (CPI, calendar year)', values: Ys.map(y => CPI[y]), fmt: n => n.toFixed(1) },
   { name: 'Energy prices index', values: Ys.map(y => ENERGY[y]), fmt: n => n.toFixed(1) },
   { group: 'Money in' },
-  { name: 'Total income', values: R.map(r => r.income ?? null), cls: 'tot' },
+  { name: 'Total income ¹', values: R.map(r => r.income ?? null), cls: 'tot' },
 ], { first: 'Year' });
 }
 render();

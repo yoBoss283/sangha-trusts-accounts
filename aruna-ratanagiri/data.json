@@ -27,8 +27,8 @@
  },
  "2011": {
   "gov_sofa": 1947,
-  "income": 114943,
-  "spending": 81399,
+  "income": 123387,
+  "spending": 90220,
   "staff": 4608,
   "rent": 3296,
   "ins": 2438,
@@ -47,12 +47,13 @@
   "breakfast": 2102,
   "depr": 12114,
   "gov": 1947,
-  "capex": 22639
+  "capex": 22639,
+  "mbt": 8821
  },
  "2012": {
   "gov_sofa": 1898,
-  "income": 387088,
-  "spending": 103376,
+  "income": 389870,
+  "spending": 107990,
   "staff": 5669,
   "rent": 3366,
   "ins": 2840,
@@ -73,7 +74,8 @@
   "pubs": 1589,
   "depr": 13879,
   "gov": 1898,
-  "capex": 89860
+  "capex": 89860,
+  "mbt": 4614
  },
  "2013": {
   "gov_sofa": 2426,

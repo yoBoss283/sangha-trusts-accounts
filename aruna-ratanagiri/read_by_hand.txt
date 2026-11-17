@@ -393,3 +393,9 @@
 2025 misc 4,471
 2025 dana 872
 2025 kitchen 726
+
+# Earlier trust: the Magga Bhavaka Trust (charity 326695), whose work Harnham Buddhist Monastery Trust took over, still filed
+# its own small accounts for 2011 and 2012 (Charity Commission register: 2011 spending 8,821, income 8,444; 2012 spending 4,614,
+# income 2,782). They are added here so the monastery's whole spending is counted; the accounts of 2013 and 2014 were never filed.
+2011 mbt 8,821
+2012 mbt 4,614

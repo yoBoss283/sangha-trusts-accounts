@@ -8,3 +8,9 @@
 2023 spending 174,009      # 2023 statement of financial activities (note total 174,008)
 2024 spending 162,071      # 2024 report note 5 total, and the 2025 report's 2024 column
 2025 spending 148,276      # 2025 report note 5 total
+
+# totals with the earlier trust added (Harnham's own total + Magga Bhavaka Trust's, see read_by_hand.txt)
+2011 spending 90,220      # 81,399 + 8,821
+2012 spending 107,990     # 103,376 + 4,614
+2011 income 123,387       # 114,943 + 8,444
+2012 income 389,870       # 387,088 + 2,782
