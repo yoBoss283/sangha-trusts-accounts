@@ -20,24 +20,52 @@ for k in A:
     ys = sorted(int(y) for y in D)[-3:]
     year = sum(RUN[k](D[str(y)]) for y in ys) / 3
     fig[k] = {'years': f'{ys[0]}–{str(ys[-1])[2:]}', 'year': year, 'day': year / 365,
-              'people': sum(P[str(y)]['people'] for y in ys) / 3}
+              'people': sum(P[str(y)]['people'] for y in ys) / 3, 'last': (ys[-1], P[str(ys[-1])]['people'])}
+
+# ---- the numbers typed in the card sentences are computed here, from the same data the pages use
+def real(D, C, run, ys, base_year):                  # average a year of the years `ys`, in `base_year` prices
+    return sum(run(D[str(y)]) * C[str(base_year)] / C[str(y)] for y in ys) / len(ys)
+def data(k):
+    return json.load(open(A[k] / 'data.json')), json.load(open(A[k] / 'cpi.json'))
+facts = {}
+D, C = data('est'); D = D['data']
+runw = lambda r: RUN['est'](r) - g(r, 'sp_food')                                     # without welfare and food
+b, n = real(D, C, runw, [2016, 2017, 2018], 2026), real(D, C, runw, [2024, 2025, 2026], 2026)
+facts['est_rise'], facts['est_pct'] = round((n - b) / 1000) * 1000, round(100 * (n / b - 1))
+assert D['2019'].get('capex') is None, 'EST 2019 now has capex: update the £3.0m rule'
+facts['est_build'] = sum(g(D[str(y)], 'capex') for y in range(2019, 2027) if y != 2019) + 3.0e6   # as the EST page: £3.0m in 2019 + later capex
+D, C = data('ratanagiri')
+b1, b2, b3 = (real(D, C, RUN['ratanagiri'], range(a, a + 5), 2025) for a in (2011, 2016, 2021))
+assert abs(b2 / b1 - 1) < 0.03, 'Ratanagiri 2016-20 is no longer level with 2011-15'
+facts['rat_pct'] = round(100 * (b3 / b2 - 1))
+fixed = lambda r: g(r, 'heat') + g(r, 'repairs') + g(r, 'rent') + g(r, 'ins')
+facts['rat_fixed'] = round(100 * sum(fixed(D[str(y)]) for y in range(2021, 2026)) / sum(RUN['ratanagiri'](D[str(y)]) for y in range(2021, 2026)))
+D, C = data('hartridge'); P = json.load(open(A['hartridge'] / 'people.json'))
+h1, h3 = real(D, C, RUN['hartridge'], range(2013, 2016), 2025), real(D, C, RUN['hartridge'], range(2021, 2026), 2025)
+facts['hart_pct'] = round(100 * (h3 / h1 - 1))
+facts['hart_fixed'] = round(100 * sum(g(D[str(y)], 'utilities') + g(D[str(y)], 'estate') for y in range(2023, 2026)) / sum(RUN['hartridge'](D[str(y)]) for y in range(2023, 2026)))
+p1 = sum(P[str(y)]['people'] for y in range(2013, 2016)) / 3; p3 = sum(P[str(y)]['people'] for y in range(2021, 2026)) / 5
+assert p3 >= 2 * p1, 'Hartridge community has no longer doubled'
+facts['hart_p'] = (round(p1), round(p3))
+print(facts)
 r1000 = lambda n: f'£{round(n / 1000) * 1000:,}'
 r5 = lambda n: f'£{round(n / 5) * 5:,}'
 CARDS = [
  ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1',
-  'Since 2016–18, running costs (without welfare) have risen by £141,000 a year, 22% more, after inflation. In the same years the trust also spent £20.5 million on new buildings, which is not counted in running costs.'),
+  f'Since 2016–18, running costs (without welfare) have risen by £{facts["est_rise"]:,} a year, {facts["est_pct"]}% more, after inflation. In the same years the trust also spent £{facts["est_build"] / 1e6:.1f} million on new buildings, which is not counted in running costs.'),
  ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
-  'After inflation, running costs were level from 2011–15 to 2016–20, then rose 11% in 2021–25. Heat and light followed energy prices; about 45% of the costs come with the buildings.'),
+  f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
  ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
-  'After inflation, running costs are 19% higher than in 2013–15, while the community more than doubled, from 3 to 7. Rates, utilities and the grounds are 59% of the cost.'),
+  f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled, from {facts["hart_p"][0]} to {facts["hart_p"][1]}. Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
 ]
+EXTRA = {'est': 'including welfare and food, ', 'ratanagiri': '', 'hartridge': ''}
 cards = ''
 for k, name, where, col, says in CARDS:
     f = fig[k]
     cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
-  <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {f["years"]} average</p>
-  <dl><dt>A day</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident ({round(f["people"])} residents)</dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
+  <p class="big">{r1000(f["year"])}</p><p class="bigl">a year to run, {EXTRA[k]}as paid, {f["years"]} average</p>
+  <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"])}</dd><dt>A day for each resident ({round(f["people"])} residents on average; {f["last"][0]}: {f["last"][1]:g})</dt><dd>£{round(f["day"] / f["people"])}</dd></dl>
   <p class="says">{says}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
@@ -46,15 +74,17 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Four monasteries, looked after by three charitable trusts. Each report below says, in plain words, what the place costs to run, what the money goes on, and how that has changed after inflation.</p>
+  <p class="hero">Four monasteries, looked after by three charitable trusts: Amaravati and Chithurst (English Sangha Trust), Aruna Ratanagiri (Harnham Buddhist Monastery Trust) and Hartridge (Hartridge Buddhist Monastery Trust). Each report below says, in plain words, what the place costs to run, what the money goes on, and how that has changed after inflation.</p>
 </header>
 <section class="story">
   <div class="places">
 {cards}  </div>
   <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
-    <p class="note">The places are not the same size, and Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. So the cards show what each trust spends, not a ranking. A day for each resident is the cost of a day divided by the number of residents (the monks, nuns, novices and anagārikas living there). It is a simple guide: guests, retreatants and visitors use the place too, so it is not what one person costs.</p>
-    <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. Amounts are as paid at the time, averaged over each trust's last three years. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
-    <p class="note"><b>Years.</b> The English Sangha Trust's year runs from April to March (2024–26 is the years to March 2024, 2025 and 2026). The other two run January to December. <b>Residents</b> are the monks, nuns, novices and anagārikas on the community lists, averaged over the same years.</p>
+    <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each trust's last three years.</p>
+    <details class="how"><summary>More about the figures</summary>
+    <p class="note">Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. A day for each resident is the cost of a day divided by the number of residents (the monks, nuns, novices and anagārikas living there). It is a simple guide: guests, retreatants and visitors use the place too, so it is not what one person costs.</p>
+    <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
+    <p class="note"><b>Years.</b> The English Sangha Trust's year runs from April to March (2024–26 is the years to March 2024, 2025 and 2026). The other two run January to December. <b>Residents</b> are averaged over the same years.</p></details>
   </div>
   <p class="sources"><b>Sources anyone can check:</b> the trusts' annual reports on the Charity Commission register and at Companies House: <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">English Sangha Trust</a> (charity 231310), <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Harnham Buddhist Monastery Trust</a> (charity 1126476), <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Hartridge Buddhist Monastery Trust</a> (charity 1142439). <span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
 </section>
