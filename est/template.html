@@ -887,12 +887,12 @@ function smallMultiples(id, div, top) {
   const rows = KINDS.map(k => {
     const f = y => k.f(D.data[y]) / div(y);
     const a = avgOf(first, f), b = avgOf(last, f);
-    return { k, f, a, b, x: b / a / inf };
-  }).sort((p, q) => q.x - p.x);
+    return { k, f, a, b, x: b / a / inf, gain: b - a * inf };
+  }).sort((p, q) => q.gain - p.gain);      // the biggest rise in pounds, after inflation, first
   if (top) document.getElementById(top).innerHTML = 'Faster than inflation: ' + rows.filter(r => r.x > 1.05).map(r => `<b>${esc(r.k.name.replace(/ \(.*$/, ''))}</b> ${upPct(r.x)}`).join(', ') + ` (after inflation, ${BLAB(first)} against ${BLAB(last)}).`;
   rows.forEach((r, j) => {
     const d = document.createElement('div'); d.className = 'kind';
-    d.innerHTML = `<h4>${esc(r.k.name)}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
+    d.innerHTML = `<h4>${esc(r.k.name)}: ${r.gain > 0 ? (j === 0 ? 'the biggest rise, ' : '') + 'up ' + short(r.gain) + ' a year after inflation' : 'down ' + short(-r.gain) + ' a year after inflation'}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
     blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,

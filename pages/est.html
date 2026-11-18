@@ -324,7 +324,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:32 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:34 GMT</span></p>
 </main>
 
 <script>
@@ -895,12 +895,12 @@ function smallMultiples(id, div, top) {
   const rows = KINDS.map(k => {
     const f = y => k.f(D.data[y]) / div(y);
     const a = avgOf(first, f), b = avgOf(last, f);
-    return { k, f, a, b, x: b / a / inf };
-  }).sort((p, q) => q.x - p.x);
+    return { k, f, a, b, x: b / a / inf, gain: b - a * inf };
+  }).sort((p, q) => q.gain - p.gain);      // the biggest rise in pounds, after inflation, first
   if (top) document.getElementById(top).innerHTML = 'Faster than inflation: ' + rows.filter(r => r.x > 1.05).map(r => `<b>${esc(r.k.name.replace(/ \(.*$/, ''))}</b> ${upPct(r.x)}`).join(', ') + ` (after inflation, ${BLAB(first)} against ${BLAB(last)}).`;
   rows.forEach((r, j) => {
     const d = document.createElement('div'); d.className = 'kind';
-    d.innerHTML = `<h4>${esc(r.k.name)}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
+    d.innerHTML = `<h4>${esc(r.k.name)}: ${r.gain > 0 ? (j === 0 ? 'the biggest rise, ' : '') + 'up ' + short(r.gain) + ' a year after inflation' : 'down ' + short(-r.gain) + ' a year after inflation'}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
     blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
