@@ -201,6 +201,10 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 #tip .row i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 6px; }
 @media (max-width: 520px) { td, th { padding: 6px 4px; } .tile .v { font-size: 22px; } }
 .dim { opacity: .7; white-space: nowrap; }
+.kind .note { margin: 14px 0 6px; line-height: 1.5; }
+.kind #c-staff { margin: 18px 0 22px; }
+.kind .scroll-x { margin: 6px 0 18px; }
+.kind .scroll-x + .note { margin-top: 10px; }
 </style>
 
 <div id="tip" hidden></div>
@@ -895,7 +899,9 @@ function smallMultiples(id, div, top) {
     d.innerHTML = `<h4>${esc(r.k.name)}: ${r.gain > 0 ? (j === 0 ? 'the biggest rise, ' : '') + 'up ' + short(r.gain) + ' a year after inflation' : 'down ' + short(-r.gain) + ' a year after inflation'}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
-    blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
+    const isStaff = r.k.f === KINDS[KINDS.length - 1].f;
+    if (isStaff) document.getElementById(`${id}-${j}`).remove();      // the staff line chart below tells this story, so no bars here
+    else blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
       aria: r.k.name + ' in five-year blocks against inflation' });
     if (r.k.f === KINDS[KINDS.length - 1].f) {
       const SY = Ys.filter(y => D.data[y].sp_staff != null), sr = y => v(D.data[y], 'sp_staff'), sl = y => sr(y) * CPI[LY] / CPI[y];
