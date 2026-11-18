@@ -580,6 +580,35 @@ function blockBars(id, blocks, f, opt = {}) {
   }
   return { vals, infl, ex, lab };
 }
+// one bar a year for the total, a dashed line across it for the part on the staff line (the bar chart's way of showing "of which")
+function staffBars(id, labels, totals, parts, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  legend(host, [{ name: opt.totalName, color: '--s4' }, { name: opt.partName, color: QUIET, dash: true }]);
+  const W = fitW(opt.W || 700, host), H = opt.h || 300, m = { l: fitL(52), r: 8, t: 26, b: 30 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const sc = scale(Math.max(...totals.filter(x => x != null)) * 1.08);
+  axis(svg, m, W, ph, sc);
+  const band = pw / n, bw = Math.min(70, band * 0.62), Yp = v => m.t + ph - ph * v / sc.max, inBar = bw >= 40;
+  labels.forEach((lb, i) => {
+    const x = m.l + band * i + (band - bw) / 2, t = totals[i], p = parts[i];
+    if (t == null) return;
+    const h = ph * t / sc.max;
+    el('path', { d: barPath(x, m.t + ph - h, bw, h, 4), fill: 'var(--s4)', opacity: i === n - 1 ? 1 : 0.8 }, svg);
+    el('text', { x: x + bw / 2, y: Yp(t) - 7, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(t);
+    el('line', { x1: x - 6, x2: x + bw + 6, y1: Yp(p), y2: Yp(p), stroke: `var(${QUIET})`, 'stroke-width': 2.5, 'stroke-dasharray': '5 4' }, svg);
+    if (inBar) el('text', { x: x + bw / 2, y: Yp(p) + 16, 'text-anchor': 'middle', class: 'lbl in' }, svg).textContent = short(p);
+    xLabel(svg, x + bw / 2, m.t + ph + 18, String(lb), false);
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>Year to March ${lb}</b>` + row('Total pay', '--s4', pounds(t)) + row('On the staff line', QUIET, pounds(p)), true));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+  if (!inBar) {
+    const p = document.createElement('p'); p.className = 'under';
+    p.textContent = `Staff line (dashed): ${labels.map((lb, i) => `${lb} ${short(parts[i])}`).join(' · ')}.`;
+    host.appendChild(p);
+  }
+}
 /* what went up and what went down: one bar per row from a zero line, as page text so it reads at any width;
    rows = [{name, value, color, bold, gap, light}] */
 function bridge(id, rows, opt = {}) {
@@ -910,12 +939,9 @@ function smallMultiples(id, div, top) {
       const cs = document.createElement('div'); cs.id = 'c-staff'; cs.className = 'ch-host'; d.appendChild(cs);
       const tp = SY.map(y => pn0(y) != null ? pn0(y) * CPI[LY] / CPI[y] : null), sp = SY.map(y => sl(y)), i0 = tp.findIndex(x => x != null);
       const rise = (a, b) => (b >= a ? '+' : '−') + Math.abs(Math.round(100 * (b / a - 1))) + '%';
-      grouped('c-staff', SY.map(String), [
-        { name: `Total pay, national insurance and pension (staff note): ${rise(tp[i0], tp[tp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s4', values: SY.map(y => pn0(y) != null ? Math.round(pn0(y) * CPI[LY] / CPI[y]) : null) },
-        { name: `Staff line counted in running costs: ${rise(sp[i0], sp[sp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s1', values: SY.map(y => Math.round(sl(y))) },
-      ], { W: 1000, h: 280, values: true, name: l => 'Year to March ' + l, aria: 'Staff pay in total and staff cost counted as running costs, each year, in today\'s money' });
+      staffBars('c-staff', SY, tp, sp, { totalName: `Total pay, national insurance and pension: ${rise(tp[i0], tp[tp.length - 1])} since ${SY[i0]}`, partName: `The part on the staff line (counted in running costs): ${rise(sp[i0], sp[sp.length - 1])}`, aria: 'Total staff pay each year, with the part on the staff line marked' });
       const n1 = document.createElement('p'); n1.className = 'note';
-      n1.textContent = `The bars are in ${LY} money. The higher bar is pay, national insurance and pension added up from the note on staff in the accounts. The lower bar is the staff line counted in running costs. The rest of the pay is counted in other lines, including building work, and the accounts do not show the split.`;
+      n1.textContent = `After inflation, in ${LY} money. Each bar is pay, national insurance and pension added up from the note on staff in the accounts. The dashed line shows the part counted on the staff line in running costs. The rest of the pay is counted in other lines, including building work, and the accounts do not show the split.`;
       d.appendChild(n1);
     }
     if (welfare) {
