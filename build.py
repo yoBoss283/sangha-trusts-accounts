@@ -124,7 +124,7 @@ for k in A2:
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
-  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + str(round(f['people'])) + '</dd>') if f['people'] else ''}</dl>
+  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'] * 2) / 2:g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
   <p class="src">Source: {SRC[k]}</p></article>
@@ -160,7 +160,7 @@ body = f'''
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Seventeen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
-  <p class="note more-n">Within each group the places run from the highest running costs a year to the lowest (the last three years, as paid). Places that publish only totals (money in, spending and, for some, what they hold) have shorter pages, and their card says "Totals only". Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
+  <p class="note more-n">Within each group the places run from the highest running costs a year to the lowest (the last three years, as paid). Places that publish only totals (money in, spending and, for some, what they hold) have shorter pages, and their card says "Totals only"; their "spending" can include building work and wear on buildings, so their per-person figures are rougher. Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
 {sections_html}  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
