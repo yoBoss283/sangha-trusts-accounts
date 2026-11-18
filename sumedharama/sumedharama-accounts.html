@@ -37,7 +37,7 @@ main { max-width: 1060px; margin: 0 auto; padding-block: 32px 64px; padding-left
 header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; }
 header p { margin: 0 0 6px; color: var(--ink-2); max-width: 760px; }
 .tag { display: inline-block; font-size: 12px; color: var(--ink-2); border: 1px solid var(--ring); border-radius: 999px; padding: 2px 10px; margin-top: 6px; }
-.toc { margin: 16px 0 4px; }
+.toc { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 28px 0 8px; max-width: 820px; }
 .toc ol { list-style: none; padding: 0; margin: 0; }
 .toc li { margin: 0 0 4px; }
 .toc a, .backtop a, a { color: var(--s1); text-decoration: none; }
@@ -154,11 +154,16 @@ section.story { margin-top: 28px; padding-top: 0; border-top: 0; }
 details.how { margin-top: 8px; font-size: 13.5px; color: var(--ink-2); max-width: 65ch; }
 details.how summary { cursor: pointer; color: var(--s1); font-size: 13.5px; }
 details.how p { margin: 6px 0; }
-.meaning { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 4px 0 16px; max-width: 820px; }
+.meaning { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 4px 0 40px; max-width: 820px; }
 .meaning h3 { font-size: 16px; margin: 0 0 6px; }
 .meaning p { margin: 0; font-size: 15.5px; }
 .defs { font-size: 13px; color: var(--ink-2); max-width: 820px; }
-.toc-h { font-size: 13px; font-weight: 600; color: var(--ink-2); margin: 0 0 6px; }
+.toc-h { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
+.toc li a { display: block; padding: 7px 0; font-size: 15.5px; font-weight: 600; }
+.endsrc { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--axis); }
+.totop { position: fixed; right: 16px; bottom: 16px; z-index: 20; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 999px; padding: 9px 16px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,.25); display: none; }
+.totop.on { display: block; }
+.totop:hover { text-decoration: none; }
 details.more { margin-top: 6px; }
 details.more > summary { display: inline-block; list-style: none; cursor: pointer; font-size: 14px; color: var(--s1); border: 1px solid var(--ring); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px; background: var(--surface); }
 details.more > summary::-webkit-details-marker { display: none; }
@@ -227,7 +232,6 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything spent in a year to keep the monastery going, without new buildings and infrastructure (counted as something the community owns), without wear on buildings (depreciation, not money paid out) and without building-project costs the report counts as spending (see the notes). Residents: the monks, novices and anagārikas living at Sumedharama, on average; lay guests are not counted. Inflation: Portugal's consumer prices index (Eurostat). All amounts in euros, as in the report, as paid at the time.</p>
-  <p class="sources"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". They are not filed annual accounts. Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:14 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -286,6 +290,7 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
     <div class="footnotes" id="footnotes"></div>
   </div>
 </section>
+<p class="sources endsrc"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". They are not filed annual accounts. Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:16 GMT</span></p>
 </main>
 
 <script>
@@ -670,6 +675,10 @@ const first = Ys[0];
     const a = e.target.closest('a[href^="#"]'); if (!a) return;
     e.preventDefault(); document.getElementById(a.getAttribute('href').slice(1)).scrollIntoView({ block: 'start' });
   });
+  const up = document.createElement('a'); up.className = 'totop'; up.href = '#top'; up.textContent = '↑ Top'; up.setAttribute('aria-label', 'Back to the top of the page');
+  up.addEventListener('click', e => { e.preventDefault(); window.scrollTo(0, 0); });
+  document.body.appendChild(up);
+  addEventListener('scroll', () => up.classList.toggle('on', scrollY > 700), { passive: true });
   document.querySelectorAll('main > section[id]:not(#story)').forEach(s => {
     if (s.querySelector(':scope > .backtop')) return;
     const p = document.createElement('p'); p.className = 'backtop'; p.innerHTML = '<a href="#top">↑ Back to top</a>';
