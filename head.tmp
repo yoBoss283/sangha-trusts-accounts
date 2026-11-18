@@ -239,3 +239,7 @@ body.scrolled .totop { display: block; }
 .place .kind-total { background: transparent; color: var(--ink-2); border: 1px dashed var(--ink-2); }
 .place .big.tot { color: var(--ink-2); font-weight: 400; }
 .place .kind { display: block; width: fit-content; margin: 10px 0 4px; }
+.place a.go { margin-top: auto; }
+.place dl, .place .says, .place .bigl { flex: 0 0 auto; }
+.place .says { flex: 0 0 auto; }
+.place dl:last-of-type, .place .says:last-of-type { margin-bottom: 16px; }
