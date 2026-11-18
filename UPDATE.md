@@ -96,9 +96,21 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
 - Prices: `cpi_worldbank.json` is the World Bank's yearly consumer price index (`https://api.worldbank.org/v2/country/USA/indicator/FP.CPI.TOTL?format=json&per_page=100`; `CAN`, `NZL` for the others). It runs about a year behind (United States to 2024, the others to 2025).
 - Then `python3 simple_build.py` and `sh build_all.sh`.
 
+- **The four Australian monasteries** (`wat-buddha-dhamma/`, `vimokkharam/`, `bodhipala/`, `dhammagiri/`): the figures are the ACNC's
+  published Annual Information Statement (AIS) data, one file for each year on data.gov.au (find the datasets with
+  `https://data.gov.au/data/api/3/action/package_search?q=acnc+annual+information+statement`; since 2019 there is a CSV for each
+  year, `datadotgov_ais<yy>.csv`). Pick the rows of the four ABNs (Wat Buddha Dhamma Foundation Limited 41081615992, Vimokkharam
+  Forest Hermitage Inc 73051793658, Bodhipala Monastery Ltd 76627533475, Brisbane Buddhist Vihara (Temple) Inc. 84358631510,
+  which runs Dhammagiri) and copy `total gross income`, `total expenses`, `total assets`, `total liabilities` and
+  `net assets/liabilities` into `data.json` and `acnc_ais.csv` (the AIS file is large, 30–40 MB: do not keep it in the repo). The
+  statements for a year ending 30 June come out about a year later (the 2025 files are due around the end of 2026).
+  Years before 2017 have different column names and were not read. The ACNC's data for **Vimokkharam 2021** gives total assets of
+  $74 million, a data-entry error that is left out; check any figure that jumps. Dhammagiri's charity is a "basic religious
+  charity" from 2024. Price index: `cpi_worldbank.json` with `AUS`. Residents: `simple_people.py` with `dec` (Dhammagiri) or `jun`.
+
 Looked at and not possible (17 Nov 2026): **Temple Forest** (Jetavana Monastic Community, New Hampshire) files no tax returns
-publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. Australian
-monasteries (Bodhivana, Wat Buddha Dhamma, Dhammagiri, Vimokkharam, Bodhipala) have not been checked on the ACNC register yet.
+publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. **Bodhivana** (Victoria, 13 residents) could not be matched to a charity on the ACNC register (no entry with that name), so it is not
+included; if its legal name is found, add it like the other Australian pages.
 
 ## 4. Refresh the prices (every update)
 

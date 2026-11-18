@@ -3,10 +3,11 @@
 Run:  python3 simple_build.py [folder ...]     (build_all.sh runs it for every folder that has a place.json)
 Reads <folder>/place.json (names, currency, notes, sources), data.json (every figure by year), people.json and
 cpi_worldbank.json (the price index), fills simple/template.html and writes <folder>/<folder>-accounts.html and -accounts-page.html.
+(year ends: dec = calendar year, mar = year to 31 March, jun = year to 30 June)
 The pages that come from this template give totals only (money in, spending, what is held): their accounts have no cost-by-cost detail."""
 import json, pathlib, sys, datetime
 here = pathlib.Path(__file__).parent
-FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama']
+FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri']
 
 def build(folder):
     p = here / folder
@@ -18,8 +19,12 @@ def build(folder):
     cpi, data = {}, {}
     for y in years:
         # price index: the calendar year of the accounts; for a year ending in March, the calendar year in which most of it falls
-        cy = y - 1 if cfg.get('yearEnd') == 'mar' else y
-        cpi[str(y)] = wb[str(cy)]
+        ye = cfg.get('yearEnd')
+        if ye == 'jun':                              # a year to 30 June: the average of the two calendar years it spans
+            cpi[str(y)] = round((wb[str(y - 1)] + wb.get(str(y), wb[str(y - 1)])) / 2, 3)
+        else:
+            cy = y - 1 if ye == 'mar' else y
+            cpi[str(y)] = wb[str(cy)]
         data[str(y)] = dict(raw[str(y)])
         if str(y) in people: data[str(y)]['people'] = people[str(y)]['people']
     D = {k: cfg[k] for k in ['currency', 'currencyName', 'cpiName', 'short', 'runVerb', 'costName', 'costDefShort', 'defs', 'incomeNote', 'meaningNote', 'holdSeries', 'holdSub', 'holdLede', 'holdNote', 'notes', 'sources', 'daysInYear'] if k in cfg}
@@ -39,11 +44,13 @@ def build(folder):
     ys = [str(y) for y in years]
     run = lambda y: data[y]['spending'] - (data[y].get('depr') or 0)
     avg = lambda yy, f: sum(f(y) for y in yy) / len(yy)
-    blocks = []
-    e = len(ys)
-    while e > 0:
-        blocks.insert(0, ys[max(0, e - 5):e]); e -= 5
-    if len(blocks) > 1 and len(blocks[0]) < 3: blocks.pop(0)
+    if len(ys) <= 9:
+        h = len(ys) // 2; blocks = [ys[:h], ys[h:]]          # a short record: two halves (as in the template)
+    else:
+        blocks = []; e = len(ys)
+        while e > 0:
+            blocks.insert(0, ys[max(0, e - 5):e]); e -= 5
+        if len(blocks) > 1 and len(blocks[0]) < 3: blocks.pop(0)
     today = lambda y: cpi[ys[-1]] / cpi[y]
     real = lambda b: avg(b, lambda y: run(y) * today(y))
     n3 = ys[-3:]

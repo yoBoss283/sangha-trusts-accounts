@@ -19,6 +19,10 @@ PLACES = {  # folder: (name, year ends, built page, where the new report comes f
     'abhayagiri': ('Abhayagiri (California, US dollars)', '31 December', 'abhayagiri-accounts.html', 'ProPublica Nonprofit Explorer, Sanghapala Foundation 94-3212705 (the summary data run about a year behind: later returns are PDFs)'),
     'tisarana': ('Tisarana (Ontario, Canadian dollars)', '31 December', 'tisarana-accounts.html', 'the financial statements on tisarana.ca (usually published in spring)'),
     'bodhinyanarama': ('Bodhinyanarama (Wellington, NZ dollars)', '31 March', 'bodhinyanarama-accounts.html', 'NZ Charities Register, CC29078 (annual return, due 30 September)'),
+    'wat-buddha-dhamma': ('Wat Buddha Dhamma (NSW, Australian dollars)', '30 June', 'wat-buddha-dhamma-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
+    'vimokkharam': ('Vimokkharam (Victoria, Australian dollars)', '30 June', 'vimokkharam-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
+    'bodhipala': ('Bodhipala (South Australia, Australian dollars)', '30 June', 'bodhipala-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
+    'dhammagiri': ('Dhammagiri (Queensland, Australian dollars)', '31 December', 'dhammagiri-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
     'sumedharama': ('Sumedharama (Portugal, euros)', '31 December', 'sumedharama-accounts.html', 'the community (ask Ajahn Vajiro): updated accounts spreadsheet / report to the abbots'),
 }
 problems = 0

@@ -1,0 +1,58 @@
+{
+ "2017": {
+  "income": 139778,
+  "spending": 53866,
+  "assets": 1743892,
+  "liabilities": 0,
+  "net_assets": 1743892
+ },
+ "2018": {
+  "income": 96184,
+  "spending": 53871,
+  "assets": 1455819,
+  "liabilities": 0,
+  "net_assets": 1455819
+ },
+ "2019": {
+  "income": 73664,
+  "spending": 44215,
+  "assets": 1446288,
+  "liabilities": 0,
+  "net_assets": 1446288
+ },
+ "2020": {
+  "income": 140301,
+  "spending": 41613,
+  "assets": 1501288,
+  "liabilities": 0,
+  "net_assets": 1501288
+ },
+ "2021": {
+  "income": 200851,
+  "spending": 101296,
+  "assets": 1600374,
+  "liabilities": 173,
+  "net_assets": 1600201
+ },
+ "2022": {
+  "income": 140413,
+  "spending": 121159,
+  "assets": 1620098,
+  "liabilities": 0,
+  "net_assets": 1620098
+ },
+ "2023": {
+  "income": 155273,
+  "spending": 153243,
+  "assets": 1622128,
+  "liabilities": 0,
+  "net_assets": 1622128
+ },
+ "2024": {
+  "income": 162337,
+  "spending": 152678,
+  "assets": 1631787,
+  "liabilities": 0,
+  "net_assets": 1631787
+ }
+}
