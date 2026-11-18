@@ -72,14 +72,10 @@ CUR = {'sumedharama': '€'}
 r1000 = lambda n, k='': f'{CUR.get(k, "£")}{round(n / 1000) * 1000:,}'
 r5 = lambda n, k='': f'{CUR.get(k, "£")}{round(n / 5) * 5:,}'
 CARDS = [
- ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1',
-  f'Without welfare and food, running costs went from about £{round(b, -4):,.0f} to about £{round(n, -4):,.0f} a year in 2026 money (+£{facts["est_rise"]:,}, {facts["est_pct"]}% more).'),
- ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2',
-  f'After inflation, running costs were level from 2011–15 to 2016–20, then rose {facts["rat_pct"]}% in 2021–25. Heat and light followed energy prices; about {facts["rat_fixed"]}% of the costs (heat, repairs, rent, rates and insurance, 2021–25) come with the buildings.'),
- ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3',
-  f'After inflation, running costs in 2021–25 were {facts["hart_pct"]}% higher than in 2013–15, while the community more than doubled ({facts["hart_p"][0]} in 2013–15, {facts["hart_p"][1]} in 2021–25). Rates, utilities and the grounds are {facts["hart_fixed"]}% of the cost.'),
- ('sumedharama', 'Sumedharama', 'Budismo Theravada da Floresta · Portugal · amounts in euros', '--s4',
-  f'After inflation, and leaving out the rent paid until 2018, running costs in 2021–25 were {facts["sum_pct_norent"]}% higher than in 2013–15; counting that rent, {abs(facts["sum_pct"])}% {"lower" if facts["sum_pct"] < 0 else "higher"}. The community more than doubled ({facts["sum_p"][0]} to {facts["sum_p"][1]}). The source is the community\'s own accounts spreadsheet, not filed accounts.'),
+ ('est', 'Amaravati and Chithurst', 'English Sangha Trust · Hertfordshire and West Sussex · two monasteries', '--s1', ''),
+ ('ratanagiri', 'Aruna Ratanagiri', 'Harnham Buddhist Monastery Trust · Harnham, Northumberland', '--s2', ''),
+ ('hartridge', 'Hartridge', 'Hartridge Buddhist Monastery Trust · Upottery, Devon', '--s3', ''),
+ ('sumedharama', 'Sumedharama', 'Budismo Theravada da Floresta · Portugal · amounts in euros', '--s4', ''),
 ]
 def signed(n, unit=''):
     return ('+' if n >= 0 else '−') + unit + f'{abs(n):,}'
@@ -120,7 +116,7 @@ FILES2 = {k: f'{k}-accounts.html' for k in A2}
 card = {}
 for k in A2:
     c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
-    where = c['cardWhere'] + (('<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])) if SITES.get(k) else '')
+    where = c['cardWhere'].split(' · ')[0]
     rname = c['costName'].lower()
     OPER2 = f.get('operating', True)
     people_txt = (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) if f['people'] else ''
@@ -130,29 +126,25 @@ for k in A2:
   <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
   <p class="says">{c['cardNote']}</p>
-  <a class="go" href="pages/{k}.html">Read the full report →</a>
-  <p class="src">Source: {SRC[k]}</p></article>
+  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
         continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
-  <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
-  <a class="go" href="pages/{k}.html">Read the full report →</a>
-  <p class="src">Source: {SRC[k]}</p></article>
+  <p class="says">{c['cardNote']}</p>
+  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 for k, name, where, col, says in CARDS:
-    where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
+    where = where.split(' · ')[0]
     f = fig[k]
     card[k] = f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
   <span class="kind kind-run">Running cost</span><p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd><dt>A year for each resident</dt><dd>{CUR.get(k, "£")}{round(f["year"] / f["people"], -2):,.0f}</dd></dl>
-  <p class="says">{says}</p>
-  <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], CUR.get(k, "£")) + " a year" if SINCE[k][1] else "about the same each year"})</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
-  <a class="go" href="pages/{k}.html">Read the full report →</a>
-  <p class="src">Source: {SRC[k]}</p></article>
+  {('<p class="says">' + says + '</p>') if says else ''}
+  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 # earlier copies of the site (made with archive.py before an update), newest first; the markers let archive.py leave this out of a copy
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -216,16 +208,19 @@ full = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
         + (here / 'head.tmp').read_text().replace('</style>', '</style>\n</head>\n<body>', 1) + body + '\n</body>\n</html>\n')
 (here / 'index.html').write_text(full, encoding='utf-8')
 back = '<p class="back"><a href="../index.html">← All the monasteries</a></p>'
+def about(k):
+    ws = ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES.get(k, []))
+    return '<p class="back" style="margin-top:-6px">' + (f'<b>Website:</b> {ws}<br>' if ws else '') + f'<b>Source of the figures:</b> {SRC[k]}</p>'
 for k, f in FILES.items():
     h = (A[k] / f).read_text(encoding='utf-8')
     assert '<main id="top">' in h, k
-    page = h.replace('<main id="top">', '<main id="top">\n' + back, 1)
+    page = h.replace('<main id="top">', '<main id="top">\n' + back + about(k), 1)
     (here / 'pages' / f'{k}.html').write_text(page, encoding='utf-8')      # the address people already have
     (A[k] / 'index.html').write_text(page, encoding='utf-8')                # the same page at /<folder>/
 for k, f in FILES2.items():
     h = (A2[k] / f).read_text(encoding='utf-8')
     assert '<main id="top">' in h, k
-    page = h.replace('<main id="top">', '<main id="top">\n' + back, 1)
+    page = h.replace('<main id="top">', '<main id="top">\n' + back + about(k), 1)
     (here / 'pages' / f'{k}.html').write_text(page, encoding='utf-8')
     (A2[k] / 'index.html').write_text(page, encoding='utf-8')
 for k in fig:
