@@ -299,7 +299,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 07:02 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 07:05 GMT</span></p>
 </main>
 
 <script>
@@ -464,7 +464,7 @@ function grouped(id, labels, series, opt = {}) {
       const val = s.values[i]; if (val == null || val <= 0) return;
       const h = ph * val / sc.max, x = m.l + band * i + band / 2 - (bw * series.length + 3 * (series.length - 1)) / 2 + j * (bw + 3);
       el('path', { d: barPath(x, m.t + ph - h, bw, h, 3), fill: `var(${s.color})` }, svg);
-      if (opt.values) el('text', { x: x + bw / 2, y: m.t + ph - h - 5, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (opt.fmt || short)(val);
+      if (opt.values && (bw + 3 >= 42 || (val >= Math.max(...series.map(s => s.values[i] || 0)) && (n - 1 - i) % Math.max(1, Math.ceil(42 / band)) === 0))) el('text', { x: x + bw / 2, y: m.t + ph - h - 5, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (opt.fmt || short)(val);
     });
     const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
     hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.map(s => s.values[i] == null ? '' : row(s.name, s.color, (opt.fmt || pounds)(s.values[i]))).join('')));
