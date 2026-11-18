@@ -113,9 +113,6 @@ SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'fo
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
 A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
-DOLLARS = {'abhayagiri': 'US dollars', 'pacific-hermitage': 'US dollars', 'temple-forest': 'US dollars', 'tisarana': 'Canadian dollars', 'bodhinyanarama': 'New Zealand dollars', 'bodhipala': 'Australian dollars', 'bodhivana': 'Australian dollars', 'dhammagiri': 'Australian dollars', 'vimokkharam': 'Australian dollars', 'wat-buddha-dhamma': 'Australian dollars'}
-def curtag(k, cu):      # which dollar: shown under the figure for every place that uses $
-    return f'<p class="cur">{DOLLARS[k]}</p>' if cu == '$' else ''
 card = {}
 for k in A2:
     c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
@@ -126,7 +123,7 @@ for k in A2:
     if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
         card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{curtag(k, cu)}{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
   {('<p class="says">' + c['cardNote'] + '</p>') if c['cardNote'] else ''}
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
@@ -134,7 +131,7 @@ for k in A2:
         continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p>{curtag(k, cu)}<p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
+  <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
   {('<p class="says">' + c['cardNote'] + '</p>') if c['cardNote'] else ''}
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>

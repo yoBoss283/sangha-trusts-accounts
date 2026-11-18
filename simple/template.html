@@ -290,7 +290,7 @@ const NS = 'http://www.w3.org/2000/svg';
 // on a phone the charts are drawn at most 600 wide (so they shrink less) with a wider left margin for the larger text
 const MOB = typeof innerWidth === 'number' && innerWidth > 0 && innerWidth < 600;
 const fitW = (W, host) => { const cw = host && host.clientWidth; return cw && cw < W ? Math.max(240, Math.floor(cw)) : W; };
-const fitL = l => l;
+const fitL = l => l + (CUR.length > 1 ? 14 : 0);
 function el(tag, attrs, parent) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
 function legend(host, items, line) {
   const d = document.createElement('div'); d.className = 'legend';
