@@ -140,7 +140,8 @@ header h1 { font-size: 30px; }
 .hero { font-size: 19px; line-height: 1.45; color: var(--ink); max-width: 760px; margin: 10px 0 0; }
 .hero b { font-weight: 650; }
 .tiles.headline { margin-top: 18px; grid-template-columns: repeat(4, 1fr); }
-@media (max-width: 760px) { .tiles.headline { grid-template-columns: 1fr 1fr; gap: 10px; } .tiles.headline .tile { padding: 12px; } }
+@media (max-width: 760px) { .tiles.headline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .tiles.headline .tile { padding: 12px; } }
+@media (max-width: 360px) { .tiles.headline .v { font-size: 20px; } }
 .tiles.headline .v { font-size: 30px; }
 .tiles.headline .v.bad { color: var(--critical); }
 .foot { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
@@ -292,7 +293,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 07:07 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 07:11 GMT</span></p>
 </main>
 
 <script>
@@ -466,7 +467,7 @@ function grouped(id, labels, series, opt = {}) {
   });
 }
 /* lines with a crosshair; a null value leaves a gap */
-const showLabel = (labels, i, band = 99) => (labels.length <= 16 || +labels[i] % 5 === 0) && (labels.length - 1 - i) % Math.max(1, Math.ceil(34 / band)) === 0;   // on a narrow chart show every 2nd or 3rd label, so years never run into each other
+const showLabel = (labels, i, band = 99) => (labels.length <= 16 || +labels[i] % 5 === 0) && (labels.length - 1 - i) % Math.max(1, Math.ceil((String(labels[i]).length * 6.5 + 6) / band)) === 0;   // on a narrow chart show every 2nd or 3rd label, so years never run into each other
 function lines(id, labels, series, opt = {}) {
   const host = document.getElementById(id); host.innerHTML = '';
   if (series.length > 1) legend(host, series, true);
