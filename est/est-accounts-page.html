@@ -208,7 +208,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
   <div class="card"><h3>What it takes to run Amaravati and Chithurst</h3><p class="big" id="run-text"></p><div id="c-day"></div><p class="under" id="day-under"></p></div>
   <div class="card"><h3>One cost fell; the rest rose</h3><p class="sub" id="bridge-sub"></p><div id="c-bridge"></div><p class="caption" id="cap-bridge"></p><details class="how"><summary>How to read this</summary><div id="how-bridge"></div></details></div>
   <div class="grid2 main">
-    <div class="card"><h3>Running costs outpaced inflation</h3><div id="c-total"></div><p class="caption" id="cap-total"></p><details class="how"><summary>How to read this</summary><div id="how-total"></div></details></div>
+    <div class="card"><h3>Running costs outpaced inflation</h3><div id="c-total"></div><p class="caption" id="cap-total"></p><p class="note" id="note-total"></p><details class="how"><summary>How to read this</summary><div id="how-total"></div></details></div>
     <div class="card"><h3>Heating followed energy prices</h3><blockquote class="quote" id="q-heat"></blockquote><div id="c-heat"></div><p class="caption" id="cap-heat"></p><details class="how"><summary>How to read this</summary><div id="how-heat"></div></details></div>
   </div>
   <div class="meaning">
@@ -216,7 +216,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:11 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:14 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -667,6 +667,12 @@ const span = ys => `${ys[0]}–${String(ys[ys.length - 1]).slice(2)}`;
 // a change between the two periods in pounds a year, in today's prices
 const LIKEd = f => LIKE.avgT(LIKE.now, f) - LIKE.avgT(LIKE.base, f);
 const k0 = n => Math.round(n / 1e3) * 1e3;
+// welfare and food is shown apart from running costs; one wording, used in the note under the main chart and in 'what this means'
+const WELF = (() => {
+  const f26 = v(D.data[LY], 'sp_food'), f22 = v(D.data[LY - 4], 'sp_food');
+  return `has more than doubled in four years, from ${short(k0(f22))} in ${LY - 4} to ${short(k0(f26))} in ${LY} as paid (and ${Math.round(100 * (LIKE.ch(r => r.sp_food) - 1))}% higher after inflation since ${span(LIKE.base)}). ` +
+    `It includes the care of ageing monks and nuns, and the accounts do not say what it buys. Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).`;
+})();
 const OTHER = r => RUNK(r) - r.sp_heat - r.sp_maint - r.sp_ins - r.sp_food - r.sp_travel;
 // the same number of residents: the first three years after the count settled near 60
 const S3 = Ys.filter(y => y >= PPL.settled).slice(0, 3);
@@ -750,6 +756,7 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const cp = BLOCKS.map(b => avgOf(b, y => CPI[y])), infl = cp.map(c => tot[0] * c / cp[0]);
   const T = blockBars('c-total', BLOCKS, y => RUNW(D.data[y]), { name: 'Running costs without welfare, average a year', aria: 'Running costs in five-year blocks against inflation' });
   const n = BLOCKS.length - 1;
+  document.getElementById('note-total').textContent = 'Welfare and food is left out of this chart because it ' + WELF;
   document.getElementById('cap-total').textContent =
     `In ${BL[n]} running costs without welfare came to ${words(Math.round(tot[n] / 1e4) * 1e4)} a year. Had they kept up with inflation since ${BL[0]}, they would be about ${words(Math.round(infl[n] / 1e4) * 1e4)}.`;
   document.getElementById('how-total').innerHTML = [
@@ -780,13 +787,11 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
 // ---------------------------------------------------------------- what this means
 (function meaning() {
   const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
-  const f26 = v(D.data[LY], 'sp_food'), f22 = v(D.data[LY - 4], 'sp_food');
   document.getElementById('meaning').textContent =
     `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)}, heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
     `Taken together, running costs (without welfare) are ${pc(RUNW)} higher. ` +
     `The increases are clear; a saving from the buildings does not show in the accounts. Heating followed energy prices, so it does not settle the question either way. ` +
-    `One more thing stands out: welfare and food, shown apart, has more than doubled in four years, from ${short(k0(f22))} in ${LY - 4} to ${short(k0(f26))} in ${LY} as paid (and ${pc(r => r.sp_food)} higher after inflation since ${span(L.base)}). ` +
-    `It includes the care of ageing monks and nuns, and the accounts do not say what it buys. Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).`;
+    `One more thing stands out: welfare and food, shown apart, ${WELF}`;
 })();
 
 // contents (the detail sections) and a "back to top" link under each section
