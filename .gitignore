@@ -3,3 +3,4 @@ __pycache__/
 venv/
 # the Tisarana statements name the treasurer and an e-mail address: keep the PDFs local, not in the public repo
 tisarana/accounts/*.pdf
+abhayagiri/accounts/*.pdf

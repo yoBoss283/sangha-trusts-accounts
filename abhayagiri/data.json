@@ -1,4 +1,54 @@
 {
+ "2001": {
+  "income": 419942,
+  "spending": 144045,
+  "net_assets": 1422417
+ },
+ "2002": {
+  "income": 584814,
+  "spending": 142019,
+  "net_assets": 1865212
+ },
+ "2003": {
+  "income": 435063,
+  "spending": 154750,
+  "net_assets": 2134990
+ },
+ "2004": {
+  "income": 610230,
+  "spending": 185290,
+  "net_assets": 2559929
+ },
+ "2005": {
+  "income": 353888,
+  "spending": 173179,
+  "net_assets": 2747988
+ },
+ "2006": {
+  "income": 327984,
+  "spending": 170073,
+  "net_assets": 2889340
+ },
+ "2007": {
+  "income": 790874,
+  "spending": 255650,
+  "net_assets": 3424564
+ },
+ "2008": {
+  "income": 532191,
+  "spending": 203881,
+  "net_assets": 3752874
+ },
+ "2009": {
+  "income": -1481456,
+  "spending": 254287,
+  "net_assets": 2017131
+ },
+ "2010": {
+  "income": 730820,
+  "spending": 220362,
+  "net_assets": 2527589
+ },
  "2011": {
   "income": 1191874,
   "spending": 246823,
@@ -102,5 +152,13 @@
   "assets": 1627496,
   "liabilities": 18270,
   "net_assets": 1609226
+ },
+ "2024": {
+  "income": 738310,
+  "spending": 339700,
+  "gifts": 722943,
+  "assets": 1761873,
+  "liabilities": 7237,
+  "net_assets": 1754636
  }
 }

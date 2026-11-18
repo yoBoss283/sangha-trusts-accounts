@@ -1,0 +1,5 @@
+Sanghapala Foundation (US tax number 94-3212705): the Form 990 returns used for 2001-2010 and 2024, as downloaded from ProPublica Nonprofit Explorer
+(https://projects.propublica.org/nonprofits/organizations/943212705) on 18 Nov 2026. The PDFs are kept on the owner's computer, not in this public repository
+(they list officers by name). They are scans: total revenue (line 12 / 11 / 9), total expenses and net assets at the end of the year were read by eye;
+each year's net assets agree with the opening figure of the next return, and the 2011 figure from ProPublica follows from 2010 plus 2011's result.
+Years 2011-2023 come from ProPublica's own summary data (propublica_943212705.json).

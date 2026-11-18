@@ -9,7 +9,7 @@
  "costName": "Spending",
  "costDefShort": "all the spending on the Foundation's yearly tax return (Form 990), which can include wear on buildings (depreciation) because the summary does not separate it.",
  "defs": "Spending: the total expenses on the Foundation's yearly US tax return (Form 990), which can include wear on buildings (depreciation); the summary used here does not separate it. Residents: the monks, novices, nuns and anagārikas listed at Abhayagiri on the community lists, on average; guests and lay residents are not counted. Inflation: the US consumer price index (World Bank). All amounts in US dollars, as paid at the time, unless the page says \"in today's money\".",
- "incomeNote": "Almost all of it, in every year, is gifts and contributions, and it moves with large gifts.",
+ "incomeNote": "From 2011 almost all of it is gifts and contributions; it moves with large gifts.",
  "meaningNote": "The tax returns give totals only, so this page cannot say what the money was spent on.",
  "holdSeries": [
   {
@@ -20,13 +20,13 @@
  ],
  "holdLede": "The tax return also gives what the Foundation owns and owes at the end of each year.",
  "holdSub": "Net assets: everything the Foundation owns less everything it owes, at the end of each year.",
- "holdNote": "Net assets fell from about $5.4 million in 2015 to about $1.1 million in 2017. The summary of the return does not say why. The totals do not split cash from buildings and land.",
+ "holdNote": "Net assets rise from $1.4 million in 2001 to about $5.4 million in 2015, fall to about $1.1 million in 2017, and were $1.75 million at the end of 2024. The summary of the return does not say why, and does not split cash from buildings and land.",
  "notes": [
-  "<b>Where the figures come from.</b> The Sanghapala Foundation (US tax number 94-3212705) files the tax return for Abhayagiri Buddhist Monastery. The Foundation describes itself on Abhayagiri's website as the steward organisation for the monastery: it is a US non-profit, and all donations go towards the building, maintenance, programmes, publications and support of Abhayagiri. The yearly totals are taken from the summaries of its Form 990 returns on ProPublica's Nonprofit Explorer (<code>propublica_943212705.json</code> in this folder keeps the data as downloaded). Years 2011 to 2023 are shown.",
-  "<b>Not shown yet.</b> The return for 2024 is filed but its summary was not yet in the data used here; the returns for 2001 to 2010 are only available as scanned pages. They can be added by reading the filed pages (see UPDATE.md).",
+  "<b>Where the figures come from.</b> The Sanghapala Foundation (US tax number 94-3212705) files the tax return for Abhayagiri Buddhist Monastery. The Foundation describes itself on Abhayagiri's website as the steward organisation for the monastery: it is a US non-profit, and all donations go towards the building, maintenance, programmes, publications and support of Abhayagiri. The yearly totals for 2011 to 2023 are taken from the summaries of its Form 990 returns on ProPublica's Nonprofit Explorer (<code>propublica_943212705.json</code> in this folder keeps the data as downloaded). The returns for 2001 to 2010 and for 2024 are scanned pages, read by eye: total revenue, total expenses and net assets at the end of the year. Each year's net assets agree with the opening figure of the next return, and 2011 follows from 2010 and 2011's result. Years 2001 to 2024 are shown.",
+  "<b>Read by eye.</b> The year 2004 net assets ($2,559,929) is taken from the next return's opening figure; the 2004 return shows $2,559,928. Revenue for 2010 ($730,820) is worked out from the return's expenses and its result for the year. In 2009 total revenue was negative (-$1,481,456), which the return's result for the year (-$1,735,743) implies; the return does not say why.",
   "<b>Years.</b> The Foundation's year is the calendar year, January to December.",
   "<b>Spending and running costs.</b> The page uses the total expenses on the return. The summary does not give wear on buildings (depreciation) or the cost lines, so nothing is taken out of spending and the page cannot show what the money went on.",
-  "<b>Money in.</b> The total revenue on the return. Gifts and contributions are 99–100% of it in every year.",
+  "<b>Money in.</b> The total revenue on the return. From 2011 gifts and contributions are 99–100% of it. Before that it includes other income as well: in 2006, for example, $230,171 of the $327,984 was gifts and $85,849 was income from services.",
   "<b>Not in the accounts.</b> Food, and much of the work done for the monastery, is given by supporters and is not a cost line.",
   "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists (the Winter list in January and the Vassa list in July). Guests, retreatants and lay residents are not counted."
  ],

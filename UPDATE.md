@@ -76,14 +76,15 @@ These three come from totals only and are built by `simple_build.py` from `simpl
 (names, currency, notes, sources: edit the notes when something changes), `data.json` (one entry per year: `income`, `spending`,
 and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gifts`), `people.json` and `cpi_worldbank.json`.
 
-- **Abhayagiri** (`abhayagiri/`, Sanghapala Foundation, US tax number 94-3212705): the yearly totals come from the ProPublica
+- **Abhayagiri** (`abhayagiri/`, Sanghapala Foundation, US tax number 94-3212705): 2011 to 2023 come from the ProPublica
   Nonprofit Explorer API, `https://projects.propublica.org/nonprofits/api/v2/organizations/943212705.json`; save it as
-  `propublica_943212705.json` and rebuild `data.json` from `filings_with_data` (`totrevenue` = income, `totfuncexpns` = spending,
-  `totcntrbgfts` = gifts, `totnetassetend` = net assets). The summary data run about a year behind: a newer return may be listed
-  only as a PDF (`filings_without_data`). **The PDF download pages are behind a bot check, so do not try to get around it:** ask
-  the owner to download the PDF in a browser and put it in `abhayagiri/accounts/`, then read the figures from its first page
-  (total revenue line 12, total expenses line 18, net assets line 22) and tell the owner which figures you read. The 2024 return
-  and the 2001–2010 returns still need this.
+  `propublica_943212705.json` (delete the organization's `careofname`, `address` and `zipcode`: they hold a person's name) and rebuild
+  `data.json` from `filings_with_data` (`totrevenue` = income, `totfuncexpns` = spending, `totcntrbgfts` = gifts, `totnetassetend` =
+  net assets). 2001 to 2010 and 2024 were read by eye from scanned returns (Form 990 line 12 total revenue, 17 or 18 total expenses,
+  21 or 22 net assets; OCR with `est/ocr.swift`, `page.swift` to look at a page); check every year against the next return's opening
+  net assets. The summary data run about a year behind: a newer return appears first only as a PDF (`filings_without_data`). **The PDF
+  download pages are behind a bot check, so do not try to get around it:** ask the owner to download the PDF in a browser into
+  `abhayagiri/accounts/` (kept out of git: `abhayagiri/accounts/SOURCES.txt` says why). The 2025 return is the next one.
 - **Tisarana** (`tisarana/`): the monastery publishes its statements as PDFs on tisarana.ca (find them with
   `https://tisarana.ca/wp-json/wp/v2/media?search=financ&per_page=50`). Put the new year in `accounts/`, read total income,
   total expenses, amortization, cash (chequing + savings), restricted (deferred) money and net assets into `data.json`, and

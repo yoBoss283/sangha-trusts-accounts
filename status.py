@@ -34,7 +34,7 @@ problems = 0
 for d, (name, ye, page, src) in PLACES.items():
     p = here / d
     data = years(json.load(open(p / 'data.json')))
-    pdfs = sorted(int(m.group(1)) for f in (p / 'accounts').glob('*.pdf') if (m := re.search(r'(\d{4})', f.name))) if (p / 'accounts').is_dir() else []
+    pdfs = sorted(int(m.group(1)) for f in (p / 'accounts').glob('*.pdf') if (m := re.search(r'_(\d{4})12\.pdf', f.name) or re.search(r'(\d{4})', f.name))) if (p / 'accounts').is_dir() else []
     cpi = years(json.load(open(p / ('cpi.json' if (p / 'cpi.json').exists() else 'cpi_worldbank.json')))); has_ppl = (p / 'people.json').exists(); ppl = years(json.load(open(p / 'people.json'))) if has_ppl else []
     last = data[-1]
     print(f'\n{name}  (year ends {ye})')
