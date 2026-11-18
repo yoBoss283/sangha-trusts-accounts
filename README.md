@@ -23,7 +23,7 @@ those costs have risen faster than prices in general.
 | `pacific-hermitage/` | Pacific Hermitage, White Salmon WA | Sanghata Foundation (US tax no. 27-2787286) | the yearly tax returns (Form 990), 2011–2023, from ProPublica | US $ |
 | `milntuim/` | Milntuim, Glen Artney, Scotland | Milntuim Hermitage Trust (SC043482) | the Scottish Charity Register: income and expenditure, 2020–2025 | £ |
 | `temple-forest/` | Temple Forest, Temple NH | Jeta Grove Foundation Inc. (US tax no. 30-0754003) | the yearly tax returns (Form 990), 2014–2020, from ProPublica | US $ |
-| `forest-hermitage/` | Forest Hermitage, Lower Fulbrook, Warwickshire | The Forest Hermitage Trust (charity 1173083) | the Charity Commission register: income and expenditure, years to March 2021–2025 | £ |
+| `forest-hermitage/` | Forest Hermitage, Lower Fulbrook, Warwickshire | The Forest Hermitage Trust (charity 1173083) | its accounts at Companies House, years to March 2019–2026 | £ |
 | `wat-buddha-dhamma/` | Wat Buddha Dhamma, Wisemans Ferry NSW | Wat Buddha Dhamma Foundation Ltd (ABN 41 081 615 992) | the ACNC's yearly statements, 2017–2024 | Australian $ |
 | `vimokkharam/` | Vimokkharam, Olinda VIC | Vimokkharam Forest Hermitage Inc (ABN 73 051 793 658) | same | Australian $ |
 | `bodhipala/` | Bodhipala, Mount Pleasant SA | Bodhipala Monastery Ltd (ABN 76 627 533 475) | same, 2019–2024 | Australian $ |

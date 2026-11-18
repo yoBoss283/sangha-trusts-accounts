@@ -27,7 +27,7 @@ PLACES = {  # folder: (name, year ends, built page, where the new report comes f
     'pacific-hermitage': ('Pacific Hermitage (Washington, US dollars)', '31 December', 'pacific-hermitage-accounts.html', 'ProPublica Nonprofit Explorer, Sanghata Foundation 27-2787286'),
     'milntuim': ('Milntuim (Scotland, pounds)', '31 December', 'milntuim-accounts.html', 'OSCR register SC043482 (accounts filed by 30 September of the next year)'),
     'temple-forest': ('Temple Forest (New Hampshire, US dollars)', '31 December', 'temple-forest-accounts.html', 'ProPublica Nonprofit Explorer, Jeta Grove Foundation 30-0754003 (summary data stop at 2020; later returns are PDFs)'),
-    'forest-hermitage': ('Forest Hermitage (Warwickshire, pounds)', '31 March', 'forest-hermitage-accounts.html', 'Charity Commission register, The Forest Hermitage Trust 1173083 (OpenCharities JSON)'),
+    'forest-hermitage': ('Forest Hermitage (Warwickshire, pounds)', '31 March', 'forest-hermitage-accounts.html', 'Companies House 10368008 (accounts are scans: read with est/ocr.swift) and the Charity Commission register, The Forest Hermitage Trust 1173083'),
     'sumedharama': ('Sumedharama (Portugal, euros)', '31 December', 'sumedharama-accounts.html', 'the community (ask Ajahn Vajiro): updated accounts spreadsheet / report to the abbots'),
 }
 problems = 0

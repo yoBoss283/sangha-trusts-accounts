@@ -117,8 +117,10 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
 - **Temple Forest** (`temple-forest/`) is run through the Jeta Grove Foundation Inc. (US tax number 30-0754003; the monastery's website says
   it handles the monastery's money). Same ProPublica API as Abhayagiri, 2014 to 2020; later returns are only PDFs (ask the owner to download
   them). The Jetavana Monastic Community (83-3987123) is a different body with no returns. **Forest Hermitage** (`forest-hermitage/`) is The Forest
-  Hermitage Trust (charity 1173083): income and expenditure for the years to March 2021 to 2025 from `https://opencharities.uk/ew/1173083.json`
-  (`financial_years`); the Buddha-Dhamma Fellowship (289913) at the same address is not included. The community lists have no section for it, so
+  Hermitage Trust (charity 1173083, company 10368008): its accounts are at Companies House (`.../company/10368008/filing-history?category=accounts`; the
+  PDFs are scans, read with `est/ocr.swift`: `swiftc -O est/ocr.swift -o ocr; ./ocr file.pdf`), for the years to March 2019 (comparison column of the 2020 accounts) to 2026;
+  the Charity Commission register and `https://opencharities.uk/ew/1173083.json` hold only the last five years and are used to cross-check. The Buddha-Dhamma
+  Fellowship (289913) held the monastery's money until April 2019 and is not included (its earlier accounts are not public online). The community lists have no section for it, so
   it has no residents. **Bodhinyanarama** also has treasurer's reports in the AGM minutes on its website (2014 to 2021: net assets, 2014 to 2016
   income); the page is text hidden behind "read more" buttons, so read it in a browser.
 
