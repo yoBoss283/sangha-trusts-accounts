@@ -35,5 +35,6 @@
   "<b>The 2021 assets figure.</b> The 2021 statement gives total assets of $74,249,984 and net assets of $74,236,660. Assets are about $0.6 to $1.8 million in the other years, so this looks like a data-entry error and the two figures are left out. The charity's income and spending for 2021 are used as reported.",
   "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
   "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists. Guests, retreatants and lay residents are not counted."
- ]
+ ],
+ "operating": false
 }

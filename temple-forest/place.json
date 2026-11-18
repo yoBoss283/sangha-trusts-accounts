@@ -35,5 +35,6 @@
  "cardName": "Temple Forest",
  "cardWhere": "Jeta Grove Foundation · Temple, New Hampshire · amounts in US dollars",
  "cardColor": "--s3",
- "cardNote": "Totals only, and only 2014–2020 so far."
+ "cardNote": "Totals only, and only 2014–2020 so far.",
+ "operating": false
 }

@@ -34,5 +34,6 @@
   "<b>Money in.</b> Total gross income as reported. Some of it can be given for a set purpose, such as building work, which the statement does not show.",
   "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
   "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists. Guests, retreatants and lay residents are not counted."
- ]
+ ],
+ "operating": false
 }

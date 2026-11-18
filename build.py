@@ -121,6 +121,18 @@ for k in A2:
     c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
     where = c['cardWhere'] + (('<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])) if SITES.get(k) else '')
     rname = c['costName'].lower()
+    OPER2 = f.get('operating', True)
+    people_txt = (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) if f['people'] else ''
+    if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
+        card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
+  <h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">spent in total a year, as paid, {f['years']} average (can include building work and wear on buildings)</p>
+  <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
+  <p class="says">{c['cardNote']}</p>
+  <a class="go" href="pages/{k}.html">Read the full report →</a>
+  <p class="src">Source: {SRC[k]}</p></article>
+'''
+        continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
@@ -152,7 +164,8 @@ assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card m
 # running costs a year (last three years, as paid): each group is shown from the highest to the lowest
 yearly = {k: fig[k]['year'] for k in fig}
 yearly.update({k: json.load(open(A2[k] / 'facts.json'))['year'] for k in A2})
-REGIONS = [(name, sorted(ks, key=lambda k: -yearly[k])) for name, ks in REGIONS]
+oper = {k: json.load(open(A2[k] / 'facts.json')).get('operating', True) for k in A2}
+REGIONS = [(name, sorted(ks, key=lambda k: (not oper.get(k, True), -yearly[k]))) for name, ks in REGIONS]
 sections_html = ''.join(f'  <div class="region"><h2 class="more-h">{name}</h2>\n  <div class="places">\n{"".join(card[k] for k in ks)}  </div></div>\n' for name, ks in REGIONS)
 body = f'''
 <main id="top">
@@ -160,7 +173,7 @@ body = f'''
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Seventeen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
-  <p class="note more-n">Within each group the places run from the highest running costs a year to the lowest (the last three years, as paid). Places that publish only totals (money in, spending and, for some, what they hold) have shorter pages, and their card says "Totals only"; their "spending" can include building work and wear on buildings, so their per-person figures are rougher. Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
+  <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Totals only\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
 {sections_html}  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>

@@ -92,6 +92,11 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
 - **Bodhinyanarama** (`bodhinyanarama/`): total income and total expenditure per year from
   `https://register.charities.govt.nz/Charity/CC29078` (annual return table; copy just the table into
   `register_returns.txt`: the whole page names the officers). The year ends 31 March; the return is due by 30 September.
+- **`"operating": false` in `place.json`** marks a place whose accounts give only total expenses, so building work and wear on buildings cannot be
+  taken out (everything except Tisarana and Forest Hermitage, which remove depreciation). Its page and landing card then show total
+  spending and money in, never a running cost, a cost a day, a cost for each resident or a change after inflation: do not compare
+  total spending as if it were operating cost. If a source starts to give depreciation or building work separately, put it in
+  `data.json` (`depr`) and drop the flag.
 - Residents for all three: `python3 simple_people.py <folder> <Section name in the lists> <dec|mar>` (Abhayagiri / Tisarana
   dec; Bodhinyanarama mar).
 - Prices: `cpi_worldbank.json` is the World Bank's yearly consumer price index (`https://api.worldbank.org/v2/country/USA/indicator/FP.CPI.TOTL?format=json&per_page=100`; `CAN`, `NZL` for the others). It runs about a year behind (United States to 2024, the others to 2025).

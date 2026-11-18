@@ -257,7 +257,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 </main>
 
 <script>
-const D0 = {"currency": "£", "currencyName": "pounds", "cpiName": "the UK consumer prices index (ONS)", "short": "Milntuim", "runVerb": "Running Milntuim", "costName": "Spending", "costDefShort": "the total expenditure the Trust reports to the Scottish Charity Regulator (OSCR) each year.", "defs": "Spending: the total expenditure the Milntuim Hermitage Trust reports to the Scottish Charity Regulator (OSCR) each year; the figures used here do not separate wear on buildings or the kinds of cost. Residents: the monks, novices, nuns and anagārikas listed at Milntuim on the community lists, on average; guests and lay residents are not counted. Inflation: the UK consumer prices index (ONS). All amounts in pounds, as paid at the time, unless the page says \"in today's money\".", "incomeNote": "Income and spending are small and move from year to year.", "meaningNote": "The register gives only income and expenditure, so this page cannot say what the money was spent on or what the Trust holds.", "holdSeries": [], "holdSub": "", "holdLede": "", "holdNote": "", "notes": ["<b>Where the figures come from.<\/b> The Milntuim Hermitage Trust (Scottish charity SC043482, a Scottish charitable incorporated organisation registered in October 2012) files its yearly accounts with the Scottish Charity Regulator (OSCR). Total income and total expenditure for the years 2020 to 2025 are taken from the register's record as shown on OpenCharities (<code>opencharities_SC043482.json<\/code> in this folder keeps them).", "<b>Years.<\/b> The Trust's year is the calendar year, January to December.", "<b>What is shown.<\/b> Only total income and total expenditure. The register data used here has no assets, cash or cost lines, although the accounts themselves are filed as PDFs (linked from the register). Earlier years are not in the data used here.", "<b>Not in the accounts.<\/b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.", "<b>Residents<\/b> are the nuns on the community lists. Guests, retreatants and lay residents are not counted."], "sources": "<b>Source anyone can check:<\/b> the <a href=\"https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482\" target=\"_blank\" rel=\"noopener\">Scottish Charity Register<\/a> (OSCR), Milntuim Hermitage Trust, SC043482, and its summary on <a href=\"https://opencharities.uk/sc/SC043482\" target=\"_blank\" rel=\"noopener\">OpenCharities<\/a>. Residents: the monasteries' community lists. <span class=\"tag\">Updated 18 November 2026, 04:23 GMT<\/span>", "years": [2020, 2021, 2022, 2023, 2024, 2025], "data": {"2020": {"income": 28503, "spending": 15299, "people": 3.0}, "2021": {"income": 21422, "spending": 13614}, "2022": {"income": 35238, "spending": 14442, "people": 1.0}, "2023": {"income": 24757, "spending": 14724, "people": 1.0}, "2024": {"income": 26473, "spending": 26203, "people": 1.5}, "2025": {"income": 38225, "spending": 30675, "people": 2.0}}, "cpi": {"2020": 108.75, "2021": 111.56, "2022": 121.66, "2023": 130.54, "2024": 133.86, "2025": 138.37}};
+const D0 = {"currency": "£", "currencyName": "pounds", "cpiName": "the UK consumer prices index (ONS)", "short": "Milntuim", "runVerb": "Running Milntuim", "costName": "Spending", "costDefShort": "the total expenditure the Trust reports to the Scottish Charity Regulator (OSCR) each year.", "defs": "Spending: the total expenditure the Milntuim Hermitage Trust reports to the Scottish Charity Regulator (OSCR) each year; the figures used here do not separate wear on buildings or the kinds of cost. Residents: the monks, novices, nuns and anagārikas listed at Milntuim on the community lists, on average; guests and lay residents are not counted. Inflation: the UK consumer prices index (ONS). All amounts in pounds, as paid at the time, unless the page says \"in today's money\".", "incomeNote": "Income and spending are small and move from year to year.", "meaningNote": "The register gives only income and expenditure, so this page cannot say what the money was spent on or what the Trust holds.", "holdSeries": [], "holdSub": "", "holdLede": "", "holdNote": "", "notes": ["<b>Where the figures come from.<\/b> The Milntuim Hermitage Trust (Scottish charity SC043482, a Scottish charitable incorporated organisation registered in October 2012) files its yearly accounts with the Scottish Charity Regulator (OSCR). Total income and total expenditure for the years 2020 to 2025 are taken from the register's record as shown on OpenCharities (<code>opencharities_SC043482.json<\/code> in this folder keeps them).", "<b>Years.<\/b> The Trust's year is the calendar year, January to December.", "<b>What is shown.<\/b> Only total income and total expenditure. The register data used here has no assets, cash or cost lines, although the accounts themselves are filed as PDFs (linked from the register). Earlier years are not in the data used here.", "<b>Not in the accounts.<\/b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.", "<b>Residents<\/b> are the nuns on the community lists. Guests, retreatants and lay residents are not counted."], "sources": "<b>Source anyone can check:<\/b> the <a href=\"https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482\" target=\"_blank\" rel=\"noopener\">Scottish Charity Register<\/a> (OSCR), Milntuim Hermitage Trust, SC043482, and its summary on <a href=\"https://opencharities.uk/sc/SC043482\" target=\"_blank\" rel=\"noopener\">OpenCharities<\/a>. Residents: the monasteries' community lists. <span class=\"tag\">Updated 18 November 2026, 04:24 GMT<\/span>", "operating": false, "years": [2020, 2021, 2022, 2023, 2024, 2025], "data": {"2020": {"income": 28503, "spending": 15299, "people": 3.0}, "2021": {"income": 21422, "spending": 13614}, "2022": {"income": 35238, "spending": 14442, "people": 1.0}, "2023": {"income": 24757, "spending": 14724, "people": 1.0}, "2024": {"income": 26473, "spending": 26203, "people": 1.5}, "2025": {"income": 38225, "spending": 30675, "people": 2.0}}, "cpi": {"2020": 108.75, "2021": 111.56, "2022": 121.66, "2023": 130.54, "2024": 133.86, "2025": 138.37}};
 const CUR = D0.currency;
 function render() {
 const D = JSON.parse(JSON.stringify(D0));   // a fresh copy: render() runs again when the width changes
@@ -564,10 +564,25 @@ const pplRound = n => (Math.round(n * 10) / 10).toString();
 const days = D.daysInYear || 365;
 const hasDepr = Ys.some(y => D.data[y].depr);
 const RNAME = D.costName || 'Running costs';
+const OPER = D.operating !== false;      // false: the accounts give total expenses only (building work and wear on buildings cannot be taken out), so no running-cost claims are made
 const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const lo = ys.reduce((a, y) => f(D.data[y]) < f(D.data[a]) ? y : a), hi = ys.reduce((a, y) => f(D.data[y]) > f(D.data[a]) ? y : a); return { lo, hi }; };
 
 // ---------------------------------------------------------------- the headline
 (function headline() {
+  if (!OPER) {
+    const sp = avgOf(N3, y => D.data[y].spending), inc0 = avgOf(N3, y => D.data[y].income), yrs = `${Ys[Ys.length - 3]}–${String(LY).slice(2)}`;
+    document.getElementById('hero').innerHTML =
+      `${esc(D.short)}'s accounts give totals only. In ${yrs} it spent <b>${thou(sp)} a year</b> in total and took in <b>${thou(inc0)}</b> a year. ` +
+      `This is total spending, not a running cost: it can include building work and wear on buildings, which the accounts do not separate.`;
+    const tl = [
+      { v: thou(sp), l: 'Total spending a year', c: `${yrs} average, as paid` },
+      { v: thou(inc0), l: 'Money in a year', c: `${yrs} average, as paid` },
+      ...(okN(ppl(BN)) ? [{ v: pplRound(ppl(BN)), l: 'Residents', c: `on average, ${BLAB(BN)}` }] : []),
+    ];
+    document.getElementById('headline').innerHTML = tl.map(t => `<div class="tile"><div class="v">${esc(t.v)}</div><div class="l">${esc(t.l)}</div><div class="c">${esc(t.c)}</div></div>`).join('');
+    document.getElementById('headline-foot').textContent = `Total spending: ${D.costDefShort} Amounts in ${D.currencyName}, as in the accounts; nothing is converted.`;
+    return;
+  }
   const year = avgOf(N3, y => RUN(D.data[y])), day = year / days, x = realX(B0, BN, RUN), px = ratio(ppl(BN), ppl(B0));
   document.getElementById('hero').innerHTML =
     `${esc(D.runVerb)} costs about <b>${thou(year)} a year</b>: about <b>${rnd(day)} a day</b>. ` +
@@ -585,6 +600,7 @@ const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const 
 
 // ---------------------------------------------------------------- what it takes a day, then and now
 (function perDay() {
+  if (!OPER) { document.getElementById('c-day').closest('.card').remove(); return; }
   const per = BLOCKS.map(b => ({ b, paid: avgOf(b, y => RUN(D.data[y]) / days), now: avgOf(b, y => RUN(D.data[y]) / days * today(y)), p: ppl(b) }));
   const r0 = per[0], rN = per[per.length - 1], max = Math.max(...per.map(r => r.now));
   document.getElementById('run-text').textContent =
@@ -598,10 +614,12 @@ const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const 
 
 // ---------------------------------------------------------------- the two main charts
 (function mainCharts() {
-  const vals = BLOCKS.map(b => bAvg(b, RUN)), cp = BLOCKS.map(b => avgOf(b, y => CPI[y])), infl = cp.map(c => vals[0] * c / cp[0]), n = vals.length - 1;
-  blockBars('c-total', BLOCKS, y => RUN(D.data[y]), { name: `${RNAME}, average a year`, aria: `${RNAME} in periods against inflation` });
-  document.getElementById('cap-total').textContent =
-    `In ${BLAB(BLOCKS[n])} ${RNAME.toLowerCase()} came to ${thou(vals[n])} a year. Had they risen with inflation only since ${BLAB(BLOCKS[0])}, they would be about ${thou(infl[n])}.`;
+  if (OPER) {
+    const vals = BLOCKS.map(b => bAvg(b, RUN)), cp = BLOCKS.map(b => avgOf(b, y => CPI[y])), infl = cp.map(c => vals[0] * c / cp[0]), n = vals.length - 1;
+    blockBars('c-total', BLOCKS, y => RUN(D.data[y]), { name: `${RNAME}, average a year`, aria: `${RNAME} in periods against inflation` });
+    document.getElementById('cap-total').textContent =
+      `In ${BLAB(BLOCKS[n])} ${RNAME.toLowerCase()} came to ${thou(vals[n])} a year. Had they risen with inflation only since ${BLAB(BLOCKS[0])}, they would be about ${thou(infl[n])}.`;
+  } else document.getElementById('c-total').closest('.card').remove();
   grouped('c-flow', Ys, [
     { name: 'Money in', color: '--s1', values: R.map(r => r.income) },
     { name: 'Spending', color: '--s2', values: R.map(r => r.spending) },
@@ -613,6 +631,13 @@ const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const 
 
 // ---------------------------------------------------------------- what this means
 (function meaning() {
+  if (!OPER) {
+    const inN0 = bAvg(BN, r => r.income), spN0 = bAvg(BN, r => r.spending);
+    document.getElementById('meaning').textContent =
+      `In ${BLAB(BN)} money in averaged ${thou(inN0)} a year against ${thou(spN0)} spent in total. Total spending can include building work and wear on buildings, which these accounts do not separate, so it is not shown as a running cost, and it is not compared across years after inflation. ${D.meaningNote || ''}`;
+    document.getElementById('defs').textContent = D.defs;
+    return;
+  }
   const L = D.data[LY], x = realX(B0, BN, RUN);
   const inN = bAvg(BN, r => r.income), spN = bAvg(BN, r => r.spending);
   document.getElementById('meaning').textContent =
@@ -650,7 +675,7 @@ const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const 
     { group: 'Running costs' },
     { name: 'Total spending in the accounts', values: R.map(r => r.spending) },
     ...(hasDepr ? [{ name: 'less wear on buildings (amortization / depreciation)', values: R.map(r => r.depr ? -r.depr : null), indent: true }] : []),
-    { name: RNAME, values: R.map(RUN), cls: 'tot' },
+    ...(OPER ? [{ name: RNAME, values: R.map(RUN), cls: 'tot' }] : []),
     { group: 'Money in' },
     { name: 'Total money in', values: R.map(r => r.income), cls: 'tot' },
     ...(Ys.some(y => D.data[y].gifts != null) ? [{ name: 'of which gifts and contributions', values: R.map(r => r.gifts ?? null), indent: true }] : []),

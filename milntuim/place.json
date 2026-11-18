@@ -27,5 +27,6 @@
   "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
   "<b>Residents</b> are the nuns on the community lists. Guests, retreatants and lay residents are not counted."
  ],
- "cardWhere": "Milntuim Hermitage Trust · Glen Artney, Perthshire, Scotland · amounts in pounds"
+ "cardWhere": "Milntuim Hermitage Trust · Glen Artney, Perthshire, Scotland · amounts in pounds",
+ "operating": false
 }

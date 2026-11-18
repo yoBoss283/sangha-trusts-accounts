@@ -6,5 +6,6 @@
  "pct": 104,
  "from": "2016\u201320",
  "to": "2021\u201325",
- "currency": "$"
+ "currency": "$",
+ "operating": true
 }

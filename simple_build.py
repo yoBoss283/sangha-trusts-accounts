@@ -27,7 +27,7 @@ def build(folder):
             cpi[str(y)] = wb[str(cy)]
         data[str(y)] = dict(raw[str(y)])
         if str(y) in people: data[str(y)]['people'] = people[str(y)]['people']
-    D = {k: cfg[k] for k in ['currency', 'currencyName', 'cpiName', 'short', 'runVerb', 'costName', 'costDefShort', 'defs', 'incomeNote', 'meaningNote', 'holdSeries', 'holdSub', 'holdLede', 'holdNote', 'notes', 'sources', 'daysInYear'] if k in cfg}
+    D = {k: cfg[k] for k in ['currency', 'currencyName', 'cpiName', 'short', 'runVerb', 'costName', 'costDefShort', 'defs', 'incomeNote', 'meaningNote', 'holdSeries', 'holdSub', 'holdLede', 'holdNote', 'notes', 'sources', 'daysInYear', 'operating'] if k in cfg}
     D.update({'years': years, 'data': data, 'cpi': cpi})
     html = (here / 'simple' / 'template.html').read_text(encoding='utf-8')
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%-d %B %Y, %H:%M GMT')
@@ -56,7 +56,7 @@ def build(folder):
     n3 = ys[-3:]
     lab = lambda b: f'{b[0]}–{b[-1][2:]}'
     facts = {'years': lab(n3), 'year': avg(n3, run), 'income': avg(n3, lambda y: data[y]['income']), 'people': avg(n3, lambda y: data[y].get('people') or 0),
-             'pct': round(100 * (real(blocks[-1]) / real(blocks[0]) - 1)), 'from': lab(blocks[0]), 'to': lab(blocks[-1]), 'currency': cfg['currency']}
+             'pct': round(100 * (real(blocks[-1]) / real(blocks[0]) - 1)), 'from': lab(blocks[0]), 'to': lab(blocks[-1]), 'currency': cfg['currency'], 'operating': cfg.get('operating', True)}
     json.dump(facts, open(p / 'facts.json', 'w'), indent=1)
     print(f'{folder}: {years[0]}-{years[-1]}, {len(html):,} bytes')
 
