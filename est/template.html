@@ -878,12 +878,11 @@ function smallMultiples(id, div, top) {
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
     blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: j > 0,
-      sub: welfare ? (b => Math.round(avgOf(b, y => D.data[y].seniors ?? 0))) : null, subName: 'Monks and nuns with 20 or more years in robes',
-      subText: bs => `Monks and nuns with 20 or more years in robes at the two monasteries went from ${Math.round(avgOf(bs[0], y => D.data[y].seniors ?? 0))} in ${BLAB(bs[0])} to ${Math.round(avgOf(bs[bs.length - 1], y => D.data[y].seniors ?? 0))} in ${BLAB(bs[bs.length - 1])} (average in each period).`,
       aria: r.k.name + ' in five-year blocks against inflation' });
     if (welfare) {
       const note = document.createElement('p'); note.className = 'note';
-      note.textContent = 'Includes welfare, not only food: the care of ageing monks and nuns. The number of monks and nuns with 20 or more years in robes is given under the chart. ' +
+      note.textContent = 'Includes welfare, not only food: the care of ageing monks and nuns. ' +
+        `The number of monks and nuns with 20 or more years in robes at the two monasteries went from ${Math.round(avgOf(BLOCKS[0], y => D.data[y].seniors ?? 0))} in ${BLAB(BLOCKS[0])} to ${Math.round(avgOf(BLOCKS[BLOCKS.length - 1], y => D.data[y].seniors ?? 0))} in ${BLAB(BLOCKS[BLOCKS.length - 1])} (average in each period). ` +
         'The trustees\' reports name a fund for the medical and welfare needs of a senior monk at Amaravati (£50k spent in 2026), the Samana Care Fund for the care of elderly or infirm monks and nuns (set up in 2022), and, in 2026, a new Ageing Samanas Fund.';
       d.appendChild(note);
       const WY = Ys.filter(y => +y >= 2020), rl = y => v(D.data[y], 'sp_food') * CPI[LY] / CPI[y], sh = y => v(D.data[y], 'sp_food') / RUNK(D.data[y]);
