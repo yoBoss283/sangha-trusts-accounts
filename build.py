@@ -144,7 +144,7 @@ for k, name, where, col, says in CARDS:
 # earlier copies of the site (made with archive.py before an update), newest first; the markers let archive.py leave this out of a copy
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d / 'index.html').exists()), reverse=True)
-EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
+EARLIER = ''   # the list of earlier copies is no longer shown on the landing page (the copies stay in archive/)
 REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'sumedharama']),
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
            ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]

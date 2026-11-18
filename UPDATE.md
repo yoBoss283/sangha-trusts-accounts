@@ -25,8 +25,7 @@ python3 archive.py            # saves the site as it is now into archive/<this y
 
 This copies `index.html` and `pages/*.html` as they are published now, adds an "Archived copy: the site as published in
 <month year>. See the latest version" line at the top of each, and does not touch the live pages. After the update,
-`sh build_all.sh` adds a line "Earlier versions: <month year>, …" to the small print of the landing page, so readers can look
-back at what was said before the newest reports came out. Do this **once per update, before** adding new reports; it refuses
+The landing page does not link to the copies; they stay in `archive/` at their own addresses. Do this **once per update, before** adding new reports; it refuses
 to overwrite an existing copy. Commit the new `archive/` folder together with the update. Never edit or delete old copies.
 
 ## 1. Look for new reports
