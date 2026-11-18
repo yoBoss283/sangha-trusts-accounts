@@ -327,7 +327,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:35 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:37 GMT</span></p>
 </main>
 
 <script>
@@ -906,9 +906,7 @@ function smallMultiples(id, div, top) {
     d.innerHTML = `<h4>${esc(r.k.name)}: ${r.gain > 0 ? (j === 0 ? 'the biggest rise, ' : '') + 'up ' + short(Math.round(r.gain / 1000) * 1000) + ' a year after inflation' : 'down ' + short(Math.round(-r.gain / 1000) * 1000) + ' a year after inflation'}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
-    const isStaff = r.k.f === KINDS[KINDS.length - 1].f;
-    if (isStaff) document.getElementById(`${id}-${j}`).remove();      // the staff line chart below tells this story, so no bars here
-    else blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
+    blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
       aria: r.k.name + ' in five-year blocks against inflation' });
     if (r.k.f === KINDS[KINDS.length - 1].f) {
       const SY = Ys.filter(y => D.data[y].sp_staff != null), sr = y => v(D.data[y], 'sp_staff'), sl = y => sr(y) * CPI[LY] / CPI[y];
@@ -919,17 +917,12 @@ function smallMultiples(id, div, top) {
       const cs = document.createElement('div'); cs.id = 'c-staff'; cs.className = 'ch-host'; d.appendChild(cs);
       const tp = SY.map(y => pn0(y) != null ? pn0(y) * CPI[LY] / CPI[y] : null), sp = SY.map(y => sl(y)), i0 = tp.findIndex(x => x != null);
       const rise = (a, b) => (b >= a ? '+' : '−') + Math.abs(Math.round(100 * (b / a - 1))) + '%';
-      lines('c-staff', SY, [
+      grouped('c-staff', SY.map(String), [
         { name: `Total pay, national insurance and pension (staff note): ${rise(tp[i0], tp[tp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s4', values: SY.map(y => pn0(y) != null ? Math.round(pn0(y) * CPI[LY] / CPI[y]) : null) },
         { name: `Staff line counted in running costs: ${rise(sp[i0], sp[sp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s1', values: SY.map(y => Math.round(sl(y))) },
-      ], { W: 1000, name: nm, aria: 'Staff pay in total and staff cost counted as running costs, each year, in today\'s money' });
-      const ts = document.createElement('div'); ts.className = 'scroll-x';
-      const pn = y => ['salaries', 'nic', 'pension'].every(k => D.data[y][k] != null) ? ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0) : null;
-      ts.innerHTML = `<table><thead><tr><th>Year</th><th class="n">Staff cost (total pay*)</th><th class="n">In ${LY} money</th><th class="n">People</th></tr></thead><tbody>` +
-        SY.map(y => `<tr><td>${y}</td><td class="n">${pounds(sr(y))}${pn(y) != null ? ` <span class="dim">(${pounds(pn(y))}*)</span>` : ''}</td><td class="n">${pounds(Math.round(sl(y)))}${pn(y) != null ? ` <span class="dim">(${pounds(Math.round(pn(y) * CPI[LY] / CPI[y]))}*)</span>` : ''}</td><td class="n">${D.data[y].staff_no ?? '–'}</td></tr>`).join('') + '</tbody></table>';
-      d.appendChild(ts);
+      ], { W: 1000, h: 280, values: true, name: l => 'Year to March ' + l, aria: 'Staff pay in total and staff cost counted as running costs, each year, in today\'s money' });
       const n1 = document.createElement('p'); n1.className = 'note';
-      n1.textContent = `In brackets, with a star: * pay, national insurance and pension added up from the note on staff in the accounts, the total staff pay. It is more than the staff cost counted as running costs: the rest is counted in other lines, including building work, and the accounts do not show the split.`;
+      n1.textContent = `The bars are in ${LY} money. The higher bar is pay, national insurance and pension added up from the note on staff in the accounts. The lower bar is the staff line counted in running costs. The rest of the pay is counted in other lines, including building work, and the accounts do not show the split.`;
       d.appendChild(n1);
     }
     if (welfare) {
