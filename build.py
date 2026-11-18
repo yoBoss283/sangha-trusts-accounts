@@ -94,6 +94,24 @@ SITES = {'est': [('amaravati.org', 'https://amaravati.org'), ('cittaviveka.org',
          'ratanagiri': [('ratanagiri.org.uk', 'https://ratanagiri.org.uk')],
          'hartridge': [('hartridgemonastery.org', 'https://hartridgemonastery.org')],
          'sumedharama': [('sumedharama.pt', 'https://sumedharama.pt')]}
+SRC = {
+    'est': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310" target="_blank" rel="noopener">Charity Commission</a>',
+    'ratanagiri': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769" target="_blank" rel="noopener">Charity Commission</a>',
+    'hartridge': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5015597" target="_blank" rel="noopener">Charity Commission</a>',
+    'forest-hermitage': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/10368008/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5083694" target="_blank" rel="noopener">Charity Commission</a>',
+    'milntuim': 'the <a href="https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482" target="_blank" rel="noopener">Scottish Charity Register (OSCR)</a>',
+    'sumedharama': "the community's own accounts spreadsheet and its 2025 report (not filed accounts)",
+    'abhayagiri': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/943212705" target="_blank" rel="noopener">ProPublica</a>',
+    'temple-forest': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/300754003" target="_blank" rel="noopener">ProPublica</a>',
+    'pacific-hermitage': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/272787286" target="_blank" rel="noopener">ProPublica</a>',
+    'tisarana': 'the monastery\'s own <a href="https://tisarana.ca" target="_blank" rel="noopener">financial statements</a>',
+    'bodhinyanarama': 'the <a href="https://register.charities.govt.nz/Charity/CC29078" target="_blank" rel="noopener">NZ Charities Register</a> and the monastery\'s <a href="https://bodhinyanarama.net.nz/history_agm/" target="_blank" rel="noopener">AGM minutes</a>',
+    'wat-buddha-dhamma': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'vimokkharam': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'bodhipala': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'dhammagiri': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'bodhivana': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+}
 SITES.update({'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
 A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage')}
@@ -108,7 +126,8 @@ for k in A2:
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + str(round(f['people'])) + '</dd>') if f['people'] else ''}</dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
-  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
+  <a class="go" href="pages/{k}.html">Read the full report →</a>
+  <p class="src">Source: {SRC[k]}</p></article>
 '''
 for k, name, where, col, says in CARDS:
     where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
@@ -119,7 +138,8 @@ for k, name, where, col, says in CARDS:
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd><dt>A year for each resident</dt><dd>{CUR.get(k, "£")}{round(f["year"] / f["people"], -2):,.0f}</dd></dl>
   <p class="says">{says}</p>
   <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], CUR.get(k, "£")) + " a year" if SINCE[k][1] else "about the same each year"})</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>
-  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
+  <a class="go" href="pages/{k}.html">Read the full report →</a>
+  <p class="src">Source: {SRC[k]}</p></article>
 '''
 # earlier copies of the site (made with archive.py before an update), newest first; the markers let archive.py leave this out of a copy
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -160,7 +180,7 @@ body = f'''
       <li><b>Pannagiri</b> (Spain): its steward is named in a UK charity's report as the Comunidad Budista Bosque Theravada. No accounts found.</li>
       <li><b>Lokuttara</b> (Norway) and <b>Vimutti</b> (New Zealand): the legal body was not found.</li>
     </ul></div>
-  <p class="sources"><b>Sources anyone can check:</b> the trusts' annual reports on the Charity Commission register and at Companies House: <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">English Sangha Trust</a> (charity 231310), <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Harnham Buddhist Monastery Trust</a> (charity 1126476), <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Hartridge Buddhist Monastery Trust</a> (charity 1142439). Abhayagiri: the Sanghapala Foundation's tax returns (<a href="https://projects.propublica.org/nonprofits/organizations/943212705" target="_blank" rel="noopener">ProPublica</a>); Tisarana: the statements on <a href="https://tisarana.ca" target="_blank" rel="noopener">its own website</a>; Bodhinyanarama: the <a href="https://register.charities.govt.nz/Charity/CC29078" target="_blank" rel="noopener">New Zealand Charities Register</a>; Milntuim: the <a href="https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482" target="_blank" rel="noopener">Scottish Charity Register</a>; Pacific Hermitage: the Sanghata Foundation's tax returns (<a href="https://projects.propublica.org/nonprofits/organizations/272787286" target="_blank" rel="noopener">ProPublica</a>); the five Australian monasteries: the Annual Information Statements published by the <a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">Australian Charities and Not-for-profits Commission</a>. Sumedharama: the community's own accounts spreadsheet (expenses and balance sheet, 2012–2024) and, for 2025, its two-page report to the abbots, shared by Ajahn Vajiro; they are not filed accounts. <b>Made by</b> Narindo. <b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
+  <p class="sources"><b>Sources:</b> under each card. <b>Made by</b> Narindo. <b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
 </section>
 </main>
 '''
