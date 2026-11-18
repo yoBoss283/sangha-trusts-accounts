@@ -684,7 +684,7 @@ const span = ys => `${ys[0]}–${String(ys[ys.length - 1]).slice(2)}`;
 const LIKEd = f => LIKE.avgT(LIKE.now, f) - LIKE.avgT(LIKE.base, f);
 const k0 = n => Math.round(n / 1e3) * 1e3;
 // welfare and food is shown apart from running costs; one wording, used in the note under the main chart and in 'what this means'
-const CAREHOME = 'Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).';
+const CAREHOME = 'A new case in 2026 was the need to provide a care home for a senior nun, which could cost more than £100k a year (a figure from the community, not from the accounts).';
 const WELF = (() => {
   const f26 = v(D.data[LY], 'sp_food'), f22 = v(D.data[LY - 4], 'sp_food');
   return `has more than doubled in four years, from ${short(k0(f22))} in ${LY - 4} to ${short(k0(f26))} in ${LY} as paid (and ${Math.round(100 * (LIKE.ch(r => r.sp_food) - 1))}% higher after inflation since ${span(LIKE.base)}). ` +
