@@ -8,7 +8,7 @@
  "cpiName": "the UK consumer prices index (ONS)",
  "costName": "Running costs",
  "costDefShort": "total expenditure in the Trust's accounts, without depreciation (wear on buildings, a vehicle and equipment, which is not money paid out).",
- "defs": "Running costs: the total expenditure in the accounts of The Forest Hermitage Trust, without depreciation (wear on the buildings, a vehicle and equipment, not money paid out). The community lists give no count of residents for Forest Hermitage. Inflation: the UK consumer prices index (ONS), averaged over each April-to-March year. All amounts in pounds, as paid at the time, unless the page says \"in today's money\".",
+ "defs": "Running costs: the total expenditure in the accounts of The Forest Hermitage Trust, without depreciation (wear on the buildings, a vehicle and equipment, not money paid out). Inflation: the UK consumer prices index (ONS), averaged over each April-to-March year. All amounts in pounds, as paid at the time, unless the page says \"in today's money\".",
  "holdSeries": [
   {
    "key": "cash",
@@ -37,8 +37,7 @@
   "<b>The year to March 2019</b> is the comparison column of the 2020 accounts, which combine the Trust and the Fellowship. The Trust's own filing for that year (a short micro-company account) is much smaller and is not used.",
   "<b>Years.</b> The Trust's year runs from 1 April to 31 March and is named by the year it ends in: \"2026\" is April 2025 to March 2026.",
   "<b>Running costs.</b> Total expenditure less depreciation: buildings, a motor vehicle and equipment. The accounts list the costs line by line each year (building maintenance and repairs, heat and light, council tax, insurance, monks' welfare, bursaries, travel and so on); this page does not show them yet.",
-  "<b>Not in the accounts.</b> The work of volunteers and gifts of food are not given a value.",
-  "<b>Residents.</b> The community lists have no section for Forest Hermitage, so there is no count of residents and no comparison with residents on this page."
+  "<b>Not in the accounts.</b> The work of volunteers and gifts of food are not given a value."
  ],
  "cardWhere": "The Forest Hermitage Trust · Lower Fulbrook, Warwickshire · amounts in pounds"
 }
