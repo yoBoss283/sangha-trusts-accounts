@@ -910,9 +910,11 @@ function smallMultiples(id, div, top) {
       d.appendChild(n0);
       const pn0 = y => ['salaries', 'nic', 'pension'].every(k => D.data[y][k] != null) ? ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0) : null;
       const cs = document.createElement('div'); cs.id = 'c-staff'; cs.className = 'ch-host'; d.appendChild(cs);
+      const tp = SY.map(y => pn0(y) != null ? pn0(y) * CPI[LY] / CPI[y] : null), sp = SY.map(y => sl(y)), i0 = tp.findIndex(x => x != null);
+      const rise = (a, b) => (b >= a ? '+' : '−') + Math.abs(Math.round(100 * (b / a - 1))) + '%';
       lines('c-staff', SY, [
-        { name: `Total pay, national insurance and pension (staff note), in ${LY} money`, color: '--s4', values: SY.map(y => pn0(y) != null ? Math.round(pn0(y) * CPI[LY] / CPI[y]) : null) },
-        { name: `Staff cost counted in running costs (staff line), in ${LY} money`, color: '--s1', values: SY.map(y => Math.round(sl(y))) },
+        { name: `Total pay, national insurance and pension (staff note): ${rise(tp[i0], tp[tp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s4', values: SY.map(y => pn0(y) != null ? Math.round(pn0(y) * CPI[LY] / CPI[y]) : null) },
+        { name: `Staff line counted in running costs: ${rise(sp[i0], sp[sp.length - 1])} since ${SY[i0]}, after inflation`, color: '--s1', values: SY.map(y => Math.round(sl(y))) },
       ], { W: 1000, name: nm, aria: 'Staff pay in total and staff cost counted as running costs, each year, in today\'s money' });
       const ts = document.createElement('div'); ts.className = 'scroll-x';
       const pn = y => ['salaries', 'nic', 'pension'].every(k => D.data[y][k] != null) ? ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0) : null;
