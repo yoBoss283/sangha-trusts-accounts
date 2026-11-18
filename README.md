@@ -73,6 +73,11 @@ Trust, `est/REVIEW.md`, `est/BRIEF.md` and `est/HANDOVER.md`.
   estimate.
 - The residents' counts come from a separate private project; only the yearly totals (`people.json`) are kept here.
 
+## Updating when new accounts come out
+
+See `UPDATE.md`. `python3 status.py` shows, for each place, the latest year saved and what is missing. The owner only has to say:
+"Check the repo and update it with any new annual reports, follow UPDATE.md."
+
 ## History
 
 On 17 Nov 2026 four separate repositories and a Claude page were merged into this one repository and one site. The old
