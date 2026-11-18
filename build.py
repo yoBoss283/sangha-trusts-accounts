@@ -124,7 +124,7 @@ for k in A2:
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
-  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'] * 2) / 2:g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
+  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
   <p class="src">Source: {SRC[k]}</p></article>
