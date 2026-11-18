@@ -323,7 +323,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:19 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:20 GMT</span></p>
 </main>
 
 <script>
@@ -908,11 +908,12 @@ function smallMultiples(id, div, top) {
       n0.innerHTML = `<b>Staff is the part of this line to watch.</b> The accounts give staff cost as its own line only from ${SY[0]}; before that it is inside this line, so the rise since ${BLAB(BLOCKS[0])} cannot be split between staff and the rest. Staff cost counted as running costs was ${pounds(sr(LY - 1))} in ${LY - 1} and ${pounds(sr(LY))} in ${LY}, after ${pounds(sr(LY - 2))} in ${LY - 2}. The number of staff went from ${D.data[LY - 2].staff_no} to ${D.data[LY - 1].staff_no} in ${LY - 1}; the reports do not say for what post. About £23k–51k a year more is counted as building work while the building programme runs, and moves into running costs when it ends unless the posts end.`;
       d.appendChild(n0);
       const ts = document.createElement('div'); ts.className = 'scroll-x';
-      ts.innerHTML = `<table><thead><tr><th>Year</th><th class="n">As paid</th><th class="n">In ${LY} money</th><th class="n">People</th></tr></thead><tbody>` +
-        SY.map(y => `<tr><td>${y}</td><td class="n">${pounds(sr(y))}</td><td class="n">${pounds(Math.round(sl(y)))}</td><td class="n">${D.data[y].staff_no ?? '–'}</td></tr>`).join('') + '</tbody></table>';
+      const pn = y => ['salaries', 'nic', 'pension'].every(k => D.data[y][k] != null) ? ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0) : null;
+      ts.innerHTML = `<table><thead><tr><th>Year</th><th class="n">Staff line</th><th class="n">In ${LY} money</th><th class="n">Pay, NI, pension*</th><th class="n">People</th></tr></thead><tbody>` +
+        SY.map(y => `<tr><td>${y}</td><td class="n">${pounds(sr(y))}</td><td class="n">${pounds(Math.round(sl(y)))}</td><td class="n">${pn(y) != null ? pounds(pn(y)) : '–'}</td><td class="n">${D.data[y].staff_no ?? '–'}</td></tr>`).join('') + '</tbody></table>';
       d.appendChild(ts);
       const n1 = document.createElement('p'); n1.className = 'note';
-      n1.textContent = `The note on staff in the accounts adds up pay, national insurance and pension to ${pounds(['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[LY - 2], k), 0))} in ${LY - 2}, ${pounds(['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[LY - 1], k), 0))} in ${LY - 1} and ${pounds(['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[LY], k), 0))} in ${LY}. That is more than the staff line above: the rest is counted in other lines, including building work, and the accounts do not show the split.`;
+      n1.textContent = `* Pay, national insurance and pension added up from the note on staff in the accounts. It is more than the staff line: the rest is counted in other lines, including building work, and the accounts do not show the split.`;
       d.appendChild(n1);
     }
     if (welfare) {
