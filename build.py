@@ -167,17 +167,27 @@ yearly = {k: fig[k]['year'] for k in fig}
 yearly.update({k: json.load(open(A2[k] / 'facts.json'))['year'] for k in A2})
 oper = {k: json.load(open(A2[k] / 'facts.json')).get('operating', True) for k in A2}
 REGIONS = [(name, sorted(ks, key=lambda k: (not oper.get(k, True), -yearly[k]))) for name, ks in REGIONS]
-sections_html = ''.join(f'  <div class="region"><h2 class="more-h">{name}</h2>\n  <div class="places">\n{"".join(card[k] for k in ks)}  </div></div>\n' for name, ks in REGIONS)
+import re as _re
+_nm = lambda k: _re.search(r'<h2>(.*?)</h2>', card[k]).group(1)
+_rid = lambda name: 'r-' + _re.sub(r'[^a-z]+', '-', name.lower()).strip('-')
+def _card_id(k):
+    return card[k].replace('<article class="place"', '<article class="place" id="' + k + '"', 1)
+def _region(name, ks):
+    return '  <div class="region" id="' + _rid(name) + '"><h2 class="more-h">' + name + '</h2>\n  <div class="places">\n' + ''.join(_card_id(k) for k in ks) + '  </div></div>\n'
+sections_html = ''.join(_region(name, ks) for name, ks in REGIONS)
+jump_html = '<nav class="jump" aria-label="Jump to a place"><p class="jump-h">Jump to</p>' + ''.join(f'<div class="jump-r"><a class="jump-reg" href="#{_rid(name)}">{name}</a> ' + ' '.join(f'<a class="jump-p" href="#{k}">{_nm(k)}</a>' for k in ks) + '</div>' for name, ks in REGIONS) + '<div class="jump-r"><a class="jump-reg" href="#missing">No public accounts found</a> <a class="jump-p" href="#how">How to read these side by side</a></div></nav>'
+
 body = f'''
 <main id="top">
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Seventeen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  {jump_html}
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Totals only\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
-{sections_html}  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
+{sections_html}  <div class="card" id="how" style="margin-top:16px"><h3>How to read these side by side</h3>
     <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each place's last three years.</p>
     <p class="note"><b>The four places with full reports</b> (the costs line by line) <b>on one measure:</b> running costs after inflation, the three years 2019–21 against each place's last three years. The English Sangha Trust {signed(SINCE["est"][0])}%, Aruna Ratanagiri {signed(SINCE["ratanagiri"][0])}%, Hartridge {signed(SINCE["hartridge"][0])}%, Sumedharama {signed(SINCE["sumedharama"][0])}% (compared in its own euros and Portuguese prices). The places differ in size, in how many people live there and in building work, so this shows how each changed, not which is better run.</p>
     <details class="how"><summary>More about the figures</summary>
@@ -185,18 +195,20 @@ body = f'''
     <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
     <p class="note"><b>Years.</b> The English Sangha Trust's year runs from April to March (2024–26 is the years to March 2024, 2025 and 2026). The others run January to December. <b>Residents</b> are averaged over the same years.</p></details>
   </div>
-  <div class="missing"><h3>No public accounts found</h3>
+  <div class="missing" id="missing"><h3>No public accounts found</h3>
     <p class="note">Monasteries on the community lists whose accounts I could not find published. Where the legal body is known, it is named, so anyone can ask it directly.</p>
     <ul class="note">
       <li><b>Santacittarama</b> (Italy): Associazione Santacittarama, recognised as a religious body in 1995 and a member of the Unione Buddhista Italiana. Its website shows no accounts.</li>
       <li><b>Dhammapala</b> (Switzerland): the supporting association, Verein Dhammapala (Bern commercial register, CHE-109.752.928). No accounts published.</li>
       <li><b>Suddhavari</b> (Brazil): donations go to the Sociedade Budista do Brasil (CNPJ 34.021.832/0001-06). No accounts for the monastery found.</li>
       <li><b>Pannagiri</b> (Spain): its steward is named in a UK charity's report as the Comunidad Budista Bosque Theravada. No accounts found.</li>
-      <li><b>Lokuttara</b> (Norway) and <b>Vimutti</b> (New Zealand): the legal body was not found.</li>
+      <li><b>Vimutti</b> (New Zealand): the legal body was not found.</li>
     </ul></div>
   <p class="sources"><b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
 </section>
 </main>
+<a class="totop" href="#top" aria-label="Back to the top">↑ Top</a>
+<script>addEventListener('scroll',()=>document.body.classList.toggle('scrolled',scrollY>600),{{passive:true}});document.querySelector('.totop').addEventListener('click',e=>{{e.preventDefault();scrollTo({{top:0,behavior:'smooth'}})}});</script>
 '''
 full = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
