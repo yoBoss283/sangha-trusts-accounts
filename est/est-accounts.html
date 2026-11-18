@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:02 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:04 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -774,10 +774,11 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const k1 = n => Math.round(n / 1e3) + 'k';
   document.getElementById('cap-heat').textContent =
     `The new buildings have not brought the energy bill down: it rose from £${k1(avgOf(S3, heat))} a year in ${span(S3)} to £${k1(avgOf(N3, heat))} in ${span(N3)}. ` +
-    `That rise (${pc(paid(S3, N3))}) is less than energy prices (${pc(eng(S3, N3))}), which may be the efficient buildings or fixed-price contracts; the accounts don't say which.`;
+    `That rise (${pc(paid(S3, N3))}) is less than energy prices (${pc(eng(S3, N3))}), which may be the efficient buildings, fixed-price contracts, or the fact that during the building work some buildings were out of use or taken down and so used less energy; the accounts don't say which.`;
   document.getElementById('how-heat').innerHTML = [
     `Each bar is the bill a year, averaged over five years, as paid. The dark dashed marks show where the bill would be had it moved with UK household energy prices only (ONS consumer prices index for electricity, gas and other fuels), from ${BLAB(BLOCKS[0])}.`,
     `From ${span(L.base)} to ${span(N3)} the bill rose ${pc(paid(L.base, N3))} and energy prices ${pc(eng(L.base, N3))}. Since ${span(S3)}, with new buildings added, the bill rose less than energy prices.`,
+    `While the building programme ran, some buildings were not in use or were demolished. That alone could have lowered the bill for some years, so a fall (or a smaller rise) in those years is not proof that the new buildings are cheaper to heat. The accounts do not list which buildings were out of use, or when.`,
     `Fixed-price contracts can delay a price rise: in the year to March 2023 energy prices nearly doubled, but the bill did not move; it rose in the next two years.`,
     `A rough check: the accounts give heat, light, water and council tax as one line, and show what was paid, not how much energy was used.`,
   ].map(t => `<p>${esc(t)}</p>`).join('');
