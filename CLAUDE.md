@@ -5,7 +5,7 @@ One repo, one site: https://yoboss283.github.io/sangha-trusts-accounts/ . Start 
 - **To update for new annual reports, follow `UPDATE.md`.** Run `python3 status.py` first: it shows what is already done.
 - Each place has its own folder with its own `README.md` (and, for the English Sangha Trust, `CLAUDE.md`, `HANDOVER.md`,
   `REVIEW.md`). `REVIEW.md` here is the history of review rounds and decisions.
-- **Before an update, run `python3 archive.py`** (saves the current site to `archive/<year-month>/`; the landing page does not link to it). Never edit or delete old copies.
+- **Before an update, run `python3 archive.py`** (saves the current site to `archive/<year-month>/`, linked from the landing page under "Earlier versions"). Never edit or delete old copies.
 - **Talk before adding features.** Propose a new chart, agree on it, then build it.
 - **Plain language**: short sentences, no statistics jargon. Each trust's own cost-line names ("Repairs and upkeep"), not one
   common label. State facts; do not state conclusions outright ("the accounts do not show a saving", not "the buildings did not help").
