@@ -224,7 +224,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 17 November 2026, 11:59 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:02 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -559,7 +559,7 @@ function blockBars(id, blocks, f, opt = {}) {
   });
   if (opt.sub) {                                   // a row of plain text under the chart (easier to read than text in it)
     const p = document.createElement('p'); p.className = 'under';
-    p.textContent = `${opt.subName}: ${blocks.map(b => opt.sub(b)).join(' · ')}`;
+    p.textContent = opt.subText ? opt.subText(blocks) : `${opt.subName}: ${blocks.map(b => opt.sub(b)).join(' · ')}`;
     host.appendChild(p);
   }
   return { vals, infl, ex, lab };
@@ -870,10 +870,11 @@ function smallMultiples(id, div, top) {
     const welfare = r.k.f === KINDS[0].f;
     blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: j > 0,
       sub: welfare ? (b => Math.round(avgOf(b, y => D.data[y].seniors ?? 0))) : null, subName: 'Monks and nuns with 20 or more years in robes',
+      subText: bs => `Monks and nuns with 20 or more years in robes at the two monasteries went from ${Math.round(avgOf(bs[0], y => D.data[y].seniors ?? 0))} in ${BLAB(bs[0])} to ${Math.round(avgOf(bs[bs.length - 1], y => D.data[y].seniors ?? 0))} in ${BLAB(bs[bs.length - 1])} (average in each period).`,
       aria: r.k.name + ' in five-year blocks against inflation' });
     if (welfare) {
       const note = document.createElement('p'); note.className = 'note';
-      note.textContent = 'Includes welfare, not only food: the care of ageing monks and nuns. Under each bar: monks and nuns with 20 or more years in robes at the two monasteries, on average. ' +
+      note.textContent = 'Includes welfare, not only food: the care of ageing monks and nuns. The number of monks and nuns with 20 or more years in robes is given under the chart. ' +
         'The trustees\' reports name a fund for the medical and welfare needs of a senior monk at Amaravati (£50k spent in 2026), the Samana Care Fund for the care of elderly or infirm monks and nuns (set up in 2022), and, in 2026, a new Ageing Samanas Fund.';
       d.appendChild(note);
       const WY = Ys.filter(y => +y >= 2020), rl = y => v(D.data[y], 'sp_food') * CPI[LY] / CPI[y], sh = y => v(D.data[y], 'sp_food') / RUNK(D.data[y]);
@@ -1040,13 +1041,13 @@ function smallMultiples(id, div, top) {
     stacked('c-oneoff', OY, [
       { name: 'Everything else', color: '--s1', values: OR.map(r => r.income - r.one_donor) },
       { name: 'Largest single donor', color: '--s7', values: OR.map(r => r.one_donor) },
-    ], { W: 1000, cap: 3.5e6, totals: true, name: y => 'Year to March ' + y, aria: 'Income with and without the largest single gift' });
+    ], { W: 1000, totals: true, name: y => 'Year to March ' + y, aria: 'Income with and without the largest single gift' });
     const big = OY.filter(y => D.data[y].one_donor > 5e6), usual = OY.filter(y => D.data[y].one_donor <= 5e6);
     const ex = y => D.data[y].income - D.data[y].one_donor;
     document.getElementById('oneoff-note').textContent =
       `In ${big.join(' and ')} one donor gave ${big.map(y => words(D.data[y].one_donor)).join(' and ')}, so headline income was ${big.map(y => words(D.data[y].income)).join(' and ')}. ` +
       `Without that gift income was ${big.map(y => words(ex(y))).join(' and ')}, within the range of the other years (${words(Math.min(...usual.map(ex)))}–${words(Math.max(...usual.map(ex)))}). ` +
-      `The trustees' report names a single donor only from ${OY[0]}, so earlier years are not shown. The big gifts were given for building and can only be spent on it.`;
+      `The trustees' report names a single donor only from ${OY[0]}, so earlier years are not shown. The big gifts were given for building and can only be spent on it. The bars are drawn to scale, so the gift years are far taller than the rest.`;
   }
   {
     const A = avgOf, share = (ys, f, g) => A(ys, y => f(D.data[y])) / A(ys, y => g(D.data[y])), P = x => Math.round(100 * x) + '%';
