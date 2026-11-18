@@ -130,6 +130,10 @@ REGIONS = [('United Kingdom', ['est', 'ratanagiri', 'hartridge', 'forest-hermita
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
            ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]
 assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
+# running costs a year (last three years, as paid): each group is shown from the highest to the lowest
+yearly = {k: fig[k]['year'] for k in fig}
+yearly.update({k: json.load(open(A2[k] / 'facts.json'))['year'] for k in A2})
+REGIONS = [(name, sorted(ks, key=lambda k: -yearly[k])) for name, ks in REGIONS]
 sections_html = ''.join(f'  <div class="region"><h2 class="more-h">{name}</h2>\n  <div class="places">\n{"".join(card[k] for k in ks)}  </div></div>\n' for name, ks in REGIONS)
 body = f'''
 <main id="top">
@@ -137,7 +141,7 @@ body = f'''
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Seventeen monasteries in the United Kingdom, Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
-  <p class="note more-n">Places with a full report (the costs line by line) come first in each group; the others publish only totals (money in, spending and, for some, what they hold), so their pages are shorter and the card says "Totals only". Amounts are in each country's own currency and are not converted.</p>
+  <p class="note more-n">Within each group the places run from the highest running costs a year to the lowest (the last three years, as paid). Places that publish only totals (money in, spending and, for some, what they hold) have shorter pages, and their card says "Totals only". Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
 {sections_html}  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
