@@ -25,11 +25,11 @@
  "holdSub": "At 31 March. Net assets: everything the Trust owns less what it owes; the buildings and land are most of it.",
  "cardName": "Forest Hermitage",
  "cardColor": "--s7",
- "cardNote": "Totals only (no cost lines on this page), 2019–2026.",
+ "cardNote": "Totals only, 2019–2026. The year to March 2019 was unusually high (building repairs), so the fall is partly that.",
  "sources": "<b>Sources anyone can check:</b> the Trust's accounts at <a href=\"https://find-and-update.company-information.service.gov.uk/company/10368008/filing-history?category=accounts\" target=\"_blank\" rel=\"noopener\">Companies House</a> (company 10368008) and the <a href=\"https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5083694\" target=\"_blank\" rel=\"noopener\">Charity Commission register</a> (charity 1173083). <span class=\"tag\">Updated __UPDATED__</span>",
  "yearEnd": null,
  "incomeNote": "Income moves a lot from year to year; the data used here do not say why.",
- "meaningNote": "The accounts list the costs line by line (repairs, heat and light, council tax, depreciation and so on), but this page shows the totals only.",
+ "meaningNote": "The year to March 2019 was unusually high (£104,931 spent, of which £58,851 was building maintenance and repairs), which pulls the early average up. The accounts list the costs line by line, but this page shows the totals only.",
  "holdNote": "Tangible assets (mostly the buildings) were £617,432 of £892,933 net assets in 2026, and £512,186 of the funds are restricted to the building (the same in every year).",
  "notes": [
   "<b>Where the figures come from.</b> The Forest Hermitage Trust (charity 1173083, company 10368008) files its accounts at Companies House. The page uses the accounts for the years to 31 March 2019 to 2026 (<code>accounts/</code> in this folder). They are scanned pages: the figures were read from the scans, and for 2021 to 2025 they agree with the Charity Commission register as shown on OpenCharities (<code>opencharities_1173083.json</code>).",
