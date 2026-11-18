@@ -320,7 +320,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:16 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:17 GMT</span></p>
 </main>
 
 <script>
@@ -681,10 +681,11 @@ const span = ys => `${ys[0]}–${String(ys[ys.length - 1]).slice(2)}`;
 const LIKEd = f => LIKE.avgT(LIKE.now, f) - LIKE.avgT(LIKE.base, f);
 const k0 = n => Math.round(n / 1e3) * 1e3;
 // welfare and food is shown apart from running costs; one wording, used in the note under the main chart and in 'what this means'
+const CAREHOME = 'Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).';
 const WELF = (() => {
   const f26 = v(D.data[LY], 'sp_food'), f22 = v(D.data[LY - 4], 'sp_food');
   return `has more than doubled in four years, from ${short(k0(f22))} in ${LY - 4} to ${short(k0(f26))} in ${LY} as paid (and ${Math.round(100 * (LIKE.ch(r => r.sp_food) - 1))}% higher after inflation since ${span(LIKE.base)}). ` +
-    `It includes the care of ageing monks and nuns, and the accounts do not say what it buys. Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).`;
+    `It includes the care of ageing monks and nuns, and the accounts do not say what it buys. ${CAREHOME}`;
 })();
 const OTHER = r => RUNK(r) - r.sp_heat - r.sp_maint - r.sp_ins - r.sp_food - r.sp_travel;
 // the same number of residents: the first three years after the count settled near 60
@@ -898,6 +899,7 @@ function smallMultiples(id, div, top) {
       tw.innerHTML = `<table><thead><tr><th>Year to March</th><th class="n">As paid</th><th class="n">In ${LY} money</th><th class="n">Share of running costs</th></tr></thead><tbody>` +
         WY.map(y => `<tr><td>${y}</td><td class="n">${pounds(v(D.data[y], 'sp_food'))}</td><td class="n">${pounds(Math.round(rl(y)))}</td><td class="n">${Math.round(100 * sh(y))}%</td></tr>`).join('') + '</tbody></table>';
       d.appendChild(tw);
+      const care = document.createElement('p'); care.className = 'note'; care.textContent = CAREHOME; d.appendChild(care);
       const funds = [['2024', 14705], ['2025', 27956], ['2026', 49924]];
       const why = document.createElement('p'); why.className = 'note';
       why.textContent = `What the trustees' reports say about the last three years: the Amaravati Monks' Welfare fund spent ${funds.map(([y, a]) => `${pounds(a)} in ${y}`).join(', ')}, and a new Ageing Samanas Fund was started in ${LY} (${pounds(444444)} given, mainly for buildings). The accounts do not say whether this spending is inside the welfare and food line.`;
