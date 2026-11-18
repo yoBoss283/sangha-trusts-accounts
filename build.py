@@ -126,8 +126,8 @@ for k in A2:
     people_txt = (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) if f['people'] else ''
     if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
         card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
-  <span class="kind kind-total">Total spent · not running cost</span><h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
   <p class="says">{c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
@@ -135,8 +135,8 @@ for k in A2:
 '''
         continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
-  <span class="kind kind-run">Running cost</span><h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
+  <h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
@@ -146,8 +146,8 @@ for k, name, where, col, says in CARDS:
     where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
     f = fig[k]
     card[k] = f'''<article class="place"><div class="bar" style="background:var({col})"></div>
-  <span class="kind kind-run">Running cost</span><h2>{name}</h2><p class="where">{where}</p>
-  <p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
+  <h2>{name}</h2><p class="where">{where}</p>
+  <span class="kind kind-run">Running cost</span><p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd><dt>A year for each resident</dt><dd>{CUR.get(k, "£")}{round(f["year"] / f["people"], -2):,.0f}</dd></dl>
   <p class="says">{says}</p>
   <p class="since"><b>Since 2019–21, after inflation:</b> <span style="white-space:nowrap">{signed(SINCE[k][0])}%</span> <span style="white-space:nowrap">({signed(SINCE[k][1], CUR.get(k, "£")) + " a year" if SINCE[k][1] else "about the same each year"})</span>, {"with welfare and food" if k == "est" else "all running costs"}</p>

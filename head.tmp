@@ -238,3 +238,4 @@ body.scrolled .totop { display: block; }
 .place .kind-run { background: var(--ink); color: var(--surface); }
 .place .kind-total { background: transparent; color: var(--ink-2); border: 1px dashed var(--ink-2); }
 .place .big.tot { color: var(--ink-2); font-weight: 400; }
+.place .kind { display: block; width: fit-content; margin: 10px 0 4px; }
