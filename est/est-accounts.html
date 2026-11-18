@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:07 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:11 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -787,13 +787,13 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
 // ---------------------------------------------------------------- what this means
 (function meaning() {
   const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
-  const lastInt = v(D.data[LY], 'interest_u');
+  const f26 = v(D.data[LY], 'sp_food'), f22 = v(D.data[LY - 4], 'sp_food');
   document.getElementById('meaning').textContent =
-    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${short(k0(LIKEd(OTHER)))} a year, heat, light, water and council tax ${short(k0(LIKEd(r => r.sp_heat)))}, and insurance ${short(k0(LIKEd(r => r.sp_ins)))}, and travel rose too; only maintenance fell, by ${short(k0(-LIKEd(r => r.sp_maint)))}. Taken together, running costs (without welfare) are ${short(k0(LIKEd(RUNW)))} a year higher. ` +
-    `The increases are clear; a saving from the buildings does not show in the accounts. ` +
-    `Heating followed energy prices, so it does not settle the question either way. ` +
-    `Interest on the money held for building (${short(k0(lastInt))} in ${LY}) helps pay the running costs now, and will fall as that money is spent. ` +
-    `Welfare and food, shown apart, rose ${pc(r => r.sp_food)}; it includes the care of ageing monks and nuns, which has nothing to do with the buildings.`;
+    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)}, heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
+    `Taken together, running costs (without welfare) are ${pc(RUNW)} higher. ` +
+    `The increases are clear; a saving from the buildings does not show in the accounts. Heating followed energy prices, so it does not settle the question either way. ` +
+    `One more thing stands out: welfare and food, shown apart, has more than doubled in four years, from ${short(k0(f22))} in ${LY - 4} to ${short(k0(f26))} in ${LY} as paid (and ${pc(r => r.sp_food)} higher after inflation since ${span(L.base)}). ` +
+    `It includes the care of ageing monks and nuns, and the accounts do not say what it buys. Care for a single senior nun in a care home is understood to cost around £100k a year (a figure from the community, not from the accounts).`;
 })();
 
 // contents (the detail sections) and a "back to top" link under each section
