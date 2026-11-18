@@ -223,7 +223,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <p id="meaning"></p>
   </div>
   <p class="defs">Running costs: everything the Trust spends in a year, without building work (a one-off, counted as something the Trust owns), without wear on buildings (depreciation, not money paid out), and without a few building costs the accounts count as spending (see the notes). Residents (under each bar): the monks, nuns, novices and anagārikas living at the two monasteries, on average. Inflation: the UK consumer prices index. All amounts as paid at the time.</p>
-  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:04 GMT</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:07 GMT</span></p>
   <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
 </section>
 
@@ -773,7 +773,7 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const bldS = avgOf(N3, y => D.data[y].buildings) / avgOf(S3, y => D.data[y].buildings);
   const k1 = n => Math.round(n / 1e3) + 'k';
   document.getElementById('cap-heat').textContent =
-    `The new buildings have not brought the energy bill down: it rose from £${k1(avgOf(S3, heat))} a year in ${span(S3)} to £${k1(avgOf(N3, heat))} in ${span(N3)}. ` +
+    `The accounts do not show the energy bill coming down with the new buildings: it rose from £${k1(avgOf(S3, heat))} a year in ${span(S3)} to £${k1(avgOf(N3, heat))} in ${span(N3)}. ` +
     `That rise (${pc(paid(S3, N3))}) is less than energy prices (${pc(eng(S3, N3))}), which may be the efficient buildings, fixed-price contracts, or the fact that during the building work some buildings were out of use or taken down and so used less energy; the accounts don't say which.`;
   document.getElementById('how-heat').innerHTML = [
     `Each bar is the bill a year, averaged over five years, as paid. The dark dashed marks show where the bill would be had it moved with UK household energy prices only (ONS consumer prices index for electricity, gas and other fuels), from ${BLAB(BLOCKS[0])}.`,
@@ -789,8 +789,9 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
   const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
   const lastInt = v(D.data[LY], 'interest_u');
   document.getElementById('meaning').textContent =
-    `The new buildings have not made Amaravati and Chithurst cheaper to run: running costs rose ${short(k0(LIKEd(RUNW)))} a year after inflation; only maintenance fell. ` +
-    `Heating is the exception: it followed energy prices, as the Trust's energy-efficient building would lead one to expect. ` +
+    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${short(k0(LIKEd(OTHER)))} a year, heat, light, water and council tax ${short(k0(LIKEd(r => r.sp_heat)))}, and insurance ${short(k0(LIKEd(r => r.sp_ins)))}, and travel rose too; only maintenance fell, by ${short(k0(-LIKEd(r => r.sp_maint)))}. Taken together, running costs (without welfare) are ${short(k0(LIKEd(RUNW)))} a year higher. ` +
+    `The increases are clear; a saving from the buildings does not show in the accounts. ` +
+    `Heating followed energy prices, so it does not settle the question either way. ` +
     `Interest on the money held for building (${short(k0(lastInt))} in ${LY}) helps pay the running costs now, and will fall as that money is spent. ` +
     `Welfare and food, shown apart, rose ${pc(r => r.sp_food)}; it includes the care of ageing monks and nuns, which has nothing to do with the buildings.`;
 })();
