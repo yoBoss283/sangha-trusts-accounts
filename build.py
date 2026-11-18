@@ -126,8 +126,8 @@ for k in A2:
     people_txt = (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) if f['people'] else ''
     if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
         card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
-  <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average (can include building work and wear on buildings)</p>
+  <span class="kind kind-total">Total spent · not running cost</span><h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
   <p class="says">{c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
@@ -135,7 +135,7 @@ for k in A2:
 '''
         continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
-  <h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <span class="kind kind-run">Running cost</span><h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
@@ -146,7 +146,7 @@ for k, name, where, col, says in CARDS:
     where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
     f = fig[k]
     card[k] = f'''<article class="place"><div class="bar" style="background:var({col})"></div>
-  <h2>{name}</h2><p class="where">{where}</p>
+  <span class="kind kind-run">Running cost</span><h2>{name}</h2><p class="where">{where}</p>
   <p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd><dt>A year for each resident</dt><dd>{CUR.get(k, "£")}{round(f["year"] / f["people"], -2):,.0f}</dd></dl>
   <p class="says">{says}</p>
@@ -184,6 +184,7 @@ body = f'''
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
   {jump_html}
+  <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Totals only\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
