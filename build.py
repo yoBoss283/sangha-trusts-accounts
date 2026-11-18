@@ -125,8 +125,7 @@ for k, name, where, col, says in CARDS:
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d / 'index.html').exists()), reverse=True)
 EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
-REGIONS = [('United Kingdom', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim']),
-           ('Europe', ['sumedharama']),
+REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'sumedharama']),
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
            ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]
 assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
@@ -140,7 +139,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Seventeen monasteries in the United Kingdom, Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Seventeen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
   <p class="note more-n">Within each group the places run from the highest running costs a year to the lowest (the last three years, as paid). Places that publish only totals (money in, spending and, for some, what they hold) have shorter pages, and their card says "Totals only". Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
