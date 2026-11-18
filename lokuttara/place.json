@@ -21,7 +21,7 @@
  "cardName": "Lokuttara",
  "cardWhere": "Stiftelsen Skogskloster · Norway · amounts in euros, with the Norwegian kroner in brackets",
  "cardColor": "--s3",
- "cardNote": "Totals only; three years are public so far.",
+ "cardNote": "Three years are public so far.",
  "sources": "<b>Source anyone can check:</b> Stiftelsen Skogskloster (organisation number 997036034) in the <a href=\"https://virksomhet.brreg.no/nb/oppslag/enheter/997036034\" target=\"_blank\" rel=\"noopener\">Brønnøysund Register Centre</a>; its yearly accounts are open data at <a href=\"https://data.brreg.no/regnskapsregisteret/regnskap/997036034\" target=\"_blank\" rel=\"noopener\">data.brreg.no</a>. Residents: the monasteries' community lists. <span class=\"tag\">Updated __UPDATED__</span>",
  "yearEnd": null,
  "incomeNote": "Money in is smaller than spending in each of the three years.",

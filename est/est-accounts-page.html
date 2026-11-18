@@ -320,7 +320,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:46 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 11:48 GMT</span></p>
 </main>
 
 <script>
@@ -841,9 +841,9 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
 
 // ---------------------------------------------------------------- what this means
 (function meaning() {
-  const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
+  const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%', tpay = y => ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0);
   document.getElementById('meaning').textContent =
-    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)} (staff cost itself has about doubled in the last two years, and more of it is still counted as building work), heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
+    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)} (the staff line itself has about doubled in the last two years, but total staff pay, counting what is booked in other lines, rose about ${Math.round(100 * (tpay(LY) / tpay(LY - 2) - 1))}% as paid, so part of that jump looks like a change in where the cost is counted), heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
     `Taken together, running costs (without welfare) are ${pc(RUNW)} higher. ` +
     (() => { const pn = y => ['salaries', 'nic', 'pension'].reduce((a, k) => a + v(D.data[y], k), 0);
       return `Staff pay is bigger than the staff line shows: the accounts' note on staff adds up pay, national insurance and pension to ${pounds(pn(LY - 2))} in ${LY - 2} and ${pounds(pn(LY))} in ${LY}, against ${pounds(v(D.data[LY - 2], 'sp_staff'))} and ${pounds(v(D.data[LY], 'sp_staff'))} on the staff line. Part of the difference is counted as building work, and the accounts do not show where the rest is counted, so these totals are not added to the charts (that could count some of the money twice). So what staff cost in total is higher than the staff line says. `; })() +

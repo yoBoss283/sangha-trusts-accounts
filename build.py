@@ -113,6 +113,9 @@ SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'fo
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
 A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
+DOLLARS = {'abhayagiri': 'US dollars', 'pacific-hermitage': 'US dollars', 'temple-forest': 'US dollars', 'tisarana': 'Canadian dollars', 'bodhinyanarama': 'New Zealand dollars', 'bodhipala': 'Australian dollars', 'bodhivana': 'Australian dollars', 'dhammagiri': 'Australian dollars', 'vimokkharam': 'Australian dollars', 'wat-buddha-dhamma': 'Australian dollars'}
+def curtag(k, cu):      # which dollar: shown under the figure for every place that uses $
+    return f'<p class="cur">{DOLLARS[k]}</p>' if cu == '$' else ''
 card = {}
 for k in A2:
     c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
@@ -123,17 +126,17 @@ for k in A2:
     if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
         card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">{cu}{round(f['year'] / 1000) * 1000:,}</p>{curtag(k, cu)}{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
-  <p class="says">{c['cardNote']}</p>
+  {('<p class="says">' + c['cardNote'] + '</p>') if c['cardNote'] else ''}
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
         continue
     card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
+  <span class="kind kind-run">Running cost</span><p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p>{curtag(k, cu)}<p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd>{('<dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">' + (f"{round(f['people'], 1):g}" if f['people'] < 10 else str(round(f['people']))) + ' on average</span></dt><dd>' + cu + format(round(f['year'] / (c.get('daysInYear') or 365) / f['people']), ',') + '</dd><dt>A year for each resident</dt><dd>' + cu + format(round(f['year'] / f['people'] / 100) * 100, ',') + '</dd>') if f['people'] else ''}</dl>
-  <p class="says">{c['cardNote']}</p>
+  {('<p class="says">' + c['cardNote'] + '</p>') if c['cardNote'] else ''}
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
 for k, name, where, col, says in CARDS:
@@ -174,7 +177,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
   {jump_html}
   <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Total spent\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>

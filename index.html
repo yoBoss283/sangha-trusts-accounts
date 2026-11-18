@@ -244,6 +244,7 @@ body.scrolled .totop { display: block; }
 .place dl, .place .says, .place .bigl { flex: 0 0 auto; }
 .place .says { flex: 0 0 auto; }
 .place dl:last-of-type, .place .says:last-of-type { margin-bottom: 16px; }
+.place .cur { font-size: 12.5px; color: var(--ink-2); margin: 2px 0 0; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -255,7 +256,7 @@ body.scrolled .totop { display: block; }
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
   <nav class="jump" aria-label="Jump to a place"><p class="jump-h">Jump to</p><div class="jump-r"><a class="jump-reg" href="#r-europe">Europe</a> <a class="jump-p" href="#est">Amaravati and Chithurst</a> <a class="jump-p" href="#ratanagiri">Aruna Ratanagiri</a> <a class="jump-p" href="#forest-hermitage">Forest Hermitage</a> <a class="jump-p" href="#sumedharama">Sumedharama</a> <a class="jump-p" href="#hartridge">Hartridge</a> <a class="jump-p" href="#lokuttara">Lokuttara</a> <a class="jump-p" href="#milntuim">Milntuim</a></div><div class="jump-r"><a class="jump-reg" href="#r-united-states-and-canada">United States and Canada</a> <a class="jump-p" href="#tisarana">Tisarana</a> <a class="jump-p" href="#abhayagiri">Abhayagiri</a> <a class="jump-p" href="#temple-forest">Temple Forest</a> <a class="jump-p" href="#pacific-hermitage">Pacific Hermitage</a></div><div class="jump-r"><a class="jump-reg" href="#r-australia-and-new-zealand">Australia and New Zealand</a> <a class="jump-p" href="#wat-buddha-dhamma">Wat Buddha Dhamma</a> <a class="jump-p" href="#bodhivana">Bodhivana</a> <a class="jump-p" href="#bodhinyanarama">Bodhinyanarama</a> <a class="jump-p" href="#bodhipala">Bodhipala</a> <a class="jump-p" href="#dhammagiri">Dhammagiri</a> <a class="jump-p" href="#vimokkharam">Vimokkharam</a></div><div class="jump-r"><a class="jump-reg" href="#missing">No public accounts found</a> <a class="jump-p" href="#how">How to read these side by side</a></div></nav>
   <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked "Total spent": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>
@@ -297,79 +298,79 @@ body.scrolled .totop { display: block; }
   <h2>Lokuttara</h2><p class="where">Stiftelsen Skogskloster</p>
   <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">€77,000</p><p class="bigl" style="margin:0">(kr 889,000)</p><p class="bigl">spent in total a year, as paid, 2023–25 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>€56,000 <span style="font-size:12.5px;opacity:.75">(kr 647,000)</span></dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>3.8</dd></dl>
-  <p class="says">Totals only; three years are public so far.</p>
+  <p class="says">Three years are public so far.</p>
   <a class="go" href="pages/lokuttara.html">Read the full report →</a></article>
 <article class="place" id="milntuim"><div class="bar" style="background:var(--s4)"></div>
   <h2>Milntuim</h2><p class="where">Milntuim Hermitage Trust</p>
   <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">£24,000</p><p class="bigl">spent in total a year, as paid, 2023–25 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>£30,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>1.5</dd></dl>
-  <p class="says">Totals only, and small amounts that move from year to year.</p>
+  <p class="says">Small amounts that move from year to year.</p>
   <a class="go" href="pages/milntuim.html">Read the full report →</a></article>
   </div></div>
   <div class="region" id="r-united-states-and-canada"><h2 class="more-h">United States and Canada</h2>
   <div class="places">
 <article class="place" id="tisarana"><div class="bar" style="background:var(--s6)"></div>
   <h2>Tisarana</h2><p class="where">Tisarana Buddhist Monastery</p>
-  <span class="kind kind-run">Running cost</span><p class="big">$413,000</p><p class="bigl">a year, running costs, as paid, 2023–25 average</p>
+  <span class="kind kind-run">Running cost</span><p class="big">$413,000</p><p class="cur">Canadian dollars</p><p class="bigl">a year, running costs, as paid, 2023–25 average</p>
   <dl><dt>A day (2023–25 average)</dt><dd>$1,130</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">5.8 on average</span></dt><dd>$194</dd><dt>A year for each resident</dt><dd>$70,700</dd></dl>
   <p class="says">The layout of its statements changes in 2022, so part of the rise may come from how costs are counted.</p>
   <a class="go" href="pages/tisarana.html">Read the full report →</a></article>
 <article class="place" id="abhayagiri"><div class="bar" style="background:var(--s5)"></div>
   <h2>Abhayagiri</h2><p class="where">Sanghapala Foundation</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$335,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$335,000</p><p class="cur">US dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$899,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>17</dd></dl>
-  <p class="says">Totals only: the tax returns do not say what the money went on.</p>
+  <p class="says">The tax returns do not say what the money went on.</p>
   <a class="go" href="pages/abhayagiri.html">Read the full report →</a></article>
 <article class="place" id="temple-forest"><div class="bar" style="background:var(--s3)"></div>
   <h2>Temple Forest</h2><p class="where">Jeta Grove Foundation</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$211,000</p><p class="bigl">spent in total a year, as paid, 2018–20 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$211,000</p><p class="cur">US dollars</p><p class="bigl">spent in total a year, as paid, 2018–20 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$353,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>12</dd></dl>
-  <p class="says">Totals only, and only 2014–2020 so far.</p>
+  <p class="says">Only 2014–2020 so far.</p>
   <a class="go" href="pages/temple-forest.html">Read the full report →</a></article>
 <article class="place" id="pacific-hermitage"><div class="bar" style="background:var(--s5)"></div>
   <h2>Pacific Hermitage</h2><p class="where">Sanghata Foundation</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$59,000</p><p class="bigl">spent in total a year, as paid, 2021–23 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$59,000</p><p class="cur">US dollars</p><p class="bigl">spent in total a year, as paid, 2021–23 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$161,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>2.8</dd></dl>
-  <p class="says">Totals only: the tax returns do not say what the money went on.</p>
+  <p class="says">The tax returns do not say what the money went on.</p>
   <a class="go" href="pages/pacific-hermitage.html">Read the full report →</a></article>
   </div></div>
   <div class="region" id="r-australia-and-new-zealand"><h2 class="more-h">Australia and New Zealand</h2>
   <div class="places">
 <article class="place" id="wat-buddha-dhamma"><div class="bar" style="background:var(--s8)"></div>
   <h2>Wat Buddha Dhamma</h2><p class="where">Wat Buddha Dhamma Foundation Limited</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$434,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$434,000</p><p class="cur">Australian dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$1,118,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>4.3</dd></dl>
-  <p class="says">The statements give totals only.</p>
+  
   <a class="go" href="pages/wat-buddha-dhamma.html">Read the full report →</a></article>
 <article class="place" id="bodhivana"><div class="bar" style="background:var(--s8)"></div>
   <h2>Bodhivana</h2><p class="where">Victoria Sangha Association Inc.</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$361,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$361,000</p><p class="cur">Australian dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$1,157,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>8.8</dd></dl>
-  <p class="says">The statements give totals only.</p>
+  
   <a class="go" href="pages/bodhivana.html">Read the full report →</a></article>
 <article class="place" id="bodhinyanarama"><div class="bar" style="background:var(--s7)"></div>
   <h2>Bodhinyanarama</h2><p class="where">Wellington Theravada Buddhist Association</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$154,000</p><p class="bigl">spent in total a year, as paid, 2024–26 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$154,000</p><p class="cur">New Zealand dollars</p><p class="bigl">spent in total a year, as paid, 2024–26 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$393,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>8.2</dd></dl>
-  <p class="says">Totals only; net assets are known for some years.</p>
+  <p class="says">Net assets are known for some years.</p>
   <a class="go" href="pages/bodhinyanarama.html">Read the full report →</a></article>
 <article class="place" id="bodhipala"><div class="bar" style="background:var(--s2)"></div>
   <h2>Bodhipala</h2><p class="where">Bodhipala Monastery Ltd</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$145,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$145,000</p><p class="cur">Australian dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$281,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>3.3</dd></dl>
-  <p class="says">The statements give totals only.</p>
+  
   <a class="go" href="pages/bodhipala.html">Read the full report →</a></article>
 <article class="place" id="dhammagiri"><div class="bar" style="background:var(--s6)"></div>
   <h2>Dhammagiri</h2><p class="where">Brisbane Buddhist Vihara (Temple) Inc.</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$142,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$142,000</p><p class="cur">Australian dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$153,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>3</dd></dl>
-  <p class="says">The statements give totals only.</p>
+  
   <a class="go" href="pages/dhammagiri.html">Read the full report →</a></article>
 <article class="place" id="vimokkharam"><div class="bar" style="background:var(--s9)"></div>
   <h2>Vimokkharam</h2><p class="where">Vimokkharam Forest Hermitage Inc</p>
-  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$103,000</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
+  <span class="kind kind-total">Total spent · not running cost</span><p class="big tot">$103,000</p><p class="cur">Australian dollars</p><p class="bigl">spent in total a year, as paid, 2022–24 average. Everything the place paid out, so it can include building work and wear on buildings. Do not compare it with the running costs of other places.</p>
   <dl><dt>Money in a year</dt><dd>$180,000</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>2.3</dd></dl>
-  <p class="says">The statements give totals only.</p>
+  
   <a class="go" href="pages/vimokkharam.html">Read the full report →</a></article>
   </div></div>
   <div class="card" id="how" style="margin-top:16px"><h3>How to read these side by side</h3>
@@ -389,7 +390,7 @@ body.scrolled .totop { display: block; }
       <li><b>Pannagiri</b> (Spain): its steward is named in a UK charity's report as the Comunidad Budista Bosque Theravada. No accounts found.</li>
       <li><b>Vimutti</b> (New Zealand): the legal body was not found.</li>
     </ul></div>
-  <p class="sources"><b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. <span class="tag">Updated 18 November 2026, 11:46 GMT</span></p>
+  <p class="sources"><b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. <span class="tag">Updated 18 November 2026, 11:48 GMT</span></p>
 </section>
 </main>
 <a class="totop" href="#top" aria-label="Back to the top">↑ Top</a>
