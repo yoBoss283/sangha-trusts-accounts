@@ -98,23 +98,22 @@ SITES.update({'forest-hermitage': [('foresthermitage.org.uk', 'https://foresther
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
 A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
-cards2 = ''
+card = {}
 for k in A2:
     c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
     where = c['cardWhere'] + (('<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])) if SITES.get(k) else '')
     rname = c['costName'].lower()
-    cards2 += f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
+    card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
   <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>{round(f['people']) if f['people'] else '–'}</dd></dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
-cards = ''
 for k, name, where, col, says in CARDS:
     where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
     f = fig[k]
-    cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
+    card[k] = f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
   <p class="big">{r1000(f["year"], k)}</p><p class="bigl">a year to run, {EXTRA[k]}without building work and one-off building costs, as paid, {f["years"]} average</p>
   <dl><dt>A day ({f["years"]} average)</dt><dd>{r5(f["day"], k)}</dd><dt>A day for each resident<span style="display:block;font-size:12.5px;opacity:.75">{round(f["people"])} on average</span></dt><dd>{CUR.get(k, "£")}{round(f["day"] / f["people"])}</dd><dt>A year for each resident</dt><dd>{CUR.get(k, "£")}{round(f["year"] / f["people"], -2):,.0f}</dd></dl>
@@ -126,21 +125,22 @@ for k, name, where, col, says in CARDS:
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d / 'index.html').exists()), reverse=True)
 EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
+REGIONS = [('United Kingdom', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim']),
+           ('Europe', ['sumedharama']),
+           ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
+           ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]
+assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
+sections_html = ''.join(f'  <div class="region"><h2 class="more-h">{name}</h2>\n  <div class="places">\n{"".join(card[k] for k in ks)}  </div></div>\n' for name, ks in REGIONS)
 body = f'''
 <main id="top">
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Seventeen monasteries: Amaravati and Chithurst (one trust), Aruna Ratanagiri, Hartridge and Forest Hermitage in England, Sumedharama in Portugal, and, from the totals they publish, Milntuim in Scotland, Abhayagiri, Pacific Hermitage and Temple Forest in the United States, Tisarana in Canada, Bodhinyanarama in New Zealand and five in Australia (Bodhivana, Wat Buddha Dhamma, Vimokkharam, Bodhipala and Dhammagiri). Each report below says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Seventeen monasteries in the United Kingdom, Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="note more-n">Places with a full report (the costs line by line) come first in each group; the others publish only totals (money in, spending and, for some, what they hold), so their pages are shorter and the card says "Totals only". Amounts are in each country's own currency and are not converted.</p>
 </header>
 <section class="story">
-  <div class="places">
-{cards}  </div>
-  <h2 class="more-h">More monasteries, from the totals they publish</h2>
-  <p class="note more-n">These places publish only totals (money in, spending and, for some, what they hold), not their costs line by line, so each page is shorter. Amounts are in each country's own currency and are not converted.</p>
-  <div class="places">
-{cards2}  </div>
-  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
+{sections_html}  <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
     <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each place's last three years. Sumedharama's accounts are in euros, and the monasteries abroad in US, Canadian, New Zealand and Australian dollars: amounts are in each place's own currency, not converted.</p>
     <p class="note"><b>One measure the same for all:</b> running costs after inflation, the three years 2019–21 against each place's last three years. The English Sangha Trust {signed(SINCE["est"][0])}%, Aruna Ratanagiri {signed(SINCE["ratanagiri"][0])}%, Hartridge {signed(SINCE["hartridge"][0])}%, Sumedharama {signed(SINCE["sumedharama"][0])}% (compared in its own euros and Portuguese prices). The places differ in size, in how many people live there and in building work, so this shows how each changed, not which is better run.</p>
     <details class="how"><summary>More about the figures</summary>
