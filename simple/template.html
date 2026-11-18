@@ -378,7 +378,7 @@ function stacked(id, labels, series, opt = {}) {
       const yb = m.t + 18;
       el('path', { d: `M${x - 3},${yb} l${(bw + 6) / 4},-5 l${(bw + 6) / 4},10 l${(bw + 6) / 4},-10 l${(bw + 6) / 4},5`, fill: 'none', stroke: 'var(--surface)', 'stroke-width': 5 }, svg);
     }
-    if ((opt.totals || over) && (n <= 16 || over)) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
+    if ((opt.totals || over) && (over || (n <= 16 && (n - 1 - i) % Math.max(1, Math.ceil(42 / band)) === 0))) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
     const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
     hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.slice().reverse().map(s => s.values[i] ? row(s.name, s.color, pounds(s.values[i])) : '').join('') + (opt.noTotal ? '' : `<div class="row" style="margin-top:3px"><span>Total</span><span>${pounds(totals[i])}</span></div>`) + [...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => row(L.name, L.color, (L.fmtR || pounds)(L.values[i]))).join('')));
     hit.addEventListener('mouseleave', hideTip);
