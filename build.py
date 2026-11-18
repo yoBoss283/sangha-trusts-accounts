@@ -127,8 +127,8 @@ for k in A2:
     if not OPER2:      # totals only, building work and wear on buildings cannot be taken out: no running-cost figures
         card[k] = f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
-  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">spent in total a year, as paid, {f['years']} average (can include building work and wear on buildings)</p>
-  <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
+  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p>{('<p class="bigl" style="margin:0">(' + f['alt']['cur'] + f"{round(f['alt']['year'] / 1000) * 1000:,})</p>") if f.get('alt') else ''}<p class="bigl">spent in total a year, as paid, {f['years']} average (can include building work and wear on buildings)</p>
+  <dl><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}{(' <span style="font-size:12.5px;opacity:.75">(' + f['alt']['cur'] + f"{round(f['alt']['income'] / 1000) * 1000:,})</span>") if f.get('alt') else ''}</dd>{('<dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>' + people_txt + '</dd>') if people_txt else ''}</dl>
   <p class="says">{c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a>
   <p class="src">Source: {SRC[k]}</p></article>

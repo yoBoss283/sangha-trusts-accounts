@@ -110,7 +110,7 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   at the OSCR register); it uses the UK price index (`cpi.json`) and pounds.
 - **Lokuttara** (`lokuttara/`) is Stiftelsen Skogskloster, Norway (org. no. 997036034): the figures are open data at
   `https://data.brreg.no/regnskapsregisteret/regnskap/997036034` (saved as `brreg_997036034.json`; one record a year, 2023 onward; `driftsinntekter`,
-  `driftskostnad`, `eiendeler`, `egenkapital`). Kroner, World Bank price index (`cpi_worldbank.json`), resident counts with
+  `driftskostnad`, `eiendeler`, `egenkapital`). Shown in euros (ECB yearly average rate for each year, in `place.json` under `convert`; add the new year's rate, from `data-api.ecb.europa.eu/service/data/EXR/A.NOK.EUR.SP00.A`), with the kroner in brackets: the one place that is converted, because the owner asked for easy comparison. World Bank price index (`cpi_worldbank.json`), resident counts with
   `simple_people.py lokuttara Lokuttara dec`. Costs probably include depreciation, so it is `operating: false`.
 - **The four Australian monasteries** (`wat-buddha-dhamma/`, `vimokkharam/`, `bodhipala/`, `dhammagiri/`): the figures are the ACNC's
   published Annual Information Statement (AIS) data, one file for each year on data.gov.au (find the datasets with

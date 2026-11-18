@@ -26,9 +26,14 @@ def build(folder):
             cy = y - 1 if ye == 'mar' else y
             cpi[str(y)] = wb[str(cy)]
         data[str(y)] = dict(raw[str(y)])
+        if cfg.get('convert'):
+            r_ = cfg['convert']['rates'][str(y)]
+            for kk in ('income', 'spending', 'assets', 'liabilities', 'net_assets', 'depr', 'gifts'):
+                if data[str(y)].get(kk) is not None: data[str(y)][kk] = round(data[str(y)][kk] / r_)
         if str(y) in people: data[str(y)]['people'] = people[str(y)]['people']
     D = {k: cfg[k] for k in ['currency', 'currencyName', 'cpiName', 'short', 'runVerb', 'costName', 'costDefShort', 'defs', 'incomeNote', 'meaningNote', 'holdSeries', 'holdSub', 'holdLede', 'holdNote', 'notes', 'sources', 'daysInYear', 'operating'] if k in cfg}
     D.update({'years': years, 'data': data, 'cpi': cpi})
+    if cfg.get('convert'): D['alt'] = {'cur': cfg['convert']['cur'], 'name': cfg['convert']['name'], 'rates': cfg['convert']['rates'], 'data': {str(y): raw[str(y)] for y in years}}
     html = (here / 'simple' / 'template.html').read_text(encoding='utf-8')
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime('%-d %B %Y, %H:%M GMT')
     D['sources'] = D['sources'].replace('__UPDATED__', stamp)
@@ -57,6 +62,8 @@ def build(folder):
     lab = lambda b: f'{b[0]}–{b[-1][2:]}'
     facts = {'years': lab(n3), 'year': avg(n3, run), 'income': avg(n3, lambda y: data[y]['income']), 'people': avg(n3, lambda y: data[y].get('people') or 0),
              'pct': round(100 * (real(blocks[-1]) / real(blocks[0]) - 1)), 'from': lab(blocks[0]), 'to': lab(blocks[-1]), 'currency': cfg['currency'], 'operating': cfg.get('operating', True)}
+    if cfg.get('convert'):
+        cv = cfg['convert']; facts['alt'] = {'cur': cv['cur'], 'year': avg(n3, lambda y: raw[y]['spending']), 'income': avg(n3, lambda y: raw[y]['income'])}
     json.dump(facts, open(p / 'facts.json', 'w'), indent=1)
     print(f'{folder}: {years[0]}-{years[-1]}, {len(html):,} bytes')
 
