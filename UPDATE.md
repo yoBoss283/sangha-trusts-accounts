@@ -125,7 +125,7 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   income); the page is text hidden behind "read more" buttons, so read it in a browser.
 
 Looked at and not possible (17 Nov 2026): **Temple Forest** (Jetavana Monastic Community, New Hampshire) files no tax returns
-publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. **Santacittarama** (Italy), **Dhammapala** (Switzerland), **Lokuttara** (Norway), **Pannagiri** (Spain) and **Suddhavari** (Brazil): nothing public
+publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland; the body behind it is the "Trägerverein" = Verein Dhammapala, CHE-109.752.928, tax-exempt since 2023; its support page, German and English, gives bank details but no accounts, and the English "Dhammapala Trust" is the same Trägerverein) have no public accounts that could be found. **Santacittarama** (Italy), **Dhammapala** (Switzerland), **Lokuttara** (Norway), **Pannagiri** (Spain) and **Suddhavari** (Brazil): nothing public
 found by search (Italian and Swiss associations do not publish accounts the way UK and US charities do). **Three Jewels** is a meditation
 hall in Fort Bragg, California that Abhayagiri's monks visit, not a separate monastery with accounts.
 Tisarana also publishes an audited statement for 2022 (`https://tisarana.ca/wp-content/uploads/2023/12/2022-Audited-FS-Tisarana-Buddhist-Monastery.pdf`)
