@@ -564,7 +564,7 @@ const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const 
   const year = avgOf(N3, y => RUN(D.data[y])), day = year / days, x = realX(B0, BN, RUN), px = ratio(ppl(BN), ppl(B0));
   document.getElementById('hero').innerHTML =
     `${esc(D.runVerb)} costs about <b>${thou(year)} a year</b>: about <b>${rnd(day)} a day</b>. ` +
-    `After inflation, that is <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}${okN(px) ? `, while the number of residents ${px >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))} (averages of the periods).` : `. The community lists give no count of residents for the early years.`}`;
+    `After inflation, that is <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}${okN(px) ? `, while the number of residents ${px >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))} (averages of the periods).` : `${Ys.some(y => D.data[y].people != null) ? '. The community lists give no count of residents for the early years.' : '.'}`}`;
   const inc = avgOf(N3, y => D.data[y].income);
   const tiles = [
     { v: thou(year), l: `${RNAME} a year`, c: `${Ys[Ys.length - 3]}–${String(LY).slice(2)} average, as paid` },

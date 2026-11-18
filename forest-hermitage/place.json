@@ -1,0 +1,32 @@
+{
+ "title": "Forest Hermitage Accounts",
+ "kicker": "The Forest Hermitage Trust · Forest Hermitage (Wat Pah Santidhamma) · Lower Fulbrook, Warwickshire",
+ "short": "Forest Hermitage",
+ "runVerb": "Running Forest Hermitage",
+ "currency": "£",
+ "currencyName": "pounds",
+ "cpiName": "the UK consumer prices index (ONS)",
+ "costName": "Spending",
+ "costDefShort": "the total expenditure the Trust reports to the Charity Commission each year.",
+ "defs": "Spending: the total expenditure The Forest Hermitage Trust reports to the Charity Commission for England and Wales each year; the figures used here do not separate wear on buildings or the kinds of cost. The community lists give no count of residents for Forest Hermitage. Inflation: the UK consumer prices index (ONS), averaged over each April-to-March year. All amounts in pounds, as paid at the time, unless the page says \"in today's money\".",
+ "holdSeries": [],
+ "holdLede": "",
+ "holdSub": "",
+ "cardName": "Forest Hermitage",
+ "cardColor": "--s7",
+ "cardNote": "Totals only, and only 2021–2025 so far.",
+ "sources": "<b>Source anyone can check:</b> the <a href=\"https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5083694\" target=\"_blank\" rel=\"noopener\">Charity Commission register</a> entry for The Forest Hermitage Trust (1173083), and its summary on <a href=\"https://opencharities.uk/ew/1173083\" target=\"_blank\" rel=\"noopener\">OpenCharities</a>. <span class=\"tag\">Updated __UPDATED__</span>",
+ "yearEnd": null,
+ "incomeNote": "Income moves a lot from year to year; the data used here do not say why.",
+ "meaningNote": "The register data used here give only income and expenditure, so this page cannot say what the money was spent on or what the Trust holds.",
+ "holdNote": "",
+ "notes": [
+  "<b>Where the figures come from.</b> The Forest Hermitage Trust (charity 1173083, registered in May 2017) reports to the Charity Commission for England and Wales. Total income and total expenditure for the years to 31 March 2021 to 2025 are taken from the register's record as shown on OpenCharities (<code>opencharities_1173083.json</code> in this folder keeps them). The accounts themselves are filed as PDFs and could give more detail.",
+  "<b>Years.</b> The Trust's year runs from 1 April to 31 March and is named by the year it ends in: \"2025\" is April 2024 to March 2025.",
+  "<b>Another charity at the same place.</b> The Buddha-Dhamma Fellowship (charity 289913, registered 1984) shares the address and the website; its income and expenditure are equal each year ($13,500 to $59,800 in the five years). It is not included.",
+  "<b>What is shown.</b> Only total income and total expenditure. The data used here have no assets, cash or cost lines.",
+  "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
+  "<b>Residents.</b> The community lists have no section for Forest Hermitage, so there is no count of residents and no comparison with residents on this page."
+ ],
+ "cardWhere": "The Forest Hermitage Trust · Lower Fulbrook, Warwickshire · amounts in pounds"
+}

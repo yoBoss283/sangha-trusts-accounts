@@ -26,6 +26,8 @@ PLACES = {  # folder: (name, year ends, built page, where the new report comes f
     'bodhivana': ('Bodhivana (Victoria, Australian dollars)', '30 June', 'bodhivana-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (ABN 59019586160)'),
     'pacific-hermitage': ('Pacific Hermitage (Washington, US dollars)', '31 December', 'pacific-hermitage-accounts.html', 'ProPublica Nonprofit Explorer, Sanghata Foundation 27-2787286'),
     'milntuim': ('Milntuim (Scotland, pounds)', '31 December', 'milntuim-accounts.html', 'OSCR register SC043482 (accounts filed by 30 September of the next year)'),
+    'temple-forest': ('Temple Forest (New Hampshire, US dollars)', '31 December', 'temple-forest-accounts.html', 'ProPublica Nonprofit Explorer, Jeta Grove Foundation 30-0754003 (summary data stop at 2020; later returns are PDFs)'),
+    'forest-hermitage': ('Forest Hermitage (Warwickshire, pounds)', '31 March', 'forest-hermitage-accounts.html', 'Charity Commission register, The Forest Hermitage Trust 1173083 (OpenCharities JSON)'),
     'sumedharama': ('Sumedharama (Portugal, euros)', '31 December', 'sumedharama-accounts.html', 'the community (ask Ajahn Vajiro): updated accounts spreadsheet / report to the abbots'),
 }
 problems = 0
@@ -33,14 +35,14 @@ for d, (name, ye, page, src) in PLACES.items():
     p = here / d
     data = years(json.load(open(p / 'data.json')))
     pdfs = sorted(int(m.group(1)) for f in (p / 'accounts').glob('*.pdf') if (m := re.search(r'(\d{4})', f.name))) if (p / 'accounts').is_dir() else []
-    cpi = years(json.load(open(p / ('cpi.json' if (p / 'cpi.json').exists() else 'cpi_worldbank.json')))); ppl = years(json.load(open(p / 'people.json')))
+    cpi = years(json.load(open(p / ('cpi.json' if (p / 'cpi.json').exists() else 'cpi_worldbank.json')))); has_ppl = (p / 'people.json').exists(); ppl = years(json.load(open(p / 'people.json'))) if has_ppl else []
     last = data[-1]
     print(f'\n{name}  (year ends {ye})')
     print(f'  figures: {data[0]}-{last}   price index: to {cpi[-1]}   residents: to {ppl[-1] if ppl else "none"}' + (f'   accounts PDFs: to {pdfs[-1]}' if pdfs else ('   source: saved data, see place.json' if (p / 'place.json').exists() else '   source: report.pdf + spreadsheet.json')))
     notes = []
     if pdfs and pdfs[-1] > last: notes.append(f'a PDF for {pdfs[-1]} is in accounts/ but not in the figures: run the folder\'s build')
     if cpi[-1] < last - (1 if d == 'bodhinyanarama' else 0): notes.append(f'price index stops at {cpi[-1]}: refresh the ONS/Eurostat file (UPDATE.md step 4)')
-    if not ppl or ppl[-1] < last: notes.append(f'no resident count for {last}: needs the newest community lists (UPDATE.md step 5)')
+    if has_ppl and (not ppl or ppl[-1] < last): notes.append(f'no resident count for {last}: needs the newest community lists (UPDATE.md step 5)')
     out = p / page
     if out.exists() and (p / 'data.json').stat().st_mtime > out.stat().st_mtime + 1: notes.append('built page is older than data.json: rebuild')
     print('  ' + ('ok: nothing missing in what is saved' if not notes else '\n  '.join('TO DO: ' + n for n in notes)))

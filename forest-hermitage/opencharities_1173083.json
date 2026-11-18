@@ -1,0 +1,31 @@
+{
+ "charity_number": "1173083",
+ "name": "THE FOREST HERMITAGE TRUST",
+ "financial_years": [
+  {
+   "end": "2025-03-31",
+   "income": 102970,
+   "expenditure": 59845
+  },
+  {
+   "end": "2024-03-31",
+   "income": 42139,
+   "expenditure": 63213
+  },
+  {
+   "end": "2023-03-31",
+   "income": 79747,
+   "expenditure": 60377
+  },
+  {
+   "end": "2022-03-31",
+   "income": 127216,
+   "expenditure": 53134
+  },
+  {
+   "end": "2021-03-31",
+   "income": 75473,
+   "expenditure": 49460
+  }
+ ]
+}

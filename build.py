@@ -94,9 +94,9 @@ SITES = {'est': [('amaravati.org', 'https://amaravati.org'), ('cittaviveka.org',
          'ratanagiri': [('ratanagiri.org.uk', 'https://ratanagiri.org.uk')],
          'hartridge': [('hartridgemonastery.org', 'https://hartridgemonastery.org')],
          'sumedharama': [('sumedharama.pt', 'https://sumedharama.pt')]}
-SITES.update({'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
+SITES.update({'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
-A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim')}
+A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
 cards2 = ''
 for k in A2:
@@ -106,7 +106,7 @@ for k in A2:
     cards2 += f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
   <h2>{c['cardName']}</h2><p class="where">{where}</p>
   <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
-  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>{round(f['people'])}</dd></dl>
+  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>{round(f['people']) if f['people'] else '–'}</dd></dl>
   <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
   <a class="go" href="pages/{k}.html">Read the full report →</a></article>
 '''
@@ -131,7 +131,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Fifteen monasteries: Amaravati and Chithurst (one trust), Aruna Ratanagiri and Hartridge in England, Sumedharama in Portugal, and, from the totals they publish, Milntuim in Scotland, Abhayagiri and Pacific Hermitage in the United States, Tisarana in Canada, Bodhinyanarama in New Zealand and five in Australia (Bodhivana, Wat Buddha Dhamma, Vimokkharam, Bodhipala and Dhammagiri). Each report below says, in plain words, what the place costs to run and how that has changed after inflation.</p>
+  <p class="hero">Seventeen monasteries: Amaravati and Chithurst (one trust), Aruna Ratanagiri, Hartridge and Forest Hermitage in England, Sumedharama in Portugal, and, from the totals they publish, Milntuim in Scotland, Abhayagiri, Pacific Hermitage and Temple Forest in the United States, Tisarana in Canada, Bodhinyanarama in New Zealand and five in Australia (Bodhivana, Wat Buddha Dhamma, Vimokkharam, Bodhipala and Dhammagiri). Each report below says, in plain words, what the place costs to run and how that has changed after inflation.</p>
 </header>
 <section class="story">
   <div class="places">

@@ -114,6 +114,14 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   $74 million, a data-entry error that is left out; check any figure that jumps. Dhammagiri's charity is a "basic religious
   charity" from 2024. Price index: `cpi_worldbank.json` with `AUS`. Residents: `simple_people.py` with `dec` (Dhammagiri) or `jun`.
 
+- **Temple Forest** (`temple-forest/`) is run through the Jeta Grove Foundation Inc. (US tax number 30-0754003; the monastery's website says
+  it handles the monastery's money). Same ProPublica API as Abhayagiri, 2014 to 2020; later returns are only PDFs (ask the owner to download
+  them). The Jetavana Monastic Community (83-3987123) is a different body with no returns. **Forest Hermitage** (`forest-hermitage/`) is The Forest
+  Hermitage Trust (charity 1173083): income and expenditure for the years to March 2021 to 2025 from `https://opencharities.uk/ew/1173083.json`
+  (`financial_years`); the Buddha-Dhamma Fellowship (289913) at the same address is not included. The community lists have no section for it, so
+  it has no residents. **Bodhinyanarama** also has treasurer's reports in the AGM minutes on its website (2014 to 2021: net assets, 2014 to 2016
+  income); the page is text hidden behind "read more" buttons, so read it in a browser.
+
 Looked at and not possible (17 Nov 2026): **Temple Forest** (Jetavana Monastic Community, New Hampshire) files no tax returns
 publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. **Santacittarama** (Italy), **Dhammapala** (Switzerland), **Lokuttara** (Norway), **Pannagiri** (Spain) and **Suddhavari** (Brazil): nothing public
 found by search (Italian and Swiss associations do not publish accounts the way UK and US charities do). **Three Jewels** is a meditation

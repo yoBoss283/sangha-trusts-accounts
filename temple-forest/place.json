@@ -1,0 +1,39 @@
+{
+ "title": "Temple Forest Accounts",
+ "kicker": "Jeta Grove Foundation · Temple Forest Monastery · Temple, New Hampshire",
+ "short": "Temple Forest",
+ "runVerb": "Running Temple Forest",
+ "currency": "$",
+ "currencyName": "US dollars",
+ "cpiName": "the US consumer price index (World Bank, yearly average)",
+ "costName": "Spending",
+ "costDefShort": "all the spending on the Foundation's yearly tax return (Form 990), which can include wear on buildings (depreciation) because the summary does not separate it.",
+ "defs": "Spending: the total expenses on the Jeta Grove Foundation's yearly US tax return (Form 990), which can include wear on buildings (depreciation); the summary used here does not separate it. Residents: the monks, novices, nuns and anagārikas listed at Temple Forest on the community lists, on average; guests and lay residents are not counted. Inflation: the US consumer price index (World Bank). All amounts in US dollars, as paid at the time, unless the page says \"in today's money\".",
+ "incomeNote": "Almost all of it, in every year, is gifts and contributions; 2015 stands out at $1.95 million (the return summary does not say what for).",
+ "meaningNote": "The tax returns give totals only, so this page cannot say what the money was spent on.",
+ "holdSeries": [
+  {
+   "key": "net_assets",
+   "name": "Net assets",
+   "color": "--s1"
+  }
+ ],
+ "holdLede": "The tax return also gives what the Foundation owns and owes at the end of each year.",
+ "holdSub": "Net assets: everything the Foundation owns less everything it owes, at the end of each year.",
+ "holdNote": "The summary of the return does not split cash from buildings and land.",
+ "notes": [
+  "<b>Where the figures come from.</b> The Jeta Grove Foundation Inc. (US tax number 30-0754003, Temple, New Hampshire) files the tax return. The monastery's website says the non-profit \"receives donations and handles the financial affairs of the monastery\". The yearly totals are taken from the summaries of its Form 990 returns on ProPublica's Nonprofit Explorer (<code>propublica_300754003.json</code> in this folder keeps the data as downloaded). The monastery was established in 2014, so the years 2014 to 2020 are shown.",
+  "<b>Not shown yet.</b> Returns for 2021 and later are not in the summary data used here; see UPDATE.md.",
+  "<b>Another body.</b> The Jetavana Monastic Community, also in Temple, is a separate registered body; it has no tax returns on ProPublica.",
+  "<b>Years.</b> The Foundation's year is the calendar year, January to December.",
+  "<b>Spending and running costs.</b> The total expenses on the return. The summary does not give wear on buildings (depreciation) or the cost lines, so nothing is taken out of spending and the page cannot show what the money went on.",
+  "<b>Money in.</b> The total revenue on the return. Gifts and contributions are nearly all of it in every year.",
+  "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
+  "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists. Guests, retreatants and lay residents are not counted."
+ ],
+ "sources": "<b>Source anyone can check:</b> the Jeta Grove Foundation's Form 990 returns: <a href=\"https://projects.propublica.org/nonprofits/organizations/300754003\" target=\"_blank\" rel=\"noopener\">ProPublica Nonprofit Explorer</a> (US tax number 30-0754003). Residents: the monasteries' community lists. <span class=\"tag\">Updated __UPDATED__</span>",
+ "cardName": "Temple Forest",
+ "cardWhere": "Jeta Grove Foundation · Temple, New Hampshire · amounts in US dollars",
+ "cardColor": "--s3",
+ "cardNote": "Totals only, and only 2014–2020 so far."
+}

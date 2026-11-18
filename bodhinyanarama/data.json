@@ -1,7 +1,23 @@
 {
+ "2014": {
+  "income": 118717,
+  "spending": 88461,
+  "net_assets": 2026303
+ },
+ "2015": {
+  "income": 118491,
+  "spending": 79651,
+  "net_assets": 2065143
+ },
+ "2016": {
+  "income": 124644,
+  "spending": 94300,
+  "net_assets": 2088822
+ },
  "2017": {
   "income": 114712,
-  "spending": 107079
+  "spending": 107079,
+  "net_assets": 2096208
  },
  "2018": {
   "income": 231770,
@@ -9,7 +25,8 @@
  },
  "2019": {
   "income": 168800,
-  "spending": 94190
+  "spending": 94190,
+  "net_assets": 2303117
  },
  "2020": {
   "income": 125605,
@@ -17,7 +34,8 @@
  },
  "2021": {
   "income": 168141,
-  "spending": 115860
+  "spending": 115860,
+  "net_assets": 2348284
  },
  "2022": {
   "income": 154598,

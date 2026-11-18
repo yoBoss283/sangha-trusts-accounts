@@ -1,0 +1,104 @@
+{
+ "organization": {
+  "id": 300754003,
+  "ein": 300754003,
+  "name": "Jeta Grove Foundation Inc",
+  "city": "Temple",
+  "state": "NH",
+  "subsection_code": 3,
+  "ruling_date": "2012-12-01"
+ },
+ "filings_with_data": [
+  {
+   "tax_prd": 202012,
+   "tax_prd_yr": 2020,
+   "totrevenue": 492743,
+   "totfuncexpns": 217236,
+   "totassetsend": 2754767,
+   "totliabend": 19158,
+   "totnetassetend": 2735609,
+   "totcntrbgfts": 490488
+  },
+  {
+   "tax_prd": 201912,
+   "tax_prd_yr": 2019,
+   "totrevenue": 263166,
+   "totfuncexpns": 199896,
+   "totassetsend": 2468981,
+   "totliabend": 8879,
+   "totnetassetend": 2460102,
+   "totcntrbgfts": 261051
+  },
+  {
+   "tax_prd": 201812,
+   "tax_prd_yr": 2018,
+   "totrevenue": 304104,
+   "totfuncexpns": 214410,
+   "totassetsend": 2406952,
+   "totliabend": 10120,
+   "totnetassetend": 2396832,
+   "totcntrbgfts": 301465
+  },
+  {
+   "tax_prd": 201712,
+   "tax_prd_yr": 2017,
+   "totrevenue": 258120,
+   "totfuncexpns": 175492,
+   "totassetsend": 2313027,
+   "totliabend": 5889,
+   "totnetassetend": 2307138,
+   "totcntrbgfts": 256199
+  },
+  {
+   "tax_prd": 201612,
+   "tax_prd_yr": 2016,
+   "totrevenue": 423066,
+   "totfuncexpns": 155854,
+   "totassetsend": 2555403,
+   "totliabend": 330893,
+   "totnetassetend": 2224510,
+   "totcntrbgfts": 421978
+  },
+  {
+   "tax_prd": 201512,
+   "tax_prd_yr": 2015,
+   "totrevenue": 1949994,
+   "totfuncexpns": 205684,
+   "totassetsend": 2293585,
+   "totliabend": 336287,
+   "totnetassetend": 1957298,
+   "totcntrbgfts": 1949068
+  },
+  {
+   "tax_prd": 201412,
+   "tax_prd_yr": 2014,
+   "totrevenue": 260810,
+   "totfuncexpns": 87343,
+   "totassetsend": 216738,
+   "totliabend": 3750,
+   "totnetassetend": 212988,
+   "totcntrbgfts": 260481
+  },
+  {
+   "tax_prd": 201312,
+   "tax_prd_yr": 2013,
+   "totrevenue": 35532,
+   "totfuncexpns": 21540,
+   "totassetsend": 39523,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd": 201212,
+   "tax_prd_yr": 2012,
+   "totrevenue": 25532,
+   "totfuncexpns": 0,
+   "totassetsend": 25532,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  }
+ ],
+ "filings_without_data": []
+}
