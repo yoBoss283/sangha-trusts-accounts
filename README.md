@@ -1,6 +1,6 @@
 # What it costs to run the monasteries
 
-Plain-language reports on what it costs to run seventeen Theravada forest monasteries (sixteen sets of accounts), and whether
+Plain-language reports on what it costs to run eighteen Theravada forest monasteries (seventeen sets of accounts), and whether
 those costs have risen faster than prices in general.
 
 - **The site:** https://yoboss283.github.io/sangha-trusts-accounts/ (the landing page; one card for each place, each
@@ -27,9 +27,10 @@ those costs have risen faster than prices in general.
 | `wat-buddha-dhamma/` | Wat Buddha Dhamma, Wisemans Ferry NSW | Wat Buddha Dhamma Foundation Ltd (ABN 41 081 615 992) | the ACNC's yearly statements, 2017–2024 | Australian $ |
 | `vimokkharam/` | Vimokkharam, Olinda VIC | Vimokkharam Forest Hermitage Inc (ABN 73 051 793 658) | same | Australian $ |
 | `bodhipala/` | Bodhipala, Mount Pleasant SA | Bodhipala Monastery Ltd (ABN 76 627 533 475) | same, 2019–2024 | Australian $ |
+| `lokuttara/` | Lokuttara, Skiptvet, Norway | Stiftelsen Skogskloster (org. no. 997036034) | the Norwegian Register of Company Accounts (Brønnøysund), 2023–2025 | Norwegian kroner |
 | `dhammagiri/` | Dhammagiri, Kholo QLD | Brisbane Buddhist Vihara (Temple) Inc. (ABN 84 358 631 510) | same, 2017–2024 | Australian $ |
 
-The last twelve give totals only (money in, spending and, for some, what they hold), so their pages are shorter. They are built
+The last thirteen give totals only (money in, spending and, for some, what they hold), so their pages are shorter. They are built
 by `simple_build.py` from `simple/template.html`, with each folder's `place.json` and `data.json`.
 
 The Sumedharama report is not a set of filed accounts: it has detailed expenses and a balance sheet, but no income

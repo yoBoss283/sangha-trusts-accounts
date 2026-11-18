@@ -1,0 +1,23 @@
+{
+ "2023": {
+  "income": 626453,
+  "spending": 857963,
+  "assets": 21763733,
+  "liabilities": 23754,
+  "net_assets": 21739979
+ },
+ "2024": {
+  "income": 687915,
+  "spending": 911749,
+  "assets": 21532132,
+  "liabilities": 15986,
+  "net_assets": 21516146
+ },
+ "2025": {
+  "income": 627117,
+  "spending": 898570,
+  "assets": 21288680,
+  "liabilities": 43987,
+  "net_assets": 21244692
+ }
+}

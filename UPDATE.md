@@ -108,6 +108,10 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   organization record: they hold a person's name). **Milntuim** (`milntuim/`) is Scottish charity SC043482: income and expenditure
   for 2020 to 2025 from `https://opencharities.uk/sc/SC043482.json` (`financial_years`; assets are not in it, the accounts are PDFs
   at the OSCR register); it uses the UK price index (`cpi.json`) and pounds.
+- **Lokuttara** (`lokuttara/`) is Stiftelsen Skogskloster, Norway (org. no. 997036034): the figures are open data at
+  `https://data.brreg.no/regnskapsregisteret/regnskap/997036034` (saved as `brreg_997036034.json`; one record a year, 2023 onward; `driftsinntekter`,
+  `driftskostnad`, `eiendeler`, `egenkapital`). Kroner, World Bank price index (`cpi_worldbank.json`), resident counts with
+  `simple_people.py lokuttara Lokuttara dec`. Costs probably include depreciation, so it is `operating: false`.
 - **The four Australian monasteries** (`wat-buddha-dhamma/`, `vimokkharam/`, `bodhipala/`, `dhammagiri/`): the figures are the ACNC's
   published Annual Information Statement (AIS) data, one file for each year on data.gov.au (find the datasets with
   `https://data.gov.au/data/api/3/action/package_search?q=acnc+annual+information+statement`; since 2019 there is a CSV for each

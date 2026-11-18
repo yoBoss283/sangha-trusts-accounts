@@ -99,6 +99,7 @@ SRC = {
     'ratanagiri': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769" target="_blank" rel="noopener">Charity Commission</a>',
     'hartridge': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5015597" target="_blank" rel="noopener">Charity Commission</a>',
     'forest-hermitage': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/10368008/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5083694" target="_blank" rel="noopener">Charity Commission</a>',
+    'lokuttara': 'the <a href="https://data.brreg.no/regnskapsregisteret/regnskap/997036034" target="_blank" rel="noopener">Norwegian Register of Company Accounts</a>',
     'milntuim': 'the <a href="https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482" target="_blank" rel="noopener">Scottish Charity Register (OSCR)</a>',
     'sumedharama': "the community's own accounts spreadsheet and its 2025 report (not filed accounts)",
     'abhayagiri': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/943212705" target="_blank" rel="noopener">ProPublica</a>',
@@ -112,9 +113,9 @@ SRC = {
     'dhammagiri': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
     'bodhivana': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
 }
-SITES.update({'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
+SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
-A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage')}
+A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
 card = {}
 for k in A2:
@@ -157,7 +158,7 @@ for k, name, where, col, says in CARDS:
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d / 'index.html').exists()), reverse=True)
 EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
-REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'sumedharama']),
+REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'lokuttara', 'sumedharama']),
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
            ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]
 assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
