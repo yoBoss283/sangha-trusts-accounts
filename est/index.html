@@ -320,7 +320,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 06:49 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/231310/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 231310) and at <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 00565499). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 06:52 GMT</span></p>
 </main>
 
 <script>
@@ -768,7 +768,8 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
     `Running costs without welfare rose ${short(k0(tot))} a year; only maintenance fell, by ${short(k0(-mt.value))}.`;
   document.getElementById('how-bridge').innerHTML = [
     `Each line compares the average a year in ${yb}, the three years just before the building programme, with ${yn}, both in ${LY} prices, so inflation is already taken out. Right of the line: more a year; left: less.`,
-    `The biggest rise is in staff, office and the rest: staff went from three to four in ${LY - 1} (the reports don't say for what post).`,
+    (() => { const st = y => D.data[y].sp_staff, ys = Ys.filter(y => y >= 2020 && y <= LY - 2 && st(y) != null), lo = Math.min(...ys.map(st)), hi = Math.max(...ys.map(st));
+      return `The biggest rise is in staff, office and the rest, and staff is the part to watch. Staff cost is a separate line only from 2020: it was between ${short(lo)} and ${short(hi)} a year in ${ys[0]}–${String(ys[ys.length - 1]).slice(2)}, then ${pounds(st(LY - 1))} in ${LY - 1} and ${pounds(st(LY))} in ${LY} (as paid). Staff went from three to four in ${LY - 1}, which is less than the rise in cost; the reports don't say for what post or why. Before 2020 staff cost cannot be told apart from the rest.`; })(),
     `Heat, light, water and council tax rose with energy prices (see the heating chart).`,
     `Not yet in running costs: about £23k–51k a year of staff cost is counted as building work while the programme runs (note 10 of the accounts). When it ends, that cost moves into running costs unless the posts end.`,
   ].map(t => `<p>${esc(t)}</p>`).join('');
@@ -813,7 +814,7 @@ const heatVsEnergy = (from, to) => (avgOf(to, y => D.data[y].sp_heat) / avgOf(fr
 (function meaning() {
   const L = LIKE, pc = f => Math.round(100 * (L.ch(f) - 1)) + '%';
   document.getElementById('meaning').textContent =
-    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)}, heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
+    `The accounts do not show running costs falling once the new buildings were in place. Over the same years, after inflation, staff, office and the rest rose ${pc(OTHER)} (staff cost itself has about doubled in the last two years, and more of it is still counted as building work), heat, light, water and council tax ${pc(r => r.sp_heat)}, and insurance ${pc(r => r.sp_ins)}, and travel ${pc(r => r.sp_travel)}; only maintenance fell (${pc(r => r.sp_maint).replace('-', '−')}). ` +
     `Taken together, running costs (without welfare) are ${pc(RUNW)} higher. ` +
     `The increases are clear; a saving from the buildings does not show in the accounts. Heating followed energy prices, so it does not settle the question either way. ` +
     `One more thing stands out: welfare and food, shown apart, ${WELF}`;

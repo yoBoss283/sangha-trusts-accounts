@@ -192,3 +192,5 @@ git pull --rebase && git push          # in the Terminal panel
 
 Say which places were updated (and to which year), which were not yet available, which figures were read by eye and need
 their check, what changed in the headline numbers, and what you could not verify.
+
+- **EST "What this means"** has a hand-written phrase that staff cost "has about doubled in the last two years" (2024 £57k → 2025 £106k). Check it against the new year's staff line (`sp_staff`) each update.
