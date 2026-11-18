@@ -89,8 +89,14 @@ BUILD = {'est': ('2019–26', f'£{facts["est_build"] / 1e6:.1f} million'),
          'ratanagiri': ('2011–25', f'£{round(facts["rat_build"], -3):,}'),
          'hartridge': ('2013–25', f'£{round(facts["hart_build"], -3):,}')}
 EXTRA = {'est': 'including welfare and food, ', 'ratanagiri': '', 'hartridge': '', 'sumedharama': ''}
+# each monastery's own website (found 17-18 Nov 2026 from the monasteries' and the Charity Commission's own listings)
+SITES = {'est': [('amaravati.org', 'https://amaravati.org'), ('cittaviveka.org', 'https://cittaviveka.org')],
+         'ratanagiri': [('ratanagiri.org.uk', 'https://ratanagiri.org.uk')],
+         'hartridge': [('hartridgemonastery.org', 'https://hartridgemonastery.org')],
+         'sumedharama': [('sumedharama.pt', 'https://sumedharama.pt')]}
 cards = ''
 for k, name, where, col, says in CARDS:
+    where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
     f = fig[k]
     cards += f'''<article class="place"><div class="bar" style="background:var({col})"></div>
   <h2>{name}</h2><p class="where">{where}</p>
