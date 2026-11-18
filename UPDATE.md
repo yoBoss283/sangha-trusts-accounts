@@ -84,7 +84,7 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   21 or 22 net assets; OCR with `est/ocr.swift`, `page.swift` to look at a page); check every year against the next return's opening
   net assets. The summary data run about a year behind: a newer return appears first only as a PDF (`filings_without_data`). **The PDF
   download pages are behind a bot check, so do not try to get around it:** ask the owner to download the PDF in a browser into
-  `abhayagiri/accounts/` (kept out of git: `abhayagiri/accounts/SOURCES.txt` says why). The 2025 return is the next one.
+  `abhayagiri/accounts/` (kept out of git: `abhayagiri/accounts/SOURCES.txt` says why). The 2025 return is the next one. Abhayagiri has a second related charity, the Abhayagiri Monastic Foundation (EIN 72-1537214), named in Schedule R of the 2024 return, that holds fixed assets transferred from the Sanghapala Foundation; ProPublica lists no returns for it.
 - **Tisarana** (`tisarana/`): the monastery publishes its statements as PDFs on tisarana.ca (find them with
   `https://tisarana.ca/wp-json/wp/v2/media?search=financ&per_page=50`). Put the new year in `accounts/`, read total income,
   total expenses, amortization, cash (chequing + savings), restricted (deferred) money and net assets into `data.json`, and
