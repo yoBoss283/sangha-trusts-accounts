@@ -87,7 +87,7 @@ td.sub1 { padding-left: 20px; }
 details { margin-top: 10px; overflow: hidden; }
 summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; }
 .kinds.one { grid-template-columns: 1fr; gap: 28px; }
-.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px 22px; }
+.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px 22px; }
 .kind h4 { font-size: 13.5px; margin: 0; }
 .kind .ch { font-size: 12.5px; color: var(--ink-2); margin: 0 0 4px; font-variant-numeric: tabular-nums; }
 .toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
@@ -233,7 +233,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
       <p class="big" id="fv-text"></p>
       <div id="c-fv"></div></div>
     <div class="card"><h3>Fixed costs: heating and power, insurance, maintenance</h3><p class="sub">Heat, light, water and council tax; maintenance; insurance; average a year in each five years. The dark line is their total; the dashed line is that total rising with inflation only.</p><div id="c-bcost"></div></div>
-    <div class="card"><h3>Each kind of cost against inflation</h3><p class="sub">Average a year in each five years; the dashed marks are where inflation alone would have taken the first five years. Red where it grew faster than inflation. Each small chart has its own scale.</p><div id="c-lines" class="kinds one"></div></div>
+    <div class="card"><h3>Each kind of cost against inflation</h3><p class="sub">Average a year in each five years; the dashed marks are where inflation alone would have taken the first five years. Red where it grew faster than inflation. Each small chart has its own scale.</p><div id="c-lines" class="kinds"></div></div>
     <div class="card"><h3>Wear on buildings (depreciation), a year</h3><p class="sub">Each bar is the yearly amount, averaged over the five years. It is the accounts' own figure: every year the Trust's accountants write off part of what the buildings, fittings, equipment and vehicles cost. It is not money paid out, so it is not in the running costs, but it is roughly what would have to be put aside each year to replace them in time.</p><div id="c-wear"></div>
       <div class="explain">
         <h4>How the accounts work it out</h4>
@@ -888,7 +888,7 @@ function smallMultiples(id, div, top) {
     d.innerHTML = `<h4>${esc(r.k.name)}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="${id}-${j}"></div>`;
     host.appendChild(d);
     const welfare = r.k.f === KINDS[0].f;
-    blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: j > 0,
+    blockBars(`${id}-${j}`, BLOCKS, r.f, { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true,
       aria: r.k.name + ' in five-year blocks against inflation' });
     if (welfare) {
       const note = document.createElement('p'); note.className = 'note';

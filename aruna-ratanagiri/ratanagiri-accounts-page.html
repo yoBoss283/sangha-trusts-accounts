@@ -87,7 +87,7 @@ td.sub1 { padding-left: 20px; }
 details { margin-top: 10px; overflow: hidden; }
 summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; }
 .kinds.one { grid-template-columns: 1fr; gap: 28px; }
-.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px 22px; }
+.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px 22px; }
 .kind h4 { font-size: 13.5px; margin: 0; }
 .kind .ch { font-size: 12.5px; color: var(--ink-2); margin: 0 0 4px; font-variant-numeric: tabular-nums; }
 .toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
@@ -231,7 +231,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
       <p class="sub">Average a year in each five years, as paid. Fixed costs come with having the place: heat and light, repairs, rent, rates and insurance have to be paid however many people live there or visit. Variable costs follow the people: welfare, household and food, the car and travel. The rest (office, staff, books, events) is shown apart. The dashed line is the number of residents (right-hand scale).</p>
       <p class="big" id="fv-text"></p>
       <div id="c-fv"></div></div>
-    <div class="card"><h3>Each kind of cost against inflation</h3><p class="sub">Average a year in each five years; the dashed marks are where inflation alone would have taken the first five years. Red where it grew faster than inflation. Each small chart has its own scale.</p><div id="c-kinds" class="kinds one"></div></div>
+    <div class="card"><h3>Each kind of cost against inflation</h3><p class="sub">Average a year in each five years; the dashed marks are where inflation alone would have taken the first five years. Red where it grew faster than inflation. Each small chart has its own scale.</p><div id="c-kinds" class="kinds"></div></div>
   </div>
 </section>
 
@@ -292,7 +292,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:41 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:43 GMT</span></p>
 </main>
 
 <script>
@@ -737,7 +737,7 @@ const HEAT = r => r.heat;
     const d = document.createElement('div'); d.className = 'kind';
     d.innerHTML = `<h4>${esc(r.k.name)}</h4><p class="ch">${short(r.a)} → ${short(r.b)} a year · <span class="${r.x > 1.05 ? 'bad' : ''}">${upPct(r.x)} after inflation</span></p><div id="c-kinds-${j}"></div>`;
     host.appendChild(d);
-    blockBars(`c-kinds-${j}`, BLOCKS, y => r.k.f(D.data[y]), { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: j > 0, aria: r.k.name + ' in five-year blocks against inflation' });
+    blockBars(`c-kinds-${j}`, BLOCKS, y => r.k.f(D.data[y]), { name: r.k.name, color: r.x > 1.05 ? RED : '--ink-2', h: 230, noLegend: true, aria: r.k.name + ' in five-year blocks against inflation' });
   });
 })();
 
