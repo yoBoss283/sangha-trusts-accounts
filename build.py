@@ -184,7 +184,7 @@ body = f'''
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place costs to run and how that has changed after inflation.</p>
   {jump_html}
-  <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Totals only\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted, so compare them only roughly across currencies.</p>
+  <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Totals only\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>
 </header>
 <section class="story">
 {sections_html}  <div class="card" id="how" style="margin-top:16px"><h3>How to read these side by side</h3>
