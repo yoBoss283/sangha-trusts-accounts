@@ -75,7 +75,7 @@ Trust, `est/REVIEW.md`, `est/BRIEF.md` and `est/HANDOVER.md`.
 
 ## Updating when new accounts come out
 
-See `UPDATE.md`. `python3 status.py` shows, for each place, the latest year saved and what is missing. The owner only has to say:
+See `UPDATE.md`. Before an update, `python3 archive.py` keeps a copy of the current site in `archive/`; the landing page then links to it under "Earlier versions". `python3 status.py` shows, for each place, the latest year saved and what is missing. The owner only has to say:
 "Check the repo and update it with any new annual reports, follow UPDATE.md."
 
 ## History

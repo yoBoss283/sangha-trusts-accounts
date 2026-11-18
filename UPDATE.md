@@ -17,6 +17,18 @@ python3 status.py            # read-only: latest year saved for each place, and 
 latest year of the price index and of the resident counts, and any `TO DO` line. When every place says "ok", nothing saved
 is missing. It **cannot** see whether a newer report has been published; that is step 1.
 
+## 0b. Keep a copy of the current site first (before changing anything)
+
+```sh
+python3 archive.py            # saves the site as it is now into archive/<this year-month>/, e.g. archive/2026-11/
+```
+
+This copies `index.html` and `pages/*.html` as they are published now, adds an "Archived copy: the site as published in
+<month year>. See the latest version" line at the top of each, and does not touch the live pages. After the update,
+`sh build_all.sh` adds a line "Earlier versions: <month year>, …" to the small print of the landing page, so readers can look
+back at what was said before the newest reports came out. Do this **once per update, before** adding new reports; it refuses
+to overwrite an existing copy. Commit the new `archive/` folder together with the update. Never edit or delete old copies.
+
 ## 1. Look for new reports
 
 The next report to look for is the year after the latest one `status.py` shows.
