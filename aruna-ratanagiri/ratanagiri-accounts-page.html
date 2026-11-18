@@ -244,8 +244,16 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
   </div>
 </section>
 
+<section id="income">
+  <h2>3. What came in</h2>
+  <p class="lede" id="income-lede"></p>
+  <div class="more">
+    <div class="card"><h3>Money in, running costs and building work</h3><p class="sub">Average a year in each five years, as paid at the time.</p><div id="c-income"></div><p class="note" id="income-note"></p></div>
+  </div>
+</section>
+
 <section id="build">
-  <h2>3. New buildings and infrastructure</h2>
+  <h2>4. New buildings and infrastructure</h2>
   <p class="lede" id="build-lede"></p>
   <div class="more">
     <div class="card"><h3>Spent on new buildings and infrastructure, each year</h3><p class="sub">What the accounts add to the buildings, solar panels, fittings and equipment the Trust owns ("additions" to fixed assets). This is kept out of the running costs.</p><div id="c-build"></div><ul class="note" id="build-notes"></ul></div>
@@ -263,7 +271,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 </section>
 
 <section id="notes" class="method">
-  <h2>4. Notes and all figures</h2>
+  <h2>5. Notes and all figures</h2>
   <div class="more">
     <ul>
       <li><b>Where the figures come from.</b> Every figure is read from the Trust's annual accounts as filed at Companies House. All of them are scans; every cost line was read by eye from the page and checked: each year's lines add up to the total spending printed in the accounts, and each year was compared with the next year's report, which repeats it.</li>
@@ -284,7 +292,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:38 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:41 GMT</span></p>
 </main>
 
 <script>
@@ -797,7 +805,23 @@ const HEAT = r => r.heat;
     `In ${LY}: ${D.data[LY].people} on average. The trustees' report says only four monks spent the Rains Retreat there that year.`;
 })();
 
-// ---------------------------------------------------------------- 3. new buildings and infrastructure
+// ---------------------------------------------------------------- 3. what came in
+(function income() {
+  const per = BLOCKS.map(b => ({ lab: BLAB(b), inc: bAvg(b, r => r.income), run: bAvg(b, RUN), bld: bAvg(b, r => v(r, 'capex')) }));
+  const last = per[per.length - 1], all = per.every(p => p.inc > p.run);
+  const IY = Ys.filter(y => D.data[y].income != null), lo = IY.reduce((a, y) => D.data[y].income < D.data[a].income ? y : a), hi = IY.reduce((a, y) => D.data[y].income > D.data[a].income ? y : a);
+  document.getElementById('income-lede').textContent =
+    `In ${last.lab} the Trust took in ${thou(last.inc)} a year, against ${thou(last.run)} of running costs${all ? ', and money in has been above the running costs in every five-year period shown' : ''}.`;
+  grouped('c-income', per.map(p => p.lab), [
+    { name: 'Money in', color: '--s1', values: per.map(p => p.inc) },
+    { name: 'Running costs', color: '--s2', values: per.map(p => p.run) },
+    { name: 'New buildings and infrastructure', color: '--s9', values: per.map(p => p.bld) },
+  ], { W: 600, h: 260, bw: 40, values: true, name: l => l + ', average a year', aria: 'Money in, running costs and new buildings in five-year blocks' });
+  document.getElementById('income-note').textContent =
+    `The accounts give one total for the money in each year (gifts, legacies and everything else together), so it cannot be split. Some of it may be given for a set purpose, such as building work, and can only be spent on that. It also moves with large gifts: the lowest year was ${thou(D.data[lo].income)} (${lo}) and the highest ${thou(D.data[hi].income)} (${hi}). 2011 and 2012 include the earlier trust (note ¹).`;
+})();
+
+// ---------------------------------------------------------------- 4. new buildings and infrastructure
 (function build() {
   const built = Ys.reduce((a, y) => a + v(D.data[y], 'capex'), 0);
   const top = Ys.map(y => ({ y, c: v(D.data[y], 'capex') })).sort((a, b) => b.c - a.c);

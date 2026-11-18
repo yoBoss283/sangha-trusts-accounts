@@ -241,8 +241,16 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
   </div>
 </section>
 
+<section id="income">
+  <h2>3. What came in</h2>
+  <p class="lede" id="income-lede"></p>
+  <div class="more">
+    <div class="card"><h3>Money in, running costs and building work</h3><p class="sub">Average a year in each period, as paid at the time.</p><div id="c-income"></div><p class="note" id="income-note"></p></div>
+  </div>
+</section>
+
 <section id="build">
-  <h2>3. New buildings and infrastructure</h2>
+  <h2>4. New buildings and infrastructure</h2>
   <p class="lede" id="build-lede"></p>
   <div class="more">
     <div class="card"><h3>Spent on new buildings and infrastructure, each year</h3><p class="sub">What the accounts add to the buildings the Trust owns ("additions" to property improvements). This is kept out of the running costs.</p><div id="c-build"></div><ul class="note" id="build-notes"></ul></div>
@@ -250,7 +258,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 </section>
 
 <section id="notes" class="method">
-  <h2>4. Notes and all figures</h2>
+  <h2>5. Notes and all figures</h2>
   <div class="more">
     <ul>
       <li><b>Where the figures come from.</b> Every figure is read from the Trust's annual accounts as filed at Companies House (all scans), by eye from the page: each year's total agrees with the next year's report, which repeats it, and from 2019 the eight cost lines add up to the total.</li>
@@ -746,7 +754,23 @@ const first = DYs[0];
     `The trustees' reports for 2023 to 2025 say the community numbered six to nine (ten at the peak in 2023), "which meant that the monastery was full much of the time". The new kutis built in 2022 and 2023 made room for a larger community.`;
 })();
 
-// ---------------------------------------------------------------- 3. new buildings and infrastructure
+// ---------------------------------------------------------------- 3. what came in
+(function income() {
+  const per = BLOCKS.map(b => ({ lab: BLAB(b), inc: bAvg(b, r => r.income), run: bAvg(b, RUN), bld: bAvg(b, r => v(r, 'capex')) }));
+  const last = per[per.length - 1], all = per.every(p => p.inc > p.run);
+  const IY = Ys.filter(y => D.data[y].income != null), lo = IY.reduce((a, y) => D.data[y].income < D.data[a].income ? y : a), hi = IY.reduce((a, y) => D.data[y].income > D.data[a].income ? y : a);
+  document.getElementById('income-lede').textContent =
+    `In ${last.lab} the Trust took in ${thou(last.inc)} a year, against ${thou(last.run)} of running costs${all ? ', and money in has been above the running costs in every period shown' : ''}.`;
+  grouped('c-income', per.map(p => p.lab), [
+    { name: 'Money in', color: '--s1', values: per.map(p => p.inc) },
+    { name: 'Running costs', color: '--s2', values: per.map(p => p.run) },
+    { name: 'New buildings and infrastructure', color: '--s9', values: per.map(p => p.bld) },
+  ], { W: 600, h: 260, bw: 40, values: true, name: l => l + ', average a year', aria: 'Money in, running costs and new buildings by period' });
+  document.getElementById('income-note').textContent =
+    `The accounts give a total for the money in each year (donations and legacies, and interest), which is mostly gifts from supporters. Some of it is given for a set purpose, such as building work, and can only be spent on that. It also moves with large gifts: the lowest year was ${thou(D.data[lo].income)} (${lo}) and the highest ${thou(D.data[hi].income)} (${hi}), when one gift of £222,222 was received for an Ageing Samanas Fund.`;
+})();
+
+// ---------------------------------------------------------------- 4. new buildings and infrastructure
 (function build() {
   const cx = Ys.map(y => v(D.data[y], 'capex')), tot = cx.reduce((a, b) => a + b, 0), fund = Ys.reduce((a, y) => a + v(D.data[y], 'capfund'), 0);
   document.getElementById('build-lede').textContent =
@@ -769,6 +793,8 @@ yearTable('t-all', Ys, [
   { name: 'Total spending in the accounts', values: R.map(r => r.spending) },
   { name: 'less Dhamma Hall counted as spending', values: R.map(r => r.capfund ? -r.capfund : null), indent: true },
   { name: '= running costs', values: R.map(RUN), cls: 'tot' },
+  { group: 'Money in' },
+  { name: 'Total income', values: R.map(r => r.income ?? null), cls: 'tot' },
   { group: 'Building' },
   { name: 'New buildings and infrastructure', values: R.map(r => r.capex ?? null) },
   { group: 'People and prices' },

@@ -96,3 +96,21 @@
 2025 estate 6,010
 2025 equipsundry 699
 2025 accountancy 978
+
+# income = total income (total incoming resources / total income and endowments), the current-year column of each year's own
+# statement of financial activities. Added 18 Nov 2026. Every year agrees with the "last year" column of the next report
+# (2013 with 2014, 2014 with 2015, ... 2024 with 2025); 2025 is read from its own report. 2021's own report prints one garbled digit
+# (55,26?), so 2021 is taken from the 2022 report's last-year column (55,268), which the 2021 cash-flow page also shows.
+2013 income 89,833
+2014 income 70,799
+2015 income 72,745
+2016 income 80,901
+2017 income 88,223
+2018 income 114,256
+2019 income 85,324
+2020 income 42,910
+2021 income 55,268
+2022 income 122,394
+2023 income 119,358
+2024 income 109,047
+2025 income 337,782
