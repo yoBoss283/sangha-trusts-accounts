@@ -1,6 +1,6 @@
 # What it costs to run the monasteries
 
-Plain-language reports on what it costs to run twelve Theravada forest monasteries (eleven sets of accounts), and whether
+Plain-language reports on what it costs to run fifteen Theravada forest monasteries (fourteen sets of accounts), and whether
 those costs have risen faster than prices in general.
 
 - **The site:** https://yoboss283.github.io/sangha-trusts-accounts/ (the landing page; one card for each place, each
@@ -19,12 +19,15 @@ those costs have risen faster than prices in general.
 | `abhayagiri/` | Abhayagiri, California | Sanghapala Foundation (US tax no. 94-3212705) | the yearly tax returns (Form 990), 2011–2023, from ProPublica | US $ (never converted) |
 | `tisarana/` | Tisarana, Ontario | Tisarana Buddhist Monastery | the monastery's own financial statements, 2016–2025 | Canadian $ (never converted) |
 | `bodhinyanarama/` | Bodhinyanarama, Wellington | Wellington Theravada Buddhist Association (CC29078) | the NZ Charities Register: income and expenditure, years to March 2017–2026 | NZ $ (never converted) |
+| `bodhivana/` | Bodhivana, East Warburton VIC | Victoria Sangha Association Inc. (ABN 59 019 586 160) | the ACNC's yearly statements, 2016–2024 | Australian $ |
+| `pacific-hermitage/` | Pacific Hermitage, White Salmon WA | Sanghata Foundation (US tax no. 27-2787286) | the yearly tax returns (Form 990), 2011–2023, from ProPublica | US $ |
+| `milntuim/` | Milntuim, Glen Artney, Scotland | Milntuim Hermitage Trust (SC043482) | the Scottish Charity Register: income and expenditure, 2020–2025 | £ |
 | `wat-buddha-dhamma/` | Wat Buddha Dhamma, Wisemans Ferry NSW | Wat Buddha Dhamma Foundation Ltd (ABN 41 081 615 992) | the ACNC's yearly statements, 2017–2024 | Australian $ |
 | `vimokkharam/` | Vimokkharam, Olinda VIC | Vimokkharam Forest Hermitage Inc (ABN 73 051 793 658) | same | Australian $ |
 | `bodhipala/` | Bodhipala, Mount Pleasant SA | Bodhipala Monastery Ltd (ABN 76 627 533 475) | same, 2019–2024 | Australian $ |
 | `dhammagiri/` | Dhammagiri, Kholo QLD | Brisbane Buddhist Vihara (Temple) Inc. (ABN 84 358 631 510) | same, 2017–2024 | Australian $ |
 
-The last seven give totals only (money in, spending and, for some, what they hold), so their pages are shorter. They are built
+The last ten give totals only (money in, spending and, for some, what they hold), so their pages are shorter. They are built
 by `simple_build.py` from `simple/template.html`, with each folder's `place.json` and `data.json`.
 
 The Sumedharama report is not a set of filed accounts: it has detailed expenses and a balance sheet, but no income

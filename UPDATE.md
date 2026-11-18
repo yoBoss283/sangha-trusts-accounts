@@ -96,6 +96,12 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
 - Prices: `cpi_worldbank.json` is the World Bank's yearly consumer price index (`https://api.worldbank.org/v2/country/USA/indicator/FP.CPI.TOTL?format=json&per_page=100`; `CAN`, `NZL` for the others). It runs about a year behind (United States to 2024, the others to 2025).
 - Then `python3 simple_build.py` and `sh build_all.sh`.
 
+- **Bodhivana** (`bodhivana/`) is the Victoria Sangha Association Inc. (ABN 59019586160) in the same ACNC data, years 2016 to 2024.
+  **Pacific Hermitage** (`pacific-hermitage/`) is the Sanghata Foundation (US tax number 27-2787286): same ProPublica API as
+  Abhayagiri (`.../api/v2/organizations/272787286.json`), 2011 to 2023 (do not save the officer or care-of fields of the
+  organization record: they hold a person's name). **Milntuim** (`milntuim/`) is Scottish charity SC043482: income and expenditure
+  for 2020 to 2025 from `https://opencharities.uk/sc/SC043482.json` (`financial_years`; assets are not in it, the accounts are PDFs
+  at the OSCR register); it uses the UK price index (`cpi.json`) and pounds.
 - **The four Australian monasteries** (`wat-buddha-dhamma/`, `vimokkharam/`, `bodhipala/`, `dhammagiri/`): the figures are the ACNC's
   published Annual Information Statement (AIS) data, one file for each year on data.gov.au (find the datasets with
   `https://data.gov.au/data/api/3/action/package_search?q=acnc+annual+information+statement`; since 2019 there is a CSV for each
@@ -109,8 +115,11 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
   charity" from 2024. Price index: `cpi_worldbank.json` with `AUS`. Residents: `simple_people.py` with `dec` (Dhammagiri) or `jun`.
 
 Looked at and not possible (17 Nov 2026): **Temple Forest** (Jetavana Monastic Community, New Hampshire) files no tax returns
-publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. **Bodhivana** (Victoria, 13 residents) could not be matched to a charity on the ACNC register (no entry with that name), so it is not
-included; if its legal name is found, add it like the other Australian pages.
+publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. **Santacittarama** (Italy), **Dhammapala** (Switzerland), **Lokuttara** (Norway), **Pannagiri** (Spain) and **Suddhavari** (Brazil): nothing public
+found by search (Italian and Swiss associations do not publish accounts the way UK and US charities do). **Three Jewels** is a meditation
+hall in Fort Bragg, California that Abhayagiri's monks visit, not a separate monastery with accounts.
+Tisarana also publishes an audited statement for 2022 (`https://tisarana.ca/wp-content/uploads/2023/12/2022-Audited-FS-Tisarana-Buddhist-Monastery.pdf`)
+that has not been compared with the figures used for 2022 (taken from the 2023 report's last-year column).
 
 ## 4. Refresh the prices (every update)
 

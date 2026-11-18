@@ -1,0 +1,39 @@
+{
+ "title": "Pacific Hermitage Accounts",
+ "kicker": "Sanghata Foundation · Pacific Hermitage · White Salmon, Washington",
+ "short": "Pacific Hermitage",
+ "runVerb": "Running Pacific Hermitage",
+ "currency": "$",
+ "currencyName": "US dollars",
+ "cpiName": "the US consumer price index (World Bank, yearly average)",
+ "costName": "Spending",
+ "costDefShort": "all the spending on the Foundation's yearly tax return (Form 990), which can include wear on buildings (depreciation) because the summary does not separate it.",
+ "defs": "Spending: the total expenses on the Sanghata Foundation's yearly US tax return (Form 990), which can include wear on buildings (depreciation); the summary used here does not separate it. Residents: the monks, novices, nuns and anagārikas listed at Pacific Hermitage on the community lists, on average; guests and lay residents are not counted. Inflation: the US consumer price index (World Bank). All amounts in US dollars, as paid at the time, unless the page says \"in today's money\".",
+ "holdSeries": [
+  {
+   "key": "net_assets",
+   "name": "Net assets",
+   "color": "--s1"
+  }
+ ],
+ "holdLede": "The statement also gives what the charity owns and owes at the end of each year.",
+ "holdSub": "Net assets: everything the charity owns less everything it owes, at the end of each year.",
+ "cardName": "Pacific Hermitage",
+ "cardWhere": "Sanghata Foundation · White Salmon, Washington · amounts in US dollars",
+ "cardColor": "--s5",
+ "cardNote": "Totals only: the tax returns do not say what the money went on.",
+ "sources": "<b>Source anyone can check:</b> the Sanghata Foundation's Form 990 returns: <a href=\"https://projects.propublica.org/nonprofits/organizations/272787286\" target=\"_blank\" rel=\"noopener\">ProPublica Nonprofit Explorer</a> (US tax number 27-2787286). Residents: the monasteries' community lists. <span class=\"tag\">Updated __UPDATED__</span>",
+ "yearEnd": null,
+ "incomeNote": "It moves with large gifts.",
+ "meaningNote": "The tax returns give totals only, so this page cannot say what the money was spent on.",
+ "holdNote": "The summary of the return does not split cash from buildings and land.",
+ "notes": [
+  "<b>Where the figures come from.</b> The Sanghata Foundation (US tax number 27-2787286) files the tax return for Pacific Hermitage. The yearly totals are taken from the summaries of its Form 990 returns on ProPublica's Nonprofit Explorer (<code>propublica_272787286.json</code> in this folder keeps the data as downloaded). Years 2011 to 2023 are shown.",
+  "<b>Not shown yet.</b> The returns for 2024 and later are filed after the summary data used here; see UPDATE.md for how to add them.",
+  "<b>Years.</b> The Foundation's year is the calendar year, January to December.",
+  "<b>Spending.</b> The total expenses on the return. The summary does not give wear on buildings (depreciation) or the cost lines, so nothing is taken out of spending and the page cannot show what the money went on.",
+  "<b>Money in.</b> The total revenue on the return.",
+  "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
+  "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists. Guests, retreatants and lay residents are not counted."
+ ]
+}

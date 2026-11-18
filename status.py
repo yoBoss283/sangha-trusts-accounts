@@ -23,6 +23,9 @@ PLACES = {  # folder: (name, year ends, built page, where the new report comes f
     'vimokkharam': ('Vimokkharam (Victoria, Australian dollars)', '30 June', 'vimokkharam-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
     'bodhipala': ('Bodhipala (South Australia, Australian dollars)', '30 June', 'bodhipala-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
     'dhammagiri': ('Dhammagiri (Queensland, Australian dollars)', '31 December', 'dhammagiri-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
+    'bodhivana': ('Bodhivana (Victoria, Australian dollars)', '30 June', 'bodhivana-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (ABN 59019586160)'),
+    'pacific-hermitage': ('Pacific Hermitage (Washington, US dollars)', '31 December', 'pacific-hermitage-accounts.html', 'ProPublica Nonprofit Explorer, Sanghata Foundation 27-2787286'),
+    'milntuim': ('Milntuim (Scotland, pounds)', '31 December', 'milntuim-accounts.html', 'OSCR register SC043482 (accounts filed by 30 September of the next year)'),
     'sumedharama': ('Sumedharama (Portugal, euros)', '31 December', 'sumedharama-accounts.html', 'the community (ask Ajahn Vajiro): updated accounts spreadsheet / report to the abbots'),
 }
 problems = 0

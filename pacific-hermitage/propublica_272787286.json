@@ -1,0 +1,133 @@
+{
+ "organization": {
+  "id": 272787286,
+  "ein": 272787286,
+  "name": "Sanghata Foundation",
+  "city": "White Salmon",
+  "state": "WA",
+  "subsection_code": 3,
+  "ruling_date": "2010-11-01"
+ },
+ "filings_with_data": [
+  {
+   "tax_prd_yr": 2023,
+   "totrevenue": 97607,
+   "totfuncexpns": 51276,
+   "totassetsend": 618589,
+   "totliabend": 39,
+   "totnetassetend": 618550,
+   "totcntrbgfts": 92026
+  },
+  {
+   "tax_prd_yr": 2022,
+   "totrevenue": 116803,
+   "totfuncexpns": 99188,
+   "totassetsend": 572219,
+   "totliabend": 0,
+   "totnetassetend": 572219,
+   "totcntrbgfts": 113739
+  },
+  {
+   "tax_prd_yr": 2021,
+   "totrevenue": 268224,
+   "totfuncexpns": 27782,
+   "totassetsend": 543121,
+   "totliabend": 0,
+   "totnetassetend": 543121,
+   "totcntrbgfts": 268104
+  },
+  {
+   "tax_prd_yr": 2020,
+   "totrevenue": 72987,
+   "totfuncexpns": 40778,
+   "totassetsend": 294228,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2019,
+   "totrevenue": 69790,
+   "totfuncexpns": 72475,
+   "totassetsend": 262019,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2018,
+   "totrevenue": 250277,
+   "totfuncexpns": 50750,
+   "totassetsend": 264704,
+   "totliabend": 0,
+   "totnetassetend": 264704,
+   "totcntrbgfts": 245472
+  },
+  {
+   "tax_prd_yr": 2017,
+   "totrevenue": 60322,
+   "totfuncexpns": 39587,
+   "totassetsend": 65177,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2016,
+   "totrevenue": 81112,
+   "totfuncexpns": 34475,
+   "totassetsend": 294507,
+   "totliabend": 0,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2015,
+   "totrevenue": 99854,
+   "totfuncexpns": 42965,
+   "totassetsend": 296997,
+   "totliabend": 49128,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2014,
+   "totrevenue": 81109,
+   "totfuncexpns": 21459,
+   "totassetsend": 283908,
+   "totliabend": 92927,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  },
+  {
+   "tax_prd_yr": 2013,
+   "totrevenue": 329777,
+   "totfuncexpns": 27573,
+   "totassetsend": 601673,
+   "totliabend": 0,
+   "totnetassetend": 601673,
+   "totcntrbgfts": 329720
+  },
+  {
+   "tax_prd_yr": 2012,
+   "totrevenue": 201797,
+   "totfuncexpns": 42876,
+   "totassetsend": 502916,
+   "totliabend": 203447,
+   "totnetassetend": 299469,
+   "totcntrbgfts": 201750
+  },
+  {
+   "tax_prd_yr": 2011,
+   "totrevenue": 131880,
+   "totfuncexpns": 46627,
+   "totassetsend": 499560,
+   "totliabend": 359012,
+   "totnetassetend": null,
+   "totcntrbgfts": null
+  }
+ ],
+ "filings_without_data": [
+  2010
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "title": "Milntuim Accounts",
+ "kicker": "Milntuim Hermitage Trust · Milntuim Hermitage · Glen Artney, Comrie, Perthshire, Scotland",
+ "short": "Milntuim",
+ "runVerb": "Running Milntuim",
+ "currency": "£",
+ "currencyName": "pounds",
+ "cpiName": "the UK consumer prices index (ONS)",
+ "costName": "Spending",
+ "costDefShort": "the total expenditure the Trust reports to the Scottish Charity Regulator (OSCR) each year.",
+ "defs": "Spending: the total expenditure the Milntuim Hermitage Trust reports to the Scottish Charity Regulator (OSCR) each year; the figures used here do not separate wear on buildings or the kinds of cost. Residents: the monks, novices, nuns and anagārikas listed at Milntuim on the community lists, on average; guests and lay residents are not counted. Inflation: the UK consumer prices index (ONS). All amounts in pounds, as paid at the time, unless the page says \"in today's money\".",
+ "holdSeries": [],
+ "holdLede": "",
+ "holdSub": "",
+ "cardName": "Milntuim",
+ "cardColor": "--s4",
+ "cardNote": "Totals only, and small amounts that move from year to year.",
+ "sources": "<b>Source anyone can check:</b> the <a href=\"https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482\" target=\"_blank\" rel=\"noopener\">Scottish Charity Register</a> (OSCR), Milntuim Hermitage Trust, SC043482, and its summary on <a href=\"https://opencharities.uk/sc/SC043482\" target=\"_blank\" rel=\"noopener\">OpenCharities</a>. Residents: the monasteries' community lists. <span class=\"tag\">Updated __UPDATED__</span>",
+ "yearEnd": null,
+ "incomeNote": "Income and spending are small and move from year to year.",
+ "meaningNote": "The register gives only income and expenditure, so this page cannot say what the money was spent on or what the Trust holds.",
+ "holdNote": "",
+ "notes": [
+  "<b>Where the figures come from.</b> The Milntuim Hermitage Trust (Scottish charity SC043482, a Scottish charitable incorporated organisation registered in October 2012) files its yearly accounts with the Scottish Charity Regulator (OSCR). Total income and total expenditure for the years 2020 to 2025 are taken from the register's record as shown on OpenCharities (<code>opencharities_SC043482.json</code> in this folder keeps them).",
+  "<b>Years.</b> The Trust's year is the calendar year, January to December.",
+  "<b>What is shown.</b> Only total income and total expenditure. The register data used here has no assets, cash or cost lines, although the accounts themselves are filed as PDFs (linked from the register). Earlier years are not in the data used here.",
+  "<b>Not in the accounts.</b> Food, and much of the work done for a monastery, is given by supporters and is not a cost line.",
+  "<b>Residents</b> are the nuns on the community lists. Guests, retreatants and lay residents are not counted. The lists give no count for 2021."
+ ],
+ "cardWhere": "Milntuim Hermitage Trust · Glen Artney, Perthshire, Scotland · amounts in pounds"
+}

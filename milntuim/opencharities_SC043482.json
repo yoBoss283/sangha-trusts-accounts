@@ -1,0 +1,37 @@
+{
+ "charity_number": "SC043482",
+ "name": "Milntuim Hermitage Trust",
+ "register_url": "https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482",
+ "financial_years": [
+  {
+   "end": "2025-12-31",
+   "income": 38225,
+   "expenditure": 30675
+  },
+  {
+   "end": "2024-12-31",
+   "income": 26473,
+   "expenditure": 26203
+  },
+  {
+   "end": "2023-12-31",
+   "income": 24757,
+   "expenditure": 14724
+  },
+  {
+   "end": "2022-12-31",
+   "income": 35238,
+   "expenditure": 14442
+  },
+  {
+   "end": "2021-12-31",
+   "income": 21422,
+   "expenditure": 13614
+  },
+  {
+   "end": "2020-12-31",
+   "income": 28503,
+   "expenditure": 15299
+  }
+ ]
+}

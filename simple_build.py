@@ -7,14 +7,14 @@ cpi_worldbank.json (the price index), fills simple/template.html and writes <fol
 The pages that come from this template give totals only (money in, spending, what is held): their accounts have no cost-by-cost detail."""
 import json, pathlib, sys, datetime
 here = pathlib.Path(__file__).parent
-FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri']
+FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim']
 
 def build(folder):
     p = here / folder
     cfg = json.load(open(p / 'place.json', encoding='utf-8'))
     raw = json.load(open(p / 'data.json', encoding='utf-8'))
     people = json.load(open(p / 'people.json', encoding='utf-8')) if (p / 'people.json').exists() else {}
-    wb = json.load(open(p / 'cpi_worldbank.json'))
+    wb = json.load(open(p / ('cpi.json' if (p / 'cpi.json').exists() else 'cpi_worldbank.json')))
     years = sorted(int(y) for y in raw)
     cpi, data = {}, {}
     for y in years:
