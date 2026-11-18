@@ -284,7 +284,7 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
     <div class="card scroll-x"><table id="t-all"></table></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:28 GMT</span></p>
+<p class="sources endsrc"><b>Sources anyone can check:</b> the Trust's annual reports and accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> (company 06688355) and on the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4041769/accounts-and-annual-returns" target="_blank" rel="noopener">Charity Commission register</a> (charity 1126476). Residents: the monasteries' community lists. <span class="tag">Updated 18 November 2026, 02:30 GMT</span></p>
 </main>
 
 <script>
@@ -515,17 +515,28 @@ function blockBars(id, blocks, f, opt = {}) {
   const sc = scale(Math.max(...vals, ...(opt.noInfl ? [] : infl), ...ex) * 1.08);
   axis(svg, m, W, ph, sc);
   const band = pw / n, bw = Math.min(64, band * 0.55), Yp = v => m.t + ph - ph * v / sc.max;
+  // the figure for the dashed line is written just under the line, inside the bar, when the line is inside the bar and the bar is wide and tall enough;
+  // otherwise (line above the bar, or a narrow bar) it goes in a line under the chart
+  const inBar = i => i > 0 && !opt.noInfl && !X2 && bw >= 44 && infl[i] < vals[i] && Yp(infl[i]) + 18 < m.t + ph;
+  const noted = [];
   blocks.forEach((b, i) => {
     const x = m.l + band * i + (band - bw) / 2, h = ph * vals[i] / sc.max;
     el('path', { d: barPath(x, m.t + ph - h, bw, h, 4), fill: `var(${opt.color || RED})`, opacity: i === n - 1 ? 1 : 0.78 }, svg);
-    el('text', { x: x + bw / 2, y: opt.labelsIn ? Yp(vals[i]) + 17 : Yp(vals[i]) - 7, 'text-anchor': 'middle', class: opt.labelsIn ? 'lbl in' : 'lbl' }, svg).textContent = (opt.fmt || short)(vals[i]);
+    el('text', { x: x + bw / 2, y: opt.labelsIn ? Yp(vals[i]) + 17 : (i > 0 && !opt.noInfl && infl[i] > vals[i] ? Math.min(Yp(vals[i]), Yp(infl[i])) - 9 : Yp(vals[i]) - 7), 'text-anchor': 'middle', class: opt.labelsIn ? 'lbl in' : 'lbl' }, svg).textContent = (opt.fmt || short)(vals[i]);
     if (i > 0 && !opt.noInfl) el('line', { x1: x - 6, x2: x + bw + 6, y1: Yp(infl[i]), y2: Yp(infl[i]), stroke: `var(${QUIET})`, 'stroke-width': 2.5, 'stroke-dasharray': '5 4' }, svg);
+    if (inBar(i)) el('text', { x: x + bw / 2, y: Yp(infl[i]) + 16, 'text-anchor': 'middle', class: 'lbl in' }, svg).textContent = (opt.fmt || short)(infl[i]);
+    else if (i > 0 && !opt.noInfl && !X2) noted.push(i);
     if (i > 0 && X2) el('line', { x1: x - 8, x2: x + bw + 8, y1: Yp(ex[i]), y2: Yp(ex[i]), stroke: `var(${X2.color})`, 'stroke-width': X2.strong ? 3.5 : 2.5, 'stroke-dasharray': X2.strong ? '7 3' : '2 3' }, svg);
     xLabel(svg, x + bw / 2, m.t + ph + 18, lab(b), two);
     const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
     hit.addEventListener('mousemove', e => showTip(e, `<b>${b[0]}–${b[b.length - 1]}, average a year</b>` + row(opt.name || 'Average', opt.color || RED, pounds(vals[i])) + (i && !opt.noInfl ? row('Inflation only', QUIET, pounds(infl[i])) : '') + (i && X2 ? row(X2.name + ' only', X2.color, pounds(ex[i])) : '')));
     hit.addEventListener('mouseleave', hideTip);
   });
+  if (noted.length) {
+    const p = document.createElement('p'); p.className = 'under';
+    p.textContent = `${noted.length < n - 1 ? 'The dashed line is above the bar (the figure if costs had only followed inflation)' : 'Dashed line, if costs had only followed inflation'}: ${noted.map(k => `${lab(blocks[k])} ${short(infl[k])}`).join(' · ')}.`;
+    host.appendChild(p);
+  }
   if (opt.sub) {                                   // a row of plain text under the chart (easier to read than text in it)
     const p = document.createElement('p'); p.className = 'under';
     p.textContent = `${opt.subName}: ${blocks.map(b => opt.sub(b)).join(' · ')}`;
