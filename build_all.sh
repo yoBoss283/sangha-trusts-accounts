@@ -4,4 +4,5 @@
 set -e
 cd "$(dirname "$0")"
 for d in est aruna-ratanagiri hartridge sumedharama; do (cd "$d" && python3 build.py); done
+python3 simple_build.py
 python3 build.py

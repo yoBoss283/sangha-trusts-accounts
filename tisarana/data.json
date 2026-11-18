@@ -1,0 +1,82 @@
+{
+ "2016": {
+  "income": 163280,
+  "spending": 139442,
+  "depr": 13572,
+  "net_assets": 2326968,
+  "cash": 282671,
+  "restricted": 97373
+ },
+ "2017": {
+  "income": 239737,
+  "spending": 129339,
+  "depr": 15211,
+  "net_assets": 2437366,
+  "cash": 367612,
+  "restricted": 91278
+ },
+ "2018": {
+  "income": 584392,
+  "spending": 149198,
+  "depr": 16534,
+  "net_assets": 2872560,
+  "cash": 335783,
+  "restricted": 96145
+ },
+ "2019": {
+  "income": 251820,
+  "spending": 199300,
+  "depr": 22753,
+  "net_assets": 2924231,
+  "cash": 758112,
+  "restricted": 551669
+ },
+ "2020": {
+  "income": 251915,
+  "spending": 183361,
+  "depr": 32746,
+  "net_assets": 2986361,
+  "cash": 1171414,
+  "restricted": 938466
+ },
+ "2021": {
+  "income": 231218,
+  "spending": 219874,
+  "depr": 53991,
+  "net_assets": 2997705,
+  "cash": 1541826,
+  "restricted": 1308092
+ },
+ "2022": {
+  "income": 1576212,
+  "spending": 375205,
+  "depr": 93840,
+  "net_assets": 3528549,
+  "cash": 1368243,
+  "restricted": 1297319
+ },
+ "2023": {
+  "income": 1661575,
+  "spending": 441303,
+  "depr": 91180,
+  "net_assets": 4748821,
+  "cash": 953293,
+  "restricted": 852302
+ },
+ "2024": {
+  "income": 1960025,
+  "spending": 649910,
+  "depr": 207718,
+  "net_assets": 6058937,
+  "cash": 647700,
+  "restricted": 541703
+ },
+ "2025": {
+  "income": 901550,
+  "spending": 733339,
+  "depr": 287816,
+  "net_assets": 6227098,
+  "cash": 374180,
+  "restricted": 301703
+ }
+}

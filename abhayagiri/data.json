@@ -1,0 +1,106 @@
+{
+ "2011": {
+  "income": 1191874,
+  "spending": 246823,
+  "gifts": 1187430,
+  "assets": 3476539,
+  "liabilities": 3899,
+  "net_assets": 3472640
+ },
+ "2012": {
+  "income": 496583,
+  "spending": 212829,
+  "gifts": 489164,
+  "assets": 3756990,
+  "liabilities": 0,
+  "net_assets": 3756990
+ },
+ "2013": {
+  "income": 894588,
+  "spending": 262155,
+  "gifts": 889075,
+  "assets": 4391760,
+  "liabilities": 2337,
+  "net_assets": 4389423
+ },
+ "2014": {
+  "income": 540059,
+  "spending": 195399,
+  "gifts": 538944,
+  "assets": 4734430,
+  "liabilities": 347,
+  "net_assets": 4734083
+ },
+ "2015": {
+  "income": 826636,
+  "spending": 180873,
+  "gifts": 826476,
+  "assets": 5379990,
+  "liabilities": 145,
+  "net_assets": 5379845
+ },
+ "2016": {
+  "income": 1334341,
+  "spending": 251124,
+  "gifts": 1339917,
+  "assets": 3919782,
+  "liabilities": 1370,
+  "net_assets": 3918412
+ },
+ "2017": {
+  "income": 851074,
+  "spending": 211036,
+  "gifts": 848613,
+  "assets": 1055473,
+  "liabilities": 889,
+  "net_assets": 1054584
+ },
+ "2018": {
+  "income": 835683,
+  "spending": 339987,
+  "gifts": 834681,
+  "assets": 970256,
+  "liabilities": 5028,
+  "net_assets": 965228
+ },
+ "2019": {
+  "income": 1241251,
+  "spending": 370405,
+  "gifts": 1240010,
+  "assets": 1196256,
+  "liabilities": 3254,
+  "net_assets": 1193002
+ },
+ "2020": {
+  "income": 532895,
+  "spending": 229765,
+  "gifts": 532822,
+  "assets": 1497486,
+  "liabilities": 1354,
+  "net_assets": 1496132
+ },
+ "2021": {
+  "income": 636093,
+  "spending": 279047,
+  "gifts": 635985,
+  "assets": 1483599,
+  "liabilities": 8869,
+  "net_assets": 1474730
+ },
+ "2022": {
+  "income": 710884,
+  "spending": 312104,
+  "gifts": 705882,
+  "assets": 1376479,
+  "liabilities": 13204,
+  "net_assets": 1363275
+ },
+ "2023": {
+  "income": 1246642,
+  "spending": 352417,
+  "gifts": 1231696,
+  "assets": 1627496,
+  "liabilities": 18270,
+  "net_assets": 1609226
+ }
+}

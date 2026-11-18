@@ -94,6 +94,22 @@ SITES = {'est': [('amaravati.org', 'https://amaravati.org'), ('cittaviveka.org',
          'ratanagiri': [('ratanagiri.org.uk', 'https://ratanagiri.org.uk')],
          'hartridge': [('hartridgemonastery.org', 'https://hartridgemonastery.org')],
          'sumedharama': [('sumedharama.pt', 'https://sumedharama.pt')]}
+SITES.update({'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
+# the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
+A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama')}
+FILES2 = {k: f'{k}-accounts.html' for k in A2}
+cards2 = ''
+for k in A2:
+    c = json.load(open(A2[k] / 'place.json', encoding='utf-8')); f = json.load(open(A2[k] / 'facts.json')); cu = f['currency']
+    where = c['cardWhere'] + '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
+    rname = c['costName'].lower()
+    cards2 += f'''<article class="place"><div class="bar" style="background:var({c['cardColor']})"></div>
+  <h2>{c['cardName']}</h2><p class="where">{where}</p>
+  <p class="big">{cu}{round(f['year'] / 1000) * 1000:,}</p><p class="bigl">a year, {rname}, as paid, {f['years']} average</p>
+  <dl><dt>A day ({f['years']} average)</dt><dd>{cu}{round(f['year'] / (c.get('daysInYear') or 365) / 5) * 5:,}</dd><dt>Money in a year</dt><dd>{cu}{round(f['income'] / 1000) * 1000:,}</dd><dt>Residents<span style="display:block;font-size:12.5px;opacity:.75">on average</span></dt><dd>{round(f['people'])}</dd></dl>
+  <p class="says">After inflation, {rname} in {f['to']} were {abs(f['pct'])}% {'higher' if f['pct'] >= 0 else 'lower'} than in {f['from']}. {c['cardNote']}</p>
+  <a class="go" href="pages/{k}.html">Read the full report →</a></article>
+'''
 cards = ''
 for k, name, where, col, says in CARDS:
     where += '<br>Website: ' + ' · '.join(f'<a href="{u}" target="_blank" rel="noopener">{t}</a>' for t, u in SITES[k])
@@ -115,20 +131,24 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Five monasteries: Amaravati and Chithurst (one trust), Aruna Ratanagiri, Hartridge and Sumedharama in Portugal. Each report below says, in plain words, what the place costs to run, what the money goes on, and how that has changed after inflation.</p>
+  <p class="hero">Eight monasteries: Amaravati and Chithurst (one trust), Aruna Ratanagiri and Hartridge in England, Sumedharama in Portugal, and, from the totals they publish, Abhayagiri in California, Tisarana in Canada and Bodhinyanarama in New Zealand. Each report below says, in plain words, what the place costs to run and how that has changed after inflation.</p>
 </header>
 <section class="story">
   <div class="places">
 {cards}  </div>
+  <h2 class="more-h">More monasteries, from the totals they publish</h2>
+  <p class="note more-n">These places publish only totals (money in, spending and, for some, what they hold), not their costs line by line, so each page is shorter. Amounts are in each country's own currency and are not converted.</p>
+  <div class="places">
+{cards2}  </div>
   <div class="card" style="margin-top:16px"><h3>How to read these side by side</h3>
-    <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each place's last three years. Sumedharama's accounts are in euros, so its amounts are in euros, not converted.</p>
+    <p class="note">Not a ranking: the places are different sizes and the amounts are as paid at the time, averaged over each place's last three years. Sumedharama's accounts are in euros, and the three monasteries abroad in US, Canadian and New Zealand dollars: amounts are in each place's own currency, not converted.</p>
     <p class="note"><b>One measure the same for all:</b> running costs after inflation, the three years 2019–21 against each place's last three years. The English Sangha Trust {signed(SINCE["est"][0])}%, Aruna Ratanagiri {signed(SINCE["ratanagiri"][0])}%, Hartridge {signed(SINCE["hartridge"][0])}%, Sumedharama {signed(SINCE["sumedharama"][0])}% (compared in its own euros and Portuguese prices). The places differ in size, in how many people live there and in building work, so this shows how each changed, not which is better run.</p>
     <details class="how"><summary>More about the figures</summary>
     <p class="note">Amaravati and Chithurst are two monasteries run together: the accounts do not give a figure for each. A day (or a year) for each resident is the cost of a day (or a year) divided by the number of residents (the monks, nuns, novices and anagārikas living there). It is a simple guide: guests, retreatants and visitors use the place too, so it is not what one person costs.</p>
     <p class="note"><b>Running costs</b> means everything the trust spends in a year to keep the place going, without new buildings and without wear on buildings (depreciation, which is not money paid out). Each report also takes out a few building costs the accounts count as spending; the notes in each report list them. The English Sangha Trust's own page quotes its latest year (£2,770 a day in the year to March 2026).</p>
     <p class="note"><b>Years.</b> The English Sangha Trust's year runs from April to March (2024–26 is the years to March 2024, 2025 and 2026). The others run January to December. <b>Residents</b> are averaged over the same years.</p></details>
   </div>
-  <p class="sources"><b>Sources anyone can check:</b> the trusts' annual reports on the Charity Commission register and at Companies House: <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">English Sangha Trust</a> (charity 231310), <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Harnham Buddhist Monastery Trust</a> (charity 1126476), <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Hartridge Buddhist Monastery Trust</a> (charity 1142439). Sumedharama: the community's own accounts spreadsheet (expenses and balance sheet, 2012–2024) and, for 2025, its two-page report to the abbots, shared by Ajahn Vajiro; they are not filed accounts. <b>Made by</b> Narindo. <b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
+  <p class="sources"><b>Sources anyone can check:</b> the trusts' annual reports on the Charity Commission register and at Companies House: <a href="https://find-and-update.company-information.service.gov.uk/company/00565499/filing-history?category=accounts" target="_blank" rel="noopener">English Sangha Trust</a> (charity 231310), <a href="https://find-and-update.company-information.service.gov.uk/company/06688355/filing-history?category=accounts" target="_blank" rel="noopener">Harnham Buddhist Monastery Trust</a> (charity 1126476), <a href="https://find-and-update.company-information.service.gov.uk/company/07387479/filing-history?category=accounts" target="_blank" rel="noopener">Hartridge Buddhist Monastery Trust</a> (charity 1142439). Abhayagiri: the Sanghapala Foundation's tax returns (<a href="https://projects.propublica.org/nonprofits/organizations/943212705" target="_blank" rel="noopener">ProPublica</a>); Tisarana: the statements on <a href="https://tisarana.ca" target="_blank" rel="noopener">its own website</a>; Bodhinyanarama: the <a href="https://register.charities.govt.nz/Charity/CC29078" target="_blank" rel="noopener">New Zealand Charities Register</a>. Sumedharama: the community's own accounts spreadsheet (expenses and balance sheet, 2012–2024) and, for 2025, its two-page report to the abbots, shared by Ajahn Vajiro; they are not filed accounts. <b>Made by</b> Narindo. <b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
 </section>
 </main>
 '''
@@ -143,6 +163,12 @@ for k, f in FILES.items():
     page = h.replace('<main id="top">', '<main id="top">\n' + back, 1)
     (here / 'pages' / f'{k}.html').write_text(page, encoding='utf-8')      # the address people already have
     (A[k] / 'index.html').write_text(page, encoding='utf-8')                # the same page at /<folder>/
+for k, f in FILES2.items():
+    h = (A2[k] / f).read_text(encoding='utf-8')
+    assert '<main id="top">' in h, k
+    page = h.replace('<main id="top">', '<main id="top">\n' + back, 1)
+    (here / 'pages' / f'{k}.html').write_text(page, encoding='utf-8')
+    (A2[k] / 'index.html').write_text(page, encoding='utf-8')
 for k in fig:
     print(k, fig[k]['years'], r1000(fig[k]['year']), r5(fig[k]['day']), round(fig[k]['people']))
 print('wrote index.html and pages/')

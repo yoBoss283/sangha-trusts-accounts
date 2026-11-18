@@ -1,0 +1,5 @@
+Tisarana Buddhist Monastery: the yearly financial statements as published on https://tisarana.ca (downloaded 18 Nov 2026).
+The PDFs themselves are not kept in this repository (they name the treasurer and an e-mail address); download them again from:
+2016-2024: https://tisarana.ca/wp-content/uploads/2025/08/Tisarana-Financials-<year>.pdf
+2025:      https://tisarana.ca/wp-content/uploads/2026/04/Financials-2025-FINAL.pdf
+List of all uploads: https://tisarana.ca/wp-json/wp/v2/media?search=financ&per_page=50

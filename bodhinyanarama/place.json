@@ -1,0 +1,31 @@
+{
+ "title": "Bodhinyanarama Accounts",
+ "kicker": "Wellington Theravada Buddhist Association · Bodhinyanarama Monastery · Stokes Valley, Lower Hutt, New Zealand",
+ "short": "Bodhinyanarama",
+ "runVerb": "Running Bodhinyanarama",
+ "yearEnd": "mar",
+ "currency": "$",
+ "currencyName": "New Zealand dollars",
+ "cpiName": "the New Zealand consumer price index (World Bank; for a year to 31 March, the calendar year in which most of it falls)",
+ "costName": "Spending",
+ "costDefShort": "total expenditure as the Association reports it to the Charities Register, which can include wear on buildings (depreciation).",
+ "defs": "Spending: the total expenditure the Association reports to the New Zealand Charities Register each year, which can include wear on buildings (depreciation); the register shows only this total. Residents: the monks, novices, nuns and anagārikas listed at Bodhinyanarama on the community lists, on average; guests and lay residents are not counted. Inflation: the New Zealand consumer price index (World Bank). All amounts in New Zealand dollars, as paid at the time, unless the page says \"in today's money\".",
+ "incomeNote": "The register gives no reason for the high income in the year to March 2026.",
+ "meaningNote": "The register gives only two totals a year, so this page cannot say what the money was spent on or what the Association holds.",
+ "holdSeries": [],
+ "holdLede": "",
+ "holdSub": "",
+ "notes": [
+  "<b>Where the figures come from.</b> The annual returns of the Wellington Theravada Buddhist Association Incorporated (charity CC29078) on the New Zealand Charities Register: total income and total expenditure for each year from the year to 31 March 2017 to the year to 31 March 2026 (<code>charities_register_CC29078.html</code> in this folder keeps the page as downloaded).",
+  "<b>Years.</b> The Association's year runs from 1 April to 31 March and is named by the year it ends in: \"2026\" is April 2025 to March 2026.",
+  "<b>What the register shows.</b> Only total income and total expenditure. Its financial statements are included in the annual return; the register does not show assets, cash or a list of costs, so this page cannot show them.",
+  "<b>Spending</b> is the total expenditure on the register. It is not split, so wear on buildings (depreciation), if any, is not taken out.",
+  "<b>Income.</b> The year to March 2026 shows $759,177, against $132,000 to $232,000 in the other years. The register does not say why.",
+  "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists (the Vassa list in July and the Winter list of the next January). Guests, retreatants and lay residents are not counted."
+ ],
+ "sources": "<b>Source anyone can check:</b> the <a href=\"https://register.charities.govt.nz/Charity/CC29078\" target=\"_blank\" rel=\"noopener\">New Zealand Charities Register</a>, Wellington Theravada Buddhist Association Incorporated (CC29078). Residents: the monasteries' community lists. <span class=\"tag\">Updated __UPDATED__</span>",
+ "cardName": "Bodhinyanarama",
+ "cardWhere": "Wellington Theravada Buddhist Association · Stokes Valley, Lower Hutt, New Zealand · amounts in New Zealand dollars",
+ "cardColor": "--s7",
+ "cardNote": "The register gives only two totals a year."
+}

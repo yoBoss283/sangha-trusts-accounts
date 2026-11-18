@@ -70,6 +70,36 @@ spreadsheet read by `read_spreadsheet.py`), run `extract_report.py` / `read_spre
 lists any year where the report's own lines do not match its totals (`CHECK_THESE_YEARS.md`) and writes the lettered
 footnotes. Send the owner the list of differences to check with the community. See `sumedharama/README.md`.
 
+## 3b. The lighter pages (Abhayagiri, Tisarana, Bodhinyanarama)
+
+These three come from totals only and are built by `simple_build.py` from `simple/template.html`. Each folder has `place.json`
+(names, currency, notes, sources: edit the notes when something changes), `data.json` (one entry per year: `income`, `spending`,
+and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gifts`), `people.json` and `cpi_worldbank.json`.
+
+- **Abhayagiri** (`abhayagiri/`, Sanghapala Foundation, US tax number 94-3212705): the yearly totals come from the ProPublica
+  Nonprofit Explorer API, `https://projects.propublica.org/nonprofits/api/v2/organizations/943212705.json`; save it as
+  `propublica_943212705.json` and rebuild `data.json` from `filings_with_data` (`totrevenue` = income, `totfuncexpns` = spending,
+  `totcntrbgfts` = gifts, `totnetassetend` = net assets). The summary data run about a year behind: a newer return may be listed
+  only as a PDF (`filings_without_data`). **The PDF download pages are behind a bot check, so do not try to get around it:** ask
+  the owner to download the PDF in a browser and put it in `abhayagiri/accounts/`, then read the figures from its first page
+  (total revenue line 12, total expenses line 18, net assets line 22) and tell the owner which figures you read. The 2024 return
+  and the 2001–2010 returns still need this.
+- **Tisarana** (`tisarana/`): the monastery publishes its statements as PDFs on tisarana.ca (find them with
+  `https://tisarana.ca/wp-json/wp/v2/media?search=financ&per_page=50`). Put the new year in `accounts/`, read total income,
+  total expenses, amortization, cash (chequing + savings), restricted (deferred) money and net assets into `data.json`, and
+  cross-check against the "last year" column of the next report. Scanned years are read from the next year's report.
+- **Bodhinyanarama** (`bodhinyanarama/`): total income and total expenditure per year from
+  `https://register.charities.govt.nz/Charity/CC29078` (annual return table; copy just the table into
+  `register_returns.txt`: the whole page names the officers). The year ends 31 March; the return is due by 30 September.
+- Residents for all three: `python3 simple_people.py <folder> <Section name in the lists> <dec|mar>` (Abhayagiri / Tisarana
+  dec; Bodhinyanarama mar).
+- Prices: `cpi_worldbank.json` is the World Bank's yearly consumer price index (`https://api.worldbank.org/v2/country/USA/indicator/FP.CPI.TOTL?format=json&per_page=100`; `CAN`, `NZL` for the others). It runs about a year behind (United States to 2024, the others to 2025).
+- Then `python3 simple_build.py` and `sh build_all.sh`.
+
+Looked at and not possible (17 Nov 2026): **Temple Forest** (Jetavana Monastic Community, New Hampshire) files no tax returns
+publicly; **Santacittarama** (Italy) and **Dhammapala** (Switzerland) have no public accounts that could be found. Australian
+monasteries (Bodhivana, Wat Buddha Dhamma, Dhammagiri, Vimokkharam, Bodhipala) have not been checked on the ACNC register yet.
+
 ## 4. Refresh the prices (every update)
 
 "In today's money" needs the price index to reach the new year, or the figures cannot be compared.

@@ -1,6 +1,6 @@
 # What it costs to run the monasteries
 
-Plain-language reports on what it costs to run five Theravada forest monasteries (four sets of accounts), and whether
+Plain-language reports on what it costs to run eight Theravada forest monasteries (seven sets of accounts), and whether
 those costs have risen faster than prices in general.
 
 - **The site:** https://yoboss283.github.io/sangha-trusts-accounts/ (the landing page; one card for each place, each
@@ -16,6 +16,12 @@ those costs have risen faster than prices in general.
 | `aruna-ratanagiri/` | Aruna Ratanagiri, Harnham | Harnham Buddhist Monastery Trust (charity 1126476) | annual accounts | £ |
 | `hartridge/` | Hartridge, Devon | Hartridge Buddhist Monastery Trust (charity 1142439) | annual accounts 2011–2025 | £ |
 | `sumedharama/` | Sumedharama, Portugal | the community (not a filed trust) | its own two-page "Report to Abbots 2012–2026", shared by Ajahn Vajiro on 17 Nov 2026 | € (never converted) |
+| `abhayagiri/` | Abhayagiri, California | Sanghapala Foundation (US tax no. 94-3212705) | the yearly tax returns (Form 990), 2011–2023, from ProPublica | US $ (never converted) |
+| `tisarana/` | Tisarana, Ontario | Tisarana Buddhist Monastery | the monastery's own financial statements, 2016–2025 | Canadian $ (never converted) |
+| `bodhinyanarama/` | Bodhinyanarama, Wellington | Wellington Theravada Buddhist Association (CC29078) | the NZ Charities Register: income and expenditure, years to March 2017–2026 | NZ $ (never converted) |
+
+The last three give totals only (money in, spending and, for some, what they hold), so their pages are shorter. They are built
+by `simple_build.py` from `simple/template.html`, with each folder's `place.json` and `data.json`.
 
 The Sumedharama report is not a set of filed accounts: it has detailed expenses and a balance sheet, but no income
 statement. Its page says so.
