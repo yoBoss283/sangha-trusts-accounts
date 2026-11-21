@@ -1,0 +1,28 @@
+{
+ "2020": {
+  "income": 18445,
+  "spending": 64395
+ },
+ "2021": {
+  "income": 54245,
+  "spending": 11362
+ },
+ "2022": {
+  "income": 7219,
+  "spending": 5134
+ },
+ "2023": {
+  "income": 90975,
+  "spending": 156294
+ },
+ "2024": {
+  "income": 1118231,
+  "spending": 1069649,
+  "net_assets": 204876
+ },
+ "2025": {
+  "income": 2023772,
+  "spending": 2066321,
+  "net_assets": 162873
+ }
+}

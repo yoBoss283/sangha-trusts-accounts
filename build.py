@@ -107,12 +107,13 @@ SRC = {
     'vimokkharam': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
     'bodhipala': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
     'dhammagiri': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'theravada-monastic-trust': 'the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/4043383" target="_blank" rel="noopener">Charity Commission register</a> (charity 1127588) and its <a href="https://opencharities.uk/ew/1127588" target="_blank" rel="noopener">accounts</a>; a funding trust that passes money to monasteries, not a monastery',
     'vimutti': 'the <a href="https://register.charities.govt.nz/Charity/CC20332" target="_blank" rel="noopener">NZ Charities Register</a> (some early spending figures look incomplete)',
     'bodhivana': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
 }
 SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')], 'vimutti': [('vimutti.org.nz', 'https://vimutti.org.nz')]})
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
-A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara', 'vimutti')}
+A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara', 'vimutti', 'theravada-monastic-trust')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
 card = {}
 for k in A2:
@@ -151,7 +152,7 @@ for k, name, where, col, says in CARDS:
 _months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d / 'index.html').exists()), reverse=True)
 EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
-REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'lokuttara', 'sumedharama']),
+REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'lokuttara', 'sumedharama', 'theravada-monastic-trust']),
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
            ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama', 'vimutti'])]
 assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
@@ -175,7 +176,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Nineteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
+  <p class="hero">Nineteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust), and the Theravada Monastic Trust, which is not a monastery but passes donations on to them. Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
   {jump_html}
   <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Total spent\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>

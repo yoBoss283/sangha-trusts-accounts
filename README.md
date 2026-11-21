@@ -18,6 +18,7 @@ those costs have risen faster than prices in general.
 | `sumedharama/` | Sumedharama, Portugal | the community (not a filed trust) | its own two-page "Report to Abbots 2012–2026", shared by Ajahn Vajiro on 17 Nov 2026 | € (never converted) |
 | `abhayagiri/` | Abhayagiri, California | Sanghapala Foundation (US tax no. 94-3212705) | the yearly tax returns (Form 990), 2011–2023, from ProPublica | US $ (never converted) |
 | `tisarana/` | Tisarana, Ontario | Tisarana Buddhist Monastery | the monastery's own financial statements, 2016–2025 | Canadian $ (never converted) |
+| `theravada-monastic-trust/` | Theravada Monastic Trust, England (funding trust, no monastery) | the Trust (charity 1127588) | Charity Commission / opencharities.uk: income and expenditure 2020–2025; grants read from the 2024 and 2025 accounts | £ |
 | `vimutti/` | Vimutti, Auckland | Auckland Theravada Buddhist Association (CC20332) | the NZ Charities Register: income and expenditure, years to July; 2012–2025 as filed (early spending looks incomplete) | NZ $ (never converted) |
 | `bodhinyanarama/` | Bodhinyanarama, Wellington | Wellington Theravada Buddhist Association (CC29078) | the NZ Charities Register: income and expenditure, years to March 2017–2026 | NZ $ (never converted) |
 | `bodhivana/` | Bodhivana, East Warburton VIC | Victoria Sangha Association Inc. (ABN 59 019 586 160) | the ACNC's yearly statements, 2016–2024 | Australian $ |

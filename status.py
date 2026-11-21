@@ -20,6 +20,7 @@ PLACES = {  # folder: (name, year ends, built page, where the new report comes f
     'tisarana': ('Tisarana (Ontario, Canadian dollars)', '31 December', 'tisarana-accounts.html', 'the financial statements on tisarana.ca (usually published in spring)'),
     'bodhinyanarama': ('Bodhinyanarama (Wellington, NZ dollars)', '31 March', 'bodhinyanarama-accounts.html', 'NZ Charities Register, CC29078 (annual return, due 30 September)'),
     'vimutti': ('Vimutti (Auckland, NZ dollars)', '31 July', 'vimutti-accounts.html', 'NZ Charities Register, CC20332 (annual return, due about January; earlier years look incomplete: see place.json)'),
+    'theravada-monastic-trust': ('Theravada Monastic Trust (England, pounds; funding trust, not a monastery)', '31 December', 'theravada-monastic-trust-accounts.html', 'Charity Commission 1127588 / opencharities.uk (accounts filed the following autumn)'),
     'wat-buddha-dhamma': ('Wat Buddha Dhamma (NSW, Australian dollars)', '30 June', 'wat-buddha-dhamma-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
     'vimokkharam': ('Vimokkharam (Victoria, Australian dollars)', '30 June', 'vimokkharam-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
     'bodhipala': ('Bodhipala (South Australia, Australian dollars)', '30 June', 'bodhipala-accounts.html', 'the ACNC Annual Information Statement data on data.gov.au (the 2025 statements are published about a year later)'),
