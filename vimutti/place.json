@@ -18,8 +18,7 @@
  "notes": [
   "<b>Where the figures come from.</b> The annual returns of the Auckland Theravada Buddhist Association Incorporated (charity CC20332) on the New Zealand Charities Register: total income and total expenditure for the years to 31 July (<code>register_returns.txt</code> in this folder keeps the table). The Association runs Vimutti Buddhist Monastery at Bombay, south of Auckland (<a href=\"https://vimutti.org.nz\" target=\"_blank\" rel=\"noopener\">vimutti.org.nz</a>).",
   "<b>Years.</b> The Association's year runs from 1 August to 31 July and is named by the year it ends in: \"2025\" is August 2024 to July 2025.",
-  "<b>Only three years are shown, on purpose.</b> The register lists returns from 2008 to 2025, but most of the spending figures cannot be right for a monastery that was running: it shows $0 spent for 2008 to 2011, 2019, 2021 and 2022, $45,000 for 2020, and $37,584 and $32,011 for 2012 and 2013, in years when it took in $100,000 to $360,000. Only 2023, 2024 and 2025 look complete, so only those are charted. The audited reports behind the earlier returns were not read.",
-  "<b>The other years, as the register shows them (money in / total spent).</b> 2012: $102,863 / $37,584. 2013: $182,357 / $32,011. 2014: $138,562 / $172,703. 2015: $139,856 / $165,299. 2016: $135,549 / $180,145. 2017: $77,381 / $63,011. 2018: $166,108 / $73,203. 2019: $158,166 / $0. 2020: $165,148 / $45,000. 2021: $362,084 / $0. 2022: $148,159 / $0. 2008 to 2011: $0 / $0. 2014 to 2018 may be right but are not charted because the years in between are missing. The year to July 2026 is not yet filed.",
+  "<b>Check the spending in the early years.</b> The figures are shown exactly as the register has them, from 2012 (the register also lists 2008 to 2011, all $0, which are not charted). Several spending figures look too low for a monastery that was running: $0 for 2019, 2021 and 2022, $45,000 for 2020, and $37,584 and $32,011 for 2012 and 2013, in years when it took in $100,000 to $360,000. Treat those years with care: they may be missing from the filing, not real. 2023 to 2025 look complete. The audited reports behind the earlier returns were not read.",
   "<b>Spending is total spending.</b> It can include building work and wear on buildings; the register does not separate them, so this page shows no running cost and no change after inflation.",
   "<b>Residents</b> are the monks, novices, nuns and anagārikas on the community lists (the Winter list of January and the Vassa list of July). Guests, retreatants and lay residents are not counted."
  ],
@@ -27,7 +26,7 @@
  "cardName": "Vimutti",
  "cardWhere": "Auckland Theravada Buddhist Association · Bombay, Auckland, New Zealand · amounts in New Zealand dollars",
  "cardColor": "--s7",
- "cardNote": "Only 2023 to 2025 are shown; the register's earlier spending figures look incomplete.",
+ "cardNote": "Spending was filed as $0 or very low in several years, so older years may be incomplete.",
  "holdNote": "",
  "operating": false
 }

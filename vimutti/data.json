@@ -1,4 +1,48 @@
 {
+ "2012": {
+  "income": 102863,
+  "spending": 37584
+ },
+ "2013": {
+  "income": 182357,
+  "spending": 32011
+ },
+ "2014": {
+  "income": 138562,
+  "spending": 172703
+ },
+ "2015": {
+  "income": 139856,
+  "spending": 165299
+ },
+ "2016": {
+  "income": 135549,
+  "spending": 180145
+ },
+ "2017": {
+  "income": 77381,
+  "spending": 63011
+ },
+ "2018": {
+  "income": 166108,
+  "spending": 73203
+ },
+ "2019": {
+  "income": 158166,
+  "spending": 0
+ },
+ "2020": {
+  "income": 165148,
+  "spending": 45000
+ },
+ "2021": {
+  "income": 362084,
+  "spending": 0
+ },
+ "2022": {
+  "income": 148159,
+  "spending": 0
+ },
  "2023": {
   "income": 120898,
   "spending": 95068
