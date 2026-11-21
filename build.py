@@ -169,7 +169,7 @@ def _card_id(k):
 def _region(name, ks):
     return '  <div class="region" id="' + _rid(name) + '"><h2 class="more-h">' + name + '</h2>\n  <div class="places">\n' + ''.join(_card_id(k) for k in ks) + '  </div></div>\n'
 sections_html = ''.join(_region(name, ks) for name, ks in REGIONS)
-jump_html = '<nav class="jump" aria-label="Jump to a place"><p class="jump-h">Jump to</p>' + ''.join(f'<div class="jump-r"><a class="jump-reg" href="#{_rid(name)}">{name}</a> ' + ' '.join(f'<a class="jump-p" href="#{k}">{_nm(k)}</a>' for k in ks) + '</div>' for name, ks in REGIONS) + '<div class="jump-r"><a class="jump-reg" href="#missing">No public accounts found</a> <a class="jump-p" href="#how">How to read these side by side</a></div></nav>'
+jump_html = '<nav class="jump" aria-label="Jump to a place">' + ''.join(f'<div class="jump-r"><a class="jump-reg" href="#{_rid(name)}">{name}</a> ' + ' '.join(f'<a class="jump-p" href="#{k}">{_nm(k)}</a>' for k in ks) + '</div>' for name, ks in REGIONS) + '<div class="jump-r"><a class="jump-reg" href="#missing">No public accounts found</a> <a class="jump-p" href="#how">How to read these side by side</a></div></nav>'
 
 body = f'''
 <main id="top">
@@ -178,8 +178,10 @@ body = f'''
   <h1>What it costs to run the monasteries</h1>
   <p class="hero">Nineteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust), and the Theravada Monastic Trust, which is not a monastery but passes donations on to them. Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
   {jump_html}
+  <details class="kinds"><summary>How to read the numbers: two kinds of number, and how places are ordered</summary>
   <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Total spent\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>
+  </details>
 </header>
 <section class="story">
 {sections_html}  <div class="card" id="how" style="margin-top:16px"><h3>How to read these side by side</h3>

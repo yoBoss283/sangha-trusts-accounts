@@ -217,13 +217,16 @@ svg text.band-l { fill: var(--ink-2); font-size: 12px; }
 .place .since:last-of-type { margin-bottom: 14px; }
 .back { font-size: 13px; margin: 0 0 14px; }
 
-.jump { margin: 16px 0 6px; padding: 14px 16px; background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; }
-.jump-h { margin: 0 0 8px; font-size: 13px; font-weight: 600; color: var(--ink-2); text-transform: uppercase; letter-spacing: .04em; }
-.jump-r { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; padding: 7px 0; border-top: 1px solid var(--ring); }
-.jump-r:first-of-type { border-top: 0; }
-.jump-reg { font-weight: 600; font-size: 15px; margin-right: 4px; }
-.jump-p { font-size: 14px; padding: 5px 12px; border: 1px solid var(--ring); border-radius: 999px; background: var(--page); }
-.jump a:hover { text-decoration: none; border-color: var(--ink-2); }
+.jump { margin: 12px 0 4px; font-size: 13.5px; line-height: 1.7; }
+.jump-h { display: none; }
+.jump-r { display: block; padding: 0; border: 0; }
+.jump-reg { font-weight: 600; margin-right: 6px; }
+.jump-p { padding: 0; border: 0; background: none; white-space: nowrap; }
+.jump-p::after { content: " ·"; color: var(--ink-2); }
+.jump-r .jump-p:last-child::after { content: ""; }
+.jump a:hover { text-decoration: underline; }
+details.kinds { max-width: 760px; margin: 8px 0 6px; font-size: 14px; }
+details.kinds summary { cursor: pointer; color: var(--ink-2); }
 .region, .missing, #how { scroll-margin-top: 12px; }
 .place { scroll-margin-top: 56px; }
 .region > h2.more-h { position: sticky; top: 0; z-index: 5; background: var(--page); margin: 0; padding: 10px 0; border-bottom: 1px solid var(--ring); }
