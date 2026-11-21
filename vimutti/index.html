@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vimutti Accounts</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<style>
+/* Same look as the Sangha community list statistics: one column of cards, charts drawn as plain SVG. */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e; --muted: #898781;
+  --grid: #e1e0d9; --axis: #c3c2b7; --ring: rgba(11,11,11,0.10);
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948; --s9: #7d7a70;
+  --critical: #d03b3b; --good: #006300; --on-slice: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+    --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --s9: #9a978d;
+    --critical: #e66767; --good: #0ca30c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #0d0d0d; --surface: #1a1a19; --ink: #f0efec; --ink-2: #c3c2b7; --muted: #898781;
+  --grid: #2c2c2a; --axis: #383835; --ring: rgba(255,255,255,0.10);
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767; --s9: #9a978d;
+  --critical: #e66767; --good: #0ca30c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1060px; margin: 0 auto; padding-block: 32px 64px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header h1 { font-size: 28px; line-height: 1.2; margin: 0 0 6px; letter-spacing: -0.01em; text-wrap: balance; }
+header p { margin: 0 0 6px; color: var(--ink-2); max-width: 760px; }
+.tag { display: inline-block; font-size: 12px; color: var(--ink-2); border: 1px solid var(--ring); border-radius: 999px; padding: 2px 10px; margin-top: 6px; }
+.toc { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 28px 0 8px; max-width: 820px; }
+.toc ol { list-style: none; padding: 0; margin: 0; }
+.toc li { margin: 0 0 4px; }
+.toc a, .backtop a, a { color: var(--s1); text-decoration: none; }
+.toc a:hover, .backtop a:hover, a:hover { text-decoration: underline; }
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+.backtop { margin: 10px 0 0; text-align: right; font-size: 13px; }
+section { margin-top: 64px; padding-top: 16px; border-top: 1px solid var(--ring); scroll-margin-top: 12px; }
+section > h2 { font-size: 22px; margin: 0 0 6px; text-wrap: balance; }
+section > p.lede { margin: 0 0 16px; color: var(--ink-2); max-width: 760px; }
+.card { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 18px 18px 14px; margin-bottom: 16px; overflow-x: auto; min-width: 0; }
+.card h3 { font-size: 15px; margin: 0 0 2px; }
+.card .sub { font-size: 13px; color: var(--ink-2); margin: 0 0 12px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.grid2 > .card { margin-bottom: 0; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 22px; }
+.tile { background: var(--surface); border: 1px solid var(--ring); border-radius: 12px; padding: 14px 16px; }
+.tile .v { font-size: 26px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile .l { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.tile .c { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.quote { margin: 4px 0 12px; padding: 8px 12px; border-left: 3px solid var(--s2); color: var(--ink-2); font-size: 13.5px; font-style: italic; }
+.quote cite { display: block; font-style: normal; font-size: 12px; color: var(--muted); margin-top: 4px; }
+.under { font-size: 13px; color: var(--ink-2); margin: 6px 0 0; font-variant-numeric: tabular-nums; }
+.bridge .hb { font-size: 14px; }
+.bridge .hb.b { font-weight: 600; }
+.bridge .hb-t { position: relative; background: transparent; overflow: visible; height: 16px; }
+.bridge .hb-t i { position: absolute; top: 0; }
+.bridge .hb-t b { position: absolute; top: -4px; bottom: -4px; width: 0; border-left: 1.5px solid var(--ink-2); }
+.bridge .hb-v { min-width: 4.5em; }
+.bridge hr { border: 0; border-top: 1px solid var(--grid); margin: 2px 0; width: 100%; }
+.latest { margin: 18px 0 0; max-width: 760px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12.5px; color: var(--ink-2); margin: 0 0 8px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.legend i.line { height: 2px; width: 14px; border-radius: 1px; }
+.legend i.line.dash { height: 0; width: 18px; background: none; border-top: 2px dashed; border-radius: 0; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { fill: var(--muted); font-size: 12px; font-family: inherit; }
+svg .lbl { fill: var(--ink-2); font-size: 12.5px; }
+svg .lbl.in { fill: var(--on-slice); font-weight: 600; }
+svg .gl { stroke: var(--grid); stroke-width: 1; }
+svg .base { stroke: var(--axis); stroke-width: 1; }
+.note { font-size: 13px; color: var(--ink-2); margin: 10px 0 0; max-width: 760px; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th { text-align: left; font-weight: 600; color: var(--ink-2); font-size: 12px; border-bottom: 1px solid var(--axis); padding: 6px 8px; }
+td { border-bottom: 1px solid var(--grid); padding: 6px 8px; vertical-align: top; }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.tot td { font-weight: 600; border-top: 1px solid var(--axis); }
+tr.grp td { color: var(--ink-2); font-size: 12px; font-weight: 600; padding-top: 14px; }
+td.sub1 { padding-left: 20px; }
+.good { color: var(--good); } .bad { color: var(--critical); }
+details { margin-top: 10px; overflow: hidden; }
+summary { cursor: pointer; color: var(--ink-2); font-size: 13.5px; }
+.kinds.one { grid-template-columns: 1fr; gap: 28px; }
+.kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px 22px; }
+.kind h4 { font-size: 13.5px; margin: 0; }
+.kind .ch { font-size: 12.5px; color: var(--ink-2); margin: 0 0 4px; font-variant-numeric: tabular-nums; }
+.toggle { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 14px; }
+.toggle-note { font-size: 12.5px; color: var(--ink-2); }
+button.pill { font: inherit; font-size: 13px; color: var(--ink); cursor: pointer; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--ring); background: var(--page); }
+button.pill:hover { border-color: var(--ink-2); }
+button.pill[aria-pressed="true"] { border-color: var(--s1); background: var(--surface); font-weight: 600; }
+button.pill:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+h3.then { font-size: 14px; font-weight: 600; color: var(--ink-2); margin: 4px 0 0; }
+.tiles-small { margin: 10px 0 16px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.tiles-small .tile.up .v { color: var(--critical); }
+.scroll-x { overflow-x: auto; }
+#t-all th:first-child, #t-all td:first-child { position: sticky; left: 0; background: var(--surface); z-index: 1; box-shadow: 1px 0 0 var(--ring); }
+.swipe { display: none; font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+@media (max-width: 760px) { .swipe { display: block; } }
+.hbars { display: grid; gap: 8px; }
+.hb { display: grid; grid-template-columns: minmax(120px, 15em) 1fr auto; gap: 10px; align-items: center; font-size: 13.5px; }
+.hb-t { background: var(--grid); border-radius: 4px; height: 14px; overflow: hidden; }
+.hb-t i { display: block; height: 100%; border-radius: 4px; }
+.hb-v { font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 6.5em; text-align: right; }
+.hb-p { color: var(--muted); font-size: 12px; }
+.hb-s { display: block; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+@media (max-width: 520px) { .hb { grid-template-columns: 1fr auto; } .hb-t { grid-column: 1 / -1; grid-row: 2; } }
+.sources { font-size: 14px; }
+.prices { margin: -6px 0 16px; }
+.then-row { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+.picker { font-size: 13.5px; color: var(--ink-2); display: inline-flex; gap: 8px; align-items: center; }
+.picker select { font: inherit; font-size: 13.5px; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--ring); background: var(--surface); color: var(--ink); }
+.picker select:focus-visible { outline: 2px solid var(--s1); outline-offset: 2px; }
+.tile.ref { background: transparent; border-style: dashed; }
+.tiles-small .tile .l { font-weight: 600; color: var(--ink); margin: 0 0 4px; }
+.row2 { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.row2 .k { font-size: 12.5px; color: var(--ink-2); }
+.row2 .v2 { font-size: 22px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.row2 .v2.bad { color: var(--critical); }
+.row2.pp { margin-top: 8px; padding-top: 6px; border-top: 1px solid var(--ring); }
+.compare { margin: 8px 0 10px; }
+.explain { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--ring); max-width: 760px; }
+.explain h4 { font-size: 14px; margin: 0 0 4px; }
+.explain p { font-size: 13.5px; color: var(--ink-2); margin: 6px 0; }
+table.rates { width: auto; font-size: 13.5px; margin: 6px 0; }
+table.rates td { padding: 4px 12px 4px 0; border-bottom: 1px solid var(--grid); }
+.pp-top { margin: 0 0 12px; font-size: 14px; }
+.card.feature { border-color: var(--axis); }
+.card .big { font-size: 17px; margin: 4px 0 10px; }
+.card .big .bad { color: var(--critical); }
+.kind .ch .bad { font-weight: 600; }
+.kicker { font-size: 13px; color: var(--ink-2); margin: 0 0 6px; letter-spacing: .02em; }
+header h1 { font-size: 30px; }
+.hero { font-size: 19px; line-height: 1.45; color: var(--ink); max-width: 760px; margin: 10px 0 0; }
+.hero b { font-weight: 650; }
+.tiles.headline { margin-top: 18px; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 760px) { .tiles.headline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } .tiles.headline .tile { padding: 12px; } }
+@media (max-width: 360px) { .tiles.headline .v { font-size: 20px; } }
+.tiles.headline .v { font-size: 30px; }
+.tiles.headline .v.bad { color: var(--critical); }
+.foot { font-size: 12.5px; color: var(--muted); margin: 8px 0 0; }
+section.story { margin-top: 28px; padding-top: 0; border-top: 0; }
+.caption { font-size: 14.5px; color: var(--ink); margin: 10px 0 0; max-width: 60ch; }
+details.how { margin-top: 8px; font-size: 13.5px; color: var(--ink-2); max-width: 65ch; }
+details.how summary { cursor: pointer; color: var(--s1); font-size: 13.5px; }
+details.how p { margin: 6px 0; }
+.meaning { background: var(--surface); border: 1px solid var(--axis); border-radius: 12px; padding: 16px 18px; margin: 4px 0 40px; max-width: 820px; }
+.meaning h3 { font-size: 16px; margin: 0 0 6px; }
+.meaning p { margin: 0; font-size: 15.5px; }
+.defs { font-size: 13px; color: var(--ink-2); max-width: 820px; }
+.toc-h { font-size: 16px; font-weight: 700; color: var(--ink); margin: 0 0 6px; }
+.toc li a { display: block; padding: 7px 0; font-size: 15.5px; font-weight: 600; }
+.endsrc { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--axis); }
+.totop { position: fixed; right: 16px; bottom: 16px; z-index: 20; background: var(--surface); color: var(--ink); border: 1px solid var(--axis); border-radius: 999px; padding: 9px 16px; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,.25); display: none; }
+.totop.on { display: block; }
+.totop:hover { text-decoration: none; }
+details.more { margin-top: 6px; }
+details.more > summary { display: inline-block; list-style: none; cursor: pointer; font-size: 14px; color: var(--s1); border: 1px solid var(--ring); border-radius: 999px; padding: 5px 14px; margin-bottom: 14px; background: var(--surface); }
+details.more > summary::-webkit-details-marker { display: none; }
+details.more[open] > summary { color: var(--ink-2); }
+details.more[open] > summary::after { content: ' (hide)'; }
+table.fut { width: auto; margin-top: 12px; }
+.explain ul { padding-left: 18px; margin: 6px 0; font-size: 13.5px; color: var(--ink-2); max-width: 760px; }
+.tbl-h { font-size: 15px; margin: 18px 0 8px; }
+@media (max-width: 520px) { header h1 { font-size: 24px; } .hero { font-size: 17px; } .tiles.headline .v { font-size: 24px; } }
+.pies { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px 24px; }
+.pie h4 { font-size: 15px; margin: 0 0 6px; text-align: center; }
+.pie-svg { max-width: 380px; margin: 0 auto; }
+@media (max-width: 520px) { .pie-svg { max-width: 300px; } }
+.grp-tbl { margin-top: 12px; }
+.grp-tbl td { vertical-align: top; }
+.grp-tbl td:first-child { white-space: nowrap; padding-right: 14px; }
+.sw { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; }
+svg text.pie-in { fill: var(--on-slice); font-size: 12.5px; font-weight: 600; }
+svg text.pie-in.amt { font-size: 12.5px; font-weight: 500; }
+svg text.pie-out.amt { fill: var(--ink); font-weight: 600; }
+svg text.pie-out { fill: var(--ink-2); font-size: 12px; }
+svg text.sub-l { fill: var(--ink-2); font-size: 12px; }
+svg text.band-l { fill: var(--ink-2); font-size: 12px; }
+.pie-tot { text-align: center; margin: 6px 0 8px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.pie-tot b { font-size: 20px; }
+.pie-tot span { color: var(--ink-2); font-size: 12.5px; }
+.pie ul { list-style: none; padding: 0; margin: 0; font-size: 13px; }
+.pie li { display: grid; grid-template-columns: 12px 1fr auto 3.2em; gap: 6px; align-items: center; padding: 2px 0; border-bottom: 1px solid var(--grid); }
+.pie li i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.pie li b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.pie li em { font-style: normal; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.method p, .method li { max-width: 760px; color: var(--ink-2); font-size: 14px; }
+.method ul { padding-left: 20px; }
+#tip { position: fixed; pointer-events: none; background: var(--surface); color: var(--ink); border: 1px solid var(--ring); border-radius: 8px; padding: 7px 10px; font-size: 12.5px; box-shadow: 0 4px 16px rgba(0,0,0,.12); z-index: 10; max-width: 280px; }
+#tip b { display: block; margin-bottom: 2px; }
+#tip .row { display: flex; gap: 10px; align-items: center; justify-content: space-between; }
+#tip .row i { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-right: 6px; }
+@media (max-width: 520px) { td, th { padding: 6px 4px; } .tile .v { font-size: 22px; } }
+</style>
+</head>
+<body>
+
+<div id="tip" hidden></div>
+<main id="top">
+<p class="back"><a href="../index.html">← All the monasteries</a></p><p class="back" style="margin-top:-6px"><b>Website:</b> <a href="https://vimutti.org.nz" target="_blank" rel="noopener">vimutti.org.nz</a><br><b>Source of the figures:</b> the <a href="https://register.charities.govt.nz/Charity/CC20332" target="_blank" rel="noopener">NZ Charities Register</a> (only 2023 to 2025: the earlier spending figures look incomplete)</p>
+<header>
+  <p class="kicker">Auckland Theravada Buddhist Association · Vimutti Buddhist Monastery · Bombay, Auckland, New Zealand · 2023–2025</p>
+  <h1>What it costs to run Vimutti</h1>
+  <p class="hero" id="hero"></p>
+  <div class="tiles headline" id="headline"></div>
+  <p class="foot" id="headline-foot"></p>
+</header>
+
+<section id="story" class="story">
+  <div class="card"><h3>What it takes to run Vimutti</h3><p class="big" id="run-text"></p><div id="c-day"></div><p class="under" id="day-under"></p></div>
+  <div class="grid2 main">
+    <div class="card"><h3 id="h-total">Running costs against inflation</h3><div id="c-total"></div><p class="caption" id="cap-total"></p></div>
+    <div class="card"><h3>Money in and money spent, each year</h3><div id="c-flow"></div><p class="caption" id="cap-flow"></p></div>
+  </div>
+  <div class="meaning">
+    <h3>What this means</h3>
+    <p id="meaning"></p>
+  </div>
+  <p class="defs" id="defs"></p>
+  <nav class="toc" aria-label="More detail"><p class="toc-h">More detail</p><ol id="toc"></ol></nav>
+</section>
+
+<section id="savings">
+  <h2>1. What is held</h2>
+  <p class="lede" id="savings-lede"></p>
+  <div class="more">
+    <div class="card"><h3>What the accounts hold at the end of each year</h3><p class="sub" id="savings-sub"></p><div id="c-hold"></div><p class="note" id="hold-note"></p></div>
+  </div>
+</section>
+
+<section id="people">
+  <h2>2. Who lives there</h2>
+  <p class="lede" id="people-lede"></p>
+  <div class="more">
+    <div class="card"><h3>People living there</h3><p class="sub">Monks, novices, nuns and anagārikas on the community lists: the average of the lists that fall in each year.</p><div id="c-people"></div></div>
+  </div>
+</section>
+
+<section id="notes" class="method">
+  <h2>3. Notes and all figures</h2>
+  <div class="more">
+    <ul id="notes-list"></ul>
+    <div class="scroll-x"><table id="t-all"></table></div>
+  </div>
+</section>
+<p class="sources endsrc" id="sources"></p>
+</main>
+
+<script>
+const D0 = {"currency": "NZ$ ", "currencyName": "New Zealand dollars", "cpiName": "the New Zealand consumer price index (World Bank; the average of the two calendar years a year to 31 July spans)", "short": "Vimutti", "runVerb": "Running Vimutti", "costName": "Spending", "costDefShort": "total expenditure as the Association reports it to the register.", "defs": "Spending: the total expenditure the Association reports to the New Zealand Charities Register each year; the register shows only this total. Residents: the monks, novices, nuns and anagārikas listed at Vimutti on the community lists, on average; guests and lay residents are not counted. Inflation: the New Zealand consumer price index (World Bank). All amounts in New Zealand dollars, as paid at the time, unless the page says \"in today's money\".", "incomeNote": "", "meaningNote": "The register gives only two totals a year, so this page cannot say what the money was spent on.", "holdSeries": [], "holdSub": "", "holdLede": "", "holdNote": "", "notes": ["<b>Where the figures come from.<\/b> The annual returns of the Auckland Theravada Buddhist Association Incorporated (charity CC20332) on the New Zealand Charities Register: total income and total expenditure for the years to 31 July (<code>register_returns.txt<\/code> in this folder keeps the table). The Association runs Vimutti Buddhist Monastery at Bombay, south of Auckland (<a href=\"https://vimutti.org.nz\" target=\"_blank\" rel=\"noopener\">vimutti.org.nz<\/a>).", "<b>Years.<\/b> The Association's year runs from 1 August to 31 July and is named by the year it ends in: \"2025\" is August 2024 to July 2025.", "<b>Only three years are shown, on purpose.<\/b> The register lists returns from 2008 to 2025, but most of the spending figures cannot be right for a monastery that was running: it shows $0 spent for 2008 to 2011, 2019, 2021 and 2022, $45,000 for 2020, and $37,584 and $32,011 for 2012 and 2013, in years when it took in $100,000 to $360,000. Only 2023, 2024 and 2025 look complete, so only those are charted. The audited reports behind the earlier returns were not read.", "<b>The other years, as the register shows them (money in / total spent).<\/b> 2012: $102,863 / $37,584. 2013: $182,357 / $32,011. 2014: $138,562 / $172,703. 2015: $139,856 / $165,299. 2016: $135,549 / $180,145. 2017: $77,381 / $63,011. 2018: $166,108 / $73,203. 2019: $158,166 / $0. 2020: $165,148 / $45,000. 2021: $362,084 / $0. 2022: $148,159 / $0. 2008 to 2011: $0 / $0. 2014 to 2018 may be right but are not charted because the years in between are missing. The year to July 2026 is not yet filed.", "<b>Spending is total spending.<\/b> It can include building work and wear on buildings; the register does not separate them, so this page shows no running cost and no change after inflation.", "<b>Residents<\/b> are the monks, novices, nuns and anagārikas on the community lists (the Winter list of January and the Vassa list of July). Guests, retreatants and lay residents are not counted."], "sources": "<b>Sources anyone can check:<\/b> the <a href=\"https://register.charities.govt.nz/Charity/CC20332\" target=\"_blank\" rel=\"noopener\">New Zealand Charities Register<\/a>, Auckland Theravada Buddhist Association Incorporated (CC20332). Residents: the monasteries' community lists. <span class=\"tag\">Updated 21 November 2026, 01:38 GMT<\/span>", "operating": false, "years": [2023, 2024, 2025], "data": {"2023": {"income": 120898, "spending": 95068, "people": 2.0}, "2024": {"income": 115630, "spending": 119571, "people": 2.0}, "2025": {"income": 157639, "spending": 94158, "people": 2.5}}, "cpi": {"2023": 133.153, "2024": 138.863, "2025": 142.863}};
+const CUR = D0.currency;
+function render() {
+const D = JSON.parse(JSON.stringify(D0));   // a fresh copy: render() runs again when the width changes
+const Y = D.years, Ys = Y.map(String), R = Ys.map(y => D.data[y]);
+const LAST = R[R.length - 1], LY = Y[Y.length - 1];
+const v = (r, k) => (r && r[k]) || 0;
+
+// ---------------------------------------------------------------- formatting
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const pounds = n => (n < 0 ? '−' : '') + CUR + Math.abs(Math.round(n)).toLocaleString('en-GB');
+function short(n) {                       // £1.59m, £194k, £950
+  const a = Math.abs(n), s = n < 0 ? '−' : '';
+  if (a >= 1e6) return s + CUR + (a / 1e6).toFixed(2).replace(/\.?0+$/, '') + 'm';
+  if (a >= 1e3) return s + CUR + (a < 1e4 ? String(+(a / 1e3).toFixed(2)) : Math.round(a / 1e3)) + 'k';
+  return s + CUR + Math.round(a);
+}
+const words = n => { const a = Math.abs(n); return a >= 1e6 ? CUR + (a / 1e6).toFixed(2).replace(/\.?0+$/, '') + ' million' : pounds(a); };
+const yearName = y => String(y);
+
+// ---------------------------------------------------------------- tooltip
+const tip = document.getElementById('tip');
+function showTip(e, html) { tip.innerHTML = html; tip.hidden = false; moveTip(e); }
+function moveTip(e) {
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = e.clientX + 14, y = e.clientY + 14;
+  if (x + w > innerWidth - 8) x = e.clientX - w - 14;
+  if (y + h > innerHeight - 8) y = e.clientY - h - 14;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip() { tip.hidden = true; }
+document.addEventListener('scroll', hideTip, { passive: true });
+const row = (name, color, val) => `<div class="row"><span><i style="background:var(${color})"></i>${esc(name)}</span><span>${val}</span></div>`;
+
+// ---------------------------------------------------------------- charts (plain SVG)
+const NS = 'http://www.w3.org/2000/svg';
+// on a phone the charts are drawn at most 600 wide (so they shrink less) with a wider left margin for the larger text
+const MOB = typeof innerWidth === 'number' && innerWidth > 0 && innerWidth < 600;
+const fitW = (W, host) => { const cw = host && host.clientWidth; return cw && cw < W ? Math.max(240, Math.floor(cw)) : W; };
+const fitL = l => l + (CUR.length > 1 ? 22 : 0);
+function el(tag, attrs, parent) { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (parent) parent.appendChild(n); return n; }
+function legend(host, items, line) {
+  const d = document.createElement('div'); d.className = 'legend';
+  // a box for bars, a short line for lines, a dashed line for dashed lines
+  d.innerHTML = items.map(it => {
+    const sw = it.dash ? `<i class="line dash" style="border-top-color:var(${it.color})"></i>`
+      : (line || it.isLine) ? `<i class="line" style="background:var(${it.color})"></i>`
+      : `<i style="background:var(${it.color})"></i>`;
+    return `<span>${sw}${esc(it.name)}</span>`;
+  }).join('');
+  host.appendChild(d);
+}
+function scale(max) {                     // the smallest round top for the axis that fits, with 3 to 5 steps
+  let best = null;
+  for (const p of [10, 100, 1e3, 1e4, 1e5, 1e6, 1e7]) for (const b of [1, 2, 2.5, 5]) for (const k of [3, 4, 5]) {
+    const top = b * p * k;
+    if (top >= max && (!best || top < best.max || (top === best.max && k > best.n))) best = { max: top, n: k };
+  }
+  return best || { max, n: 4 };
+}
+function smallScale(max) {                // plain counts: steps of 5, 10 or 20
+  for (const st of [1, 2, 5, 10, 20, 25, 50]) for (const k of [3, 4, 5, 6]) if (st * k >= max) return { max: st * k, n: k };
+  return { max, n: 4 };
+}
+// an x-axis label; a five-year label such as "2002–06" goes on two lines ("2002" / "–2006") when space is short
+function xLabel(svg, x, y, lab, narrow) {
+  const t = el('text', { x, y, 'text-anchor': 'middle' }, svg), m = narrow && /^\d{4}–\d{2}$/.test(lab) ? lab.split('–') : null;
+  if (!m) { t.textContent = lab; return; }
+  el('tspan', { x, dy: 0 }, t).textContent = m[0];
+  el('tspan', { x, dy: 14 }, t).textContent = '–' + m[0].slice(0, 2) + m[1];
+}
+function barPath(x, y, w, h, r) { r = Math.min(r, w / 2, h); return `M${x},${y + h}V${y + r}Q${x},${y} ${x + r},${y}H${x + w - r}Q${x + w},${y} ${x + w},${y + r}V${y + h}Z`; }
+function axis(svg, m, W, ph, sc, fmt = short) {
+  for (let k = 0; k <= sc.n; k++) {
+    const val = sc.max * k / sc.n, y = m.t + ph - ph * k / sc.n;
+    el('line', { x1: m.l, x2: W - m.r, y1: y, y2: y, class: k ? 'gl' : 'base' }, svg);
+    el('text', { x: m.l - 6, y: y + 4, 'text-anchor': 'end' }, svg).textContent = fmt(val);
+  }
+}
+/* stacked columns; values in £. opt.cap draws taller bars to the cap with a break and their real total on top */
+function stacked(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  legend(host, [...series, ...[...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => ({ ...L, isLine: true }))], false);
+  const W = fitW(opt.W || 1000, host), two = (W - 60) / labels.length < 64 && labels.every(l => /^\d{4}–\d{2}$/.test(l));
+  const H = (opt.h || 280) + (two ? 14 : 0), m = { l: fitL(52), r: opt.right ? 64 : 8, t: 22, b: 28 + (two ? 14 : 0) };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const totals = labels.map((_, i) => series.reduce((a, s) => a + (s.values[i] || 0), 0));
+  const top = Math.max(...totals, ...(opt.line ? opt.line.values : []), ...(opt.lines || []).flatMap(L => L.values));
+  let sc = scale((opt.cap ? Math.min(opt.cap, top) : top) * (opt.headroom || 1));
+  if (opt.steps) {                    // fixed steps on both scales, e.g. £150k on the left = £5m on the right
+    const n = Math.max(3, Math.ceil(Math.max(top, ...(opt.right ? opt.right.values.map(v => v / opt.steps.right * opt.steps.left) : [])) / opt.steps.left));
+    sc = { max: opt.steps.left * n, n };
+  }
+  axis(svg, m, W, ph, sc);
+  // a second scale on the right, on the same gridlines, for a line measured in something else
+  let rsc = null;
+  if (opt.right) {
+    const R = opt.right, last = R.values[R.values.length - 1];
+    const floor = Math.max(...R.values) * (R.headroom || 1) / sc.n;          // every point must fit
+    // with "above", end the right-hand line that share above the other line's last point: the nearest round step
+    const want = R.above && opt.line ? last / Math.min(opt.line.values[opt.line.values.length - 1] / sc.max * R.above, 0.97) / sc.n : floor;
+    let step = opt.steps ? opt.steps.right : null;
+    if (!opt.steps) for (const p of [1, 10, 100, 1e3, 1e4, 1e5, 1e6, 1e7]) for (const b of [1, 1.2, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3, 3.5, 4, 4.5, 5, 6, 7, 7.5, 8, 9]) {
+      const c = b * p;
+      if (c >= floor * 0.999 && (!step || Math.abs(c - want) < Math.abs(step - want) || (step < want && c >= want && c - want < want - step))) step = c;
+    }
+    rsc = { max: step * sc.n };
+    for (let k = 0; k <= sc.n; k++) el('text', { x: W - m.r + 6, y: m.t + ph - ph * k / sc.n + 4, 'text-anchor': 'start', style: `fill:var(${opt.right.color})` }, svg).textContent = (opt.right.fmtR || short)(step * k);
+  }
+  const band = pw / n, bw = Math.min(56, band * 0.6);
+  labels.forEach((lab, i) => {
+    const x = m.l + band * i + (band - bw) / 2, over = totals[i] > sc.max;
+    const k = over ? sc.max / totals[i] : 1;      // squeeze an over-tall bar so its parts still show in proportion
+    let acc = 0;
+    const segs = series.map(s => ({ s, v: s.values[i] || 0 })).filter(o => o.v > 0);
+    segs.forEach((o, j) => {
+      const h = ph * o.v * k / sc.max, y = m.t + ph - ph * (acc + o.v * k) / sc.max, gap = j ? 2 : 0;
+      if (h - gap > 0.5) {
+        if (j === segs.length - 1 && !over) el('path', { d: barPath(x, y, bw, h - gap, 4), fill: `var(${o.s.color})` }, svg);
+        else el('rect', { x, y, width: bw, height: h - gap, fill: `var(${o.s.color})` }, svg);
+      }
+      acc += o.v * k;
+    });
+    if (over) {                                   // a zigzag break near the top
+      const yb = m.t + 18;
+      el('path', { d: `M${x - 3},${yb} l${(bw + 6) / 4},-5 l${(bw + 6) / 4},10 l${(bw + 6) / 4},-10 l${(bw + 6) / 4},5`, fill: 'none', stroke: 'var(--surface)', 'stroke-width': 5 }, svg);
+    }
+    if ((opt.totals || over) && (over || (n <= 16 && (n - 1 - i) % Math.max(1, Math.ceil(42 / band)) === 0))) el('text', { x: x + bw / 2, y: m.t + ph - ph * Math.min(totals[i], sc.max) / sc.max - 6, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = short(totals[i]);
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.slice().reverse().map(s => s.values[i] ? row(s.name, s.color, pounds(s.values[i])) : '').join('') + (opt.noTotal ? '' : `<div class="row" style="margin-top:3px"><span>Total</span><span>${pounds(totals[i])}</span></div>`) + [...(opt.lines || []), ...(opt.line ? [opt.line] : []), ...(opt.right ? [opt.right] : [])].map(L => row(L.name, L.color, (L.fmtR || pounds)(L.values[i]))).join('')));
+    hit.addEventListener('mouseleave', hideTip);
+    if (showLabel(labels, i, band)) xLabel(svg, m.l + band * i + band / 2, H - 8 - (two ? 14 : 0), lab, two);
+  });
+  for (const L of (opt.lines || [])) drawOver(L);
+  if (opt.line) drawOver(opt.line);
+  if (opt.right) drawOver(opt.right, rsc);
+  function drawOver(L, S = sc) {
+    const X = i => m.l + band * i + band / 2, Yp = val => m.t + ph - ph * Math.min(val, S.max) / S.max;
+    el('path', { d: L.values.map((val, i) => (i ? 'L' : 'M') + X(i) + ',' + Yp(val)).join(''), fill: 'none', stroke: `var(${L.color})`, 'stroke-width': L.dash ? 2 : 2.5, 'stroke-dasharray': L.dash ? '6 5' : 'none', 'stroke-linejoin': 'round', 'pointer-events': 'none' }, svg);
+    if (L.ends) [0, n - 1].forEach(i => {
+      el('circle', { cx: X(i), cy: Yp(L.values[i]), r: 4.5, fill: `var(${L.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5, 'pointer-events': 'none' }, svg);
+      el('text', { x: X(i), y: Yp(L.values[i]) - 9, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (L.fmtR || short)(L.values[i]);
+    });
+    if (n <= 16) L.values.forEach((val, i) => el('circle', { cx: X(i), cy: Yp(val), r: 4, fill: `var(${L.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5, 'pointer-events': 'none' }, svg));
+  }
+}
+/* side-by-side columns */
+function grouped(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  if (series.length > 1) legend(host, series);
+  const W = fitW(opt.W || 600, host), H = opt.h || 280, m = { l: fitL(52), r: 6, t: 20, b: 28 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const sc = opt.fmt ? smallScale(Math.max(...series.flatMap(s => s.values.filter(x => x != null)))) : scale(Math.max(...series.flatMap(s => s.values.filter(x => x != null))));
+  axis(svg, m, W, ph, sc, opt.fmt || short);
+  const band = pw / n, bw = Math.min(opt.bw || 30, (band - 10) / series.length);
+  labels.forEach((lab, i) => {
+    series.forEach((s, j) => {
+      const val = s.values[i]; if (val == null || val <= 0) return;
+      const h = ph * val / sc.max, x = m.l + band * i + band / 2 - (bw * series.length + 3 * (series.length - 1)) / 2 + j * (bw + 3);
+      el('path', { d: barPath(x, m.t + ph - h, bw, h, 3), fill: `var(${s.color})` }, svg);
+      if (opt.values && (bw + 3 >= 42 || (val >= Math.max(...series.map(s => s.values[i] || 0)) && (n - 1 - i) % Math.max(1, Math.ceil(42 / band)) === 0))) el('text', { x: x + bw / 2, y: m.t + ph - h - 5, 'text-anchor': 'middle', class: 'lbl' }, svg).textContent = (opt.fmt || short)(val);
+    });
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${esc(opt.name ? opt.name(lab) : lab)}</b>` + series.map(s => s.values[i] == null ? '' : row(s.name, s.color, (opt.fmt || pounds)(s.values[i]))).join('')));
+    hit.addEventListener('mouseleave', hideTip);
+    if (showLabel(labels, i, band)) el('text', { x: m.l + band * i + band / 2, y: H - 8, 'text-anchor': 'middle' }, svg).textContent = lab;
+  });
+}
+/* lines with a crosshair; a null value leaves a gap */
+const showLabel = (labels, i, band = 99) => (labels.length <= 16 || +labels[i] % 5 === 0) && (labels.length - 1 - i) % Math.max(1, Math.ceil((String(labels[i]).length * 6.5 + 6) / band)) === 0;   // on a narrow chart show every 2nd or 3rd label, so years never run into each other
+function lines(id, labels, series, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  if (series.length > 1) legend(host, series, true);
+  const W = fitW(opt.W || 600, host), H = opt.h || 280, m = { l: fitL(52), r: MOB ? 76 : 60, t: 14, b: 28 };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = labels.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const top = Math.max(...series.flatMap(s => s.values.filter(x => x != null))), fmt = opt.fmt || short;
+  const sc = opt.fmt ? smallScale(top) : scale(top);
+  axis(svg, m, W, ph, sc, fmt);
+  const X = i => m.l + pw * i / (n - 1), Yp = val => m.t + ph - ph * val / sc.max;
+  labels.forEach((lab, i) => { if (showLabel(labels, i, pw / Math.max(1, n - 1))) el('text', { x: X(i), y: H - 8, 'text-anchor': 'middle' }, svg).textContent = lab; });
+  if (opt.band && labels.includes(opt.band.from) && labels.includes(opt.band.to)) {
+    const x0 = X(labels.indexOf(opt.band.from)) - pw / (n - 1) / 2, x1 = X(labels.indexOf(opt.band.to)) + pw / (n - 1) / 2;
+    const bandEl = el('rect', { x: x0, y: m.t, width: x1 - x0, height: ph, fill: 'var(--grid)', opacity: 0.7 }, svg);
+    svg.insertBefore(bandEl, svg.firstChild);
+    el('text', { x: (x0 + x1) / 2, y: m.t + ph - 8, 'text-anchor': 'middle', class: 'lbl band-l' }, svg).textContent = opt.band.label;
+  }
+  if (opt.mark && labels.includes(opt.mark.at)) {
+    const xm = X(labels.indexOf(opt.mark.at));
+    el('line', { x1: xm, x2: xm, y1: m.t, y2: m.t + ph, stroke: 'var(--axis)', 'stroke-width': 1.5, 'stroke-dasharray': '3 4' }, svg);
+    el('text', { x: xm - 6, y: m.t + 12, 'text-anchor': 'end', class: 'lbl' }, svg).textContent = opt.mark.label;
+  }
+  const ends = [];
+  series.forEach(s => {
+    let d = '', pen = false, last = -1;
+    s.values.forEach((val, i) => { if (val == null) { pen = false; return; } d += (pen ? 'L' : 'M') + X(i).toFixed(1) + ',' + Yp(val).toFixed(1); pen = true; last = i; });
+    el('path', { d, fill: 'none', stroke: `var(${s.color})`, 'stroke-width': s.dash ? 2 : 2.5, 'stroke-dasharray': s.dash ? '6 5' : 'none', 'stroke-linejoin': 'round', 'stroke-linecap': 'round' }, svg);
+    if (n <= 16) s.values.forEach((val, i) => { if (val != null) el('circle', { cx: X(i), cy: Yp(val), r: 3, fill: `var(${s.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5 }, svg); });
+    if (last >= 0) { el('circle', { cx: X(last), cy: Yp(s.values[last]), r: 4.5, fill: `var(${s.color})`, stroke: 'var(--surface)', 'stroke-width': 1.5 }, svg); ends.push({ y: Yp(s.values[last]) + 4, t: fmt(s.values[last]), x: X(last) + 8 }); }
+  });
+  ends.sort((a, b) => a.y - b.y).forEach((e, i, arr) => { if (i && e.y - arr[i - 1].y < 13) e.y = arr[i - 1].y + 13; el('text', { x: e.x, y: e.y, class: 'lbl' }, svg).textContent = e.t; });
+  const cross = el('line', { y1: m.t, y2: m.t + ph, stroke: 'var(--axis)', 'stroke-width': 1, visibility: 'hidden' }, svg);
+  const hit = el('rect', { x: m.l - 10, y: m.t, width: pw + 20, height: ph, fill: 'transparent' }, svg);
+  hit.addEventListener('mousemove', e => {
+    const r = svg.getBoundingClientRect(), vx = (e.clientX - r.left) * W / r.width;
+    const i = Math.max(0, Math.min(n - 1, Math.round((vx - m.l) / pw * (n - 1))));
+    cross.setAttribute('x1', X(i)); cross.setAttribute('x2', X(i)); cross.setAttribute('visibility', 'visible');
+    showTip(e, `<b>${esc(opt.name ? opt.name(labels[i]) : labels[i])}</b>` + series.map(s => s.values[i] == null ? '' : row(s.name, s.color, (opt.fmt || pounds)(s.values[i]))).join(''));
+  });
+  hit.addEventListener('mouseleave', () => { hideTip(); cross.setAttribute('visibility', 'hidden'); });
+}
+/* five-year blocks: one bar each (average a year, as paid), with a dashed marker for inflation from the first block */
+function blockBars(id, blocks, f, opt = {}) {
+  const host = document.getElementById(id); host.innerHTML = '';
+  const lab = b => `${b[0]}–${String(b[b.length - 1]).slice(2)}`;
+  const vals = blocks.map(b => avgOf(b, f)), cpi = blocks.map(b => avgOf(b, y => CPI[y]));
+  const infl = cpi.map(c => vals[0] * c / cpi[0]);
+  const X2 = opt.extra, ix2 = X2 ? blocks.map(b => avgOf(b, y => X2.index[y])) : null, ex = X2 ? ix2.map(c => vals[0] * c / ix2[0]) : [];
+  if (!opt.noLegend) legend(host, [{ name: opt.name || 'Average a year', color: opt.color || RED }, ...(opt.noInfl ? [] : [{ name: `Inflation from ${lab(blocks[0])}`, color: QUIET, dash: true }]), ...(X2 ? [{ name: `${X2.name} only, from ${lab(blocks[0])}`, color: X2.color, dash: true }] : [])]);
+  const W = fitW(600, host), two = (W - 60) / blocks.length < 64;
+  const H = (opt.h || 280) + (two ? 14 : 0), m = { l: fitL(52), r: 8, t: 26, b: 30 + (two ? 14 : 0) };
+  const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': opt.aria || '' }, host);
+  const n = blocks.length, pw = W - m.l - m.r, ph = H - m.t - m.b;
+  const sc = scale(Math.max(...vals, ...(opt.noInfl ? [] : infl), ...ex) * 1.08);
+  axis(svg, m, W, ph, sc);
+  const band = pw / n, bw = Math.min(64, band * 0.55), Yp = v => m.t + ph - ph * v / sc.max;
+  // the figure for the dashed line is written just under the line, inside the bar, when the line is inside the bar and the bar is wide and tall enough;
+  // otherwise (line above the bar, or a narrow bar) it goes in a line under the chart
+  const inBar = i => i > 0 && !opt.noInfl && !X2 && bw >= 44 && infl[i] < vals[i] && Yp(infl[i]) + 18 < m.t + ph;
+  const noted = [];
+  blocks.forEach((b, i) => {
+    const x = m.l + band * i + (band - bw) / 2, h = ph * vals[i] / sc.max;
+    el('path', { d: barPath(x, m.t + ph - h, bw, h, 4), fill: `var(${opt.color || RED})`, opacity: i === n - 1 ? 1 : 0.78 }, svg);
+    el('text', { x: x + bw / 2, y: opt.labelsIn ? Yp(vals[i]) + 17 : (i > 0 && !opt.noInfl && infl[i] > vals[i] ? Math.min(Yp(vals[i]), Yp(infl[i])) - 9 : Yp(vals[i]) - 7), 'text-anchor': 'middle', class: opt.labelsIn ? 'lbl in' : 'lbl' }, svg).textContent = (opt.fmt || short)(vals[i]);
+    if (i > 0 && !opt.noInfl) el('line', { x1: x - 6, x2: x + bw + 6, y1: Yp(infl[i]), y2: Yp(infl[i]), stroke: `var(${QUIET})`, 'stroke-width': 2.5, 'stroke-dasharray': '5 4' }, svg);
+    if (inBar(i)) el('text', { x: x + bw / 2, y: Yp(infl[i]) + 16, 'text-anchor': 'middle', class: 'lbl in' }, svg).textContent = (opt.fmt || short)(infl[i]);
+    else if (i > 0 && !opt.noInfl && !X2) noted.push(i);
+    if (i > 0 && X2) el('line', { x1: x - 8, x2: x + bw + 8, y1: Yp(ex[i]), y2: Yp(ex[i]), stroke: `var(${X2.color})`, 'stroke-width': X2.strong ? 3.5 : 2.5, 'stroke-dasharray': X2.strong ? '7 3' : '2 3' }, svg);
+    xLabel(svg, x + bw / 2, m.t + ph + 18, lab(b), two);
+    const hit = el('rect', { x: m.l + band * i, y: m.t, width: band, height: ph, fill: 'transparent' }, svg);
+    hit.addEventListener('mousemove', e => showTip(e, `<b>${b[0]}–${b[b.length - 1]}, average a year</b>` + row(opt.name || 'Average', opt.color || RED, pounds(vals[i])) + (i && !opt.noInfl ? row('Inflation only', QUIET, pounds(infl[i])) : '') + (i && X2 ? row(X2.name + ' only', X2.color, pounds(ex[i])) : '')));
+    hit.addEventListener('mouseleave', hideTip);
+  });
+  if (noted.length) {
+    const p = document.createElement('p'); p.className = 'under';
+    p.textContent = `${noted.length < n - 1 ? 'The dashed line is above the bar (the figure if costs had only followed inflation)' : 'Dashed line, if costs had only followed inflation'}: ${noted.map(k => `${lab(blocks[k])} ${short(infl[k])}`).join(' · ')}.`;
+    host.appendChild(p);
+  }
+  if (opt.sub) {                                   // a row of plain text under the chart (easier to read than text in it)
+    const p = document.createElement('p'); p.className = 'under';
+    p.textContent = `${opt.subName}: ${blocks.map(b => opt.sub(b)).join(' · ')}`;
+    host.appendChild(p);
+  }
+  return { vals, infl, ex, lab };
+}
+/* what went up and what went down: one bar per row from a zero line, as page text so it reads at any width;
+   rows = [{name, value, color, bold, gap, light}] */
+function bridge(id, rows, opt = {}) {
+  const host = document.getElementById(id);
+  const lo = Math.min(0, ...rows.map(r => r.value)), hi = Math.max(0, ...rows.map(r => r.value)), span = hi - lo;
+  const z = 100 * -lo / span;
+  host.className = 'hbars bridge'; host.setAttribute('role', 'img'); host.setAttribute('aria-label', opt.aria || '');
+  host.innerHTML = rows.map(r => {
+    const w = 100 * Math.abs(r.value) / span, left = r.value >= 0 ? z : z - w;
+    return `${r.gap ? '<hr>' : ''}<div class="hb${r.bold ? ' b' : ''}"><span class="hb-n">${esc(r.name)}</span>` +
+      `<span class="hb-t"><i style="left:${left}%;width:${Math.max(w, 0.5)}%;background:var(${r.color});opacity:${r.light ? 0.55 : 1}"></i><b style="left:${z}%"></b></span>` +
+      `<span class="hb-v">${r.value >= 0 ? '+' : ''}${short(r.value)}</span></div>`;
+  }).join('');
+}
+/* a table of years across; rows = [{name, values, cls, fmt}] */
+function yearTable(id, years, rows, opt = {}) {
+  const t = document.getElementById(id);
+  t.innerHTML = `<thead><tr><th>${esc(opt.first || '')}</th>` + years.map(y => `<th class="n">${y}</th>`).join('') + '</tr></thead><tbody>' +
+    rows.map(r => r.group ? `<tr class="grp"><td colspan="${years.length + 1}">${esc(r.group)}</td></tr>` :
+      `<tr class="${r.cls || ''}"><td class="${r.indent ? 'sub1' : ''}">${esc(r.name)}</td>` + r.values.map(x => `<td class="n">${x == null ? '–' : (r.fmt || pounds)(x)}</td>`).join('') + '</tr>').join('') + '</tbody>';
+}
+
+
+
+// ---------------------------------------------------------------- shared pieces
+const CPI = D.cpi, RED = '--critical', QUIET = '--muted';
+const RUN = r => r.spending - v(r, 'depr');                        // running costs: all spending, without wear on buildings where the accounts give it
+const avgOf = (ys, f) => ys.reduce((a, y) => a + f(y), 0) / ys.length;
+const today = y => CPI[LY] / CPI[y];
+// periods of five years counted back from the latest year; a first period of fewer than three years is dropped
+const BLOCKS = (() => {
+  if (Ys.length <= 9) { const h = Math.floor(Ys.length / 2); return [Ys.slice(0, h), Ys.slice(h)]; }     // a short record: two halves
+  const out = []; for (let e = Ys.length; e > 0; e -= 5) out.unshift(Ys.slice(Math.max(0, e - 5), e)); if (out.length > 1 && out[0].length < 3) out.shift(); return out;
+})();
+const BLAB = b => `${b[0]}–${String(b[b.length - 1]).slice(2)}`;
+const B0 = BLOCKS[0], BN = BLOCKS[BLOCKS.length - 1], N3 = Ys.slice(-3);
+const bAvg = (b, f) => avgOf(b, y => f(D.data[y]));
+const bToday = (b, f) => avgOf(b, y => f(D.data[y]) * today(y));
+const realX = (from, to, f) => bToday(to, f) / bToday(from, f);
+const pcW = x => Math.abs(Math.round(100 * (x - 1))) + '%';
+const upPct = x => (x >= 1 ? '+' : '−') + pcW(x);
+const rnd = n => (n < 0 ? '−' : '') + CUR + Math.abs(Math.round(n / 5) * 5).toLocaleString('en-GB');
+const thou = n => (n < 0 ? '−' : '') + CUR + Math.abs(Math.round(n / 1e3) * 1e3).toLocaleString('en-GB');
+const ppl = ys => { const v = ys.filter(y => D.data[y].people != null); return v.length ? avgOf(v, y => D.data[y].people) : null; };
+const okN = x => x != null && isFinite(x);
+const ratio = (a, b) => (a != null && b != null && b > 0) ? a / b : null;
+const pplRound = n => (Math.round(n * 10) / 10).toString();
+const days = D.daysInYear || 365;
+const hasDepr = Ys.some(y => D.data[y].depr);
+const RNAME = D.costName || 'Running costs';
+const ALT = D.alt || null;
+const kro = n => ALT ? '(' + (n < 0 ? '−' : '') + ALT.cur + Math.abs(Math.round(n / 1e3) * 1e3).toLocaleString('en-GB') + ')' : '';
+const OPER = D.operating !== false;      // false: the accounts give total expenses only (building work and wear on buildings cannot be taken out), so no running-cost claims are made
+const lowHigh = (f) => { const ys = Ys.filter(y => f(D.data[y]) != null); const lo = ys.reduce((a, y) => f(D.data[y]) < f(D.data[a]) ? y : a), hi = ys.reduce((a, y) => f(D.data[y]) > f(D.data[a]) ? y : a); return { lo, hi }; };
+
+// ---------------------------------------------------------------- the headline
+(function headline() {
+  if (!OPER) {
+    const sp = avgOf(N3, y => D.data[y].spending), inc0 = avgOf(N3, y => D.data[y].income), yrs = `${Ys[Ys.length - 3]}–${String(LY).slice(2)}`;
+    document.getElementById('hero').innerHTML =
+      `${esc(D.short)}'s accounts give totals only. In ${yrs} it spent <b>${thou(sp)} a year</b>${ALT ? ' ' + kro(avgOf(N3, y => ALT.data[y].spending)) : ''} in total and took in <b>${thou(inc0)}</b>${ALT ? ' ' + kro(avgOf(N3, y => ALT.data[y].income)) : ''} a year. ` +
+      `This is total spending, not a running cost: it can include building work and wear on buildings, which the accounts do not separate.`;
+    const tl = [
+      { v: thou(sp), l: 'Total spending a year', c: `${ALT ? kro(avgOf(N3, y => ALT.data[y].spending)) + ' · ' : ''}${yrs} average, as paid` },
+      { v: thou(inc0), l: 'Money in a year', c: `${ALT ? kro(avgOf(N3, y => ALT.data[y].income)) + ' · ' : ''}${yrs} average, as paid` },
+      ...(okN(ppl(BN)) ? [{ v: pplRound(ppl(BN)), l: 'Residents', c: `on average, ${BLAB(BN)}` }] : []),
+    ];
+    document.getElementById('headline').innerHTML = tl.map(t => `<div class="tile"><div class="v">${esc(t.v)}</div><div class="l">${esc(t.l)}</div><div class="c">${esc(t.c)}</div></div>`).join('');
+    document.getElementById('headline-foot').textContent = `Total spending: ${D.costDefShort} ${ALT ? `Amounts are in ${D.currencyName}, converted from ${ALT.name} at the European Central Bank's average rate for each year; the ${ALT.name} as filed are in brackets.` : `Amounts in ${D.currencyName}, as in the accounts; nothing is converted.`}`;
+    return;
+  }
+  const year = avgOf(N3, y => RUN(D.data[y])), day = year / days, x = realX(B0, BN, RUN), px = ratio(ppl(BN), ppl(B0));
+  document.getElementById('hero').innerHTML =
+    `${esc(D.runVerb)} costs about <b>${thou(year)} a year</b>: about <b>${rnd(day)} a day</b>. ` +
+    `After inflation, that is <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}${okN(px) ? `, while the number of residents ${px >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))} (averages of the periods).` : '.'}`;
+  const inc = avgOf(N3, y => D.data[y].income);
+  const tiles = [
+    { v: thou(year), l: `${RNAME} a year`, c: `${Ys[Ys.length - 3]}–${String(LY).slice(2)} average, as paid` },
+    { v: thou(inc), l: 'Money in a year', c: `${Ys[Ys.length - 3]}–${String(LY).slice(2)} average, as paid` },
+    { v: upPct(x), l: `${RNAME} after inflation`, c: `${BLAB(B0)} to ${BLAB(BN)}`, bad: x > 1.05 },
+    ...(okN(ppl(BN)) ? [{ v: pplRound(ppl(BN)), l: 'Residents', c: `on average, ${BLAB(BN)}` }] : []),
+  ];
+  document.getElementById('headline').innerHTML = tiles.map(t => `<div class="tile"><div class="v${t.bad ? ' bad' : ''}">${esc(t.v)}</div><div class="l">${esc(t.l)}</div><div class="c">${esc(t.c)}</div></div>`).join('');
+  document.getElementById('headline-foot').textContent = `${RNAME}: ${D.costDefShort} Amounts in ${D.currencyName}, as in the accounts; nothing is converted. "After inflation" uses ${D.cpiName}.`;
+})();
+
+// ---------------------------------------------------------------- what it takes a day, then and now
+(function perDay() {
+  if (!OPER) { document.getElementById('c-day').closest('.card').remove(); return; }
+  const per = BLOCKS.map(b => ({ b, paid: avgOf(b, y => RUN(D.data[y]) / days), now: avgOf(b, y => RUN(D.data[y]) / days * today(y)), p: ppl(b) }));
+  const r0 = per[0], rN = per[per.length - 1], max = Math.max(...per.map(r => r.now));
+  document.getElementById('run-text').textContent =
+    `Running ${D.short} now takes about ${thou(avgOf(N3, y => RUN(D.data[y])))} a year, about ${rnd(avgOf(N3, y => RUN(D.data[y])) / days)} a day (${Ys[Ys.length - 3]}–${String(LY).slice(2)} average). ` +
+    `In ${BLAB(r0.b)} it was about ${rnd(r0.paid)} a day (${rnd(r0.now)} in ${LY} money). ` +
+    `So after inflation it ${rN.now >= r0.now ? 'now costs more' : 'now costs less'} a day: ${upPct(rN.now / r0.now)} since ${BLAB(r0.b)}; ${okN(ratio(rN.p, r0.p)) ? `the number of residents ${rN.p >= r0.p ? 'rose' : 'fell'} ${pcW(rN.p / r0.p)}.` : ''}`;
+  const host = document.getElementById('c-day'); host.className = 'hbars';
+  host.innerHTML = per.map((r, i) => `<div class="hb"><span class="hb-n">${BLAB(r.b)}${okN(r.p) ? `<span class="hb-s">${pplRound(r.p)} residents</span>` : ''}</span><span class="hb-t"><i style="width:${100 * r.now / max}%;background:var(${i === per.length - 1 ? '--s2' : '--s9'})"></i></span><span class="hb-v">${rnd(r.now)} a day</span></div>`).join('');
+  document.getElementById('day-under').textContent = `A day, in ${LY} money (inflation taken out), averaged over each period. ${per.some(r => okN(r.p)) ? 'The number under each period is its average number of residents.' : ''}`;
+})();
+
+// ---------------------------------------------------------------- the two main charts
+(function mainCharts() {
+  if (OPER) {
+    const vals = BLOCKS.map(b => bAvg(b, RUN)), cp = BLOCKS.map(b => avgOf(b, y => CPI[y])), infl = cp.map(c => vals[0] * c / cp[0]), n = vals.length - 1;
+    blockBars('c-total', BLOCKS, y => RUN(D.data[y]), { name: `${RNAME}, average a year`, aria: `${RNAME} in periods against inflation` });
+    document.getElementById('cap-total').textContent =
+      `In ${BLAB(BLOCKS[n])} ${RNAME.toLowerCase()} came to ${thou(vals[n])} a year. Had they risen with inflation only since ${BLAB(BLOCKS[0])}, they would be about ${thou(infl[n])}.`;
+  } else document.getElementById('c-total').closest('.card').remove();
+  grouped('c-flow', Ys, [
+    { name: 'Money in', color: '--s1', values: R.map(r => r.income) },
+    { name: 'Spending', color: '--s2', values: R.map(r => r.spending) },
+  ], { W: 600, h: 260, bw: Ys.length > 10 ? 12 : 16, name: y => `Year ${y}`, aria: 'Money in and money spent each year' });
+  const lh = lowHigh(r => r.income), ex = D.incomeNote || '';
+  document.getElementById('cap-flow').textContent =
+    `Money in was lowest in ${lh.lo} (${thou(D.data[lh.lo].income)}) and highest in ${lh.hi} (${thou(D.data[lh.hi].income)}). ${ex}`;
+})();
+
+// ---------------------------------------------------------------- what this means
+(function meaning() {
+  if (!OPER) {
+    const inN0 = bAvg(BN, r => r.income), spN0 = bAvg(BN, r => r.spending);
+    document.getElementById('meaning').textContent =
+      `In ${BLAB(BN)} money in averaged ${thou(inN0)} a year against ${thou(spN0)} spent in total. Total spending can include building work and wear on buildings, which these accounts do not separate, so it is not shown as a running cost, and it is not compared across years after inflation. ${D.meaningNote || ''}`;
+    document.getElementById('defs').textContent = D.defs;
+    return;
+  }
+  const L = D.data[LY], x = realX(B0, BN, RUN);
+  const inN = bAvg(BN, r => r.income), spN = bAvg(BN, r => r.spending);
+  document.getElementById('meaning').textContent =
+    `After inflation, ${RNAME.toLowerCase()} in ${BLAB(BN)} ${RNAME.endsWith("s") ? "were" : "was"} ${pcW(x)} ${x >= 1 ? 'higher' : 'lower'} than in ${BLAB(B0)}. ` +
+    `In ${BLAB(BN)} money in averaged ${thou(inN)} a year against ${thou(spN)} spent. ${D.meaningNote || ''}`;
+  document.getElementById('defs').textContent = D.defs;
+})();
+
+// ---------------------------------------------------------------- 1. what is held
+(function held() {
+  const keys = D.holdSeries;                     // [{key, name, color}] present in the data
+  const has = keys.filter(k => Ys.some(y => D.data[y][k.key] != null));
+  const sec = document.getElementById('savings');
+  if (!has.length) { sec.remove(); return; }
+  document.getElementById('savings-sub').textContent = D.holdSub;
+  document.getElementById('savings-lede').textContent = D.holdLede;
+  const HY = Ys.filter(y => has.some(k => D.data[y][k.key] != null));
+  grouped('c-hold', HY, has.map(k => ({ name: k.name, color: k.color, values: HY.map(y => D.data[y][k.key] ?? null) })), { W: 1000, h: 260, bw: has.length > 1 ? 18 : 30, name: y => `Year ${y}`, aria: 'What the accounts hold at the end of each year' });
+  document.getElementById('hold-note').textContent = D.holdNote || '';
+})();
+
+// ---------------------------------------------------------------- 2. who lives there
+(function people() {
+  const PY = Ys.filter(y => D.data[y].people != null);
+  if (!PY.length) { document.getElementById('people').remove(); return; }
+  document.getElementById('people-lede').textContent = `On the community lists ${pplRound(D.data[PY[PY.length - 1]].people)} people lived at ${D.short} in ${PY[PY.length - 1]}, on average of the lists that year; the most was ${Math.max(...PY.map(y => D.data[y].people))} and the fewest ${Math.min(...PY.map(y => D.data[y].people))}.`;
+  grouped('c-people', PY, [{ name: 'Residents', color: '--s3', values: PY.map(y => D.data[y].people) }], { W: 1000, h: 220, bw: 24, fmt: n => String(n), name: y => `Year ${y}`, aria: 'Residents each year' });
+})();
+
+// ---------------------------------------------------------------- 3. notes and all figures
+(function notes() {
+  document.getElementById('notes-list').innerHTML = D.notes.map(t => `<li>${t}</li>`).join('');
+  document.getElementById('sources').innerHTML = D.sources;
+  yearTable('t-all', Ys, [
+    { group: 'Running costs' },
+    { name: 'Total spending in the accounts', values: R.map(r => r.spending) },
+    ...(hasDepr ? [{ name: 'less wear on buildings (amortization / depreciation)', values: R.map(r => r.depr ? -r.depr : null), indent: true }] : []),
+    ...(OPER ? [{ name: RNAME, values: R.map(RUN), cls: 'tot' }] : []),
+    { group: 'Money in' },
+    { name: 'Total money in', values: R.map(r => r.income), cls: 'tot' },
+    ...(Ys.some(y => D.data[y].gifts != null) ? [{ name: 'of which gifts and contributions', values: R.map(r => r.gifts ?? null), indent: true }] : []),
+    ...(D.holdSeries.some(k => Ys.some(y => D.data[y][k.key] != null)) ? [{ group: 'Held at the end of the year' }, ...D.holdSeries.filter(k => Ys.some(y => D.data[y][k.key] != null)).map(k => ({ name: k.name, values: R.map(r => r[k.key] ?? null) }))] : []),
+    ...(ALT ? [{ group: 'As filed, in ' + ALT.name }, { name: 'Total spending in the accounts', values: Ys.map(y => ALT.data[y].spending), fmt: n => (n < 0 ? '−' : '') + ALT.cur + Math.abs(n).toLocaleString('en-GB') }, { name: 'Total money in', values: Ys.map(y => ALT.data[y].income), fmt: n => (n < 0 ? '−' : '') + ALT.cur + Math.abs(n).toLocaleString('en-GB') }, { name: 'Rate used (' + ALT.name + ' per euro)', values: Ys.map(y => ALT.rates[y]), fmt: n => n.toFixed(2) }] : []),
+    { group: 'People and prices' },
+    { name: 'People living there (lists)', values: R.map(r => r.people ?? null), fmt: n => String(n) },
+    { name: 'Price index (' + D.cpiName + ')', values: Ys.map(y => CPI[y]), fmt: n => n.toFixed(1) },
+  ], { first: 'Year' });
+  [...document.querySelectorAll('main > section[id]:not(#story)')].forEach((s, i) => { const h = s.querySelector('h2'); h.textContent = h.textContent.replace(/^\d+\./, (i + 1) + '.'); });
+  const toc = document.getElementById('toc');
+  toc.innerHTML = [...document.querySelectorAll('main > section[id]:not(#story)')].map(s => `<li><a href="#${s.id}">${esc(s.querySelector('h2').textContent)}</a></li>`).join('');
+  toc.onclick = (e => { const a = e.target.closest('a[href^="#"]'); if (!a) return; e.preventDefault(); document.getElementById(a.getAttribute('href').slice(1)).scrollIntoView({ block: 'start' }); });
+  document.querySelectorAll('main > section[id]:not(#story)').forEach(s => {
+    if (s.querySelector(':scope > .backtop')) return;
+    const p = document.createElement('p'); p.className = 'backtop'; p.innerHTML = '<a href="#top">↑ Back to top</a>';
+    p.firstChild.addEventListener('click', e => { e.preventDefault(); window.scrollTo(0, 0); });
+    s.appendChild(p);
+  });
+  if (!document.querySelector('.totop')) {
+    const up = document.createElement('a'); up.className = 'totop'; up.href = '#top'; up.textContent = '↑ Top'; up.setAttribute('aria-label', 'Back to the top of the page');
+    up.addEventListener('click', e => { e.preventDefault(); window.scrollTo(0, 0); });
+    document.body.appendChild(up);
+    addEventListener('scroll', () => up.classList.toggle('on', scrollY > 700), { passive: true });
+  }
+})();
+}
+render();
+{ let lastW = innerWidth, t = null;
+  addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (Math.abs(innerWidth - lastW) > 30) { lastW = innerWidth; render(); } }, 250); }); }
+</script>
+
+</body>
+</html>

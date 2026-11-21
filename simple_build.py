@@ -7,7 +7,7 @@ cpi_worldbank.json (the price index), fills simple/template.html and writes <fol
 The pages that come from this template give totals only (money in, spending, what is held): their accounts have no cost-by-cost detail."""
 import json, pathlib, sys, datetime
 here = pathlib.Path(__file__).parent
-FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara']
+FOLDERS = ['abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara', 'vimutti']
 
 def build(folder):
     p = here / folder

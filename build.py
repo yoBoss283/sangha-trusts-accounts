@@ -107,11 +107,12 @@ SRC = {
     'vimokkharam': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
     'bodhipala': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
     'dhammagiri': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
+    'vimutti': 'the <a href="https://register.charities.govt.nz/Charity/CC20332" target="_blank" rel="noopener">NZ Charities Register</a> (only 2023 to 2025: the earlier spending figures look incomplete)',
     'bodhivana': 'yearly statements to the Australian charities regulator (<a href="https://data.gov.au/data/organization/acnc" target="_blank" rel="noopener">ACNC data</a>)',
 }
-SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')]})
+SITES.update({'lokuttara': [('skogskloster.no', 'https://skogskloster.no')], 'forest-hermitage': [('foresthermitage.org.uk', 'https://foresthermitage.org.uk')], 'temple-forest': [('forestmonastery.org', 'https://forestmonastery.org')], 'bodhivana': [('Facebook page', 'https://www.facebook.com/buddhabodhivana/')], 'wat-buddha-dhamma': [('watbuddhadhamma.org', 'https://watbuddhadhamma.org')], 'vimokkharam': [('vimokkharam.org', 'https://vimokkharam.org')], 'bodhipala': [('Facebook page', 'https://www.facebook.com/bodhipalamonasteryadelaide/')], 'dhammagiri': [('dhammagiri.net', 'https://www.dhammagiri.net')], 'abhayagiri': [('abhayagiri.org', 'https://abhayagiri.org')], 'tisarana': [('tisarana.ca', 'https://tisarana.ca')], 'bodhinyanarama': [('bodhinyanarama.net.nz', 'https://bodhinyanarama.net.nz')], 'vimutti': [('vimutti.org.nz', 'https://vimutti.org.nz')]})
 # the pages made from simple/template.html (totals only): their card figures come from <folder>/facts.json, written by simple_build.py
-A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara')}
+A2 = {k: here / k for k in ('abhayagiri', 'tisarana', 'bodhinyanarama', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhivana', 'pacific-hermitage', 'milntuim', 'temple-forest', 'forest-hermitage', 'lokuttara', 'vimutti')}
 FILES2 = {k: f'{k}-accounts.html' for k in A2}
 card = {}
 for k in A2:
@@ -152,7 +153,7 @@ _old = sorted((d.name for d in (here / 'archive').glob('*') if d.is_dir() and (d
 EARLIER = ('<!--earlier--><b>Earlier versions:</b> ' + ', '.join(f'<a href="archive/{n}/index.html">{_months[int(n[5:7]) - 1]} {n[:4]}</a>' for n in _old) + '. <!--/earlier-->') if _old else ''
 REGIONS = [('Europe', ['est', 'ratanagiri', 'hartridge', 'forest-hermitage', 'milntuim', 'lokuttara', 'sumedharama']),
            ('United States and Canada', ['abhayagiri', 'temple-forest', 'pacific-hermitage', 'tisarana']),
-           ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama'])]
+           ('Australia and New Zealand', ['bodhivana', 'wat-buddha-dhamma', 'vimokkharam', 'bodhipala', 'dhammagiri', 'bodhinyanarama', 'vimutti'])]
 assert sorted(k for _, ks in REGIONS for k in ks) == sorted(card), 'every card must be in a region'
 # running costs a year (last three years, as paid): each group is shown from the highest to the lowest
 yearly = {k: fig[k]['year'] for k in fig}
@@ -174,7 +175,7 @@ body = f'''
 <header>
   <p class="kicker">Accounts of the monasteries, from their published annual reports</p>
   <h1>What it costs to run the monasteries</h1>
-  <p class="hero">Eighteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
+  <p class="hero">Nineteen monasteries in Europe, North America, Australia and New Zealand (Amaravati and Chithurst are one trust). Each report says, in plain words, what the place spends and, where its accounts allow it, how that has changed after inflation.</p>
   {jump_html}
   <p class="note more-n"><b>Two kinds of number.</b> A dark <span class="kind kind-run" style="margin:0">Running cost</span> label means building work and wear on buildings have been taken out, so these figures can be compared with each other (roughly, as the currencies differ). A dashed <span class="kind kind-total" style="margin:0">Total spent</span> label means the place publishes only its total spending, which can include building work; it is not a running cost, so please do not compare it with the others.</p>
   <p class="note more-n">Within each group, places that show their running costs (building work and wear on buildings taken out) come first, from the highest a year to the lowest (the last three years, as paid). Places that publish only totals (money in and total spending, for some what they hold) show those totals, marked \"Total spent\": their spending can include building work and wear on buildings, so no running cost, day or per-person figure is given for them. Amounts are in each country's own currency and are not converted (Lokuttara is the one exception: euros, with the Norwegian kroner in brackets), so compare them only roughly across currencies.</p>
@@ -195,7 +196,6 @@ body = f'''
       <li><b>Dhammapala</b> (Switzerland): the supporting association, Verein Dhammapala (Bern commercial register, CHE-109.752.928). No accounts published.</li>
       <li><b>Suddhavari</b> (Brazil): donations go to the Sociedade Budista do Brasil (CNPJ 34.021.832/0001-06). No accounts for the monastery found.</li>
       <li><b>Pannagiri</b> (Spain): its steward is named in a UK charity's report as the Comunidad Budista Bosque Theravada. No accounts found.</li>
-      <li><b>Vimutti</b> (New Zealand): the legal body was not found.</li>
     </ul></div>
   <p class="sources"><b>Code and data:</b> <a href="https://github.com/yoBoss283/sangha-trusts-accounts" target="_blank" rel="noopener">github.com/yoBoss283/sangha-trusts-accounts</a>. {EARLIER}<span class="tag">Updated {datetime.datetime.now(datetime.timezone.utc).strftime("%-d %B %Y, %H:%M GMT")}</span></p>
 </section>

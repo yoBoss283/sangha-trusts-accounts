@@ -92,6 +92,7 @@ and where the source gives them `depr`, `cash`, `restricted`, `net_assets`, `gif
 - **Bodhinyanarama** (`bodhinyanarama/`): total income and total expenditure per year from
   `https://register.charities.govt.nz/Charity/CC29078` (annual return table; copy just the table into
   `register_returns.txt`: the whole page names the officers). The year ends 31 March; the return is due by 30 September.
+- **Vimutti** (`vimutti/`, Auckland Theravada Buddhist Association, charity CC20332): same register as Bodhinyanarama (`https://register.charities.govt.nz/Charity/CC20332`; copy just the table into `register_returns.txt`). Year ends 31 July. The register shows $0 or tiny spending for most years before 2023, so only 2023 onward are charted and the rest are listed in a note (21 Nov 2026). Add each new year only if its spending looks complete. Residents: `simple_people.py vimutti Vimutti dec`. The audited PDFs behind the earlier years were not read (downloads need the owner's OK).
 - **`"operating": false` in `place.json`** marks a place whose accounts give only total expenses, so building work and wear on buildings cannot be
   taken out (everything except Tisarana and Forest Hermitage, which remove depreciation). Its page and landing card then show total
   spending and money in, never a running cost, a cost a day, a cost for each resident or a change after inflation: do not compare
