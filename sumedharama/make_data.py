@@ -66,6 +66,9 @@ for y in ('2018', '2020'):
     out[y]['spending'] = round(fse + oe + dep, 2)
     out[y]['income'] = round(out[y]['income'] + delta, 2)   # money given = result + spending, so it moves with the cost
 out['2020']['cash'] = filed['cash_2020']                              # the spreadsheet has 51,280.91: a typing slip of 10 cents
+# who gave (annual accounts, donations page): anonymous (75311 + 75313), named (75312 + 75316), from abroad (75314 + 75315); no page for 2012, 2013, 2022, 2025
+for y, g in filed['gifts'].items():
+    out[y]['gifts'] = {'anon': round(g[0] + g[2], 2), 'named': round(g[1] + g[5], 2), 'abroad': round(g[3] + g[4], 2)}
 json.dump(out, open(here / 'data.json', 'w'), indent=1)
 print('differences between the sum of the lines and the report total:', issues)
 for y, r in out.items():
@@ -88,5 +91,7 @@ NOTES = [
   'text': "2025: the spreadsheet stops at 2024, so 2025 is from the community's two-page report to the abbots. Its lines add up to €120.93 less than its total, and the report enters interest received (€1,453.74) as a negative cost."},
  {'id': 'g', 'marks': [['Total expenses in the report', '2018'], ['Total expenses in the report', '2020']],
   'text': "2018 and 2020: the community's annual accounts (supplies and services, other costs and depreciation) add up to €47,357.95 and €53,406.46, which is €80.60 and €40.00 more than the spreadsheet's totals. The page uses the annual accounts, so money given is also €80.60 and €40.00 higher (it then equals the accounts' gifts plus other income and interest)."},
+ {'id': 'h', 'marks': [['Gifts: anonymous', '2017'], ['Gifts: from abroad', '2017'], ['Gifts: anonymous', '2019'], ['Gifts: from abroad', '2019'], ['Gifts: anonymous', '2023'], ['Gifts: named', '2023'], ['Gifts: from abroad', '2023']],
+  'text': "Who gave: the community's annual accounts split the gifts into anonymous (accounts 75311 and 75313), named (75312 and 75316) and from abroad (75314 and 75315). The split is read from each year's donations page and always adds up to the year's gifts. There is none for 2012, 2013 and 2022. Doubtful points, to check with the accountant: (1) 2017: the signed accounts list €40,820.96 as anonymous retreat gifts and €34,219.23 as anonymous gifts from abroad; the community's spreadsheet puts both one line lower (€40,820.96 from abroad and €34,219.23 named from abroad). The page follows the signed accounts. (2) 2019: the signed page gives €30,560.72, €7,320.00 and €210,153.82 (anonymous, named, from abroad); the spreadsheet gives €30,586.16, €7,620.00 and €209,828.38, the same total. The page follows the signed page. (3) 2023: on the printed page the amounts sit one line below their labels (the total is beside the first gift line). Read that way, they are €60,044.60 anonymous, €3,586.00 named, €1,820.00 anonymous retreats, €1,806.67 anonymous from abroad and €19,076.21 named from abroad. Read as printed, there would be no anonymous gifts and €60,044.60 would be named. 2014 to 2016 are from the spreadsheet only (2016 agrees with the accounts' trial balance)."},
 ]
 json.dump(NOTES, open(here / 'footnotes.json', 'w'), indent=1, ensure_ascii=False)
