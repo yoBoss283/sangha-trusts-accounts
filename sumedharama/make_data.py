@@ -84,9 +84,9 @@ NOTES = [
   'text': "2021: the posted total of fixed assets and work in progress is €2,527,052.89. The two lines above it add up to €4,000 less (€2,523,052.89). The page uses the total, because only it matches total assets, liabilities and equity. So new buildings are €4,000 more in 2021 and €4,000 less in 2022 than the lines would give."},
  {'id': 'e', 'marks': [['Money given, worked out (result + expenses)', '2013']],
   'text': "2012 equity: the spreadsheet posts €27,347.60, but total assets are €71,871.16 and there are no liabilities, so the page uses €71,871.16. That makes the 2013 result €113,029.67, as the spreadsheet itself reports for 2013 (the posted figures would give €157,553.23)."},
- {'id': 'g', 'marks': [['Total expenses in the report', '2018'], ['Total expenses in the report', '2020']],
-  'text': "2018 and 2020: the community's annual accounts (supplies and services, other costs and depreciation) add up to €47,357.95 and €53,406.46, which is €80.60 and €40.00 more than the spreadsheet's totals. The page uses the annual accounts, so money given is also €80.60 and €40.00 higher (it then equals the accounts' gifts plus other income and interest)."},
  {'id': 'f', 'marks': [['Total expenses in the report', '2025']],
   'text': "2025: the spreadsheet stops at 2024, so 2025 is from the community's two-page report to the abbots. Its lines add up to €120.93 less than its total, and the report enters interest received (€1,453.74) as a negative cost."},
+ {'id': 'g', 'marks': [['Total expenses in the report', '2018'], ['Total expenses in the report', '2020']],
+  'text': "2018 and 2020: the community's annual accounts (supplies and services, other costs and depreciation) add up to €47,357.95 and €53,406.46, which is €80.60 and €40.00 more than the spreadsheet's totals. The page uses the annual accounts, so money given is also €80.60 and €40.00 higher (it then equals the accounts' gifts plus other income and interest)."},
 ]
 json.dump(NOTES, open(here / 'footnotes.json', 'w'), indent=1, ensure_ascii=False)
