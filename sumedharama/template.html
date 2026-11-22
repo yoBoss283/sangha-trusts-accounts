@@ -259,8 +259,8 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
   <p class="lede" id="money-lede"></p>
   <div class="more">
     <div class="card"><h3>Cash and deposits at the end of each year</h3><p class="sub">Cash and deposits on the balance sheet, 31 December.</p><div id="c-cash"></div><p class="note" id="cash-note"></p></div>
-    <div class="card"><h3>Money received each year, and running costs</h3><p class="sub">The report has no income line: this is worked out as each year's result plus its expenses. Tall bars are cut short (their figures are listed below the chart); the 2018 bar shows its real figure.</p><div id="c-given"></div><ul class="note" id="given-notes"></ul></div>
-    <div class="card"><h3>Who gave: anonymous, named, or from abroad</h3><p class="sub">The community's annual accounts split the gifts it received each year. Anonymous: gifts with no donor name. Named: gifts with a donor's name. From abroad: gifts from other countries, many of them in pounds. Tall bars are cut short, as above.</p><div id="c-who"></div><ul class="note" id="who-notes"></ul></div>
+    <div class="card"><h3>Money received each year, and running costs</h3><p class="sub">The report has no income line: this is worked out as each year's result plus its expenses. The bars are drawn in full, so the one-off years (2014, 2015, 2018) are tall and the other years look small beside them.</p><div id="c-given"></div><ul class="note" id="given-notes"></ul></div>
+    <div class="card"><h3>Who gave: anonymous, named, or from abroad</h3><p class="sub">The community's annual accounts split the gifts it received each year. Anonymous: gifts with no donor name. Named: gifts with a donor's name. From abroad: gifts from other countries, many of them in pounds.</p><div id="c-who"></div><ul class="note" id="who-notes"></ul></div>
   </div>
 </section>
 
@@ -790,13 +790,13 @@ const first = Ys[0];
   document.getElementById('cash-note').textContent =
     `Years of cover is the cash divided by that period's running costs. The lowest year-end was ${low.y} (${thou(cashY(low.y))}, about ${low.c.toFixed(1)} years). The report does not say which part of the cash is set aside for a purpose (restricted) or already promised, so not all of it is free to spend on running costs.`;
   const cap = 300000, big = Ys.filter(y => inc(y) > cap);
-  stacked('c-given', Ys, [{ name: 'Money received', color: '--s2', values: Ys.map(inc) }], { cap, overLabelMin: 800000, W: 1000, h: 280, name: nm, noTotal: true,
+  stacked('c-given', Ys, [{ name: 'Money received', color: '--s2', values: Ys.map(inc) }], { W: 1000, h: 400, name: nm, noTotal: true,
     lines: [{ name: 'Running costs', color: '--s1', values: RY }], aria: 'Money received each year against running costs' });
   // who gave: the annual accounts' donations page (anonymous / named / from abroad); no page for 2012, 2013, 2022 and 2025
   const gy = Ys.filter(y => D.data[y].gifts), gv = (y, k) => (D.data[y].gifts || {})[k] || 0, gsum = k => gy.reduce((a, y) => a + gv(y, k), 0), gall = gsum('anon') + gsum('named') + gsum('abroad');
   const lastG = gy[gy.length - 1], nog = Ys.filter(y => !D.data[y].gifts);
   stacked('c-who', Ys, [{ name: 'Anonymous', color: '--s2', values: Ys.map(y => gv(y, 'anon')) }, { name: 'Named', color: '--s3', values: Ys.map(y => gv(y, 'named')) }, { name: 'From abroad', color: '--s4', values: Ys.map(y => gv(y, 'abroad')) }],
-    { cap, overLabelMin: 800000, W: 1000, h: 280, name: nm, aria: 'Gifts received each year: anonymous, named and from abroad' });
+    { W: 1000, h: 400, name: nm, aria: 'Gifts received each year: anonymous, named and from abroad' });
   document.getElementById('who-notes').innerHTML = [
     `Over ${gy.length} years with a split (${gy[0]}–${lastG}) about ${thou(gall)} was given: ${Math.round(100 * gsum('abroad') / gall)}% from abroad, ${Math.round(100 * gsum('named') / gall)}% named and ${Math.round(100 * gsum('anon') / gall)}% anonymous. The big years were mostly a few large gifts: in 2015 and 2018 about ${thou(gv('2015', 'named'))} and ${thou(gv('2018', 'named'))} came as named gifts, and in 2018 and 2019 about ${thou(gv('2018', 'abroad'))} and ${thou(gv('2019', 'abroad'))} from abroad.`,
     `In 2023 and 2024 the gifts were smaller and mostly anonymous: about ${thou(gv('2023', 'anon') + gv('2023', 'named') + gv('2023', 'abroad'))} and ${thou(gv('2024', 'anon') + gv('2024', 'named') + gv('2024', 'abroad'))}, of which ${thou(gv('2024', 'anon'))} anonymous and ${thou(gv('2024', 'abroad'))} from abroad in 2024.`,
