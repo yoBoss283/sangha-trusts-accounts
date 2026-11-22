@@ -293,7 +293,7 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
     <div class="footnotes" id="footnotes"></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". Checked against the community's annual accounts for 2014 to 2024 (balance sheet and profit and loss). Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 22 November 2026, 09:01 GMT</span></p>
+<p class="sources endsrc"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". Checked against the community's annual accounts for 2014 to 2024 (balance sheet and profit and loss). Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 22 November 2026, 09:03 GMT</span></p>
 </main>
 
 <script>
@@ -808,7 +808,7 @@ const first = Ys[0];
   document.getElementById('who-notes').innerHTML = [
     `Over ${gy.length} years with a split (${gy[0]}–${lastG}) about ${thou(gall)} was given: ${Math.round(100 * gsum('abroad') / gall)}% from abroad, ${Math.round(100 * gsum('named') / gall)}% named and ${Math.round(100 * gsum('anon') / gall)}% anonymous. The big years were mostly a few large gifts: in 2015 and 2018 about ${thou(gv('2015', 'named'))} and ${thou(gv('2018', 'named'))} came as named gifts, and in 2018 and 2019 about ${thou(gv('2018', 'abroad'))} and ${thou(gv('2019', 'abroad'))} from abroad.`,
     `In 2023 and 2024 the gifts were smaller and mostly anonymous: about ${thou(gv('2023', 'anon') + gv('2023', 'named') + gv('2023', 'abroad'))} and ${thou(gv('2024', 'anon') + gv('2024', 'named') + gv('2024', 'abroad'))}, of which ${thou(gv('2024', 'anon'))} anonymous and ${thou(gv('2024', 'abroad'))} from abroad in 2024.`,
-    `No split is shown for ${nog.join(', ')}: there is no annual accounts page for 2012, 2013 and 2022, and 2025 is not out yet. The split for 2017 and 2023 should be checked with the accountant (footnote h).`,
+    `No split is shown for ${nog.join(', ')}: the community has no annual accounts for 2013 and 2022 to hand, and 2025 is not out yet. The split for 2017 and 2023 should be checked with the accountant (footnote h).`,
   ].map(t => `<li>${esc(t)}</li>`).join('');
   document.getElementById('given-notes').innerHTML = [
     `In ${BLAB(N3)} about ${thou(i3)} a year was received against ${thou(run3)} a year of running costs. Over ${Ys[0]}–${LY} about ${thou(tot)} was received in all and about ${thou(totRun)} went on running costs (${Math.round(100 * totRun / tot)}%).`,

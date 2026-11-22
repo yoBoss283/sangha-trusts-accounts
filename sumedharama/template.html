@@ -800,7 +800,7 @@ const first = Ys[0];
   document.getElementById('who-notes').innerHTML = [
     `Over ${gy.length} years with a split (${gy[0]}–${lastG}) about ${thou(gall)} was given: ${Math.round(100 * gsum('abroad') / gall)}% from abroad, ${Math.round(100 * gsum('named') / gall)}% named and ${Math.round(100 * gsum('anon') / gall)}% anonymous. The big years were mostly a few large gifts: in 2015 and 2018 about ${thou(gv('2015', 'named'))} and ${thou(gv('2018', 'named'))} came as named gifts, and in 2018 and 2019 about ${thou(gv('2018', 'abroad'))} and ${thou(gv('2019', 'abroad'))} from abroad.`,
     `In 2023 and 2024 the gifts were smaller and mostly anonymous: about ${thou(gv('2023', 'anon') + gv('2023', 'named') + gv('2023', 'abroad'))} and ${thou(gv('2024', 'anon') + gv('2024', 'named') + gv('2024', 'abroad'))}, of which ${thou(gv('2024', 'anon'))} anonymous and ${thou(gv('2024', 'abroad'))} from abroad in 2024.`,
-    `No split is shown for ${nog.join(', ')}: there is no annual accounts page for 2012, 2013 and 2022, and 2025 is not out yet. The split for 2017 and 2023 should be checked with the accountant (footnote h).`,
+    `No split is shown for ${nog.join(', ')}: the community has no annual accounts for 2013 and 2022 to hand, and 2025 is not out yet. The split for 2017 and 2023 should be checked with the accountant (footnote h).`,
   ].map(t => `<li>${esc(t)}</li>`).join('');
   document.getElementById('given-notes').innerHTML = [
     `In ${BLAB(N3)} about ${thou(i3)} a year was received against ${thou(run3)} a year of running costs. Over ${Ys[0]}–${LY} about ${thou(tot)} was received in all and about ${thou(totRun)} went on running costs (${Math.round(100 * totRun / tot)}%).`,
