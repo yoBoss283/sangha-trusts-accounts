@@ -58,6 +58,14 @@ for y in map(str, range(2013, 2026)):
     r['cash'] = round((b('Caixa e dep', y) or 0), 2)
     r['deposits'] = round((b('Outros activos financeiros', y) or 0), 2)
     r['income'] = round(r['result'] + r['spending'], 2)                  # worked out: result + spending (the report has no income line)
+# the community's annual accounts (balance sheet and profit and loss) show slightly higher total costs than the spreadsheet in 2018 and 2020: use them (footnote g)
+filed = json.load(open(here / 'filed_accounts.json'))
+for y in ('2018', '2020'):
+    don, oth, intr, fse, oe, dep, net, ta, eq = filed['years'][y]
+    delta = round(fse + oe + dep - out[y]['spending'], 2)
+    out[y]['spending'] = round(fse + oe + dep, 2)
+    out[y]['income'] = round(out[y]['income'] + delta, 2)   # money given = result + spending, so it moves with the cost
+out['2020']['cash'] = filed['cash_2020']                              # the spreadsheet has 51,280.91: a typing slip of 10 cents
 json.dump(out, open(here / 'data.json', 'w'), indent=1)
 print('differences between the sum of the lines and the report total:', issues)
 for y, r in out.items():
@@ -71,11 +79,13 @@ NOTES = [
  {'id': 'b', 'marks': [['Total expenses in the report', '2017']],
   'text': "2017: the lines add up to €3.80 less than the posted total (€40,573.83). The page uses the posted total; the €3.80 is in \"Office, fees and the rest\"."},
  {'id': 'c', 'marks': [['Total expenses in the report', '2022'], ['Total expenses in the report', '2023']],
-  'text': "2022 and 2023: the totals are as posted in the spreadsheet (€44,445.17 and €144,112.04), and its lines add up to them. The earlier two-page report gave €44,371.91 and €144,040.36, which is the bank charges (€73.26 and €71.68) less."},
+  'text': "2022 and 2023: the totals are as posted in the spreadsheet (€44,445.17 and €144,112.04), and its lines add up to them. The earlier two-page report gave €44,371.91 and €144,040.36, which is the bank charges (€73.26 and €71.68) less. The 2022 annual accounts add up to €46,313.85 for 2022: €1,868.68 more, because they show €1,867.68 of other income as a separate line, which the spreadsheet seems to have set against costs. The page keeps the spreadsheet's total for 2022 (the 2023 total agrees with the annual accounts)."},
  {'id': 'd', 'marks': [['Land, buildings and work in progress, 31 Dec', '2021'], ['New buildings and infrastructure', '2021'], ['New buildings and infrastructure', '2022']],
   'text': "2021: the posted total of fixed assets and work in progress is €2,527,052.89. The two lines above it add up to €4,000 less (€2,523,052.89). The page uses the total, because only it matches total assets, liabilities and equity. So new buildings are €4,000 more in 2021 and €4,000 less in 2022 than the lines would give."},
  {'id': 'e', 'marks': [['Money given, worked out (result + expenses)', '2013']],
   'text': "2012 equity: the spreadsheet posts €27,347.60, but total assets are €71,871.16 and there are no liabilities, so the page uses €71,871.16. That makes the 2013 result €113,029.67, as the spreadsheet itself reports for 2013 (the posted figures would give €157,553.23)."},
+ {'id': 'g', 'marks': [['Total expenses in the report', '2018'], ['Total expenses in the report', '2020']],
+  'text': "2018 and 2020: the community's annual accounts (supplies and services, other costs and depreciation) add up to €47,357.95 and €53,406.46, which is €80.60 and €40.00 more than the spreadsheet's totals. The page uses the annual accounts, so money given is also €80.60 and €40.00 higher (it then equals the accounts' gifts plus other income and interest)."},
  {'id': 'f', 'marks': [['Total expenses in the report', '2025']],
   'text': "2025: the spreadsheet stops at 2024, so 2025 is from the community's two-page report to the abbots. Its lines add up to €120.93 less than its total, and the report enters interest received (€1,453.74) as a negative cost."},
 ]

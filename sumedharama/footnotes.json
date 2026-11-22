@@ -35,7 +35,7 @@
     "2023"
    ]
   ],
-  "text": "2022 and 2023: the totals are as posted in the spreadsheet (€44,445.17 and €144,112.04), and its lines add up to them. The earlier two-page report gave €44,371.91 and €144,040.36, which is the bank charges (€73.26 and €71.68) less."
+  "text": "2022 and 2023: the totals are as posted in the spreadsheet (€44,445.17 and €144,112.04), and its lines add up to them. The earlier two-page report gave €44,371.91 and €144,040.36, which is the bank charges (€73.26 and €71.68) less. The 2022 annual accounts add up to €46,313.85 for 2022: €1,868.68 more, because they show €1,867.68 of other income as a separate line, which the spreadsheet seems to have set against costs. The page keeps the spreadsheet's total for 2022 (the 2023 total agrees with the annual accounts)."
  },
  {
   "id": "d",
@@ -64,6 +64,20 @@
    ]
   ],
   "text": "2012 equity: the spreadsheet posts €27,347.60, but total assets are €71,871.16 and there are no liabilities, so the page uses €71,871.16. That makes the 2013 result €113,029.67, as the spreadsheet itself reports for 2013 (the posted figures would give €157,553.23)."
+ },
+ {
+  "id": "g",
+  "marks": [
+   [
+    "Total expenses in the report",
+    "2018"
+   ],
+   [
+    "Total expenses in the report",
+    "2020"
+   ]
+  ],
+  "text": "2018 and 2020: the community's annual accounts (supplies and services, other costs and depreciation) add up to €47,357.95 and €53,406.46, which is €80.60 and €40.00 more than the spreadsheet's totals. The page uses the annual accounts, so money given is also €80.60 and €40.00 higher (it then equals the accounts' gifts plus other income and interest)."
  },
  {
   "id": "f",

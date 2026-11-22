@@ -24,3 +24,8 @@ The notes in the page list each rule. Open questions for the owner: the three sm
 2025 comes from the two-page report (`report.pdf`). `make_data.py` merges them, and writes `footnotes.json`: a lettered footnote for every
 place where the page uses a different number from the one posted (the page prints them under the all-figures table). Check list sent back to the
 community: `Sumedharama accounts - checks for Ajahn Vajiro.xlsx`.
+
+
+## Annual accounts check (22 Nov 2026)
+
+The community shared its annual accounts for 2014 to 2024 (balance sheet and profit and loss; scans for some years). The figures are in `filed_accounts.json` (the PDFs are not kept in the repo); `check_filed.py` compares them with `data.json`. Result: the spreadsheet agrees within a euro or two, except 2018 (costs €80.60 higher in the accounts) and 2020 (€40.00 higher), which `make_data.py` now takes from the accounts (footnote g), and 2022 (the accounts show €1,868.68 more cost because €1,867.68 of other income is a separate line; the page keeps the spreadsheet; open question for the abbot). There are no accounts for 2012, 2013 or 2025. The 2012–13 rent: the spreadsheet has €15,000 (2012) and €14,500 (2013); the abbot remembers about €25,000 for the first ten months.

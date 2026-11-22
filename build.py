@@ -97,7 +97,7 @@ SRC = {
     'forest-hermitage': 'annual accounts at <a href="https://find-and-update.company-information.service.gov.uk/company/10368008/filing-history?category=accounts" target="_blank" rel="noopener">Companies House</a> and the <a href="https://register-of-charities.charitycommission.gov.uk/en/charity-search/-/charity-details/5083694" target="_blank" rel="noopener">Charity Commission</a>',
     'lokuttara': 'the <a href="https://data.brreg.no/regnskapsregisteret/regnskap/997036034" target="_blank" rel="noopener">Norwegian Register of Company Accounts</a>',
     'milntuim': 'the <a href="https://www.oscr.org.uk/about-charities/search-the-register/charity-details?number=SC043482" target="_blank" rel="noopener">Scottish Charity Register (OSCR)</a>',
-    'sumedharama': "the community's own accounts spreadsheet and its 2025 report (not filed accounts)",
+    'sumedharama': "the community's own accounts spreadsheet (2012–2024, checked against its annual accounts for 2014–2024) and its 2025 report",
     'abhayagiri': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/943212705" target="_blank" rel="noopener">ProPublica</a>',
     'temple-forest': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/300754003" target="_blank" rel="noopener">ProPublica</a>',
     'pacific-hermitage': 'US tax returns (Form 990), via <a href="https://projects.propublica.org/nonprofits/organizations/272787286" target="_blank" rel="noopener">ProPublica</a>',

@@ -68,7 +68,7 @@ the year's wear on buildings).
 The community sends a newer accounts spreadsheet or report. Put it in `sumedharama/` (the report as `report.pdf`, the
 spreadsheet read by `read_spreadsheet.py`), run `extract_report.py` / `read_spreadsheet.py`, then `make_data.py`. It
 lists any year where the report's own lines do not match its totals (`CHECK_THESE_YEARS.md`) and writes the lettered
-footnotes. Send the owner the list of differences to check with the community. See `sumedharama/README.md`.
+footnotes. Send the owner the list of differences to check with the community. See `sumedharama/README.md`. If the community sends annual accounts (balance sheet and profit and loss) for a new year, add its figures to `sumedharama/filed_accounts.json` and run `python3 sumedharama/check_filed.py`: the spreadsheet agreed with the accounts for 2014 to 2024 except 2018, 2020 and 2022.
 
 ## 3b. The lighter pages (Abhayagiri, Tisarana, Bodhinyanarama)
 
