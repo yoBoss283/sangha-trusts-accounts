@@ -278,7 +278,7 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
       <li><b>Where the figures come from.</b> The community's own accounts spreadsheet for 2012–2024, shared by Ajahn Vajiro: every line of expense for each year and a balance sheet (in euros, years to 31 December). For 2025 the page uses the community's two-page "Report to Abbots 2012–2026". These are not filed annual accounts: they are kept by hand and have no income statement, so a few figures do not add up. Wherever this page uses a different number from the one posted, it is marked with a letter in the table below and explained in the footnotes under it. In 2012 there are no resident counts on the community lists, so the page starts in 2013.</li>
       <li><b>Totals.</b> In most years the lines add up exactly to the posted total. Where they do not (2015, 2017, 2025), or where the balance sheet slips, the footnotes say what was used. The posted total is used, and any small difference falls in "Office, fees and the rest".</li>
       <li><b>Running costs</b> are the posted total, without three things: wear written off (depreciation, and two write-offs of fixed assets, €4,551 in 2018 and €500 in 2023); building-project costs the report lists as expenses (surveying, architects, engineers, legal costs of the project, shelters, clearing land, tools for the project and the tax on buying land: about €79,000 in 2015 and €1,000 to €7,000 in other years); and interest received (€1,454 in 2025, which the report enters as a negative cost inside its total, so it is added back).</li>
-      <li><b>Rent.</b> The community paid rent until 2018 (€14,500 to €15,000 in 2012–13, about €6,000 a year in 2014–17, €3,500 in 2018). It is in the running costs, so the first period includes it.</li>
+      <li><b>Rent.</b> The community paid rent until 2018 (€14,500 in 2013, about €6,000 a year in 2014–17, €3,500 in 2018). It is a real cost of running the place, so it is in the running costs and in every comparison on this page; the "without rent" figures are shown only to explain what changed. The page starts in 2013, because the community lists give no resident count for 2012, so the 2012 rent (€15,000 in the spreadsheet) is not in the first period. The abbot adds that the rent for the first ten months, in 2012 and 2013, came to about €25,000 (€2,500 a month), and that the rent was cut to €500 a month after that and paid until 2018.</li>
       <li><b>Kinds of cost.</b> "Heat, light and water": electricity, water, gas and wood. "Repairs and upkeep": repairs and maintenance of the house. "Insurance and safety": insurance and fire extinguishers (€5,123 in 2016). "Car and travel": the car (fuel, tax, inspection, repairs), travel and stays. "Health, clothes and food": health costs, clothes, food and vet costs. "Office, fees and the rest": financial services, legal fees, bank charges, tools and utensils, office material, publicity, cleaning, communication and anything else.</li>
       <li><b>Wear on buildings.</b> From 2023 the report writes off about €105,000 a year for wear on the buildings that came into use (before, €4,000 to €9,000 a year). It is not money paid out, so it is not in the running costs, but it is why total spending in the report jumps in 2023.</li>
       <li><b>Money given.</b> The report has no income line. "Money given, worked out" is the net result of the year (the change in the community's funds) plus the year's spending. It includes gifts for building, and for 2013 it uses the corrected 2012 equity (footnote e).</li>
@@ -292,7 +292,7 @@ sup.fn { font-size: 12px; color: var(--s1); font-weight: 600; margin-left: 2px; 
     <div class="footnotes" id="footnotes"></div>
   </div>
 </section>
-<p class="sources endsrc"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". They are not filed annual accounts. Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 21 November 2026, 01:58 GMT</span></p>
+<p class="sources endsrc"><b>Source:</b> the community's own accounts spreadsheet for 2012–2024 (every line of expense and the balance sheet, years to 31 December), shared with us by Ajahn Vajiro, and for 2025 its two-page "Report to Abbots 2012–2026". They are not filed annual accounts. Where this page uses a different number from the one posted, a lettered footnote in section 5 says so. Residents: the monasteries' community lists. <span class="tag">Updated 22 November 2026, 08:34 GMT</span></p>
 </main>
 
 <script>
@@ -612,12 +612,12 @@ const first = Ys[0];
   const nr = r => RUN(r) - v(r, 'rent'), xr = realX(B0, BN, nr);
   document.getElementById('hero').innerHTML =
     `Running Sumedharama costs about <b>${thou(year)} a year</b>: about <b>${r10(day)} a day</b>. ` +
-    `After inflation, and leaving out the rent that was paid until 2018, that is <b>${pcW(xr)} ${xr >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)}; counting that rent, <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b>. The number of residents ${ppl(BN) / ppl(B0) >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}.`;
+    `After inflation, and counting the rent that was paid until 2018, that is <b>${pcW(x)} ${x >= 1 ? 'more' : 'less'}</b> than in ${BLAB(B0)} (the rent is part of the cost; without it, ${pcW(xr)} ${xr >= 1 ? 'more' : 'less'}). The number of residents ${ppl(BN) / ppl(B0) >= 1 ? 'rose' : 'fell'} from ${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}.`;
   const tiles = [
     [thou(year).replace(',000', 'k'), 'A year to run the monastery', `${BLAB(N3)} average`],
     [r10(day), 'A day', 'all running costs'],
     [String(pplRound(ppl(BN))), 'Residents', `monks, novices, anagārikas, ${BLAB(BN)}`],
-    [upPct(xr), 'After inflation', `running costs without rent, against ${BLAB(B0)}`],
+    [upPct(x), 'After inflation', `running costs, rent included, against ${BLAB(B0)}`],
   ];
   document.getElementById('headline').innerHTML = tiles.map(([v, l, c]) =>
     `<div class="tile"><div class="v">${v}</div><div class="l">${l}</div>${c ? `<div class="c">${c}</div>` : ''}</div>`).join('');
@@ -647,7 +647,7 @@ const first = Ys[0];
     sub: b => pplRound(ppl(b)), subName: 'Residents in each period', aria: 'Running costs in periods against inflation' });
   const x = tot[n] / infl[n];
   const xr = realX(B0, BN, r => RUN(r) - v(r, 'rent'));
-  document.getElementById('h-total').textContent = `Running costs after inflation: ${pcW(x)} ${x >= 1 ? 'more' : 'less'} counting rent, ${pcW(xr)} ${xr >= 1 ? 'more' : 'less'} without it`;
+  document.getElementById('h-total').textContent = `Running costs after inflation: ${pcW(x)} ${x >= 1 ? 'more' : 'less'}, rent included (${pcW(xr)} ${xr >= 1 ? 'more' : 'less'} without it)`;
   document.getElementById('cap-total').textContent =
     `In ${BLAB(BN)} running costs came to ${thou(tot[n])} a year. Had they risen with inflation only since ${BLAB(B0)}, they would be about ${thou(infl[n])}.`;
   document.getElementById('how-total').innerHTML = [
@@ -675,7 +675,7 @@ const first = Ys[0];
   const S0 = Ys.filter(y => y >= '2019' && y <= '2021'), xs = realX(S0, N3, RUN), ps = ppl(N3) / ppl(S0);
   document.getElementById('meaning').textContent =
     `Sumedharama costs about ${r10(avgOf(N3, y => RUN(D.data[y])) / 365)} a day to run. ` +
-    `After inflation, and without the rent that was paid until 2018, running costs are ${pcW(xr)} ${xr >= 1 ? 'higher' : 'lower'} than in ${BLAB(B0)}; counting that rent they are ${pcW(x)} ${x >= 1 ? 'higher' : 'lower'}. In the same years the community ${p >= 2 ? 'more than doubled' : p >= 1 ? 'grew by ' + pcW(p) : 'shrank by ' + pcW(p)} (${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}). ` +
+    `After inflation, and counting the rent that was paid until 2018, running costs are ${pcW(x)} ${x >= 1 ? 'higher' : 'lower'} than in ${BLAB(B0)} (without that rent ${pcW(xr)} ${xr >= 1 ? 'higher' : 'lower'}). In the same years the community ${p >= 2 ? 'more than doubled' : p >= 1 ? 'grew by ' + pcW(p) : 'shrank by ' + pcW(p)} (${pplRound(ppl(B0))} to ${pplRound(ppl(BN))}). ` +
     `Since ${BLAB(S0)}, running costs are ${upPct(xs)} after inflation, while the same costs now carry ${pcW(ps)} ${ps >= 1 ? 'more' : 'fewer'} residents (${ppl(S0).toFixed(1)} to ${ppl(N3).toFixed(1)}). ` +
     `Heat, light and water cost ${pcW(utN)} ${utN >= 1 ? 'more' : 'less'} as paid (${upPct(ut)} after inflation) while the community more than doubled; over the same years household energy prices in Portugal rose ${pcW(en)} and prices in general ${pcW(cpiX)}.`;
 })();
